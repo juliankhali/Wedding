@@ -224,3 +224,19 @@ a { color: inherit; text-decoration: none; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; transition-delay: 0s !important; }
 }
+
+/* ---------- photo artwork (when assets/images/* exist) ---------- */
+.flap.photo svg { display: none; }
+.flap.photo::before { content: ""; position: absolute; inset: 0; background: var(--img) center / cover; }
+.flap--top.photo::before { clip-path: polygon(-2% -2%, 102% -2%, 53% 45.6%, 50% 48%, 47% 45.6%); filter: brightness(1.04); }
+.flap--bottom.photo::before { clip-path: polygon(-2% 102%, 102% 102%, 54% 55.2%, 50% 52%, 46% 55.2%); filter: brightness(.9); }
+.flap--left.photo::before { clip-path: polygon(-2% -2%, 46.3% 47%, 50% 50%, 46.3% 53%, -2% 102%); filter: brightness(1.02); }
+.flap--right.photo::before { clip-path: polygon(102% -2%, 53.7% 47%, 50% 50%, 53.7% 53%, 102% 102%); filter: brightness(.96); }
+.card.photo { background: var(--img) center / cover; }
+.card.photo .card__light { opacity: .45; }
+.pampas.photo { width: 100%; height: 100%; background: var(--img) left bottom / cover; mix-blend-mode: multiply; }
+.pampas.photo svg { display: none; }
+.finale.photo { background: var(--img) center / cover; }
+.finale.photo .crest { display: none; }
+.seal.photo svg { display: none; }
+.seal.photo::before { content: ""; position: absolute; inset: -12%; background: var(--img) center / cover; -webkit-mask: radial-gradient(circle, #000 52%, transparent 60%); mask: radial-gradient(circle, #000 52%, transparent 60%); }

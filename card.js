@@ -20,6 +20,18 @@
   $("#pampas").innerHTML = ART.pampas();
   $("#crest").innerHTML = ART.baroqueFrame();
   $("#seal").innerHTML = ART.seal();
+  const finaleEl = $("#finale");
+
+  /* ---------- photo artwork (optional, overrides the drawn art) ---------- */
+  const useImage = (src, apply) => { if (!src) return; const im = new Image(); im.onload = () => apply(`url("${src}")`); im.src = src; };
+  const IMG = C.images || {};
+  useImage(IMG.envelope, (u) => ["top", "bottom", "left", "right"].forEach((k) => {
+    const el = $(`#f-${k}`); el.classList.add("photo"); el.style.setProperty("--img", u);
+  }));
+  useImage(IMG.paper, (u) => { $("#card").classList.add("photo"); $("#card").style.setProperty("--img", u); });
+  useImage(IMG.pampas, (u) => { $("#pampas").classList.add("photo"); $("#pampas").style.setProperty("--img", u); });
+  useImage(IMG.frame, (u) => { finaleEl.classList.add("photo"); finaleEl.style.setProperty("--img", u); });
+  useImage(IMG.seal, (u) => { $("#seal").classList.add("photo"); $("#seal").style.setProperty("--img", u); });
 
   /* ---------- text ---------- */
   const couple = () => `${pick(C.bride)} ${w("amp")} ${pick(C.groom)}`;

@@ -33,6 +33,16 @@ window.CARD = {
   // original piano waltz plays.
   song: { title: "Perfect", artist: "Ed Sheeran", src: "assets/music/perfect.mp3" },
 
+  // Photo-realistic artwork (e.g. made with Canva AI). When a file exists it
+  // replaces the drawn artwork; missing files fall back automatically.
+  images: {
+    envelope: "assets/images/envelope.jpg", // embossed burgundy floral paper (9:16)
+    paper: "assets/images/paper.jpg",       // cream paper with window light (9:16)
+    pampas: "assets/images/pampas.jpg",     // embossed pampas on cream paper (9:16)
+    frame: "assets/images/frame.jpg",       // baroque frame on burgundy (9:16)
+    seal: "assets/images/seal.jpg",         // gold dove wax seal on burgundy (square)
+  },
+
   // Optional: "?to=Hama" in the link shows "For Hama" on the envelope.
   guestName: "",
 
