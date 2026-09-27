@@ -8,7 +8,7 @@ const read = (f) => fs.readFileSync(path.join(root, f), "utf8");
 
 const html = read("index.html");
 const head = html.match(/<head>([\s\S]*)<\/head>/)[1];
-const body = html.match(/<body>([\s\S]*)<\/body>/)[1];
+const body = html.match(/<body[^>]*>([\s\S]*)<\/body>/)[1];
 
 const dataUri = (file) => {
   const buf = fs.readFileSync(path.join(root, file));
@@ -26,10 +26,11 @@ const out = head
   .replace(/<meta charset[^>]*>\s*/, "")
   .replace(/<meta name="viewport"[^>]*>\s*/, "")
   .replace(/<meta property="og:image"[^>]*>\s*/, "")
-  .replace('<link rel="stylesheet" href="style.css" />', `<style>\n${read("style.css")}\n</style>`)
+  .replace('<link rel="stylesheet" href="style.css" />', () => `<style>\n${read("style.css")}\n</style>`)
   + body
-    .replace('<script src="config.js"></script>', `<script>\n${config}\n</script>`)
-    .replace('<script src="script.js"></script>', `<script>\n${read("script.js")}\n</script>`);
+    .replace('<script src="i18n.js"></script>', () => `<script>\n${read("i18n.js")}\n</script>`)
+    .replace('<script src="config.js"></script>', () => `<script>\n${config}\n</script>`)
+    .replace('<script src="script.js"></script>', () => `<script>\n${read("script.js")}\n</script>`);
 
 fs.mkdirSync(path.join(root, "preview"), { recursive: true });
 fs.writeFileSync(path.join(root, "preview/invitation.html"), out.trim() + "\n");

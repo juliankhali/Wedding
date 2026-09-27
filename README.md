@@ -1,17 +1,18 @@
 # Wedding Invitation Website
 
-A Kurdish wedding invitation website. It opens as a burgundy envelope sealed with red wax. Guests tap the seal, it cracks, the flap opens and the letter slides out. The page then fades into a scrolling wedding website while the couple's song fades in.
+A luxury Kurdish wedding invitation website in English, Sorani (کوردی), Kurmancî and Arabic.
 
-Sections: hero with names and date → invitation → live countdown → photo gallery → details and program → map and directions → RSVP form (sent via WhatsApp) → footer. A floating music player stays at the bottom.
+**The opening:** an ivory envelope lies on emerald velvet in candlelight, closed with a crimson wax seal stamped with the Kurdish sun. Tap the seal: it cracks with a sound and breaks into pieces. The paper flap bends open to show a gold kilim-pattern lining, and the card slides out, then grows into the website. The music fades in. A second tap skips straight to the site.
 
-Kurdish touches: the 21-ray Kurdish sun (also stamped in the wax seal), kilim diamond patterns, flag colours, and Sorani and Kurmanji greetings.
+**The website:** the invitation card with gold-foil names → photo band with a quote → story and arched photo gallery → live countdown → details and programme → venue map → RSVP reply card (sent via WhatsApp). A spinning gold record keeps the music playing while guests scroll.
 
 ## Customize
-Edit **`config.js`** only: names, date, venue, program, dress code, WhatsApp number, photos and song.
+Edit **`config.js`**: names (per language), families, date, venue, programme, photos, WhatsApp number.
 
-- **Photos** → put them in `assets/photos/` and update `cover` and `gallery`.
-- **Music** → "Perfect" by Ed Sheeran is set up, but the song is copyrighted and not included. Save your mp3 as `assets/music/perfect.mp3`. If the file is missing, the player shows an "Add song" button so you can pick the mp3 while testing.
-- `guestName` → personalizes the envelope ("A letter for …").
+- **Music** → "Perfect" by Ed Sheeran is set up, but the song is copyrighted and not included. Save your mp3 as `assets/music/perfect.mp3`. Until then an original piano waltz plays, and the player has an "Add song" button for testing.
+- **Photos** → replace the placeholder art in `assets/photos/` (made by `tools/make-placeholders.js`).
+- **Personal link per guest** → `index.html?to=Hama` shows "A letter for Hama" on the envelope. `?lang=ckb` opens in Sorani.
+- Have a native speaker check the Sorani, Kurmanji and Arabic text in `i18n.js` and `config.js`.
 
 ## Run locally
 Open `index.html`, or serve the folder: `python3 -m http.server`.
