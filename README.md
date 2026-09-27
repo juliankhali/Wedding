@@ -1,16 +1,17 @@
-# Wedding Invitation — Stories Edition
+# Wedding Invitation Website
 
-A mobile-first digital wedding card. It opens as a burgundy envelope sealed with red wax. Guests tap the seal, it cracks, the flap opens and the letter slides out. The invitation then plays like Instagram Stories: music, photos, a countdown, a map and RSVP, with Kurdish touches (the 21-ray sun, kilim patterns, flag colours, Sorani and Kurmanji greetings).
+A Kurdish wedding invitation website. It opens as a burgundy envelope sealed with red wax. Guests tap the seal, it cracks, the flap opens and the letter slides out. The page then fades into a scrolling wedding website while the couple's song fades in.
+
+Sections: hero with names and date → invitation → live countdown → photo gallery → details and program → map and directions → RSVP form (sent via WhatsApp) → footer. A floating music player stays at the bottom.
+
+Kurdish touches: the 21-ray Kurdish sun (also stamped in the wax seal), kilim diamond patterns, flag colours, and Sorani and Kurmanji greetings.
 
 ## Customize
-Edit **`config.js`** only: names, date, venue, program, WhatsApp number, captions.
+Edit **`config.js`** only: names, date, venue, program, dress code, WhatsApp number, photos and song.
 
-- Photos → put them in `assets/photos/` and update `cover`, `avatar` and `gallery` in `config.js` (portrait 9:16 photos look best).
-- Music → leave `music: ""` to use the built-in Kurdish-style melody (Hijaz maqam with santur and daf), or set it to your own mp3, e.g. `assets/music/song.mp3`.
+- **Photos** → put them in `assets/photos/` and update `cover` and `gallery`.
+- **Music** → "Perfect" by Ed Sheeran is set up, but the song is copyrighted and not included. Save your mp3 as `assets/music/perfect.mp3`. If the file is missing, the player shows an "Add song" button so you can pick the mp3 while testing.
 - `guestName` → personalizes the envelope ("A letter for …").
-
-## Controls
-Tap right/left to move between stories · hold to pause · swipe up for the CTA · double-tap to like · ←/→/space on a keyboard.
 
 ## Run locally
 Open `index.html`, or serve the folder: `python3 -m http.server`.
@@ -19,4 +20,4 @@ Open `index.html`, or serve the folder: `python3 -m http.server`.
 `node tools/build-preview.js` writes `preview/invitation.html` with everything inlined.
 
 ## Publish
-Any static host works: GitHub Pages, Netlify or Vercel. Share the link on WhatsApp or Instagram.
+Any static host works: GitHub Pages, Netlify or Vercel.

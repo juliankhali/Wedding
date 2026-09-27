@@ -25,15 +25,14 @@
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
-html, body { height: 100%; }
+html { scroll-behavior: smooth; scroll-padding-top: 70px; }
+body.is-locked { overflow: hidden; height: 100%; }
 body {
   background: var(--ink);
   color: var(--cream);
   font-family: var(--sans);
-  overflow: hidden;
   -webkit-font-smoothing: antialiased;
   -webkit-tap-highlight-color: transparent;
-  user-select: none;
 }
 button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
 a { color: inherit; text-decoration: none; }
@@ -194,166 +193,186 @@ a { color: inherit; text-decoration: none; }
 .seal.is-broken .seal__l { transform: translate(-38px, 140px) rotate(-38deg); opacity: 0; }
 .seal.is-broken .seal__r { transform: translate(34px, 150px) rotate(32deg); opacity: 0; }
 
-/* ---------- Stories frame ---------- */
-.stories { position: fixed; inset: 0; display: grid; place-items: center; }
-.stories[hidden] { display: none; }
-.stories__frame {
-  position: relative; overflow: hidden;
-  width: 100%; height: 100%;
-  background: var(--ink);
+/* ---------- Website ---------- */
+:root { --paper: #f6ecd8; --paper-2: #efe0c2; --paper-ink: #3a121b; --paper-muted: #7a5a45; }
+.site { position: relative; }
+.site.is-entering { animation: site-in 1.2s cubic-bezier(.2,.8,.2,1) both; }
+@keyframes site-in { from { opacity: 0; transform: scale(1.04); } }
+.container { width: 100%; max-width: 1040px; margin: 0 auto; padding-inline: 20px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 14px; }
+.narrow { max-width: 640px; }
+.section { position: relative; padding-block: clamp(80px, 12vw, 130px); overflow: hidden; }
+.section--paper { background: radial-gradient(120% 80% at 50% 0%, #fbf4e6, var(--paper) 60%, var(--paper-2)); color: var(--paper-ink); }
+.section--paper .eyebrow { color: #8a5a2a; }
+.section--paper .muted { color: var(--paper-muted); }
+.section--paper .kurdish { color: #a0701f; }
+.section--paper .section__title { color: #6a1d2b; text-shadow: none; }
+.section--paper .kilim-band { position: absolute; left: 0; bottom: 0; color: #a0701f; opacity: .35; }
+.section--wine { background: radial-gradient(120% 80% at 50% 0%, var(--wine), var(--wine-2) 60%, var(--ink)); }
+.section--dark { background: var(--ink); }
+.section--wine::before, .section--dark::before {
+  content: ""; position: absolute; inset: 0; opacity: .06; pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Cg fill='none' stroke='%23d8b36a' stroke-width='1.2'%3E%3Cpath d='M30 2 L58 30 L30 58 L2 30Z'/%3E%3Cpath d='M30 16 L44 30 L30 44 L16 30Z'/%3E%3C/g%3E%3C/svg%3E");
 }
-@media (min-width: 560px) {
-  .stories__frame {
-    width: min(430px, calc(100dvh * 9 / 16.5));
-    height: min(92dvh, 860px);
-    border-radius: var(--radius);
-    box-shadow: 0 40px 120px rgba(0,0,0,.6), 0 0 0 1px rgba(216,179,106,.18);
-  }
+.section__title { font-size: clamp(52px, 11vw, 88px); margin-block: 4px 10px; text-wrap: balance; }
+.section__heading { font-size: clamp(28px, 5vw, 40px); font-weight: 600; color: var(--gold-2); }
+.lead { font-family: var(--serif); font-size: clamp(20px, 2.6vw, 24px); line-height: 1.55; max-width: 34ch; }
+.muted { font-size: 14px; color: rgba(251,244,230,.65); }
+.kurdish { font-size: 26px; }
+.section .sun { width: 56px; height: 56px; }
+
+/* scroll reveal */
+.reveal { opacity: 0; transform: translateY(28px); transition: opacity 1s cubic-bezier(.2,.8,.2,1), transform 1s cubic-bezier(.2,.8,.2,1); transition-delay: var(--d, 0s); }
+.reveal.is-in { opacity: 1; transform: none; }
+
+/* nav */
+.nav {
+  position: fixed; z-index: 10; top: 0; left: 0; right: 0;
+  padding: calc(env(safe-area-inset-top, 0px) + 14px) 20px 14px;
+  display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  transition: background .4s, backdrop-filter .4s, padding .4s, box-shadow .4s;
+}
+.nav.is-solid { background: rgba(26,15,18,.82); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); box-shadow: 0 1px 0 rgba(216,179,106,.2); padding-block: calc(env(safe-area-inset-top, 0px) + 10px) 10px; }
+.nav__logo { font-family: var(--script); font-size: 30px; color: var(--gold-2); line-height: 1; }
+.nav__links { display: flex; gap: 22px; align-items: center; font-size: 13px; letter-spacing: .12em; text-transform: uppercase; }
+.nav__links a { color: rgba(251,244,230,.8); transition: color .2s; }
+.nav__links a:hover { color: var(--gold-2); }
+.nav__rsvp { padding: 8px 16px; border: 1px solid rgba(216,179,106,.6); border-radius: 999px; color: var(--gold-2) !important; }
+@media (max-width: 680px) { .nav__links a:not(.nav__rsvp) { display: none; } }
+
+/* hero */
+.hero { position: relative; min-height: 100svh; display: grid; place-items: end center; padding: 120px 20px 120px; text-align: center; overflow: hidden; }
+.hero__bg { position: absolute; inset: 0; z-index: 0; }
+.hero__bg img { width: 100%; height: 115%; object-fit: cover; will-change: transform; animation: hero-zoom 16s ease-out both; }
+@keyframes hero-zoom { from { scale: 1.15; } }
+.hero__bg::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(20,8,12,.6) 0%, rgba(20,8,12,.05) 35%, rgba(20,8,12,.45) 65%, var(--ink) 100%); }
+.hero__content { position: relative; display: flex; flex-direction: column; align-items: center; gap: 12px; }
+.hero .kurdish { font-size: 32px; text-shadow: 0 2px 16px rgba(20,8,12,.9); }
+.hero__names { font-size: clamp(70px, 17vw, 150px); }
+.hero__names .amp { display: inline-block; font-size: .5em; color: var(--gold); margin-inline: .15em; }
+.hero__date { font-family: var(--serif); font-size: clamp(20px, 3vw, 26px); font-style: italic; letter-spacing: .03em; }
+.scroll-cue { position: absolute; bottom: 36px; left: 50%; translate: -50% 0; width: 26px; height: 42px; border: 1.5px solid rgba(243,220,163,.6); border-radius: 14px; }
+.scroll-cue span { position: absolute; left: 50%; top: 8px; width: 3px; height: 8px; margin-left: -1.5px; border-radius: 2px; background: var(--gold-2); animation: cue 1.8s ease-in-out infinite; }
+@keyframes cue { 60% { transform: translateY(14px); opacity: 0; } 61% { transform: none; opacity: 0; } }
+
+/* countdown */
+.countdown { display: grid; grid-template-columns: repeat(4, minmax(0, 130px)); gap: clamp(8px, 2vw, 18px); margin-block: 22px 18px; }
+.countdown div { padding: clamp(16px, 3vw, 26px) 0 clamp(12px, 2vw, 18px); border-radius: 18px; background: rgba(255,255,255,.05); border: 1px solid rgba(216,179,106,.28); }
+.countdown b { display: block; font-family: var(--serif); font-size: clamp(34px, 7vw, 58px); font-weight: 600; color: var(--gold-2); font-variant-numeric: tabular-nums; line-height: 1; }
+.countdown small { font-size: 10.5px; letter-spacing: .2em; text-transform: uppercase; color: rgba(251,244,230,.6); }
+
+/* gallery */
+.gallery { width: 100%; display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 18px; }
+.gallery figure { position: relative; border-radius: 16px; overflow: hidden; aspect-ratio: 3 / 4; box-shadow: 0 18px 40px rgba(58,18,27,.25); }
+.gallery figure:nth-child(2) { transform: translateY(28px); }
+.gallery img { width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s cubic-bezier(.2,.8,.2,1); }
+.gallery figure:hover img { transform: scale(1.06); }
+.gallery figcaption { position: absolute; left: 0; right: 0; bottom: 0; padding: 40px 14px 14px; font-family: var(--serif); font-style: italic; font-size: 19px; color: var(--cream); background: linear-gradient(transparent, rgba(20,8,12,.8)); }
+.gallery figure.reveal.is-in:nth-child(2) { transform: translateY(28px); }
+.hashtag { margin-top: 44px; font-family: var(--serif); font-size: 22px; color: #8a5a2a; }
+@media (max-width: 680px) {
+  .gallery { grid-template-columns: 1fr 1fr; }
+  .gallery figure:first-child { grid-column: 1 / -1; aspect-ratio: 4 / 3; }
+  .gallery figure:nth-child(2), .gallery figure.reveal.is-in:nth-child(2) { transform: none; }
 }
 
-.progress { position: absolute; z-index: 5; top: max(10px, env(safe-area-inset-top)); left: 10px; right: 10px; display: flex; gap: 4px; }
-.progress span { flex: 1; height: 2.5px; border-radius: 3px; background: rgba(255,255,255,.3); overflow: hidden; }
-.progress span i { display: block; height: 100%; width: 0; background: #fff; border-radius: inherit; }
-.progress span.done i { width: 100%; }
+/* details */
+.cards { width: 100%; display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 16px; }
+.card { padding: 30px 22px; border-radius: 20px; background: linear-gradient(180deg, rgba(74,20,32,.55), rgba(42,13,20,.35)); border: 1px solid rgba(216,179,106,.25); display: flex; flex-direction: column; align-items: center; gap: 6px; }
+.card svg { width: 34px; height: 34px; color: var(--gold); margin-bottom: 6px; }
+.card h3 { font-size: 11px; letter-spacing: .3em; text-transform: uppercase; color: var(--gold); font-weight: 600; }
+.card p:not(.muted) { font-family: var(--serif); font-size: 22px; font-weight: 600; }
+@media (max-width: 760px) { .cards { grid-template-columns: 1fr; } }
+.sub { margin-top: 56px; font-size: 28px; color: var(--gold-2); }
+.timeline { list-style: none; width: 100%; max-width: 420px; margin-top: 12px; text-align: left; position: relative; }
+.timeline::before { content: ""; position: absolute; left: 82px; top: 8px; bottom: 8px; width: 1px; background: linear-gradient(var(--gold), transparent); }
+.timeline li { display: grid; grid-template-columns: 70px 1fr; gap: 28px; padding: 13px 0; position: relative; }
+.timeline li::before { content: ""; position: absolute; left: 78px; top: 20px; width: 9px; height: 9px; transform: rotate(45deg); background: var(--gold); box-shadow: 0 0 12px rgba(216,179,106,.7); }
+.timeline time { font-size: 13px; font-weight: 600; color: var(--gold); padding-top: 4px; }
+.timeline strong { display: block; font-family: var(--serif); font-size: 23px; font-weight: 600; }
+.timeline span { font-size: 13.5px; color: rgba(251,244,230,.6); }
 
-.topbar { position: absolute; z-index: 6; top: calc(max(10px, env(safe-area-inset-top)) + 12px); left: 12px; right: 8px; display: flex; align-items: center; gap: 10px; }
-.avatar { width: 38px; height: 38px; border-radius: 50%; object-fit: cover; padding: 2px; background: conic-gradient(from 200deg, var(--kurd-red), var(--kurd-sun), var(--kurd-green), var(--kurd-red)); }
-.topbar__meta { flex: 1; min-width: 0; display: grid; grid-template-columns: auto auto 1fr; align-items: center; column-gap: 4px; line-height: 1.2; text-shadow: 0 1px 6px rgba(0,0,0,.5); }
-.topbar__meta strong { font-size: 14px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.verified { width: 15px; height: 15px; }
-.sponsored { grid-column: 1 / -1; font-size: 11.5px; color: rgba(255,255,255,.8); }
+/* location */
+.venue { font-family: var(--serif); font-size: clamp(30px, 5vw, 42px); font-weight: 600; color: #6a1d2b; line-height: 1.1; }
+.map {
+  position: relative; width: 100%; max-width: 820px; aspect-ratio: 16 / 9; margin-block: 20px 12px;
+  border-radius: 22px; overflow: hidden; border: 1px solid rgba(160,112,40,.45); box-shadow: 0 24px 60px rgba(58,18,27,.25);
+  background:
+    radial-gradient(circle at 50% 45%, rgba(216,179,106,.35), transparent 40%),
+    repeating-linear-gradient(35deg, transparent 0 38px, rgba(160,112,40,.14) 38px 40px),
+    repeating-linear-gradient(-55deg, transparent 0 52px, rgba(160,112,40,.1) 52px 54px),
+    #eadbbd;
+}
+.map iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; filter: sepia(.2) saturate(.9); }
+.map__pin { position: absolute; left: 50%; top: 45%; translate: -50% -50%; width: 52px; height: 52px; color: #8e1720; filter: drop-shadow(0 8px 10px rgba(58,18,27,.35)); animation: pin 1.6s ease-in-out infinite; }
+.map__pin svg { width: 100%; height: 100%; }
+@keyframes pin { 50% { transform: translateY(-6px); } }
+@media (max-width: 560px) { .map { aspect-ratio: 4 / 3.4; } }
 
-.icon-btn { width: 40px; height: 40px; display: grid; place-items: center; border-radius: 50%; transition: transform .2s, background .2s; }
-.icon-btn:active { transform: scale(.88); }
-.icon-btn svg { width: 24px; height: 24px; overflow: visible; filter: drop-shadow(0 1px 4px rgba(0,0,0,.45)); }
-#pause-btn .i-play { display: none; }
-.is-paused #pause-btn .i-play { display: block; }
-.is-paused #pause-btn .i-pause { display: none; }
+/* rsvp */
+.rsvp { width: 100%; max-width: 460px; margin-top: 16px; display: flex; flex-direction: column; gap: 16px; text-align: left; }
+.field { display: flex; flex-direction: column; gap: 7px; }
+.field span { font-size: 11px; letter-spacing: .22em; text-transform: uppercase; color: var(--gold); }
+.field input, .field select, .field textarea {
+  font: inherit; font-size: 16px; color: var(--cream); padding: 14px 16px; border-radius: 14px;
+  background: rgba(255,255,255,.06); border: 1px solid rgba(216,179,106,.3); outline: none; transition: border-color .2s, background .2s;
+}
+.field select option { color: var(--ink); }
+.field input:focus, .field select:focus, .field textarea:focus { border-color: var(--gold); background: rgba(255,255,255,.09); }
+.field input::placeholder, .field textarea::placeholder { color: rgba(251,244,230,.35); }
+.choice { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.choice input { position: absolute; opacity: 0; }
+.choice span { display: block; text-align: center; padding: 13px 10px; border-radius: 14px; border: 1px solid rgba(216,179,106,.3); font-size: 14px; cursor: pointer; transition: .25s; }
+.choice input:checked + span { background: linear-gradient(135deg, var(--gold-2), var(--gold)); color: var(--ink); border-color: transparent; font-weight: 600; }
+.choice input:focus-visible + span { outline: 2px solid var(--gold-2); outline-offset: 2px; }
+.rsvp .btn { justify-content: center; margin-top: 6px; }
+.form-note { font-size: 12.5px; text-align: center; color: rgba(251,244,230,.55); }
 
-.music-btn .muted-ico { display: none; }
-.music-btn.is-muted .muted-ico { display: block; }
-.music-btn.is-muted .eq { display: none; }
+/* footer */
+.footer { position: relative; padding: 70px 20px calc(130px + env(safe-area-inset-bottom, 0px)); text-align: center; display: flex; flex-direction: column; align-items: center; gap: 10px; background: var(--ink); }
+.footer .kilim-band { position: absolute; top: 0; left: 0; }
+.footer .sun { width: 44px; height: 44px; margin-bottom: 8px; }
+.footer__names { font-size: 54px; }
+
+/* floating music player */
+.player {
+  position: fixed; z-index: 11; left: 50%; bottom: calc(env(safe-area-inset-bottom, 0px) + 18px); translate: -50% 0;
+  display: flex; align-items: center; gap: 12px; padding: 8px 18px 8px 8px; max-width: calc(100% - 32px);
+  border-radius: 999px; background: rgba(26,15,18,.85); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(216,179,106,.35); box-shadow: 0 14px 40px rgba(0,0,0,.45);
+  animation: player-in .9s .6s cubic-bezier(.2,.8,.2,1) both;
+}
+@keyframes player-in { from { opacity: 0; transform: translateY(30px); } }
+.player__btn { position: relative; width: 42px; height: 42px; flex: none; border-radius: 50%; display: grid; place-items: center; color: var(--ink); background: linear-gradient(135deg, var(--gold-2), var(--gold)); }
+.player__btn::before { content: ""; position: absolute; inset: -4px; border-radius: 50%; border: 1px solid rgba(243,220,163,.5); animation: ring 2.4s ease-out infinite; opacity: 0; }
+.player.is-playing .player__btn::before { animation: none; }
+.player__btn svg { width: 18px; height: 18px; }
+.player .eq { display: none; }
+.player.is-playing .eq { display: flex; }
+.player.is-playing .player__play { display: none; }
+.player .eq i { background: var(--ink); box-shadow: none; }
+.player__meta { display: flex; flex-direction: column; line-height: 1.25; min-width: 0; }
+.player__meta strong { font-size: 13.5px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.player__meta span { font-size: 12px; color: rgba(251,244,230,.6); white-space: nowrap; }
+.player__add { position: relative; flex: none; font-size: 12px; font-weight: 600; padding: 7px 12px; border-radius: 999px; border: 1px solid rgba(216,179,106,.6); color: var(--gold-2); cursor: pointer; }
+.player__add input { position: absolute; inset: 0; opacity: 0; cursor: pointer; }
+.player__add[hidden] { display: none; }
+
+.toast { position: fixed; z-index: 12; left: 50%; bottom: 96px; transform: translate(-50%, 20px); padding: 10px 18px; border-radius: 999px; background: rgba(20,10,12,.92); border: 1px solid rgba(216,179,106,.3); font-size: 13px; opacity: 0; transition: .35s; pointer-events: none; max-width: calc(100% - 32px); text-align: center; }
+.toast.show { opacity: 1; transform: translate(-50%, 0); }
+
+a:focus-visible, button:focus-visible { outline: 2px solid var(--gold-2); outline-offset: 3px; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+  html { scroll-behavior: auto; }
+}
 .eq { display: flex; align-items: flex-end; gap: 2.5px; height: 16px; }
-.eq i { width: 3px; background: #fff; border-radius: 2px; animation: eq 1s ease-in-out infinite; box-shadow: 0 1px 4px rgba(0,0,0,.4); }
+.eq i { width: 3px; background: #fff; border-radius: 2px; animation: eq 1s ease-in-out infinite; }
 .eq i:nth-child(1) { animation-delay: -.2s; }
 .eq i:nth-child(2) { animation-delay: -.6s; }
 .eq i:nth-child(3) { animation-delay: -.4s; }
 .eq i:nth-child(4) { animation-delay: -.8s; }
 @keyframes eq { 0%,100% { height: 25%; } 50% { height: 100%; } }
-.is-paused .eq i { animation-play-state: paused; }
-
-/* ---------- Slides ---------- */
-.slides { position: absolute; inset: 0; }
-.slide {
-  position: absolute; inset: 0;
-  display: flex; flex-direction: column; justify-content: center; align-items: center;
-  padding: 110px 28px 150px; text-align: center; isolation: isolate;
-  opacity: 0; visibility: hidden;
-  transition: opacity .6s ease, visibility 0s .6s;
-}
-.slide.is-active { opacity: 1; visibility: visible; transition: opacity .6s ease; }
-.slide__bg { position: absolute; inset: 0; z-index: -1; overflow: hidden; }
-.slide__bg img { width: 100%; height: 100%; object-fit: cover; transform: scale(1.12); }
-.slide.is-active .slide__bg img { animation: kenburns 14s ease-out forwards; }
-@keyframes kenburns { from { transform: scale(1.18) translate(1.5%, 1%); } to { transform: scale(1.02) translate(-1%, -1%); } }
-.slide__bg::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(20,8,12,.65) 0%, rgba(20,8,12,.05) 30%, rgba(20,8,12,.25) 55%, rgba(20,8,12,.92) 100%); }
-.slide--plain .slide__bg { background: radial-gradient(120% 70% at 50% 0%, var(--wine) 0%, var(--wine-2) 55%, var(--ink) 100%); }
-.slide--plain .slide__bg::after {
-  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Cg fill='none' stroke='%23d8b36a' stroke-width='1' opacity='.09'%3E%3Cpath d='M30 2 L58 30 L30 58 L2 30Z'/%3E%3Cpath d='M30 16 L44 30 L30 44 L16 30Z'/%3E%3C/g%3E%3C/svg%3E");
-}
-
-/* staggered entrance for slide content */
-.slide > *:not(.slide__bg) { opacity: 0; transform: translateY(18px); }
-.slide.is-active > *:not(.slide__bg) { animation: in .9s cubic-bezier(.2,.8,.2,1) forwards; }
-.slide.is-active > *:nth-child(2) { animation-delay: .15s; }
-.slide.is-active > *:nth-child(3) { animation-delay: .3s; }
-.slide.is-active > *:nth-child(4) { animation-delay: .45s; }
-.slide.is-active > *:nth-child(5) { animation-delay: .6s; }
-.slide.is-active > *:nth-child(6) { animation-delay: .75s; }
-.slide.is-active > *:nth-child(7) { animation-delay: .9s; }
-@keyframes in { to { opacity: 1; transform: none; } }
-
-.slide h2.script { font-size: clamp(54px, 15vw, 76px); }
-.slide .amp { display: block; font-size: .55em; color: var(--gold); margin: 4px 0; }
-.slide .lead { font-family: var(--serif); font-size: 21px; line-height: 1.45; color: rgba(251,244,230,.92); max-width: 30ch; }
-.slide .muted { font-size: 13px; color: rgba(251,244,230,.65); letter-spacing: .04em; }
-.slide .gap { margin-top: 16px; }
-.slide .kurdish { font-size: 26px; text-shadow: 0 2px 14px rgba(20,8,12,.9); }
-
-/* cover */
-.slide--cover { justify-content: flex-end; padding-bottom: 170px; }
-.slide--cover .date-pill { margin-top: 18px; padding: 8px 18px; border-radius: 999px; border: 1px solid rgba(243,220,163,.45); background: rgba(26,15,18,.35); backdrop-filter: blur(10px); font-size: 13px; letter-spacing: .12em; text-transform: uppercase; }
-
-/* photo */
-.slide--photo { justify-content: flex-end; padding-bottom: 160px; }
-.slide--photo .caption { font-family: var(--serif); font-style: italic; font-size: 30px; }
-
-/* ornament frame */
-.ornament { position: relative; padding: 34px 22px; width: 100%; max-width: 340px; border: 1px solid rgba(216,179,106,.4); border-radius: 180px 180px 18px 18px; background: rgba(26,15,18,.35); backdrop-filter: blur(6px); }
-.ornament::before { content: ""; position: absolute; inset: 7px; border: 1px solid rgba(216,179,106,.18); border-radius: 172px 172px 13px 13px; pointer-events: none; }
-.ornament > * + * { margin-top: 12px; }
-.ornament .sun { width: 46px; height: 46px; margin: 0 auto; display: block; }
-.ornament .tricolor { margin: 14px auto; }
-
-/* countdown */
-.countdown { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; width: 100%; max-width: 340px; margin-top: 22px; }
-.countdown div { padding: 16px 0 12px; border-radius: 16px; background: rgba(255,255,255,.06); border: 1px solid rgba(216,179,106,.28); backdrop-filter: blur(6px); }
-.countdown b { display: block; font-family: var(--serif); font-size: 36px; font-weight: 600; color: var(--gold-2); font-variant-numeric: tabular-nums; line-height: 1; }
-.countdown small { font-size: 10px; letter-spacing: .2em; text-transform: uppercase; color: rgba(251,244,230,.6); }
-
-/* location */
-.map {
-  position: relative; display: block; width: 100%; max-width: 360px; aspect-ratio: 4 / 3; margin: 18px 0 14px;
-  border-radius: 18px; overflow: hidden; border: 1px solid rgba(216,179,106,.4); box-shadow: 0 20px 50px rgba(0,0,0,.45);
-  background:
-    radial-gradient(circle at 50% 45%, rgba(216,179,106,.25), transparent 45%),
-    repeating-linear-gradient(35deg, transparent 0 38px, rgba(216,179,106,.12) 38px 40px),
-    repeating-linear-gradient(-55deg, transparent 0 52px, rgba(216,179,106,.08) 52px 54px),
-    #2a1419;
-}
-.map iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; filter: grayscale(.25) contrast(1.05) sepia(.15); }
-.map__pin { position: absolute; left: 50%; top: 42%; translate: -50% -50%; width: 46px; height: 46px; color: var(--gold); filter: drop-shadow(0 6px 10px rgba(0,0,0,.5)); animation: pin 1.6s ease-in-out infinite; }
-.map__pin svg { width: 100%; height: 100%; }
-@keyframes pin { 50% { transform: translateY(-6px); } }
-.map__label { position: absolute; z-index: 1; left: 50%; bottom: 12px; translate: -50% 0; white-space: nowrap; padding: 8px 14px; border-radius: 999px; font-size: 12.5px; font-weight: 600; color: var(--ink); background: linear-gradient(135deg, var(--gold-2), var(--gold)); box-shadow: 0 6px 16px rgba(0,0,0,.35); }
-.venue { font-family: var(--serif); font-size: 30px; font-weight: 600; color: var(--gold-2); line-height: 1.1; }
-
-/* program */
-.timeline { list-style: none; width: 100%; max-width: 340px; margin-top: 18px; text-align: left; position: relative; }
-.timeline::before { content: ""; position: absolute; left: 70px; top: 8px; bottom: 8px; width: 1px; background: linear-gradient(var(--gold), transparent); }
-.timeline li { display: grid; grid-template-columns: 58px 1fr; gap: 24px; padding: 11px 0; position: relative; }
-.timeline li::before { content: ""; position: absolute; left: 66px; top: 17px; width: 9px; height: 9px; transform: rotate(45deg); background: var(--gold); box-shadow: 0 0 12px rgba(216,179,106,.7); }
-.timeline time { font-size: 12px; font-weight: 600; color: var(--gold); padding-top: 3px; }
-.timeline strong { display: block; font-family: var(--serif); font-size: 21px; font-weight: 600; }
-.timeline span { font-size: 12.5px; color: rgba(251,244,230,.6); }
-
-/* ---------- Tap zones ---------- */
-.tap { position: absolute; top: 80px; bottom: 130px; z-index: 2; }
-.tap--prev { left: 0; width: 30%; }
-.tap--next { right: 0; width: 70%; }
-
-/* ---------- Actions (bottom bar) ---------- */
-.actions { position: absolute; z-index: 6; left: 0; right: 0; bottom: 0; padding: 0 14px max(14px, env(safe-area-inset-bottom)); display: flex; flex-direction: column; align-items: center; gap: 10px; background: linear-gradient(transparent, rgba(10,4,6,.55)); padding-top: 30px; }
-.cta { display: flex; flex-direction: column; align-items: center; font-weight: 600; font-size: 13px; letter-spacing: .04em; animation: bob 2s ease-in-out infinite; }
-.cta span { padding: 9px 20px; border-radius: 999px; background: rgba(255,255,255,.95); color: var(--ink); box-shadow: 0 6px 20px rgba(0,0,0,.3); }
-.cta svg { width: 20px; height: 20px; margin-bottom: -2px; }
-@keyframes bob { 50% { transform: translateY(-4px); } }
-.actions__row { display: flex; gap: 6px; align-self: stretch; justify-content: flex-end; }
-.like.is-liked svg path { fill: #ff3b5c; stroke: #ff3b5c; }
-.like.pop { animation: pop .45s cubic-bezier(.2,1.6,.4,1); }
-@keyframes pop { 40% { transform: scale(1.35); } }
-
-/* floating hearts */
-.hearts { position: absolute; inset: 0; pointer-events: none; z-index: 7; overflow: hidden; }
-.hearts span { position: absolute; bottom: 60px; font-size: 26px; animation: float 1.8s ease-out forwards; }
-@keyframes float { to { transform: translate(var(--dx), -420px) scale(1.4) rotate(var(--r)); opacity: 0; } }
-
-.toast { position: absolute; z-index: 9; left: 50%; bottom: 120px; transform: translate(-50%, 20px); padding: 10px 18px; border-radius: 999px; background: rgba(20,10,12,.85); border: 1px solid rgba(216,179,106,.3); font-size: 13px; opacity: 0; transition: .35s; pointer-events: none; white-space: nowrap; }
-.toast.show { opacity: 1; transform: translate(-50%, 0); }
-
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
-}
 
 </style>
 
@@ -453,58 +472,151 @@ a { color: inherit; text-decoration: none; }
         </button>
       </div>
 
-      <p class="opener__hint" id="op-hint">Tap the wax seal to open <span>· sound on 🎵</span></p>
+      <p class="opener__hint" id="op-hint">Tap the wax seal to open <span>· sound on ♪</span></p>
     </div>
   </section>
 
-  <!-- Stories player -->
-  <main class="stories" id="stories" aria-live="polite" hidden>
-    <div class="stories__frame" id="frame">
-      <div class="progress" id="progress"></div>
+  <!-- Website -->
+  <div class="site" id="site" hidden>
+    <nav class="nav" id="nav">
+      <a class="nav__logo" href="#home" id="nav-logo"></a>
+      <div class="nav__links">
+        <a href="#invitation">Invitation</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#details">Details</a>
+        <a href="#location">Location</a>
+        <a href="#rsvp" class="nav__rsvp">RSVP</a>
+      </div>
+    </nav>
 
-      <header class="topbar">
-        <img class="avatar" id="avatar" alt="" />
-        <div class="topbar__meta">
-          <strong id="handle"></strong>
-          <svg class="verified" viewBox="0 0 24 24" aria-label="Verified"><path d="M12 1.5l2.6 1.9 3.2-.2 1 3 2.7 1.8-.9 3.1.9 3.1-2.7 1.8-1 3-3.2-.2L12 22.5l-2.6-1.9-3.2.2-1-3-2.7-1.8.9-3.1-.9-3.1 2.7-1.8 1-3 3.2.2z" fill="#3897f0"/><path d="M8 12.2l2.6 2.6L16.2 9" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          <span class="sponsored">Sponsored · Wedding</span>
+    <header class="hero" id="home">
+      <div class="hero__bg"><img id="hero-img" alt="" /></div>
+      <div class="hero__content">
+        <p class="kurdish reveal" id="hero-welcome"></p>
+        <p class="eyebrow reveal">We're getting married</p>
+        <h1 class="script hero__names reveal" id="hero-names"></h1>
+        <div class="tricolor reveal"></div>
+        <p class="hero__date reveal" id="hero-date"></p>
+      </div>
+      <a class="scroll-cue" href="#invitation" aria-label="Scroll down"><span></span></a>
+    </header>
+
+    <section class="section section--paper" id="invitation">
+      <div class="container narrow">
+        <svg class="sun sun--spin reveal" viewBox="0 0 100 100" aria-hidden="true"><use href="#sun" width="100" height="100"/></svg>
+        <p class="eyebrow reveal" id="families"></p>
+        <p class="eyebrow reveal">request the pleasure of your company</p>
+        <h2 class="script section__title reveal" id="inv-names"></h2>
+        <p class="lead reveal" id="message"></p>
+        <p class="kurdish reveal" id="kurmanji"></p>
+      </div>
+      <svg class="kilim-band" aria-hidden="true"><rect width="100%" height="20" fill="url(#kilim)"/></svg>
+    </section>
+
+    <section class="section section--wine" id="countdown-section">
+      <div class="container">
+        <p class="eyebrow reveal">Counting down to forever</p>
+        <h2 class="serif section__heading reveal" id="cd-date"></h2>
+        <div class="countdown reveal" id="countdown">
+          <div><b data-u="d">00</b><small>Days</small></div>
+          <div><b data-u="h">00</b><small>Hours</small></div>
+          <div><b data-u="m">00</b><small>Minutes</small></div>
+          <div><b data-u="s">00</b><small>Seconds</small></div>
         </div>
-        <button class="icon-btn" id="pause-btn" aria-label="Pause">
-          <svg viewBox="0 0 24 24"><path class="i-pause" d="M8 5v14M16 5v14" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/><path class="i-play" d="M7 4.5v15l12-7.5z" fill="currentColor"/></svg>
-        </button>
-        <button class="icon-btn music-btn" id="music-btn" aria-label="Toggle music">
-          <span class="eq"><i></i><i></i><i></i><i></i></span>
-          <svg class="muted-ico" viewBox="0 0 24 24"><path d="M4 9h4l5-4v14l-5-4H4zM17 9l4 6M21 9l-4 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </button>
-      </header>
+        <a class="btn btn--ghost reveal" id="cal-btn" href="#" target="_blank" rel="noopener">Add to Calendar</a>
+      </div>
+    </section>
 
-      <div class="slides" id="slides"></div>
+    <section class="section section--paper" id="gallery">
+      <div class="container">
+        <p class="eyebrow reveal">Our moments</p>
+        <h2 class="script section__title reveal">Our Story</h2>
+        <div class="gallery" id="gallery-grid"></div>
+        <p class="hashtag reveal" id="hashtag"></p>
+      </div>
+    </section>
 
-      <div class="tap tap--prev" aria-hidden="true"></div>
-      <div class="tap tap--next" aria-hidden="true"></div>
-
-      <footer class="actions">
-        <a class="cta" id="cta" href="#" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 15l6-6 6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          <span id="cta-label">RSVP</span>
-        </a>
-        <div class="actions__row">
-          <button class="icon-btn like" id="like-btn" aria-label="Like">
-            <svg viewBox="0 0 24 24"><path d="M12 20.5s-7.5-4.6-9.3-9.2C1.4 8 3.6 4.5 7.2 4.5c2 0 3.6 1.1 4.8 2.8 1.2-1.7 2.8-2.8 4.8-2.8 3.6 0 5.8 3.5 4.5 6.8-1.8 4.6-9.3 9.2-9.3 9.2z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
-          </button>
-          <a class="icon-btn" id="cal-btn" href="#" target="_blank" rel="noopener" aria-label="Add to calendar">
-            <svg viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="15.5" rx="3" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M3.5 10h17M8 3v4M16 3v4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
-          </a>
-          <button class="icon-btn" id="share-btn" aria-label="Share">
-            <svg viewBox="0 0 24 24"><path d="M21 3L10 14M21 3l-7 18-4-7-7-4z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
-          </button>
+    <section class="section section--dark" id="details">
+      <div class="container">
+        <p class="eyebrow reveal">The celebration</p>
+        <h2 class="script section__title reveal">Wedding Details</h2>
+        <div class="cards">
+          <article class="card reveal">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15.5" rx="3" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M3.5 10h17M8 3v4M16 3v4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            <h3>When</h3><p id="d-date"></p><p class="muted" id="d-time"></p>
+          </article>
+          <article class="card reveal">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s7-6.2 7-12a7 7 0 10-14 0c0 5.8 7 12 7 12z" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="10" r="2.5" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
+            <h3>Where</h3><p id="d-venue"></p><p class="muted" id="d-address"></p>
+          </article>
+          <article class="card reveal">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18V6l11-2v12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><circle cx="6.5" cy="18" r="2.5" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="17.5" cy="16" r="2.5" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
+            <h3>Dress Code</h3><p id="d-dress"></p><p class="muted">Kurdish traditional clothes are warmly welcome</p>
+          </article>
         </div>
-      </footer>
+        <h3 class="serif sub reveal">Program of the evening</h3>
+        <ol class="timeline" id="timeline"></ol>
+      </div>
+    </section>
 
-      <div class="hearts" id="hearts" aria-hidden="true"></div>
-      <div class="toast" id="toast" role="status"></div>
+    <section class="section section--paper" id="location">
+      <div class="container">
+        <p class="eyebrow reveal">Find your way</p>
+        <h2 class="script section__title reveal">Location</h2>
+        <p class="venue reveal" id="l-venue"></p>
+        <p class="muted reveal" id="l-address"></p>
+        <div class="map reveal" id="map"></div>
+        <a class="btn btn--gold reveal" id="directions" href="#" target="_blank" rel="noopener">Get Directions</a>
+      </div>
+    </section>
+
+    <section class="section section--wine" id="rsvp">
+      <div class="container narrow">
+        <p class="kurdish reveal" id="rsvp-blessing"></p>
+        <h2 class="script section__title reveal">Will you join us?</h2>
+        <p class="muted reveal" id="rsvp-deadline"></p>
+        <form class="rsvp reveal" id="rsvp-form" novalidate>
+          <label class="field"><span>Your name</span><input id="rsvp-name" name="name" autocomplete="name" placeholder="Full name" required /></label>
+          <div class="choice" role="radiogroup" aria-label="Attendance">
+            <label><input type="radio" name="attend" id="attend-yes" value="yes" checked /><span>Joyfully accepts</span></label>
+            <label><input type="radio" name="attend" id="attend-no" value="no" /><span>Regretfully declines</span></label>
+          </div>
+          <label class="field"><span>Number of guests</span>
+            <select id="rsvp-guests" name="guests"><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select>
+          </label>
+          <label class="field"><span>A message for the couple</span><textarea id="rsvp-msg" name="msg" rows="3" placeholder="Optional"></textarea></label>
+          <a class="btn btn--gold" id="rsvp-send" href="#" target="_blank" rel="noopener">Send RSVP on WhatsApp</a>
+          <p class="form-note" id="rsvp-note">Opens WhatsApp with your reply written for you.</p>
+        </form>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <svg class="kilim-band" aria-hidden="true"><rect width="100%" height="20" fill="url(#kilim)"/></svg>
+      <svg class="sun" viewBox="0 0 100 100" aria-hidden="true"><use href="#sun" width="100" height="100"/></svg>
+      <p class="script footer__names" id="f-names"></p>
+      <p class="muted" id="f-date"></p>
+      <p class="kurdish" id="f-blessing"></p>
+    </footer>
+
+    <!-- Floating music player -->
+    <div class="player" id="player">
+      <button class="player__btn" id="music-btn" aria-label="Play music">
+        <span class="eq"><i></i><i></i><i></i><i></i></span>
+        <svg class="player__play" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
+      </button>
+      <div class="player__meta">
+        <strong id="song-title"></strong>
+        <span id="song-artist"></span>
+      </div>
+      <label class="player__add" id="song-add" hidden>
+        Add song
+        <input type="file" id="song-file" accept="audio/*" />
+      </label>
     </div>
-  </main>
+
+    <div class="toast" id="toast" role="status"></div>
+  </div>
 
   <audio id="music" loop preload="auto"></audio>
 
@@ -540,9 +652,16 @@ window.WEDDING = {
     { src: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDgwIDE5MjAiIHByZXNlcnZlQXNwZWN0UmF0aW89InhNaWRZTWlkIHNsaWNlIj4KPGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJzIiB4MT0iMCIgeTE9IjAiIHgyPSIwIiB5Mj0iMSI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjMGYyYTJhIi8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjZDlhNTVmIi8+PC9saW5lYXJHcmFkaWVudD4KPHJhZGlhbEdyYWRpZW50IGlkPSJnIj48c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiNmZmU3YTgiIHN0b3Atb3BhY2l0eT0iLjkiLz48c3RvcCBvZmZzZXQ9Ii4yNSIgc3RvcC1jb2xvcj0iI2ZlYmQxMSIgc3RvcC1vcGFjaXR5PSIuNDUiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiNmZWJkMTEiIHN0b3Atb3BhY2l0eT0iMCIvPjwvcmFkaWFsR3JhZGllbnQ+PC9kZWZzPgo8cmVjdCB3aWR0aD0iMTA4MCIgaGVpZ2h0PSIxOTIwIiBmaWxsPSJ1cmwoI3MpIi8+CjxjaXJjbGUgY3g9IjU0MCIgY3k9Ijg4MCIgcj0iNTIwIiBmaWxsPSJ1cmwoI2cpIi8+PGNpcmNsZSBjeD0iNTQwIiBjeT0iODgwIiByPSIxMTAiIGZpbGw9IiNmZmUyYTAiLz4KPHBhdGggZD0iTTAgMTkyMCBMMCAxMTAwIEwwIDc3OSBMMTgwIDg2MCBMMzYwIDEwMzggTDU0MCAxMDIyIEw3MjAgODY2IEw5MDAgOTgzIEwxMDgwIDEwNzUgTDEwODAgMTkyMCBaIiBmaWxsPSIjMmU1YTQ1Ii8+PHBhdGggZD0iTTAgMTkyMCBMMCAxMjkwIEwwIDEyNTEgTDEyMCAxMTQwIEwyNDAgMTA2MyBMMzYwIDEzODAgTDQ4MCAxMjE2IEw2MDAgMTM2NyBMNzIwIDEwNTEgTDg0MCAxMzI4IEw5NjAgMTEyOCBMMTA4MCAxMTkwIEwxMDgwIDE5MjAgWiIgZmlsbD0iIzFmNDAzMyIvPjxwYXRoIGQ9Ik0wIDE5MjAgTDAgMTQ4MCBMMCAxMzgzIEw5MCAxNDAwIEwxODAgMTQwOCBMMjcwIDE0MjggTDM2MCAxMjczIEw0NTAgMTQzNCBMNTQwIDEzNjYgTDYzMCAxNTAxIEw3MjAgMTQ0NSBMODEwIDE0MzMgTDkwMCAxNDA5IEw5OTAgMTQzOSBMMTA4MCAxNDMyIEwxMDgwIDE5MjAgWiIgZmlsbD0iIzE0MmIyMyIvPjxwYXRoIGQ9Ik0wIDE5MjAgTDAgMTY3MCBMMCAxNTU0IEw3MiAxNjM4IEwxNDQgMTUyMiBMMjE2IDE3MTggTDI4OCAxNTg3IEwzNjAgMTU2MiBMNDMyIDE2NDAgTDUwNCAxNjc5IEw1NzYgMTUzOSBMNjQ4IDE2NTggTDcyMCAxNjA1IEw3OTIgMTYyMiBMODY0IDE2MzMgTDkzNiAxNzAyIEwxMDA4IDE1MDIgTDEwODAgMTU2MiBMMTA4MCAxOTIwIFoiIGZpbGw9IiMwYjE4MTMiLz48L3N2Zz4=", caption: "She said yes 💍" },
   ],
 
-  // Background music. Leave "" to use the built-in Kurdish-style melody,
-  // or put an mp3 in assets/music and set e.g. "assets/music/song.mp3".
-  music: "",
+  // Background music: "Perfect" by Ed Sheeran.
+  // The song is copyrighted, so it is not included. Buy/download the mp3,
+  // save it as assets/music/perfect.mp3, and it plays when the seal is broken.
+  song: {
+    title: "Perfect",
+    artist: "Ed Sheeran",
+    src: "assets/music/perfect.mp3",
+  },
+
+  dressCode: "Formal / Kurdish attire",
 
   venue: {
     name: "Rotana Grand Hall",
@@ -568,9 +687,6 @@ window.WEDDING = {
   rsvpDeadline: "Kindly reply by 1 December",
 
   hashtag: "#ShilanAndAram",
-
-  // Seconds each story stays on screen
-  storyDuration: 7,
 };
 
 window.WEDDING.mapEmbed = false;
@@ -581,23 +697,14 @@ window.WEDDING.mapEmbed = false;
   const W = window.WEDDING;
   const $ = (s, el = document) => el.querySelector(s);
   const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+  const setText = (sel, text) => { const el = $(sel); if (el) el.textContent = text; };
 
-  /* ---------- Sun of Kurdistan (21 rays) ---------- */
+  /* ---------- Sun of Kurdistan (21 rays) + wax seal ---------- */
   const rays = Array.from({ length: 21 }, (_, i) =>
     `<path d="M0 -46 L5 -24 L-5 -24 Z" transform="rotate(${(360 / 21) * i})"/>`).join("");
   $("#sun g").innerHTML = `${rays}<circle r="21"/>`;
   $("#seal-rays").innerHTML = `${rays}<circle r="21"/>`;
   $("#seal-initials").textContent = `${W.bride[0]}&${W.groom[0]}`;
-  const sun = (cls = "") => `<svg class="sun ${cls}" viewBox="0 0 100 100" aria-hidden="true"><use href="#sun" width="100" height="100"/></svg>`;
-  const kilim = `<svg class="kilim-band" aria-hidden="true"><rect width="100%" height="20" fill="url(#kilim)"/></svg>`;
-
-  /* ---------- Opener ---------- */
-  const names = `${esc(W.bride)} <span class="amp">&amp;</span> ${esc(W.groom)}`;
-  $("#op-welcome").textContent = W.welcomeSorani;
-  $("#op-names").innerHTML = `${esc(W.bride)} &amp; ${esc(W.groom)}`;
-  if (W.guestName) $("#op-to").textContent = `A letter for ${W.guestName}`;
-  $("#op-date").textContent = W.dateLabel;
-  document.title = `${W.bride} & ${W.groom} · Wedding`;
 
   /* ---------- Links ---------- */
   const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(W.venue.mapQuery)}`;
@@ -610,324 +717,159 @@ window.WEDDING.mapEmbed = false;
     `&dates=${gcal(startDate)}/${gcal(new Date(startDate.getTime() + 5 * 3600e3))}` +
     `&location=${encodeURIComponent(`${W.venue.name}, ${W.venue.address}`)}` +
     `&details=${encodeURIComponent(mapsUrl)}`;
-  const rsvpText = `Hi! I'm happy to confirm my attendance at ${W.bride} & ${W.groom}'s wedding 💍`;
-  const rsvpUrl = `https://wa.me/${W.rsvpWhatsApp}?text=${encodeURIComponent(rsvpText)}`;
 
-  /* ---------- Stories ---------- */
-  const stories = [
-    {
-      cls: "slide--cover", bg: W.cover, cta: ["RSVP", rsvpUrl],
-      html: `
-        <p class="kurdish">${esc(W.welcomeSorani)}</p>
-        <p class="eyebrow">We're getting married</p>
-        <h2 class="script">${names}</h2>
-        <span class="date-pill">${esc(W.dateLabel)}</span>`,
-    },
-    {
-      cls: "slide--plain", cta: ["RSVP", rsvpUrl],
-      html: `
-        <div class="ornament">
-          ${sun()}
-          <p class="eyebrow">${esc(W.families)}</p>
-          <p class="eyebrow" style="letter-spacing:.2em">request the pleasure of your company</p>
-          <div class="tricolor"></div>
-          <p class="lead">${esc(W.message)}</p>
-          <p class="kurdish" style="font-size:20px">${esc(W.welcomeKurmanji)}</p>
-        </div>`,
-    },
-    ...W.gallery.map((p) => ({
-      cls: "slide--photo", bg: p.src, cta: ["Save the Date", calUrl],
-      html: `<p class="caption">${esc(p.caption)}</p><p class="muted gap">${esc(W.hashtag)}</p>`,
-    })),
-    {
-      cls: "slide--plain", cta: ["Add to Calendar", calUrl],
-      html: `
-        ${sun("sun--spin")}
-        <p class="eyebrow gap">The countdown begins</p>
-        <h2 class="script" style="font-size:52px">${esc(W.dateLabel.split("·").pop().trim())}</h2>
-        <p class="muted">${esc(W.dateLabel.split("·")[0].trim())} · ${esc(W.timeLabel)}</p>
-        <div class="countdown" id="countdown">
-          <div><b data-u="d">0</b><small>Days</small></div>
-          <div><b data-u="h">0</b><small>Hours</small></div>
-          <div><b data-u="m">0</b><small>Min</small></div>
-          <div><b data-u="s">0</b><small>Sec</small></div>
-        </div>
-        ${kilim}`,
-    },
-    {
-      cls: "slide--plain", cta: ["Get Directions", mapsUrl], duration: 10,
-      html: `
-        <p class="eyebrow">The celebration will be held at</p>
-        <p class="venue gap">${esc(W.venue.name)}</p>
-        <p class="muted">${esc(W.venue.address)}</p>
-        <a class="map" href="${mapsUrl}" target="_blank" rel="noopener" aria-label="Open ${esc(W.venue.name)} in Google Maps">
-          <span class="map__pin"><svg viewBox="0 0 24 24"><path d="M12 22s7-6.2 7-12a7 7 0 10-14 0c0 5.8 7 12 7 12z" fill="currentColor"/><circle cx="12" cy="10" r="2.6" fill="#1a0f12"/></svg></span>
-          <span class="map__label">Open in Google Maps</span>
-          ${W.mapEmbed !== false ? `<iframe loading="lazy" title="Venue map" referrerpolicy="no-referrer-when-downgrade" data-src="${embedUrl}"></iframe>` : ""}
-        </a>
-        <p class="muted">${esc(W.timeLabel)} · ${esc(W.dateLabel)}</p>`,
-    },
-    {
-      cls: "slide--plain", cta: ["RSVP", rsvpUrl], duration: 9,
-      html: `
-        ${kilim}
-        <p class="eyebrow gap">Program of the evening</p>
-        <ol class="timeline">
-          ${W.program.map((p) => `<li><time>${esc(p.time)}</time><div><strong>${esc(p.title)}</strong><span>${esc(p.note)}</span></div></li>`).join("")}
-        </ol>`,
-    },
-    {
-      cls: "slide--cover", bg: W.cover, cta: ["RSVP on WhatsApp", rsvpUrl], duration: 12,
-      html: `
-        <p class="kurdish">${esc(W.blessingSorani)}</p>
-        <p class="eyebrow">Your presence is our greatest gift</p>
-        <h2 class="script" style="font-size:60px">See you there</h2>
-        <p class="muted">${esc(W.rsvpDeadline)}</p>
-        <a class="btn btn--ghost gap" href="${rsvpUrl}" target="_blank" rel="noopener">Confirm Attendance</a>`,
-    },
-  ];
+  /* ---------- Fill content from config ---------- */
+  const couple = `${W.bride} & ${W.groom}`;
+  document.title = `${couple} · Wedding`;
+  setText("#op-welcome", W.welcomeSorani);
+  $("#op-names").innerHTML = `${esc(W.bride)} &amp; ${esc(W.groom)}`;
+  setText("#op-date", W.dateLabel);
+  if (W.guestName) setText("#op-to", `A letter for ${W.guestName}`);
 
-  const slidesEl = $("#slides");
-  const progressEl = $("#progress");
-  slidesEl.innerHTML = stories.map((s) => `
-    <article class="slide ${s.cls}">
-      <div class="slide__bg">${s.bg ? `<img src="${esc(s.bg)}" alt="" decoding="async">` : ""}</div>
-      ${s.html}
-    </article>`).join("");
-  progressEl.innerHTML = stories.map(() => "<span><i></i></span>").join("");
-  const slideEls = [...slidesEl.children];
-  const bars = [...progressEl.children];
+  $("#nav-logo").textContent = `${W.bride[0]} & ${W.groom[0]}`;
+  $("#hero-img").src = W.cover;
+  setText("#hero-welcome", W.welcomeSorani);
+  $("#hero-names").innerHTML = `${esc(W.bride)}<span class="amp">&amp;</span>${esc(W.groom)}`;
+  setText("#hero-date", `${W.dateLabel} · ${W.timeLabel}`);
 
-  $("#avatar").src = W.avatar;
-  $("#handle").textContent = `${W.bride.toLowerCase()}.${W.groom.toLowerCase()}`;
+  setText("#families", W.families);
+  setText("#inv-names", couple);
+  setText("#message", W.message);
+  setText("#kurmanji", W.welcomeKurmanji);
 
-  /* ---------- Player ---------- */
-  const frame = $("#frame");
-  let index = 0, elapsed = 0, last = 0, paused = false, raf = 0;
-  const dur = (i) => (stories[i].duration || W.storyDuration) * 1000;
-
-  function show(i) {
-    index = Math.max(0, Math.min(stories.length - 1, i));
-    elapsed = 0;
-    slideEls.forEach((el, k) => {
-      el.classList.toggle("is-active", k === index);
-      // restart entrance animations
-      if (k === index) { el.style.animation = "none"; void el.offsetWidth; el.style.animation = ""; }
-    });
-    bars.forEach((b, k) => {
-      b.classList.toggle("done", k < index);
-      b.firstChild.style.width = k < index ? "100%" : "0";
-    });
-    const iframe = slideEls[index].querySelector("iframe[data-src]");
-    if (iframe && !iframe.src) iframe.src = iframe.dataset.src;
-    const [label, href] = stories[index].cta;
-    $("#cta-label").textContent = label;
-    $("#cta").href = href;
-  }
-
-  function tick(t) {
-    if (!paused) {
-      elapsed += last ? t - last : 0;
-      const p = Math.min(1, elapsed / dur(index));
-      bars[index].firstChild.style.width = `${p * 100}%`;
-      if (p >= 1) {
-        if (index < stories.length - 1) show(index + 1);
-        else setPaused(true);
-      }
-    }
-    last = t;
-    raf = requestAnimationFrame(tick);
-  }
-
-  function setPaused(v) {
-    paused = v;
-    frame.classList.toggle("is-paused", v);
-    $("#pause-btn").setAttribute("aria-label", v ? "Play" : "Pause");
-  }
-
-  const next = () => (index < stories.length - 1 ? show(index + 1) : toast("That's everything — see you there! 💛"));
-  const prev = () => show(index - 1);
-
-  /* tap = navigate, hold = pause, swipe = navigate */
-  let downAt = 0, downX = 0, downY = 0, holdTimer = 0, held = false;
-  frame.addEventListener("pointerdown", (e) => {
-    if (e.target.closest("button, a, iframe, .map")) return;
-    downAt = Date.now(); downX = e.clientX; downY = e.clientY; held = false;
-    holdTimer = setTimeout(() => { held = true; setPaused(true); }, 220);
-  });
-  frame.addEventListener("pointerup", (e) => {
-    if (!downAt) return;
-    clearTimeout(holdTimer);
-    const dx = e.clientX - downX, dy = e.clientY - downY;
-    downAt = 0;
-    if (held) { setPaused(false); return; }
-    if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy)) return dx < 0 ? next() : prev();
-    if (dy < -60) return void $("#cta").click();
-    const r = frame.getBoundingClientRect();
-    (e.clientX - r.left < r.width * 0.3 ? prev : next)();
-  });
-  frame.addEventListener("pointercancel", () => { clearTimeout(holdTimer); downAt = 0; if (held) setPaused(false); });
-  frame.addEventListener("dblclick", (e) => { if (!e.target.closest("button, a")) like(true); });
-  document.addEventListener("keydown", (e) => {
-    if (e.key === "ArrowRight") next();
-    else if (e.key === "ArrowLeft") prev();
-    else if (e.key === " ") { e.preventDefault(); setPaused(!paused); }
-  });
-  document.addEventListener("visibilitychange", () => { if (document.hidden) setPaused(true); });
-  $("#pause-btn").addEventListener("click", () => setPaused(!paused));
-
-  /* ---------- Music ----------
-     Uses config.music (an mp3) when set; otherwise plays a built-in
-     Kurdish-style melody (Hijaz maqam, santur plucks, drone and daf). */
-  const musicBtn = $("#music-btn");
-  const player = W.music ? fileMusic(W.music) : synthMusic();
-  const setMuted = (m) => musicBtn.classList.toggle("is-muted", m);
-  const playMusic = () => player.play().then(() => setMuted(false)).catch(() => setMuted(true));
-  musicBtn.addEventListener("click", () => {
-    if (player.playing()) { player.pause(); setMuted(true); } else playMusic();
-  });
-
-  function fileMusic(src) {
-    const audio = $("#music");
-    audio.src = src;
-    audio.volume = 0;
-    let fading = 0;
-    const fadeTo = (target, ms) => {
-      cancelAnimationFrame(fading);
-      const from = audio.volume, t0 = performance.now();
-      const step = (t) => {
-        const k = Math.min(1, (t - t0) / ms);
-        audio.volume = from + (target - from) * k;
-        if (k < 1) fading = requestAnimationFrame(step); else if (target === 0) audio.pause();
-      };
-      fading = requestAnimationFrame(step);
-    };
-    return {
-      play: () => audio.play().then(() => fadeTo(0.8, 1800)),
-      pause: () => fadeTo(0, 500),
-      playing: () => !audio.paused && audio.volume > 0,
-    };
-  }
-
-  function synthMusic() {
-    const AC = window.AudioContext || window.webkitAudioContext;
-    let ctx, master, echo, noise, timer = 0, next = 0, step = 0, on = false;
-    const bpm = 92, sixteenth = 60 / bpm / 4;
-    const root = 146.83; // D3
-    const hijaz = [0, 1, 4, 5, 7, 8, 10, 12, 13, 16, 17, 19];
-    const hz = (deg) => root * 2 ** (hijaz[deg] / 12);
-    // [step, scale degree] over 4 bars of 16 steps
-    const melody = [[0,4],[3,5],[4,4],[6,3],[8,2],[10,3],[12,1],[14,0],
-      [16,2],[18,3],[20,4],[22,5],[24,6],[26,5],[28,4],
-      [32,7],[34,8],[35,7],[36,6],[38,5],[40,6],[42,5],[44,4],[46,3],
-      [48,4],[50,3],[52,2],[53,1],[54,2],[56,1],[58,0]];
-    const dum = new Set([0, 10]), tek = new Set([4, 6, 12, 14]);
-
-    function init() {
-      ctx = new AC();
-      master = ctx.createGain(); master.gain.value = 0;
-      const comp = ctx.createDynamicsCompressor();
-      master.connect(comp).connect(ctx.destination);
-      echo = ctx.createDelay(); echo.delayTime.value = sixteenth * 3;
-      const fb = ctx.createGain(); fb.gain.value = 0.32;
-      const wet = ctx.createGain(); wet.gain.value = 0.35;
-      echo.connect(fb).connect(echo); echo.connect(wet).connect(master);
-      noise = ctx.createBuffer(1, ctx.sampleRate * 0.2, ctx.sampleRate);
-      const d = noise.getChannelData(0);
-      for (let i = 0; i < d.length; i++) d[i] = Math.random() * 2 - 1;
-      // drone: D + A, softly filtered
-      const lp = ctx.createBiquadFilter(); lp.type = "lowpass"; lp.frequency.value = 520;
-      const dg = ctx.createGain(); dg.gain.value = 0.05;
-      lp.connect(dg).connect(master);
-      [root / 2, root * 0.75].forEach((f, i) => {
-        const o = ctx.createOscillator(); o.type = "sawtooth"; o.frequency.value = f; o.detune.value = i ? 4 : -4;
-        o.connect(lp); o.start();
-      });
-    }
-    function pluck(f, t, v = 0.22) {
-      [[1, "triangle", v], [2.005, "sine", v * 0.35], [3, "sine", v * 0.08]].forEach(([m, type, g]) => {
-        const o = ctx.createOscillator(), e = ctx.createGain();
-        o.type = type; o.frequency.value = f * m;
-        e.gain.setValueAtTime(0.0001, t);
-        e.gain.exponentialRampToValueAtTime(g, t + 0.004);
-        e.gain.exponentialRampToValueAtTime(0.0001, t + 1.4);
-        o.connect(e); e.connect(master); e.connect(echo);
-        o.start(t); o.stop(t + 1.5);
-      });
-    }
-    function daf(t, low) {
-      if (low) {
-        const o = ctx.createOscillator(), e = ctx.createGain();
-        o.frequency.setValueAtTime(120, t); o.frequency.exponentialRampToValueAtTime(48, t + 0.18);
-        e.gain.setValueAtTime(0.55, t); e.gain.exponentialRampToValueAtTime(0.0001, t + 0.4);
-        o.connect(e).connect(master); o.start(t); o.stop(t + 0.45);
-      }
-      const n = ctx.createBufferSource(), bp = ctx.createBiquadFilter(), e = ctx.createGain();
-      n.buffer = noise; bp.type = "bandpass"; bp.frequency.value = low ? 900 : 3200; bp.Q.value = 0.8;
-      e.gain.setValueAtTime(low ? 0.12 : 0.16, t); e.gain.exponentialRampToValueAtTime(0.0001, t + (low ? 0.12 : 0.07));
-      n.connect(bp).connect(e).connect(master); n.start(t);
-    }
-    function schedule() {
-      while (next < ctx.currentTime + 0.15) {
-        const s16 = step % 16;
-        melody.forEach(([st, deg]) => { if (st === step) { pluck(hz(deg), next); if (st % 8 === 0) pluck(hz(deg) / 2, next, 0.1); } });
-        // santur-style tremolo on the long notes
-        if (step === 30 || step === 62) for (let k = 1; k < 4; k++) pluck(hz(step === 30 ? 4 : 0), next + k * sixteenth / 2, 0.08);
-        if (dum.has(s16)) daf(next, true);
-        if (tek.has(s16)) daf(next, false);
-        next += sixteenth;
-        step = (step + 1) % 64;
-      }
-    }
-    return {
-      play: async () => {
-        if (!AC) throw new Error("no audio");
-        if (!ctx) init();
-        await ctx.resume();
-        if (!on) { on = true; next = ctx.currentTime + 0.05; timer = setInterval(schedule, 25); }
-        master.gain.cancelScheduledValues(ctx.currentTime);
-        master.gain.setTargetAtTime(0.7, ctx.currentTime, 0.6);
-      },
-      pause: () => {
-        if (!ctx) return;
-        on = false;
-        master.gain.setTargetAtTime(0, ctx.currentTime, 0.15);
-        setTimeout(() => { if (!on) { clearInterval(timer); ctx.suspend(); } }, 600);
-      },
-      playing: () => on,
-    };
-  }
-
-  /* ---------- Social actions ---------- */
-  function like(burst) {
-    const btn = $("#like-btn");
-    btn.classList.add("is-liked");
-    btn.classList.remove("pop"); void btn.offsetWidth; btn.classList.add("pop");
-    const box = $("#hearts");
-    const emojis = ["❤️", "💛", "💍", "🤍", "💚"];
-    for (let i = 0; i < (burst ? 8 : 5); i++) {
-      const h = document.createElement("span");
-      h.textContent = emojis[i % emojis.length];
-      h.style.right = `${24 + Math.random() * 40}px`;
-      h.style.setProperty("--dx", `${-40 - Math.random() * 120}px`);
-      h.style.setProperty("--r", `${Math.random() * 60 - 30}deg`);
-      h.style.animationDelay = `${i * 70}ms`;
-      box.appendChild(h);
-      setTimeout(() => h.remove(), 2200 + i * 70);
-    }
-  }
-  $("#like-btn").addEventListener("click", () => like(false));
-
+  setText("#cd-date", W.dateLabel);
   $("#cal-btn").href = calUrl;
 
-  $("#share-btn").addEventListener("click", async () => {
-    const data = { title: `${W.bride} & ${W.groom}`, text: "You're invited to our wedding 💍", url: location.href };
-    try {
-      if (navigator.share) return await navigator.share(data);
-    } catch (e) { if (e.name === "AbortError") return; }
-    try { await navigator.clipboard.writeText(location.href); toast("Link copied ✨"); }
-    catch { toast("Copy the link from your browser's address bar"); }
+  $("#gallery-grid").innerHTML = W.gallery.map((p, i) => `
+    <figure class="reveal" style="--d:${i * 0.12}s">
+      <img src="${esc(p.src)}" alt="${esc(p.caption)}" loading="lazy" decoding="async" />
+      <figcaption>${esc(p.caption)}</figcaption>
+    </figure>`).join("");
+  setText("#hashtag", W.hashtag);
+
+  setText("#d-date", W.dateLabel.split("·").pop().trim());
+  setText("#d-time", `${W.dateLabel.split("·")[0].trim()} at ${W.timeLabel}`);
+  setText("#d-venue", W.venue.name);
+  setText("#d-address", W.venue.address);
+  setText("#d-dress", W.dressCode || "Formal");
+  $("#timeline").innerHTML = W.program.map((p, i) =>
+    `<li class="reveal" style="--d:${i * 0.1}s"><time>${esc(p.time)}</time><div><strong>${esc(p.title)}</strong><span>${esc(p.note)}</span></div></li>`).join("");
+
+  setText("#l-venue", W.venue.name);
+  setText("#l-address", W.venue.address);
+  $("#directions").href = mapsUrl;
+  $("#map").innerHTML = W.mapEmbed !== false
+    ? `<iframe loading="lazy" title="Map to ${esc(W.venue.name)}" referrerpolicy="no-referrer-when-downgrade" src="${embedUrl}"></iframe>`
+    : `<a href="${mapsUrl}" target="_blank" rel="noopener" aria-label="Open ${esc(W.venue.name)} in Google Maps" style="position:absolute;inset:0"><span class="map__pin"><svg viewBox="0 0 24 24"><path d="M12 22s7-6.2 7-12a7 7 0 10-14 0c0 5.8 7 12 7 12z" fill="currentColor"/><circle cx="12" cy="10" r="2.6" fill="#f6ecd8"/></svg></span></a>`;
+
+  setText("#rsvp-blessing", W.blessingSorani);
+  setText("#rsvp-deadline", W.rsvpDeadline);
+  $("#f-names").textContent = couple;
+  setText("#f-date", `${W.dateLabel} · ${W.venue.name}`);
+  setText("#f-blessing", W.blessingSorani);
+
+  /* ---------- RSVP → WhatsApp ---------- */
+  const form = $("#rsvp-form");
+  function rsvpLink() {
+    const name = $("#rsvp-name").value.trim() || "A guest";
+    const yes = $("#attend-yes").checked;
+    const guests = $("#rsvp-guests").value;
+    const msg = $("#rsvp-msg").value.trim();
+    const text = yes
+      ? `Hello! ${name} joyfully accepts the invitation to ${couple}'s wedding 💍\nGuests: ${guests}`
+      : `Hello! ${name} regretfully can't attend ${couple}'s wedding, but sends love and congratulations 💛`;
+    return `https://wa.me/${W.rsvpWhatsApp}?text=${encodeURIComponent(msg ? `${text}\n\n"${msg}"` : text)}`;
+  }
+  const syncRsvp = () => { $("#rsvp-send").href = rsvpLink(); };
+  form.addEventListener("input", syncRsvp);
+  form.addEventListener("change", syncRsvp);
+  form.addEventListener("submit", (e) => e.preventDefault());
+  $("#rsvp-send").addEventListener("click", (e) => {
+    if (!$("#rsvp-name").value.trim()) {
+      e.preventDefault();
+      $("#rsvp-name").focus();
+      toast("Please write your name first");
+    }
   });
+  syncRsvp();
+
+  /* ---------- Countdown ---------- */
+  function countdown() {
+    const s = Math.max(0, Math.floor((startDate.getTime() - Date.now()) / 1000));
+    const v = { d: Math.floor(s / 86400), h: Math.floor(s / 3600) % 24, m: Math.floor(s / 60) % 60, s: s % 60 };
+    document.querySelectorAll("#countdown b").forEach((b) => {
+      const n = pad(v[b.dataset.u]);
+      if (b.textContent !== n) b.textContent = n;
+    });
+  }
+  countdown();
+  setInterval(countdown, 1000);
+
+  /* ---------- Music ---------- */
+  const audio = $("#music");
+  const player = $("#player");
+  const musicBtn = $("#music-btn");
+  setText("#song-title", W.song?.title || "Our song");
+  setText("#song-artist", W.song?.artist || "");
+  let fading = 0;
+  function fadeTo(target, ms) {
+    cancelAnimationFrame(fading);
+    const from = audio.volume, t0 = performance.now();
+    const step = (t) => {
+      const k = Math.min(1, (t - t0) / ms);
+      audio.volume = from + (target - from) * k;
+      if (k < 1) fading = requestAnimationFrame(step);
+      else if (target === 0) audio.pause();
+    };
+    fading = requestAnimationFrame(step);
+  }
+  const setPlaying = (on) => {
+    player.classList.toggle("is-playing", on);
+    musicBtn.setAttribute("aria-label", on ? "Pause music" : "Play music");
+  };
+  function missingSong() {
+    $("#song-add").hidden = false;
+    setText("#song-artist", "Tap “Add song” to choose the mp3");
+  }
+  function playMusic() {
+    if (!audio.getAttribute("src")) return missingSong();
+    audio.volume = 0;
+    return audio.play().then(() => { setPlaying(true); fadeTo(0.85, 2000); }).catch(() => setPlaying(false));
+  }
+  if (W.song?.src) audio.src = W.song.src;
+  audio.addEventListener("error", () => { audio.removeAttribute("src"); setPlaying(false); missingSong(); });
+  musicBtn.addEventListener("click", () => {
+    if (!audio.paused && audio.volume > 0) { fadeTo(0, 500); setPlaying(false); }
+    else playMusic();
+  });
+  $("#song-file").addEventListener("change", (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+    audio.src = URL.createObjectURL(file);
+    $("#song-add").hidden = true;
+    setText("#song-artist", W.song?.artist || "");
+    playMusic();
+  });
+
+  /* ---------- Scroll effects ---------- */
+  const nav = $("#nav");
+  const heroImg = $("#hero-img");
+  let ticking = false;
+  window.addEventListener("scroll", () => {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(() => {
+      const y = window.scrollY;
+      nav.classList.toggle("is-solid", y > 60);
+      if (y < window.innerHeight) heroImg.style.transform = `translate3d(0, ${y * 0.3}px, 0)`;
+      ticking = false;
+    });
+  }, { passive: true });
+
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((en) => { if (en.isIntersecting) { en.target.classList.add("is-in"); io.unobserve(en.target); } });
+  }, { threshold: 0.15, rootMargin: "0px 0px -40px 0px" });
+  const watchReveals = () => document.querySelectorAll(".reveal:not(.is-in)").forEach((el) => io.observe(el));
 
   let toastTimer = 0;
   function toast(msg) {
@@ -935,21 +877,8 @@ window.WEDDING.mapEmbed = false;
     t.textContent = msg;
     t.classList.add("show");
     clearTimeout(toastTimer);
-    toastTimer = setTimeout(() => t.classList.remove("show"), 2200);
+    toastTimer = setTimeout(() => t.classList.remove("show"), 2400);
   }
-
-  /* ---------- Countdown ---------- */
-  const target = new Date(W.date).getTime();
-  function countdown() {
-    let s = Math.max(0, Math.floor((target - Date.now()) / 1000));
-    const v = { d: Math.floor(s / 86400), h: Math.floor(s / 3600) % 24, m: Math.floor(s / 60) % 60, s: s % 60 };
-    document.querySelectorAll("#countdown b").forEach((b) => {
-      const n = String(v[b.dataset.u]).padStart(2, "0");
-      if (b.textContent !== n) b.textContent = n;
-    });
-  }
-  countdown();
-  setInterval(countdown, 1000);
 
   /* ---------- Opening: break the seal ---------- */
   const dust = $("#dust");
@@ -965,6 +894,7 @@ window.WEDDING.mapEmbed = false;
 
   const wait = (ms) => new Promise((r) => setTimeout(r, ms));
   const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  document.body.classList.add("is-locked");
   let opened = false;
   async function open() {
     if (opened) return;
@@ -983,17 +913,20 @@ window.WEDDING.mapEmbed = false;
     await wait(reduced ? 0 : 380);
     env.classList.add("letter-out");
     await wait(reduced ? 200 : 2600);
-    $("#stories").hidden = false;
-    show(0);
-    raf = requestAnimationFrame(tick);
+    const site = $("#site");
+    site.hidden = false;
+    site.classList.add("is-entering");
+    window.scrollTo(0, 0);
+    document.body.classList.remove("is-locked");
+    watchReveals();
     opener.classList.add("is-leaving");
     await wait(1100);
     opener.remove();
   }
   $("#open-btn").addEventListener("click", open);
 
-  // Preload images for silky transitions
-  [W.cover, W.avatar, ...W.gallery.map((g) => g.src)].forEach((src) => { const i = new Image(); i.src = src; });
+  // Preload images so the site appears instantly after the envelope
+  [W.cover, ...W.gallery.map((g) => g.src)].forEach((src) => { const i = new Image(); i.src = src; });
 })();
 
 </script>

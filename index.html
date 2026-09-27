@@ -111,58 +111,151 @@
         </button>
       </div>
 
-      <p class="opener__hint" id="op-hint">Tap the wax seal to open <span>· sound on 🎵</span></p>
+      <p class="opener__hint" id="op-hint">Tap the wax seal to open <span>· sound on ♪</span></p>
     </div>
   </section>
 
-  <!-- Stories player -->
-  <main class="stories" id="stories" aria-live="polite" hidden>
-    <div class="stories__frame" id="frame">
-      <div class="progress" id="progress"></div>
+  <!-- Website -->
+  <div class="site" id="site" hidden>
+    <nav class="nav" id="nav">
+      <a class="nav__logo" href="#home" id="nav-logo"></a>
+      <div class="nav__links">
+        <a href="#invitation">Invitation</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#details">Details</a>
+        <a href="#location">Location</a>
+        <a href="#rsvp" class="nav__rsvp">RSVP</a>
+      </div>
+    </nav>
 
-      <header class="topbar">
-        <img class="avatar" id="avatar" alt="" />
-        <div class="topbar__meta">
-          <strong id="handle"></strong>
-          <svg class="verified" viewBox="0 0 24 24" aria-label="Verified"><path d="M12 1.5l2.6 1.9 3.2-.2 1 3 2.7 1.8-.9 3.1.9 3.1-2.7 1.8-1 3-3.2-.2L12 22.5l-2.6-1.9-3.2.2-1-3-2.7-1.8.9-3.1-.9-3.1 2.7-1.8 1-3 3.2.2z" fill="#3897f0"/><path d="M8 12.2l2.6 2.6L16.2 9" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          <span class="sponsored">Sponsored · Wedding</span>
+    <header class="hero" id="home">
+      <div class="hero__bg"><img id="hero-img" alt="" /></div>
+      <div class="hero__content">
+        <p class="kurdish reveal" id="hero-welcome"></p>
+        <p class="eyebrow reveal">We're getting married</p>
+        <h1 class="script hero__names reveal" id="hero-names"></h1>
+        <div class="tricolor reveal"></div>
+        <p class="hero__date reveal" id="hero-date"></p>
+      </div>
+      <a class="scroll-cue" href="#invitation" aria-label="Scroll down"><span></span></a>
+    </header>
+
+    <section class="section section--paper" id="invitation">
+      <div class="container narrow">
+        <svg class="sun sun--spin reveal" viewBox="0 0 100 100" aria-hidden="true"><use href="#sun" width="100" height="100"/></svg>
+        <p class="eyebrow reveal" id="families"></p>
+        <p class="eyebrow reveal">request the pleasure of your company</p>
+        <h2 class="script section__title reveal" id="inv-names"></h2>
+        <p class="lead reveal" id="message"></p>
+        <p class="kurdish reveal" id="kurmanji"></p>
+      </div>
+      <svg class="kilim-band" aria-hidden="true"><rect width="100%" height="20" fill="url(#kilim)"/></svg>
+    </section>
+
+    <section class="section section--wine" id="countdown-section">
+      <div class="container">
+        <p class="eyebrow reveal">Counting down to forever</p>
+        <h2 class="serif section__heading reveal" id="cd-date"></h2>
+        <div class="countdown reveal" id="countdown">
+          <div><b data-u="d">00</b><small>Days</small></div>
+          <div><b data-u="h">00</b><small>Hours</small></div>
+          <div><b data-u="m">00</b><small>Minutes</small></div>
+          <div><b data-u="s">00</b><small>Seconds</small></div>
         </div>
-        <button class="icon-btn" id="pause-btn" aria-label="Pause">
-          <svg viewBox="0 0 24 24"><path class="i-pause" d="M8 5v14M16 5v14" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/><path class="i-play" d="M7 4.5v15l12-7.5z" fill="currentColor"/></svg>
-        </button>
-        <button class="icon-btn music-btn" id="music-btn" aria-label="Toggle music">
-          <span class="eq"><i></i><i></i><i></i><i></i></span>
-          <svg class="muted-ico" viewBox="0 0 24 24"><path d="M4 9h4l5-4v14l-5-4H4zM17 9l4 6M21 9l-4 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </button>
-      </header>
+        <a class="btn btn--ghost reveal" id="cal-btn" href="#" target="_blank" rel="noopener">Add to Calendar</a>
+      </div>
+    </section>
 
-      <div class="slides" id="slides"></div>
+    <section class="section section--paper" id="gallery">
+      <div class="container">
+        <p class="eyebrow reveal">Our moments</p>
+        <h2 class="script section__title reveal">Our Story</h2>
+        <div class="gallery" id="gallery-grid"></div>
+        <p class="hashtag reveal" id="hashtag"></p>
+      </div>
+    </section>
 
-      <div class="tap tap--prev" aria-hidden="true"></div>
-      <div class="tap tap--next" aria-hidden="true"></div>
-
-      <footer class="actions">
-        <a class="cta" id="cta" href="#" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 15l6-6 6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          <span id="cta-label">RSVP</span>
-        </a>
-        <div class="actions__row">
-          <button class="icon-btn like" id="like-btn" aria-label="Like">
-            <svg viewBox="0 0 24 24"><path d="M12 20.5s-7.5-4.6-9.3-9.2C1.4 8 3.6 4.5 7.2 4.5c2 0 3.6 1.1 4.8 2.8 1.2-1.7 2.8-2.8 4.8-2.8 3.6 0 5.8 3.5 4.5 6.8-1.8 4.6-9.3 9.2-9.3 9.2z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
-          </button>
-          <a class="icon-btn" id="cal-btn" href="#" target="_blank" rel="noopener" aria-label="Add to calendar">
-            <svg viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="15.5" rx="3" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M3.5 10h17M8 3v4M16 3v4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
-          </a>
-          <button class="icon-btn" id="share-btn" aria-label="Share">
-            <svg viewBox="0 0 24 24"><path d="M21 3L10 14M21 3l-7 18-4-7-7-4z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
-          </button>
+    <section class="section section--dark" id="details">
+      <div class="container">
+        <p class="eyebrow reveal">The celebration</p>
+        <h2 class="script section__title reveal">Wedding Details</h2>
+        <div class="cards">
+          <article class="card reveal">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15.5" rx="3" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M3.5 10h17M8 3v4M16 3v4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            <h3>When</h3><p id="d-date"></p><p class="muted" id="d-time"></p>
+          </article>
+          <article class="card reveal">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s7-6.2 7-12a7 7 0 10-14 0c0 5.8 7 12 7 12z" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="10" r="2.5" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
+            <h3>Where</h3><p id="d-venue"></p><p class="muted" id="d-address"></p>
+          </article>
+          <article class="card reveal">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18V6l11-2v12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><circle cx="6.5" cy="18" r="2.5" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="17.5" cy="16" r="2.5" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
+            <h3>Dress Code</h3><p id="d-dress"></p><p class="muted">Kurdish traditional clothes are warmly welcome</p>
+          </article>
         </div>
-      </footer>
+        <h3 class="serif sub reveal">Program of the evening</h3>
+        <ol class="timeline" id="timeline"></ol>
+      </div>
+    </section>
 
-      <div class="hearts" id="hearts" aria-hidden="true"></div>
-      <div class="toast" id="toast" role="status"></div>
+    <section class="section section--paper" id="location">
+      <div class="container">
+        <p class="eyebrow reveal">Find your way</p>
+        <h2 class="script section__title reveal">Location</h2>
+        <p class="venue reveal" id="l-venue"></p>
+        <p class="muted reveal" id="l-address"></p>
+        <div class="map reveal" id="map"></div>
+        <a class="btn btn--gold reveal" id="directions" href="#" target="_blank" rel="noopener">Get Directions</a>
+      </div>
+    </section>
+
+    <section class="section section--wine" id="rsvp">
+      <div class="container narrow">
+        <p class="kurdish reveal" id="rsvp-blessing"></p>
+        <h2 class="script section__title reveal">Will you join us?</h2>
+        <p class="muted reveal" id="rsvp-deadline"></p>
+        <form class="rsvp reveal" id="rsvp-form" novalidate>
+          <label class="field"><span>Your name</span><input id="rsvp-name" name="name" autocomplete="name" placeholder="Full name" required /></label>
+          <div class="choice" role="radiogroup" aria-label="Attendance">
+            <label><input type="radio" name="attend" id="attend-yes" value="yes" checked /><span>Joyfully accepts</span></label>
+            <label><input type="radio" name="attend" id="attend-no" value="no" /><span>Regretfully declines</span></label>
+          </div>
+          <label class="field"><span>Number of guests</span>
+            <select id="rsvp-guests" name="guests"><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select>
+          </label>
+          <label class="field"><span>A message for the couple</span><textarea id="rsvp-msg" name="msg" rows="3" placeholder="Optional"></textarea></label>
+          <a class="btn btn--gold" id="rsvp-send" href="#" target="_blank" rel="noopener">Send RSVP on WhatsApp</a>
+          <p class="form-note" id="rsvp-note">Opens WhatsApp with your reply written for you.</p>
+        </form>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <svg class="kilim-band" aria-hidden="true"><rect width="100%" height="20" fill="url(#kilim)"/></svg>
+      <svg class="sun" viewBox="0 0 100 100" aria-hidden="true"><use href="#sun" width="100" height="100"/></svg>
+      <p class="script footer__names" id="f-names"></p>
+      <p class="muted" id="f-date"></p>
+      <p class="kurdish" id="f-blessing"></p>
+    </footer>
+
+    <!-- Floating music player -->
+    <div class="player" id="player">
+      <button class="player__btn" id="music-btn" aria-label="Play music">
+        <span class="eq"><i></i><i></i><i></i><i></i></span>
+        <svg class="player__play" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
+      </button>
+      <div class="player__meta">
+        <strong id="song-title"></strong>
+        <span id="song-artist"></span>
+      </div>
+      <label class="player__add" id="song-add" hidden>
+        Add song
+        <input type="file" id="song-file" accept="audio/*" />
+      </label>
     </div>
-  </main>
+
+    <div class="toast" id="toast" role="status"></div>
+  </div>
 
   <audio id="music" loop preload="auto"></audio>
 

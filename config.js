@@ -29,9 +29,16 @@ window.WEDDING = {
     { src: "assets/photos/3.svg", caption: "She said yes 💍" },
   ],
 
-  // Background music. Leave "" to use the built-in Kurdish-style melody,
-  // or put an mp3 in assets/music and set e.g. "assets/music/song.mp3".
-  music: "",
+  // Background music: "Perfect" by Ed Sheeran.
+  // The song is copyrighted, so it is not included. Buy/download the mp3,
+  // save it as assets/music/perfect.mp3, and it plays when the seal is broken.
+  song: {
+    title: "Perfect",
+    artist: "Ed Sheeran",
+    src: "assets/music/perfect.mp3",
+  },
+
+  dressCode: "Formal / Kurdish attire",
 
   venue: {
     name: "Rotana Grand Hall",
@@ -57,7 +64,4 @@ window.WEDDING = {
   rsvpDeadline: "Kindly reply by 1 December",
 
   hashtag: "#ShilanAndAram",
-
-  // Seconds each story stays on screen
-  storyDuration: 7,
 };
