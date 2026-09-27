@@ -58,7 +58,7 @@
     });
   }
 
-  function render() {
+  let render = function () {
     const d = C.words[lang];
     document.documentElement.lang = lang === "kmr" ? "ku" : lang;
     document.documentElement.dir = d.dir;
@@ -217,87 +217,48 @@
   });
 
   /* ==========================================================
-     The timeline
+     Opening the envelope, then pages revealed as guests scroll
      ========================================================== */
-  const frame = $("#frame"), env = $("#envelope"), seal = $("#seal"), finale = $("#finale");
-  const pages = { invite: $("#p-invite"), names: $("#p-names"), date: $("#p-date"), rsvp: $("#p-rsvp") };
-  let run = 0; // increases on replay so an old timeline stops
+  const frame = $("#frame"), env = $("#envelope"), seal = $("#seal"), scroller = $("#scroller");
+  const later = (ms, fn) => setTimeout(fn, reduced ? 0 : ms);
+  const show = (el) => el && el.classList.add("show");
 
-  const sleep = (ms, id) => new Promise((res, rej) => setTimeout(() => (id === run ? res() : rej(new Error("cancelled"))), reduced ? Math.min(ms, 300) : ms));
-  const showBlock = (el) => { el.classList.add("show"); };
-  const pageOut = (p) => p.classList.add("out");
+  // What appears on each page, and when (ms after the page scrolls into view)
+  const reveals = {
+    "p-invite": (p) => { $$(":scope > p", p).forEach((el, i) => later(i * 250, () => show(el))); },
+    "p-names": (p) => {
+      $("#pampas").classList.add("grow");
+      $$(".getting p", p).forEach((el, i) => later(i * 200, () => show(el)));
+      later(800, () => show($(".name--1", p)));
+      later(1300, () => $(".amp", p).classList.add("show-soft"));
+      later(1600, () => show($(".name--2", p)));
+    },
+    "p-date": (p) => {
+      show($(".date", p));
+      $$(".venue p", p).forEach((el, i) => later(300 + i * 250, () => show(el)));
+      $$(".std p", p).forEach((el, i) => later(900 + i * 350, () => show(el)));
+    },
+    "p-rsvp": (p) => { $$(".script, .rsvp, .by, .contact p, .site", p).forEach((el, i) => later(i * 260, () => show(el))); },
+    finale: () => {
+      later(200, () => $("#crest").classList.add("on"));
+      later(1500, () => $(".mono").classList.add("on"));
+      later(2600, () => $("#actions").classList.add("on"));
+    },
+  };
+  const seen = new Set();
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((en) => {
+      if (en.target.id === "finale") frame.classList.toggle("dark", en.intersectionRatio > 0.5);
+      if (!en.isIntersecting || en.intersectionRatio < 0.55 || seen.has(en.target.id)) return;
+      seen.add(en.target.id);
+      en.target.classList.add("seen");
+      reveals[en.target.id]?.(en.target);
+    });
+  }, { root: scroller, threshold: [0, 0.55, 0.6] });
 
-  function resetCard() {
-    Object.values(pages).forEach((p) => { p.classList.remove("out"); $$(".show", p).forEach((e) => e.classList.remove("show")); });
-    $(".amp").classList.remove("show-soft");
-    $("#pampas").classList.remove("grow");
-    $("#card").style.opacity = 1;
-    finale.classList.remove("on");
-    $("#crest").classList.remove("on");
-    $(".mono").classList.remove("on");
-    $("#actions").classList.remove("on");
-    frame.classList.remove("dark");
-    render();
-  }
-
-  async function timeline(id) {
-    const P = pages;
-    // envelope opens
-    env.classList.add("open");
-    sfx.paper(1.6, 0.18);
-    await sleep(2600, id);
-    env.classList.add("gone");
-    await sleep(700, id);
-
-    // 1. You're cordially invited
-    $$("p", P.invite).forEach((p, i) => setTimeout(() => showBlock(p), i * 250));
-    await sleep(2700, id);
-    pageOut(P.invite);
-    await sleep(700, id);
-
-    // 2. Names
-    $("#pampas").classList.add("grow");
-    showBlock($$(".getting p", P.names)[0]); setTimeout(() => showBlock($$(".getting p", P.names)[1]), 200);
-    await sleep(900, id);
-    showBlock($(".name--1", P.names));
-    await sleep(500, id);
-    $(".amp").classList.add("show-soft");
-    await sleep(300, id);
-    showBlock($(".name--2", P.names));
-    await sleep(3800, id);
-    pageOut(P.names);
-    await sleep(900, id);
-
-    // 3. Date & venue, then Save the Date
-    showBlock($(".date", P.date));
-    $$(".venue p", P.date).forEach((p, i) => setTimeout(() => showBlock(p), 300 + i * 250));
-    await sleep(1400, id);
-    $$(".std p", P.date).forEach((p, i) => setTimeout(() => showBlock(p), i * 350));
-    await sleep(3800, id);
-    pageOut(P.date);
-    await sleep(900, id);
-
-    // 4. RSVP
-    $$(".p-rsvp .script, .p-rsvp .rsvp, .p-rsvp .by, .p-rsvp .contact p, .p-rsvp .site", document).forEach((p, i) => setTimeout(() => showBlock(p), i * 280));
-    await sleep(4200, id);
-
-    // 5. Cross-fade to burgundy and the monogram
-    frame.classList.add("dark");
-    finale.classList.add("on");
-    await sleep(1000, id);
-    $("#card").style.opacity = 0;
-    await sleep(1300, id);
-    $("#crest").classList.add("on");
-    await sleep(1600, id);
-    $(".mono").classList.add("on");
-    await sleep(2200, id);
-    $("#actions").classList.add("on");
-  }
-
-  function start() {
-    const id = ++run;
-    timeline(id).catch(() => { /* replaced by a newer run */ });
-  }
+  // Once opened, nothing needs re-rendering except the language, which keeps what was shown
+  const baseRender = render;
+  render = () => { baseRender(); seen.forEach((id) => { const p = document.getElementById(id); $$(".ch", p).forEach((c) => c.parentElement.classList.add("show")); }); };
 
   let opened = false;
   seal.addEventListener("pointerdown", () => { audioInit(); ctx?.resume(); });
@@ -310,18 +271,19 @@
     seal.classList.add("crack");
     sfx.crack();
     if (navigator.vibrate) navigator.vibrate([12, 30, 18]);
-    await new Promise((r) => setTimeout(r, reduced ? 0 : 260));
+    await new Promise((r) => later(260, r));
     seal.classList.add("lift");
-    await new Promise((r) => setTimeout(r, reduced ? 0 : 450));
-    start();
+    await new Promise((r) => later(450, r));
+    env.classList.add("open");
+    sfx.paper(1.6, 0.18);
+    await new Promise((r) => later(2300, r));
+    scroller.classList.add("on");
+    $$(".page", scroller).forEach((pg) => io.observe(pg));
+    await new Promise((r) => later(500, r));
+    env.classList.add("gone");
   });
 
-  $("#replay").addEventListener("click", () => {
-    run++;
-    resetCard();
-    env.classList.remove("gone", "open");
-    requestAnimationFrame(() => requestAnimationFrame(() => start()));
-  });
+  $("#replay").addEventListener("click", () => scroller.scrollTo({ top: 0, behavior: reduced ? "auto" : "smooth" }));
 
   render();
 })();

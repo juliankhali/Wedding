@@ -76,8 +76,16 @@ a { color: inherit; text-decoration: none; }
 @keyframes grow { from { clip-path: inset(100% 0 0 0); opacity: .2; } to { clip-path: inset(0 0 0 0); opacity: 1; } }
 
 /* ---------- pages ---------- */
-.page { position: absolute; inset: 0; color: var(--wine-text); transition: opacity .9s ease, filter .9s ease; }
-.page.out { opacity: 0; filter: blur(10px); }
+/* scrolling pages: each one fills the screen and snaps into place */
+.scroller { position: absolute; inset: 0; overflow-y: auto; overflow-x: hidden; scroll-snap-type: y mandatory; overscroll-behavior: contain; scrollbar-width: none; -webkit-overflow-scrolling: touch; visibility: hidden; }
+.scroller::-webkit-scrollbar { display: none; }
+.scroller.on { visibility: visible; }
+.page { position: relative; height: 100%; scroll-snap-align: start; scroll-snap-stop: always; color: var(--wine-text); }
+.cue { position: absolute; left: 50%; bottom: calc(env(safe-area-inset-bottom, 0px) + 5%); translate: -50% 0; width: 1px; height: 7cqh; background: linear-gradient(transparent, var(--wine-text)); opacity: 0; transition: opacity 1s ease 2s; }
+.cue span { position: absolute; left: -2.5px; bottom: 0; width: 6px; height: 6px; border-right: 1px solid var(--wine-text); border-bottom: 1px solid var(--wine-text); rotate: 45deg; }
+.cue::before { content: ""; position: absolute; inset: 0; background: var(--cream); animation: cue 2.2s ease-in-out infinite; transform-origin: bottom; }
+@keyframes cue { 0% { transform: scaleY(1); } 60%, 100% { transform: scaleY(0); } }
+.p-invite.seen .cue { opacity: .7; }
 .caps { font-family: var(--caps); font-weight: 500; font-size: 2.35cqh; letter-spacing: .24em; text-transform: uppercase; line-height: 1.55; }
 .caps--lg { font-size: 3.1cqh; letter-spacing: .32em; }
 .script { font-family: var(--script); font-weight: 400; line-height: 1.15; }
@@ -126,14 +134,12 @@ a { color: inherit; text-decoration: none; }
 
 /* ---------- Burgundy finale ---------- */
 .finale {
-  position: absolute; inset: 0; opacity: 0; pointer-events: none;
+  position: relative;
   background:
     var(--noise),
     url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='p'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.045' numOctaves='4' seed='4'/%3E%3CfeDiffuseLighting surfaceScale='1.4' lighting-color='%23fff'%3E%3CfeDistantLight azimuth='225' elevation='60'/%3E%3C/feDiffuseLighting%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -.9 0 0 0 .9'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23p)' opacity='.35'/%3E%3C/svg%3E"),
     radial-gradient(ellipse 90% 70% at 50% 45%, #6a1b28, #521320 60%, #3e0d17);
-  transition: opacity 1.8s ease;
 }
-.finale.on { opacity: 1; pointer-events: auto; }
 .crest { position: absolute; left: 50%; top: 45%; width: 70%; translate: -50% -50%; opacity: 0; transform: scale(.94); filter: blur(6px); transition: opacity 1.8s ease, transform 2.4s cubic-bezier(.2, .8, .2, 1), filter 1.8s ease; }
 .crest svg { width: 100%; height: auto; display: block; }
 .crest.on { opacity: 1; transform: none; filter: none; }
@@ -249,7 +255,7 @@ a { color: inherit; text-decoration: none; }
 .pampas.photo svg { display: none; }
 .finale.photo { background: var(--img) center 40% / cover; }
 .finale.photo::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 22%; background: linear-gradient(transparent, rgba(40, 5, 12, .85)); pointer-events: none; opacity: 0; transition: opacity 1.2s; }
-.finale.photo:has(.actions.on)::after { opacity: 1; }
+.finale.photo::after { opacity: 1; }
 .finale.photo .actions, .finale.photo .replay { z-index: 1; }
 .finale.photo .crest { display: none; }
 .seal.photo svg { display: none; }
@@ -264,11 +270,16 @@ a { color: inherit; text-decoration: none; }
       <div class="card" id="card">
         <div class="card__light" aria-hidden="true"></div>
         <div class="pampas" id="pampas" aria-hidden="true"></div>
+      </div>
+
+      <!-- The pages guests scroll through -->
+      <main class="scroller" id="scroller">
 
         <section class="page p-invite" id="p-invite">
           <p class="caps caps--lg" data-w="youre"></p>
           <p class="script script--md" data-w="cordially"></p>
           <p class="caps caps--lg" data-w="invited"></p>
+          <div class="cue" aria-hidden="true"><span></span></div>
         </section>
 
         <section class="page p-names" id="p-names">
@@ -291,22 +302,22 @@ a { color: inherit; text-decoration: none; }
           <div class="contact"><p class="caps" data-c="rsvpName"></p><p class="caps" data-w="callOrText"></p><p class="caps" data-c="phone" dir="ltr"></p></div>
           <p class="caps site" data-c="website"></p>
         </section>
-      </div>
 
-      <!-- Burgundy finale with the monogram -->
-      <div class="finale" id="finale">
-        <div class="crest" id="crest" aria-hidden="true"></div>
-        <div class="mono" aria-hidden="true"><span class="mono__1" data-c="i1"></span><span class="mono__2" data-c="i2"></span></div>
-        <nav class="actions" id="actions">
-          <a class="act" id="a-rsvp" target="_blank" rel="noopener" data-w="btnRsvp"></a>
-          <a class="act" id="a-cal" target="_blank" rel="noopener" data-w="btnCalendar"></a>
-          <a class="act" id="a-map" target="_blank" rel="noopener" data-w="btnMap"></a>
-        </nav>
-        <button class="replay" id="replay" type="button">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12a8 8 0 1 0 2.4-5.7M4 4v4.5h4.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          <span data-w="replay"></span>
-        </button>
-      </div>
+        <!-- Burgundy finale with the monogram -->
+        <section class="page finale" id="finale">
+          <div class="crest" id="crest" aria-hidden="true"></div>
+          <div class="mono" aria-hidden="true"><span class="mono__1" data-c="i1"></span><span class="mono__2" data-c="i2"></span></div>
+          <nav class="actions" id="actions">
+            <a class="act" id="a-rsvp" target="_blank" rel="noopener" data-w="btnRsvp"></a>
+            <a class="act" id="a-cal" target="_blank" rel="noopener" data-w="btnCalendar"></a>
+            <a class="act" id="a-map" target="_blank" rel="noopener" data-w="btnMap"></a>
+          </nav>
+          <button class="replay" id="replay" type="button">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M6 11l6-6 6 6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span data-w="replay"></span>
+          </button>
+        </section>
+      </main>
 
       <!-- The envelope (back side, four flaps) with the wax seal -->
       <div class="envelope" id="envelope">
@@ -394,7 +405,7 @@ window.CARD = {
       save: "Save", the: "the", dateWord: "Date",
       kindly: "kindly", rsvp: "RSVP", callOrText: "CALL OR TEXT",
       forGuest: "For {name}",
-      btnRsvp: "RSVP", btnCalendar: "Add to calendar", btnMap: "Directions", replay: "Watch again",
+      btnRsvp: "RSVP", btnCalendar: "Add to calendar", btnMap: "Directions", replay: "Back to top",
       rsvpMsg: "Hello! I'd love to confirm my attendance at {couple}'s wedding.",
     },
     ckb: {
@@ -405,7 +416,7 @@ window.CARD = {
       save: "ئەم", the: "ڕۆژە", dateWord: "بپارێزە",
       kindly: "تکایە", rsvp: "وەڵام بدەرەوە", callOrText: "پەیوەندی یان نامە",
       forGuest: "بۆ {name}",
-      btnRsvp: "وەڵام", btnCalendar: "ڕۆژژمێر", btnMap: "ڕێگا", replay: "دووبارە ببینە",
+      btnRsvp: "وەڵام", btnCalendar: "ڕۆژژمێر", btnMap: "ڕێگا", replay: "گەڕانەوە بۆ سەرەوە",
       rsvpMsg: "سڵاو! بە خۆشحاڵییەوە بەشداری ئاهەنگی هاوسەرگیری {couple} دەکەم.",
     },
     kmr: {
@@ -416,7 +427,7 @@ window.CARD = {
       save: "Vê", the: "rojê", dateWord: "biparêze",
       kindly: "ji kerema xwe", rsvp: "BERSIV", callOrText: "BIGERE AN BINIVÎSE",
       forGuest: "Ji bo {name}",
-      btnRsvp: "Bersiv", btnCalendar: "Salname", btnMap: "Rê", replay: "Dîsa temaşe bike",
+      btnRsvp: "Bersiv", btnCalendar: "Salname", btnMap: "Rê", replay: "Vegere jor",
       rsvpMsg: "Silav! Ez bi kêfxweşî têm daweta {couple}.",
     },
     ar: {
@@ -427,7 +438,7 @@ window.CARD = {
       save: "احفظوا", the: "هذا", dateWord: "التاريخ",
       kindly: "نرجو", rsvp: "تأكيد الحضور", callOrText: "اتصال أو رسالة",
       forGuest: "إلى {name}",
-      btnRsvp: "تأكيد", btnCalendar: "التقويم", btnMap: "الموقع", replay: "شاهد مجدداً",
+      btnRsvp: "تأكيد", btnCalendar: "التقويم", btnMap: "الموقع", replay: "العودة للأعلى",
       rsvpMsg: "مرحباً! يسعدني تأكيد حضوري حفل زفاف {couple}.",
     },
   },
@@ -829,7 +840,7 @@ window.ART = (() => {
     });
   }
 
-  function render() {
+  let render = function () {
     const d = C.words[lang];
     document.documentElement.lang = lang === "kmr" ? "ku" : lang;
     document.documentElement.dir = d.dir;
@@ -988,87 +999,48 @@ window.ART = (() => {
   });
 
   /* ==========================================================
-     The timeline
+     Opening the envelope, then pages revealed as guests scroll
      ========================================================== */
-  const frame = $("#frame"), env = $("#envelope"), seal = $("#seal"), finale = $("#finale");
-  const pages = { invite: $("#p-invite"), names: $("#p-names"), date: $("#p-date"), rsvp: $("#p-rsvp") };
-  let run = 0; // increases on replay so an old timeline stops
+  const frame = $("#frame"), env = $("#envelope"), seal = $("#seal"), scroller = $("#scroller");
+  const later = (ms, fn) => setTimeout(fn, reduced ? 0 : ms);
+  const show = (el) => el && el.classList.add("show");
 
-  const sleep = (ms, id) => new Promise((res, rej) => setTimeout(() => (id === run ? res() : rej(new Error("cancelled"))), reduced ? Math.min(ms, 300) : ms));
-  const showBlock = (el) => { el.classList.add("show"); };
-  const pageOut = (p) => p.classList.add("out");
+  // What appears on each page, and when (ms after the page scrolls into view)
+  const reveals = {
+    "p-invite": (p) => { $$(":scope > p", p).forEach((el, i) => later(i * 250, () => show(el))); },
+    "p-names": (p) => {
+      $("#pampas").classList.add("grow");
+      $$(".getting p", p).forEach((el, i) => later(i * 200, () => show(el)));
+      later(800, () => show($(".name--1", p)));
+      later(1300, () => $(".amp", p).classList.add("show-soft"));
+      later(1600, () => show($(".name--2", p)));
+    },
+    "p-date": (p) => {
+      show($(".date", p));
+      $$(".venue p", p).forEach((el, i) => later(300 + i * 250, () => show(el)));
+      $$(".std p", p).forEach((el, i) => later(900 + i * 350, () => show(el)));
+    },
+    "p-rsvp": (p) => { $$(".script, .rsvp, .by, .contact p, .site", p).forEach((el, i) => later(i * 260, () => show(el))); },
+    finale: () => {
+      later(200, () => $("#crest").classList.add("on"));
+      later(1500, () => $(".mono").classList.add("on"));
+      later(2600, () => $("#actions").classList.add("on"));
+    },
+  };
+  const seen = new Set();
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((en) => {
+      if (en.target.id === "finale") frame.classList.toggle("dark", en.intersectionRatio > 0.5);
+      if (!en.isIntersecting || en.intersectionRatio < 0.55 || seen.has(en.target.id)) return;
+      seen.add(en.target.id);
+      en.target.classList.add("seen");
+      reveals[en.target.id]?.(en.target);
+    });
+  }, { root: scroller, threshold: [0, 0.55, 0.6] });
 
-  function resetCard() {
-    Object.values(pages).forEach((p) => { p.classList.remove("out"); $$(".show", p).forEach((e) => e.classList.remove("show")); });
-    $(".amp").classList.remove("show-soft");
-    $("#pampas").classList.remove("grow");
-    $("#card").style.opacity = 1;
-    finale.classList.remove("on");
-    $("#crest").classList.remove("on");
-    $(".mono").classList.remove("on");
-    $("#actions").classList.remove("on");
-    frame.classList.remove("dark");
-    render();
-  }
-
-  async function timeline(id) {
-    const P = pages;
-    // envelope opens
-    env.classList.add("open");
-    sfx.paper(1.6, 0.18);
-    await sleep(2600, id);
-    env.classList.add("gone");
-    await sleep(700, id);
-
-    // 1. You're cordially invited
-    $$("p", P.invite).forEach((p, i) => setTimeout(() => showBlock(p), i * 250));
-    await sleep(2700, id);
-    pageOut(P.invite);
-    await sleep(700, id);
-
-    // 2. Names
-    $("#pampas").classList.add("grow");
-    showBlock($$(".getting p", P.names)[0]); setTimeout(() => showBlock($$(".getting p", P.names)[1]), 200);
-    await sleep(900, id);
-    showBlock($(".name--1", P.names));
-    await sleep(500, id);
-    $(".amp").classList.add("show-soft");
-    await sleep(300, id);
-    showBlock($(".name--2", P.names));
-    await sleep(3800, id);
-    pageOut(P.names);
-    await sleep(900, id);
-
-    // 3. Date & venue, then Save the Date
-    showBlock($(".date", P.date));
-    $$(".venue p", P.date).forEach((p, i) => setTimeout(() => showBlock(p), 300 + i * 250));
-    await sleep(1400, id);
-    $$(".std p", P.date).forEach((p, i) => setTimeout(() => showBlock(p), i * 350));
-    await sleep(3800, id);
-    pageOut(P.date);
-    await sleep(900, id);
-
-    // 4. RSVP
-    $$(".p-rsvp .script, .p-rsvp .rsvp, .p-rsvp .by, .p-rsvp .contact p, .p-rsvp .site", document).forEach((p, i) => setTimeout(() => showBlock(p), i * 280));
-    await sleep(4200, id);
-
-    // 5. Cross-fade to burgundy and the monogram
-    frame.classList.add("dark");
-    finale.classList.add("on");
-    await sleep(1000, id);
-    $("#card").style.opacity = 0;
-    await sleep(1300, id);
-    $("#crest").classList.add("on");
-    await sleep(1600, id);
-    $(".mono").classList.add("on");
-    await sleep(2200, id);
-    $("#actions").classList.add("on");
-  }
-
-  function start() {
-    const id = ++run;
-    timeline(id).catch(() => { /* replaced by a newer run */ });
-  }
+  // Once opened, nothing needs re-rendering except the language, which keeps what was shown
+  const baseRender = render;
+  render = () => { baseRender(); seen.forEach((id) => { const p = document.getElementById(id); $$(".ch", p).forEach((c) => c.parentElement.classList.add("show")); }); };
 
   let opened = false;
   seal.addEventListener("pointerdown", () => { audioInit(); ctx?.resume(); });
@@ -1081,18 +1053,19 @@ window.ART = (() => {
     seal.classList.add("crack");
     sfx.crack();
     if (navigator.vibrate) navigator.vibrate([12, 30, 18]);
-    await new Promise((r) => setTimeout(r, reduced ? 0 : 260));
+    await new Promise((r) => later(260, r));
     seal.classList.add("lift");
-    await new Promise((r) => setTimeout(r, reduced ? 0 : 450));
-    start();
+    await new Promise((r) => later(450, r));
+    env.classList.add("open");
+    sfx.paper(1.6, 0.18);
+    await new Promise((r) => later(2300, r));
+    scroller.classList.add("on");
+    $$(".page", scroller).forEach((pg) => io.observe(pg));
+    await new Promise((r) => later(500, r));
+    env.classList.add("gone");
   });
 
-  $("#replay").addEventListener("click", () => {
-    run++;
-    resetCard();
-    env.classList.remove("gone", "open");
-    requestAnimationFrame(() => requestAnimationFrame(() => start()));
-  });
+  $("#replay").addEventListener("click", () => scroller.scrollTo({ top: 0, behavior: reduced ? "auto" : "smooth" }));
 
   render();
 })();

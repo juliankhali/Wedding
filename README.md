@@ -1,13 +1,13 @@
 # Animated Wedding Card
 
-A 35-second, 9:16 animated wedding invitation built as a web page, based on the "Burgundy Envelope Reveal" reference. It fills the screen on phones and is centred on desktop.
+A 9:16 wedding invitation website, based on the "Burgundy Envelope Reveal" reference. It fills the screen on phones and is centred on desktop.
 
-**Sequence:** a burgundy envelope with raised floral flaps, sealed with a gold wax seal and a dove. Tap it: the seal cracks, the music starts and the four flaps open. Then come the pages on cream cotton paper with drifting window light, each one appearing letter by letter:
+**Sequence:** a burgundy envelope with raised floral flaps, sealed with a gold wax seal and a dove. Tap it: the seal cracks, the music starts and the four flaps open. Then guests scroll down through the pages at their own pace. The pages are on cream cotton paper with drifting window light, and each one snaps into place and writes itself in letter by letter as it arrives:
 1. You're cordially invited
 2. We're getting married + names, with embossed pampas grass growing in
 3. Date and venue, then "Save the Date"
 4. Kindly RSVP
-5. The card fades to burgundy, and a baroque frame and monogram appear, with RSVP, Add to calendar and Directions buttons, plus "Watch again".
+5. The card fades to burgundy, and a baroque frame and monogram appear, with RSVP, Add to calendar and Directions buttons, plus "Back to top".
 
 Languages: English, Sorani (کوردی), Kurmancî and Arabic (picker on the envelope, or `?lang=ckb`).
 

@@ -69,8 +69,16 @@ a { color: inherit; text-decoration: none; }
 @keyframes grow { from { clip-path: inset(100% 0 0 0); opacity: .2; } to { clip-path: inset(0 0 0 0); opacity: 1; } }
 
 /* ---------- pages ---------- */
-.page { position: absolute; inset: 0; color: var(--wine-text); transition: opacity .9s ease, filter .9s ease; }
-.page.out { opacity: 0; filter: blur(10px); }
+/* scrolling pages: each one fills the screen and snaps into place */
+.scroller { position: absolute; inset: 0; overflow-y: auto; overflow-x: hidden; scroll-snap-type: y mandatory; overscroll-behavior: contain; scrollbar-width: none; -webkit-overflow-scrolling: touch; visibility: hidden; }
+.scroller::-webkit-scrollbar { display: none; }
+.scroller.on { visibility: visible; }
+.page { position: relative; height: 100%; scroll-snap-align: start; scroll-snap-stop: always; color: var(--wine-text); }
+.cue { position: absolute; left: 50%; bottom: calc(env(safe-area-inset-bottom, 0px) + 5%); translate: -50% 0; width: 1px; height: 7cqh; background: linear-gradient(transparent, var(--wine-text)); opacity: 0; transition: opacity 1s ease 2s; }
+.cue span { position: absolute; left: -2.5px; bottom: 0; width: 6px; height: 6px; border-right: 1px solid var(--wine-text); border-bottom: 1px solid var(--wine-text); rotate: 45deg; }
+.cue::before { content: ""; position: absolute; inset: 0; background: var(--cream); animation: cue 2.2s ease-in-out infinite; transform-origin: bottom; }
+@keyframes cue { 0% { transform: scaleY(1); } 60%, 100% { transform: scaleY(0); } }
+.p-invite.seen .cue { opacity: .7; }
 .caps { font-family: var(--caps); font-weight: 500; font-size: 2.35cqh; letter-spacing: .24em; text-transform: uppercase; line-height: 1.55; }
 .caps--lg { font-size: 3.1cqh; letter-spacing: .32em; }
 .script { font-family: var(--script); font-weight: 400; line-height: 1.15; }
@@ -119,14 +127,12 @@ a { color: inherit; text-decoration: none; }
 
 /* ---------- Burgundy finale ---------- */
 .finale {
-  position: absolute; inset: 0; opacity: 0; pointer-events: none;
+  position: relative;
   background:
     var(--noise),
     url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='p'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.045' numOctaves='4' seed='4'/%3E%3CfeDiffuseLighting surfaceScale='1.4' lighting-color='%23fff'%3E%3CfeDistantLight azimuth='225' elevation='60'/%3E%3C/feDiffuseLighting%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -.9 0 0 0 .9'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23p)' opacity='.35'/%3E%3C/svg%3E"),
     radial-gradient(ellipse 90% 70% at 50% 45%, #6a1b28, #521320 60%, #3e0d17);
-  transition: opacity 1.8s ease;
 }
-.finale.on { opacity: 1; pointer-events: auto; }
 .crest { position: absolute; left: 50%; top: 45%; width: 70%; translate: -50% -50%; opacity: 0; transform: scale(.94); filter: blur(6px); transition: opacity 1.8s ease, transform 2.4s cubic-bezier(.2, .8, .2, 1), filter 1.8s ease; }
 .crest svg { width: 100%; height: auto; display: block; }
 .crest.on { opacity: 1; transform: none; filter: none; }
@@ -242,7 +248,7 @@ a { color: inherit; text-decoration: none; }
 .pampas.photo svg { display: none; }
 .finale.photo { background: var(--img) center 40% / cover; }
 .finale.photo::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 22%; background: linear-gradient(transparent, rgba(40, 5, 12, .85)); pointer-events: none; opacity: 0; transition: opacity 1.2s; }
-.finale.photo:has(.actions.on)::after { opacity: 1; }
+.finale.photo::after { opacity: 1; }
 .finale.photo .actions, .finale.photo .replay { z-index: 1; }
 .finale.photo .crest { display: none; }
 .seal.photo svg { display: none; }

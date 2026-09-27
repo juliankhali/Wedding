@@ -56,7 +56,7 @@ window.CARD = {
       save: "Save", the: "the", dateWord: "Date",
       kindly: "kindly", rsvp: "RSVP", callOrText: "CALL OR TEXT",
       forGuest: "For {name}",
-      btnRsvp: "RSVP", btnCalendar: "Add to calendar", btnMap: "Directions", replay: "Watch again",
+      btnRsvp: "RSVP", btnCalendar: "Add to calendar", btnMap: "Directions", replay: "Back to top",
       rsvpMsg: "Hello! I'd love to confirm my attendance at {couple}'s wedding.",
     },
     ckb: {
@@ -67,7 +67,7 @@ window.CARD = {
       save: "ئەم", the: "ڕۆژە", dateWord: "بپارێزە",
       kindly: "تکایە", rsvp: "وەڵام بدەرەوە", callOrText: "پەیوەندی یان نامە",
       forGuest: "بۆ {name}",
-      btnRsvp: "وەڵام", btnCalendar: "ڕۆژژمێر", btnMap: "ڕێگا", replay: "دووبارە ببینە",
+      btnRsvp: "وەڵام", btnCalendar: "ڕۆژژمێر", btnMap: "ڕێگا", replay: "گەڕانەوە بۆ سەرەوە",
       rsvpMsg: "سڵاو! بە خۆشحاڵییەوە بەشداری ئاهەنگی هاوسەرگیری {couple} دەکەم.",
     },
     kmr: {
@@ -78,7 +78,7 @@ window.CARD = {
       save: "Vê", the: "rojê", dateWord: "biparêze",
       kindly: "ji kerema xwe", rsvp: "BERSIV", callOrText: "BIGERE AN BINIVÎSE",
       forGuest: "Ji bo {name}",
-      btnRsvp: "Bersiv", btnCalendar: "Salname", btnMap: "Rê", replay: "Dîsa temaşe bike",
+      btnRsvp: "Bersiv", btnCalendar: "Salname", btnMap: "Rê", replay: "Vegere jor",
       rsvpMsg: "Silav! Ez bi kêfxweşî têm daweta {couple}.",
     },
     ar: {
@@ -89,7 +89,7 @@ window.CARD = {
       save: "احفظوا", the: "هذا", dateWord: "التاريخ",
       kindly: "نرجو", rsvp: "تأكيد الحضور", callOrText: "اتصال أو رسالة",
       forGuest: "إلى {name}",
-      btnRsvp: "تأكيد", btnCalendar: "التقويم", btnMap: "الموقع", replay: "شاهد مجدداً",
+      btnRsvp: "تأكيد", btnCalendar: "التقويم", btnMap: "الموقع", replay: "العودة للأعلى",
       rsvpMsg: "مرحباً! يسعدني تأكيد حضوري حفل زفاف {couple}.",
     },
   },

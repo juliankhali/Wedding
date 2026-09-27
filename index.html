@@ -19,11 +19,16 @@
       <div class="card" id="card">
         <div class="card__light" aria-hidden="true"></div>
         <div class="pampas" id="pampas" aria-hidden="true"></div>
+      </div>
+
+      <!-- The pages guests scroll through -->
+      <main class="scroller" id="scroller">
 
         <section class="page p-invite" id="p-invite">
           <p class="caps caps--lg" data-w="youre"></p>
           <p class="script script--md" data-w="cordially"></p>
           <p class="caps caps--lg" data-w="invited"></p>
+          <div class="cue" aria-hidden="true"><span></span></div>
         </section>
 
         <section class="page p-names" id="p-names">
@@ -46,22 +51,22 @@
           <div class="contact"><p class="caps" data-c="rsvpName"></p><p class="caps" data-w="callOrText"></p><p class="caps" data-c="phone" dir="ltr"></p></div>
           <p class="caps site" data-c="website"></p>
         </section>
-      </div>
 
-      <!-- Burgundy finale with the monogram -->
-      <div class="finale" id="finale">
-        <div class="crest" id="crest" aria-hidden="true"></div>
-        <div class="mono" aria-hidden="true"><span class="mono__1" data-c="i1"></span><span class="mono__2" data-c="i2"></span></div>
-        <nav class="actions" id="actions">
-          <a class="act" id="a-rsvp" target="_blank" rel="noopener" data-w="btnRsvp"></a>
-          <a class="act" id="a-cal" target="_blank" rel="noopener" data-w="btnCalendar"></a>
-          <a class="act" id="a-map" target="_blank" rel="noopener" data-w="btnMap"></a>
-        </nav>
-        <button class="replay" id="replay" type="button">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12a8 8 0 1 0 2.4-5.7M4 4v4.5h4.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          <span data-w="replay"></span>
-        </button>
-      </div>
+        <!-- Burgundy finale with the monogram -->
+        <section class="page finale" id="finale">
+          <div class="crest" id="crest" aria-hidden="true"></div>
+          <div class="mono" aria-hidden="true"><span class="mono__1" data-c="i1"></span><span class="mono__2" data-c="i2"></span></div>
+          <nav class="actions" id="actions">
+            <a class="act" id="a-rsvp" target="_blank" rel="noopener" data-w="btnRsvp"></a>
+            <a class="act" id="a-cal" target="_blank" rel="noopener" data-w="btnCalendar"></a>
+            <a class="act" id="a-map" target="_blank" rel="noopener" data-w="btnMap"></a>
+          </nav>
+          <button class="replay" id="replay" type="button">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M6 11l6-6 6 6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span data-w="replay"></span>
+          </button>
+        </section>
+      </main>
 
       <!-- The envelope (back side, four flaps) with the wax seal -->
       <div class="envelope" id="envelope">
