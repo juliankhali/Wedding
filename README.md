@@ -1,24 +1,27 @@
-# Wedding Invitation Website
+# Animated Wedding Card
 
-A luxury Kurdish wedding invitation website in English, Sorani (کوردی), Kurmancî and Arabic.
+A 35-second, 9:16 animated wedding invitation built as a web page, based on the "Burgundy Envelope Reveal" reference. It fills the screen on phones and is centred on desktop.
 
-**The opening:** an ivory envelope lies on emerald velvet in candlelight, closed with a crimson wax seal stamped with the Kurdish sun. Tap the seal: it cracks with a sound and breaks into pieces. The paper flap bends open to show a gold kilim-pattern lining, and the card slides out, then grows into the website. The music fades in. A second tap skips straight to the site.
+**Sequence:** a burgundy envelope with raised floral flaps, sealed with a gold wax seal and a dove. Tap it: the seal cracks, the music starts and the four flaps open. Then come the pages on cream cotton paper with drifting window light, each one appearing letter by letter:
+1. You're cordially invited
+2. We're getting married + names, with embossed pampas grass growing in
+3. Date and venue, then "Save the Date"
+4. Kindly RSVP
+5. The card fades to burgundy, and a baroque frame and monogram appear, with RSVP, Add to calendar and Directions buttons, plus "Watch again".
 
-**The website:** the invitation card with gold-foil names → photo band with a quote → story and arched photo gallery → live countdown → details and programme → venue map → RSVP reply card (sent via WhatsApp). A spinning gold record keeps the music playing while guests scroll.
+Languages: English, Sorani (کوردی), Kurmancî and Arabic (picker on the envelope, or `?lang=ckb`).
 
-## Customize
-Edit **`config.js`**: names (per language), families, date, venue, programme, photos, WhatsApp number.
+## Edit
+Everything personal is in **`config.js`**: names, initials, date, time, venue, RSVP contact, phone, WhatsApp number, website and the wording in each language.
 
-- **Music** → "Perfect" by Ed Sheeran is set up, but the song is copyrighted and not included. Save your mp3 as `assets/music/perfect.mp3`. Until then an original piano waltz plays, and the player has an "Add song" button for testing.
-- **Photos** → replace the placeholder art in `assets/photos/` (made by `tools/make-placeholders.js`).
-- **Personal link per guest** → `index.html?to=Hama` shows "A letter for Hama" on the envelope. `?lang=ckb` opens in Sorani.
-- Have a native speaker check the Sorani, Kurmanji and Arabic text in `i18n.js` and `config.js`.
+- **Music:** "Perfect" by Ed Sheeran is set up, but the song is copyrighted and not included. Save your mp3 as `assets/music/perfect.mp3`. Until then an original piano waltz plays, and an "Add Perfect" link lets you pick the mp3 while testing.
+- **Personal link per guest:** `index.html?to=Hama` shows "For Hama" on the envelope.
+- Have a native speaker check the Kurdish and Arabic wording.
 
-## Run locally
-Open `index.html`, or serve the folder: `python3 -m http.server`.
+All artwork (floral emboss, pampas, frame, seal) is drawn in code in `art.js`, so it's original.
 
-## Single-file preview
-`node tools/build-preview.js` writes `preview/invitation.html` with everything inlined.
+## Files
+`index.html` (structure) · `card.css` (look and animation) · `card.js` (timeline, sound, languages) · `art.js` (artwork) · `config.js` (content)
 
-## Publish
-Any static host works: GitHub Pages, Netlify or Vercel.
+## Preview and publish
+`node tools/build-preview.js` writes a single self-contained `preview/invitation.html`. Any static host works for the real site (GitHub Pages, Netlify, Vercel).

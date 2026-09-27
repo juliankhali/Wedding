@@ -1,62 +1,86 @@
 /* ============================================================
-   EDIT THIS FILE — everything personal on the invitation.
-   Each text has a version per language: en, ckb (Sorani),
-   kmr (Kurmanji), ar (Arabic).
+   EDIT THIS FILE — all the words on the card.
+   Every text has a version per language: en (English),
+   ckb (Sorani), kmr (Kurmanji), ar (Arabic).
    ============================================================ */
-window.WEDDING = {
-  defaultLang: "en",
+window.CARD = {
+  defaultLang: "en", // or open the link with ?lang=ckb
 
   bride: { en: "Shilan", ckb: "شیلان", kmr: "Şîlan", ar: "شيلان" },
   groom: { en: "Aram", ckb: "ئارام", kmr: "Aram", ar: "آرام" },
-  initials: "S A", // shown on the wax seal and monogram
+  initials: ["S", "A"], // monogram at the end
 
-  families: {
-    en: "The families of Ahmed & Karim",
-    ckb: "خێزانەکانی ئەحمەد و کەریم",
-    kmr: "Malbatên Ehmed û Kerîm",
-    ar: "عائلتا أحمد وكريم",
-  },
+  // Used for "Add to calendar"
+  start: "2026-12-19T18:00:00",
+  end: "2026-12-19T23:00:00",
 
-  // Ceremony date and time (venue local time)
-  date: "2026-12-19T18:00:00",
-  rsvpBy: "2026-12-01",
+  // Scene 4: Save the Date
+  date: { en: "DECEMBER 19, 2026", ckb: "١٩ی کانوونی یەکەمی ٢٠٢٦", kmr: "19 KANÛN 2026", ar: "١٩ كانون الأول ٢٠٢٦" },
+  time: { en: "06:00 PM – 11:00 PM", ckb: "٦ی ئێوارە تا ١١ی شەو", kmr: "18:00 – 23:00", ar: "٦:٠٠ مساءً – ١١:٠٠ مساءً" },
+  venue: { en: "Rotana Grand Hall", ckb: "هۆڵی گەورەی ڕۆتانا", kmr: "Salona Rotana", ar: "قاعة روتانا الكبرى" },
+  address: { en: "100M STREET · ERBIL · KURDISTAN", ckb: "شەقامی ١٠٠ مەتری · هەولێر", kmr: "KOLANA 100M · HEWLÊR", ar: "شارع ١٠٠ متر · أربيل" },
+  mapQuery: "Erbil Rotana Hotel, Erbil",
 
-  venue: {
-    name: { en: "Rotana Grand Hall", ckb: "هۆڵی گەورەی ڕۆتانا", kmr: "Salona Mezin a Rotana", ar: "قاعة روتانا الكبرى" },
-    city: { en: "Erbil, Kurdistan", ckb: "هەولێر، کوردستان", kmr: "Hewlêr, Kurdistan", ar: "أربيل، كردستان" },
-    address: { en: "100m Street, Erbil", ckb: "شەقامی ١٠٠ مەتری، هەولێر", kmr: "Kolana 100m, Hewlêr", ar: "شارع ١٠٠ متر، أربيل" },
-    mapQuery: "Erbil Rotana Hotel, Erbil",
-  },
-  mapEmbed: true, // live Google map on the real website
+  // Scene 5: RSVP
+  rsvpBy: { en: "BY DECEMBER 1 TO", ckb: "تا ١ی کانوونی یەکەم بۆ", kmr: "HETA 1Ê KANÛNÊ JI BO", ar: "قبل ١ كانون الأول إلى" },
+  rsvpName: { en: "HAMA", ckb: "حەمە", kmr: "HEME", ar: "حمه" },
+  phone: "+964 750 000 0000",
+  whatsapp: "9647500000000", // digits only, used by the RSVP button
+  website: "WWW.SHILANANDARAM.COM",
 
-  program: [
-    { time: "18:00", title: { en: "Guests Arrive", ckb: "گەیشتنی میوانان", kmr: "Hatina mêvanan", ar: "وصول الضيوف" },
-      note: { en: "Welcome drinks & zurna", ckb: "خواردنەوە و زوڕنا", kmr: "Vexwarin û zirne", ar: "مشروبات الترحيب والزرنة" } },
-    { time: "19:00", title: { en: "The Grand Entrance", ckb: "هاتنی بووک و زاوا", kmr: "Hatina bûk û zavê", ar: "دخول العروسين" },
-      note: { en: "Bride & groom arrive", ckb: "بووک و زاوا دێنە هۆڵەکە", kmr: "Bûk û zava tên salonê", ar: "يدخل العروسان القاعة" } },
-    { time: "19:30", title: { en: "Dîlan & Govend", ckb: "دیلان و گۆڤەند", kmr: "Dîlan û Govend", ar: "الدبكة الكردية" },
-      note: { en: "Join the halparke circle", ckb: "بەشداری هەڵپەڕکێ بکە", kmr: "Tev li govendê bibe", ar: "انضموا إلى حلقة الرقص" } },
-    { time: "21:00", title: { en: "Dinner", ckb: "نانی ئێوارە", kmr: "Şîva êvarê", ar: "العشاء" },
-      note: { en: "A traditional Kurdish feast", ckb: "خوانێکی کوردی ڕەسەن", kmr: "Sifreyeke kurdî ya kevneşopî", ar: "مأدبة كردية تقليدية" } },
-  ],
-
-  // Photos (portrait photos look best). Replace the placeholders with your own.
-  cover: "assets/photos/cover.svg",
-  gallery: [
-    { src: "assets/photos/1.svg", caption: { en: "Where it all began", ckb: "لێرەوە دەستی پێکرد", kmr: "Li vir dest pê kir", ar: "هنا كانت البداية" } },
-    { src: "assets/photos/2.svg", caption: { en: "Two hearts, one path", ckb: "دوو دڵ، یەک ڕێگا", kmr: "Du dil, yek rê", ar: "قلبان وطريق واحد" } },
-    { src: "assets/photos/3.svg", caption: { en: "She said yes", ckb: "گوتی بەڵێ", kmr: "Got erê", ar: "قالت نعم" } },
-  ],
-
-  // Background music: "Perfect" by Ed Sheeran.
-  // The song is copyrighted, so it is not included. Save your mp3 as
-  // assets/music/perfect.mp3. Until then an original piano waltz plays.
+  // Music: "Perfect" by Ed Sheeran. The song is copyrighted, so it is not
+  // included — save your mp3 as assets/music/perfect.mp3. Until then an
+  // original piano waltz plays.
   song: { title: "Perfect", artist: "Ed Sheeran", src: "assets/music/perfect.mp3" },
 
-  rsvpWhatsApp: "9647500000000", // international format, digits only
-  hashtag: "#ShilanAndAram",
-
-  // Optional: personalise the envelope, e.g. "Hama" → "A letter for Hama".
-  // Also works from the link: index.html?to=Hama
+  // Optional: "?to=Hama" in the link shows "For Hama" on the envelope.
   guestName: "",
+
+  /* ---- Fixed words of the card, per language ---- */
+  words: {
+    en: {
+      dir: "ltr", label: "English",
+      tap: "Tap to open", welcome: "بەخێربێن",
+      youre: "YOU'RE", cordially: "cordially", invited: "INVITED",
+      getting: "WE'RE GETTING", married: "MARRIED", amp: "&",
+      save: "Save", the: "the", dateWord: "Date",
+      kindly: "kindly", rsvp: "RSVP", callOrText: "CALL OR TEXT",
+      forGuest: "For {name}",
+      btnRsvp: "RSVP", btnCalendar: "Add to calendar", btnMap: "Directions", replay: "Watch again",
+      rsvpMsg: "Hello! I'd love to confirm my attendance at {couple}'s wedding.",
+    },
+    ckb: {
+      dir: "rtl", label: "کوردی",
+      tap: "بۆ کردنەوە دەستی لێبدە", welcome: "بەخێربێن",
+      youre: "بە خۆشحاڵییەوە", cordially: "بانگهێشتی", invited: "ئاهەنگەکەمان دەکەین",
+      getting: "ئێمە", married: "هاوسەرگیری دەکەین", amp: "و",
+      save: "ئەم", the: "ڕۆژە", dateWord: "بپارێزە",
+      kindly: "تکایە", rsvp: "وەڵام بدەرەوە", callOrText: "پەیوەندی یان نامە",
+      forGuest: "بۆ {name}",
+      btnRsvp: "وەڵام", btnCalendar: "ڕۆژژمێر", btnMap: "ڕێگا", replay: "دووبارە ببینە",
+      rsvpMsg: "سڵاو! بە خۆشحاڵییەوە بەشداری ئاهەنگی هاوسەرگیری {couple} دەکەم.",
+    },
+    kmr: {
+      dir: "ltr", label: "Kurmancî",
+      tap: "Ji bo vekirinê bitikîne", welcome: "Bi xêr hatin",
+      youre: "HÛN", cordially: "bi dilgermî", invited: "VEXWENDÎ NE",
+      getting: "EM", married: "DIZEWICIN", amp: "û",
+      save: "Vê", the: "rojê", dateWord: "biparêze",
+      kindly: "ji kerema xwe", rsvp: "BERSIV", callOrText: "BIGERE AN BINIVÎSE",
+      forGuest: "Ji bo {name}",
+      btnRsvp: "Bersiv", btnCalendar: "Salname", btnMap: "Rê", replay: "Dîsa temaşe bike",
+      rsvpMsg: "Silav! Ez bi kêfxweşî têm daweta {couple}.",
+    },
+    ar: {
+      dir: "rtl", label: "العربية",
+      tap: "المس لفتح الدعوة", welcome: "أهلاً وسهلاً",
+      youre: "يسعدنا", cordially: "دعوتكم", invited: "لحضور حفلنا",
+      getting: "نحن", married: "سنتزوج", amp: "و",
+      save: "احفظوا", the: "هذا", dateWord: "التاريخ",
+      kindly: "نرجو", rsvp: "تأكيد الحضور", callOrText: "اتصال أو رسالة",
+      forGuest: "إلى {name}",
+      btnRsvp: "تأكيد", btnCalendar: "التقويم", btnMap: "الموقع", replay: "شاهد مجدداً",
+      rsvpMsg: "مرحباً! يسعدني تأكيد حضوري حفل زفاف {couple}.",
+    },
+  },
 };

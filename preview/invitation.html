@@ -1,1415 +1,904 @@
 <title>Shilan &amp; Aram Invitation</title>
-  <meta name="theme-color" content="#062018" />
-  <meta name="description" content="You are invited to our wedding." />
-  <meta property="og:title" content="You're invited" />
-  <meta property="og:description" content="Open your wax-sealed invitation." />
+  <meta name="theme-color" content="#3a0c15" />
+  <meta name="description" content="You're cordially invited. Tap to open." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Great+Vibes&family=Noto+Naskh+Arabic:wght@400;600&family=Pinyon+Script&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:wght@400;500;600&family=Pinyon+Script&display=swap" rel="stylesheet" />
   <style>
-/* ==========================================================
-   Palette: ivory stationery, deep emerald velvet, gold foil,
-   crimson wax — the red, white/gold and green of Kurdistan.
-   ========================================================== */
 :root {
-  --em-950: #03120d;
-  --em-900: #052019;
-  --em-800: #082b21;
-  --em-700: #0d3a2c;
-  --em-600: #145040;
-  --ivory: #faf6ec;
-  --paper: #f3ecdc;
-  --paper-2: #e9dec6;
-  --ink: #2b2319;
-  --ink-soft: #75644c;
-  --gold: #c9a24e;
-  --gold-hi: #f1dc9c;
-  --gold-deep: #8d6a26;
-  --gold-line: rgba(201, 162, 78, .45);
-
+  --burgundy: #6b1e2a;
+  --burgundy-deep: #4a0f1c;
+  --wine-text: #7a2a35;
+  --taupe: #8c7f78;
+  --cream: #e9e2d8;
+  --cream-2: #ddd3c6;
+  --rose: #e8d6d3;
   --script: "Pinyon Script", "Great Vibes", cursive;
-  --serif: "Cormorant Garamond", Georgia, "Times New Roman", serif;
-  --caps: "Cinzel", "Cormorant Garamond", Georgia, serif;
-  --arabic: "Noto Naskh Arabic", "Amiri", serif;
-
-  --noise: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .4 0 0 0 0 .32 0 0 0 0 .2 0 0 0 .1 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  --kilim: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='36' height='36'%3E%3Crect width='36' height='36' fill='%230b3a2c'/%3E%3Cg fill='none' stroke='%23d9b866' stroke-width='1.2'%3E%3Cpath d='M18 2 L34 18 L18 34 L2 18 Z'/%3E%3Cpath d='M18 9 L27 18 L18 27 L9 18 Z' stroke-width='.9'/%3E%3C/g%3E%3Cpath d='M18 14 L22 18 L18 22 L14 18 Z' fill='%23e8cd84'/%3E%3C/svg%3E");
-  --diamond-bg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64'%3E%3Cg fill='none' stroke='%23c9a24e' stroke-width='.8' opacity='.5'%3E%3Cpath d='M32 2 L62 32 L32 62 L2 32Z'/%3E%3Cpath d='M32 18 L46 32 L32 46 L18 32Z'/%3E%3C/g%3E%3C/svg%3E");
-
-  --ease-out: cubic-bezier(.16, 1, .3, 1);
-  --ease-paper: cubic-bezier(.45, .05, .2, 1);
+  --caps: "Cormorant Garamond", Georgia, serif;
+  --noise: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .35 0 0 0 0 .28 0 0 0 0 .2 0 0 0 .12 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  --speckle: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='s'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.6' numOctaves='1' seed='9'/%3E%3CfeColorMatrix values='0 0 0 0 .42 0 0 0 0 .34 0 0 0 0 .26 14 0 0 0 -9.6'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23s)'/%3E%3C/svg%3E");
   color-scheme: light;
 }
-[dir="rtl"] {
-  --serif: "Amiri", "Noto Naskh Arabic", serif;
-  --caps: "Noto Naskh Arabic", "Amiri", serif;
-  --script: "Amiri", "Noto Naskh Arabic", serif;
-}
+[dir="rtl"] { --script: "Amiri", serif; --caps: "Amiri", serif; }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; scroll-padding-top: 72px; -webkit-text-size-adjust: 100%; }
-body {
-  font-family: var(--serif);
-  color: var(--ink);
-  background: var(--em-950);
-  -webkit-font-smoothing: antialiased;
-  -webkit-tap-highlight-color: transparent;
-  overflow-x: hidden;
-}
-body.is-locked { overflow: hidden; height: 100%; }
-img { display: block; max-width: 100%; }
+html, body { height: 100%; }
+body { background: #1d070c; overflow: hidden; font-family: var(--caps); -webkit-font-smoothing: antialiased; -webkit-tap-highlight-color: transparent; }
 button, select { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
 a { color: inherit; text-decoration: none; }
-.defs { position: absolute; width: 0; height: 0; overflow: hidden; }
-:focus-visible { outline: 1.5px solid var(--gold); outline-offset: 4px; }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+:focus-visible { outline: 1.5px solid var(--rose); outline-offset: 3px; }
 
-/* gold foil text with a slow travelling sheen */
-.foil {
-  background: linear-gradient(100deg, #8a6524 0%, #d4b062 18%, #f7e6ae 30%, #c9a24e 42%, #93702c 55%, #e3c878 70%, #fff1c4 78%, #b58c3c 90%, #8a6524 100%);
-  background-size: 250% 100%;
-  -webkit-background-clip: text; background-clip: text;
-  color: transparent;
-  animation: sheen 9s linear infinite;
-  padding: .08em .18em;
-  margin: -.08em -.18em;
+/* ---------- 9:16 frame: full screen on phones, centred on desktop ---------- */
+.stage {
+  position: fixed; inset: 0; display: grid; place-items: center;
+  background: radial-gradient(ellipse at 50% 40%, #3a0f18, #14050a 75%);
 }
-@keyframes sheen { from { background-position: 0% 0; } to { background-position: 250% 0; } }
-
-.caps { font-family: var(--caps); font-size: 11.5px; letter-spacing: .32em; text-transform: uppercase; color: var(--ink-soft); }
-.caps--soft { color: var(--gold-deep); }
-.caps--light { color: rgba(250, 246, 236, .7); }
-[dir="rtl"] .caps, [dir="rtl"] .eyebrow { letter-spacing: 0; font-size: 15px; text-transform: none; }
-
-/* language picker */
-.langs { position: relative; }
-.langs select {
-  appearance: none; -webkit-appearance: none;
-  font-family: var(--caps); font-size: 11.5px; letter-spacing: .14em;
-  padding: 9px 30px 9px 14px; border-radius: 999px;
-  border: 1px solid rgba(241, 220, 156, .45); color: var(--gold-hi);
-  background: rgba(3, 18, 13, .35) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M1 1l4 4 4-4' fill='none' stroke='%23f1dc9c' stroke-width='1.2'/%3E%3C/svg%3E") no-repeat right 12px center;
-  backdrop-filter: blur(8px);
+.frame {
+  position: relative; overflow: hidden; container-type: size;
+  width: 100vw; height: 100dvh;
+  background: var(--burgundy-deep);
 }
-[dir="rtl"] .langs select { padding: 9px 14px 9px 30px; background-position: left 12px center; letter-spacing: 0; font-size: 13px; }
-.langs select option { color: var(--ink); background: var(--ivory); }
+@media (min-aspect-ratio: 10/16) {
+  .frame {
+    height: min(100dvh - 32px, 960px); width: auto; aspect-ratio: 9 / 16;
+    border-radius: 18px; box-shadow: 0 40px 120px rgba(0, 0, 0, .7), 0 0 0 1px rgba(232, 214, 211, .08);
+  }
+}
 
-/* ==========================================================
-   THE ENVELOPE SCENE
-   ========================================================== */
-.scene {
-  position: fixed; inset: 0; z-index: 50; overflow: hidden;
-  display: grid; place-items: center;
+/* ---------- Cream card ---------- */
+.card {
+  position: absolute; inset: 0;
+  background:
+    var(--speckle),
+    var(--noise),
+    radial-gradient(ellipse 60% 40% at 80% 8%, rgba(190, 170, 140, .18), transparent 70%),
+    radial-gradient(ellipse 50% 35% at 15% 85%, rgba(190, 170, 140, .14), transparent 70%),
+    radial-gradient(ellipse 120% 90% at 50% 40%, var(--cream), var(--cream-2));
+  transition: opacity 1.8s ease;
+}
+/* soft window light drifting across the paper */
+.card__light {
+  position: absolute; inset: -40%; pointer-events: none;
+  background: linear-gradient(118deg,
+    transparent 0 22%, rgba(255, 253, 248, .5) 28%, transparent 34%,
+    rgba(110, 90, 70, .07) 40%, rgba(110, 90, 70, .03) 50%,
+    rgba(255, 253, 248, .42) 57%, transparent 63%,
+    rgba(110, 90, 70, .06) 70%, transparent 82%);
+  filter: blur(22px);
+  animation: window 16s ease-in-out infinite alternate;
+}
+@keyframes window { from { transform: translate(-5%, -4%) rotate(-1deg); } to { transform: translate(5%, 4%) rotate(1deg); } }
+
+.pampas { position: absolute; left: 0; bottom: 0; width: 70%; height: 72%; pointer-events: none; clip-path: inset(100% 0 0 0); opacity: 0; }
+.pampas svg { width: 100%; height: 100%; }
+.pampas.grow { animation: grow 3.4s cubic-bezier(.3, .6, .2, 1) forwards; }
+@keyframes grow { from { clip-path: inset(100% 0 0 0); opacity: .2; } to { clip-path: inset(0 0 0 0); opacity: 1; } }
+
+/* ---------- pages ---------- */
+.page { position: absolute; inset: 0; color: var(--wine-text); transition: opacity .9s ease, filter .9s ease; }
+.page.out { opacity: 0; filter: blur(10px); }
+.caps { font-family: var(--caps); font-weight: 500; font-size: 2.35cqh; letter-spacing: .24em; text-transform: uppercase; line-height: 1.55; }
+.caps--lg { font-size: 3.1cqh; letter-spacing: .32em; }
+.script { font-family: var(--script); font-weight: 400; line-height: 1.15; }
+.script--md { font-size: 7cqh; }
+.script--sm { font-size: 6cqh; }
+.taupe { color: var(--taupe); }
+[dir="rtl"] .caps { letter-spacing: 0; font-size: 2.8cqh; font-weight: 400; }
+[dir="rtl"] .caps--lg { font-size: 3.6cqh; }
+[dir="rtl"] .script { font-weight: 700; }
+
+.p-invite { display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; gap: .6cqh; padding-bottom: 6cqh; }
+.p-invite .caps--lg { padding-left: .32em; }
+
+.getting { position: absolute; top: 21%; left: 0; right: 0; text-align: center; }
+.name { position: absolute; font-size: 10.5cqh; white-space: nowrap; }
+.name--1 { top: 36%; left: 22%; }
+.name--2 { top: 54%; left: 40%; }
+.amp { position: absolute; top: 44%; left: 43%; font-family: var(--script); font-size: 12cqh; line-height: 1; color: #b9aea4; opacity: .55; }
+[dir="rtl"] .name--1 { left: auto; right: 22%; }
+[dir="rtl"] .name--2 { left: auto; right: 42%; }
+[dir="rtl"] .amp { left: auto; right: 44%; font-family: "Amiri", serif; }
+
+.std { position: absolute; top: 9%; left: 0; right: 0; }
+.std p { position: absolute; font-size: 10cqh; white-space: nowrap; }
+.std__1 { left: 30%; top: 0; }
+.std__2 { left: 42%; top: 9.5cqh; font-size: 8cqh !important; }
+.std__3 { left: 38%; top: 18cqh; }
+[dir="rtl"] .std__1, [dir="rtl"] .std__2, [dir="rtl"] .std__3 { left: auto; }
+[dir="rtl"] .std__1 { right: 30%; } [dir="rtl"] .std__2 { right: 40%; } [dir="rtl"] .std__3 { right: 34%; }
+.date { position: absolute; top: 49%; left: 0; right: 0; text-align: center; font-size: 3.3cqh; letter-spacing: .08em; color: var(--taupe); font-weight: 500; }
+.venue { position: absolute; right: 11%; bottom: 8%; text-align: right; font-family: var(--caps); font-variant: small-caps; font-size: 2.1cqh; letter-spacing: .06em; line-height: 1.7; }
+[dir="rtl"] .venue { right: auto; left: 11%; text-align: left; font-variant: normal; }
+
+.p-rsvp { display: flex; flex-direction: column; align-items: center; text-align: center; padding-top: 20%; }
+.rsvp { font-size: 5.6cqh; letter-spacing: .38em; padding-left: .38em; font-weight: 400; margin-top: -.5cqh; }
+.by { font-size: 2.9cqh; letter-spacing: .06em; margin-top: 6.5cqh; }
+.contact { margin-top: 6cqh; }
+.contact .caps { font-size: 2.4cqh; letter-spacing: .06em; line-height: 1.5; }
+.site { position: absolute; bottom: 15%; font-size: 1.4cqh; letter-spacing: .34em; }
+
+/* letter-by-letter blur-in */
+.ch { display: inline-block; opacity: 0; filter: blur(8px); transform: translateY(4px); transition: opacity .6s ease, filter .6s ease, transform .6s ease; transition-delay: var(--d, 0s); white-space: pre; }
+.show .ch { opacity: 1; filter: blur(0); transform: none; }
+.amp.show-soft { transition: opacity 1.6s ease, filter 1.6s ease; }
+.amp:not(.show-soft) { opacity: 0; filter: blur(10px); }
+
+/* ---------- Burgundy finale ---------- */
+.finale {
+  position: absolute; inset: 0; opacity: 0; pointer-events: none;
   background:
     var(--noise),
-    radial-gradient(ellipse 70% 55% at 50% 42%, #1b5a47 0%, #0c3327 45%, #051a13 80%, #020b08 100%);
-  transition: opacity .9s ease, visibility 0s .9s;
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='p'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.045' numOctaves='4' seed='4'/%3E%3CfeDiffuseLighting surfaceScale='1.4' lighting-color='%23fff'%3E%3CfeDistantLight azimuth='225' elevation='60'/%3E%3C/feDiffuseLighting%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -.9 0 0 0 .9'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23p)' opacity='.35'/%3E%3C/svg%3E"),
+    radial-gradient(ellipse 90% 70% at 50% 45%, #6a1b28, #521320 60%, #3e0d17);
+  transition: opacity 1.8s ease;
 }
-.scene.is-gone { opacity: 0; visibility: hidden; pointer-events: none; }
-.scene__light {
-  position: absolute; inset: -20% -20% auto; height: 120%;
-  background: radial-gradient(ellipse 40% 38% at 50% 45%, rgba(255, 226, 160, .16), transparent 70%);
-  animation: candle 5s ease-in-out infinite;
-  pointer-events: none;
-}
-@keyframes candle { 0%, 100% { opacity: .9; } 30% { opacity: 1; } 55% { opacity: .78; } 75% { opacity: .95; } }
-.scene__dust span { position: absolute; bottom: -8px; border-radius: 50%; background: var(--gold-hi); box-shadow: 0 0 6px var(--gold); animation: dust linear infinite; pointer-events: none; }
-@keyframes dust { 10% { opacity: var(--o); } 85% { opacity: calc(var(--o) * .6); } to { transform: translate(var(--dx), -110vh); opacity: 0; } }
+.finale.on { opacity: 1; pointer-events: auto; }
+.crest { position: absolute; left: 50%; top: 45%; width: 70%; translate: -50% -50%; opacity: 0; transform: scale(.94); filter: blur(6px); transition: opacity 1.8s ease, transform 2.4s cubic-bezier(.2, .8, .2, 1), filter 1.8s ease; }
+.crest svg { width: 100%; height: auto; display: block; }
+.crest.on { opacity: 1; transform: none; filter: none; }
+.mono { position: absolute; left: 50%; top: 45%; width: 40%; height: 26%; translate: -50% -50%; color: var(--rose); font-family: "Pinyon Script", cursive; }
+.mono span { position: absolute; font-size: 9cqh; line-height: 1; opacity: 0; filter: blur(8px); transition: opacity 1.6s ease, filter 1.6s ease; text-shadow: 0 1px 2px rgba(0, 0, 0, .4); }
+.mono__1 { left: 12%; top: 8%; }
+.mono__2 { left: 42%; top: 36%; transition-delay: .5s !important; }
+.mono.on span { opacity: 1; filter: none; }
 
-.scene__top { position: absolute; z-index: 3; top: calc(env(safe-area-inset-top, 0px) + 16px); inset-inline-end: 16px; }
-.scene__stage { position: relative; z-index: 2; width: 100%; padding: 24px 16px; display: flex; flex-direction: column; align-items: center; text-align: center; }
-.scene__welcome {
-  font-family: var(--arabic); font-weight: 600; font-size: 28px; color: var(--gold-hi);
-  text-shadow: 0 0 24px rgba(241, 220, 156, .35);
-  animation: fade-up 1.4s .2s var(--ease-out) both;
+.actions { position: absolute; left: 0; right: 0; bottom: calc(env(safe-area-inset-bottom, 0px) + 12%); display: flex; justify-content: center; gap: 2.4cqw; padding-inline: 16px; opacity: 0; transform: translateY(10px); transition: opacity 1.2s ease, transform 1.2s ease; }
+.actions.on { opacity: 1; transform: none; }
+.act {
+  font-family: var(--caps); font-size: max(12px, 1.5cqh); letter-spacing: .2em; text-transform: uppercase; color: var(--rose);
+  padding: 1.3cqh 3.6cqw; border: 1px solid rgba(232, 214, 211, .45); border-radius: 999px; white-space: nowrap;
+  transition: background .3s;
 }
-.scene__to {
-  margin-top: 6px; margin-bottom: clamp(40px, 8vh, 64px);
-  font-family: var(--caps); font-size: 12px; letter-spacing: .38em; text-transform: uppercase; color: rgba(250, 246, 236, .72);
-  animation: fade-up 1.4s .35s var(--ease-out) both;
-}
-[dir="rtl"] .scene__to { letter-spacing: 0; font-size: 16px; }
-.scene__hint {
-  margin-top: clamp(48px, 9vh, 76px);
-  font-family: var(--serif); font-style: italic; font-size: 17px; color: rgba(250, 246, 236, .75);
-  animation: fade-up 1.2s 1.1s var(--ease-out) both, breathe 3.2s 2.4s ease-in-out infinite;
-  transition: opacity .5s;
-}
-.scene__sound { color: rgba(250, 246, 236, .45); }
-.is-opening .scene__hint, .is-opening .scene__to, .is-opening .scene__welcome, .is-opening .scene__top { opacity: 0; transition: opacity .6s; animation: none; }
-@keyframes fade-up { from { opacity: 0; transform: translateY(18px); } }
-@keyframes breathe { 50% { opacity: .5; } }
+[dir="rtl"] .act { letter-spacing: 0; font-size: max(14px, 1.8cqh); }
+.act:hover { background: rgba(232, 214, 211, .1); }
+.replay { position: absolute; left: 50%; bottom: calc(env(safe-area-inset-bottom, 0px) + 5%); translate: -50% 0; display: flex; align-items: center; gap: 8px; color: rgba(232, 214, 211, .7); font-family: var(--caps); font-size: max(12px, 1.5cqh); letter-spacing: .14em; opacity: 0; transition: opacity 1.2s ease .4s; }
+.replay svg { width: 18px; height: 18px; }
+.actions.on ~ .replay { opacity: 1; }
 
-/* tilt wrapper follows the pointer a little, like holding a real card */
-.env-tilt {
-  perspective: 1400px;
-  transform: rotateX(var(--tx, 0deg)) rotateY(var(--ty, 0deg));
-  transition: transform .8s var(--ease-out);
-  animation: env-arrive 1.3s .2s var(--ease-out) backwards;
-}
-@keyframes env-arrive {
-  from { opacity: 0; transform: translateY(90px) rotate(-7deg) scale(.94); }
-  60% { opacity: 1; }
-}
+/* ---------- Envelope ---------- */
+.envelope { position: absolute; inset: 0; perspective: 1500px; perspective-origin: 50% 50%; }
+.flap { position: absolute; inset: 0; transform-style: preserve-3d; will-change: transform; }
+.flap svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.flap, .flap svg, .flap::after { backface-visibility: hidden; -webkit-backface-visibility: hidden; }
+.flap::after { content: ""; position: absolute; inset: 0; background: #fff; opacity: calc(var(--lit, 0) * .5); mix-blend-mode: soft-light; pointer-events: none; }
+.flap--top { transform-origin: 50% 0; z-index: 1; }
+.flap--bottom { transform-origin: 50% 100%; z-index: 1; }
+.flap--left { transform-origin: 0 50%; z-index: 2; filter: drop-shadow(3px 0 6px rgba(20, 2, 6, .45)); }
+.flap--right { transform-origin: 100% 50%; z-index: 2; filter: drop-shadow(-3px 0 6px rgba(20, 2, 6, .45)); }
+.envelope.open .flap--left { transform: rotateY(-115deg) translateX(-6%); transition: transform 1.7s cubic-bezier(.55, .05, .3, 1), --lit 1.7s; --lit: .35; }
+.envelope.open .flap--right { transform: rotateY(115deg) translateX(6%); transition: transform 1.7s cubic-bezier(.55, .05, .3, 1); --lit: .35; }
+.envelope.open .flap--top { transform: rotateX(160deg); transition: transform 2s .35s cubic-bezier(.55, .05, .3, 1); --lit: .5; }
+.envelope.open .flap--bottom { transform: rotateX(-160deg); transition: transform 2s .35s cubic-bezier(.55, .05, .3, 1); --lit: .45; }
+.envelope.open .flap::after { transition: opacity 1.8s ease .2s; }
+.envelope.gone { visibility: hidden; }
 
-.env {
-  --w: min(88vw, 440px);
-  position: relative; width: var(--w); aspect-ratio: 10 / 7;
-  perspective: 1600px;
-  animation: env-float 7s 2.4s ease-in-out infinite;
-}
-@keyframes env-float { 50% { transform: translateY(-5px) rotate(.3deg); } }
-.is-opening .env { animation: none; }
-
-.env__shadow {
-  position: absolute; left: 3%; right: 3%; top: 10%; bottom: -8%;
-  background: rgba(0, 0, 0, .75); filter: blur(26px); border-radius: 20px;
-  transform: translateY(14px);
-}
-.env__back {
-  position: absolute; inset: 0; border-radius: 3px;
-  background: var(--noise), linear-gradient(180deg, #cdbd9c 0%, #e2d5ba 45%, #eadfc8 100%);
-  box-shadow: inset 0 0 0 1px rgba(120, 95, 60, .18);
-}
-.env__liner { position: absolute; inset: 0; width: 100%; height: 100%; }
-
-/* the card inside */
-.card {
-  position: absolute; left: 5.5%; right: 5.5%; top: 5%; height: 89%; z-index: 2;
-  border-radius: 2px;
-  background: var(--noise), linear-gradient(170deg, #fffdf7, #f6efdf 70%, #efe5cf);
-  box-shadow: 0 1px 2px rgba(60, 40, 10, .25), 0 8px 20px rgba(60, 40, 10, .18);
-  will-change: transform;
-}
-.card__frame {
-  position: absolute; inset: 9px;
-  border: 1px solid var(--gold-line);
-  outline: 1px solid rgba(201, 162, 78, .22); outline-offset: -5px;
-  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; padding: 10px;
-  text-align: center;
-}
-.card__sun { width: 30px; height: 30px; color: var(--gold); }
-.card__small { font-family: var(--caps); font-size: 8.5px; letter-spacing: .3em; text-transform: uppercase; color: var(--gold-deep); }
-[dir="rtl"] .card__small { letter-spacing: 0; font-size: 12px; }
-.card__names { font-family: var(--script); font-size: clamp(34px, 10vw, 50px); line-height: 1.1; color: var(--em-700); }
-[dir="rtl"] .card__names { font-weight: 700; font-size: clamp(28px, 8vw, 40px); }
-
-.env__pocket { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 3; overflow: visible; }
-.pocket__flapshadow { transition: opacity .5s; }
-.flap-lifting .pocket__flapshadow { opacity: 0; }
-
-/* two-segment paper flap */
-.flap {
-  position: absolute; left: 0; right: 0; top: 0; height: 56%; z-index: 4;
-  transform-style: preserve-3d; pointer-events: none;
-}
-.flap.is-behind { z-index: 1; }
-.flap__a {
-  position: absolute; left: 0; right: 0; top: 0; height: 60%;
-  transform-origin: 50% 0; transform-style: preserve-3d;
-  transform: rotateX(var(--a, 0deg));
-}
-.flap__b {
-  position: absolute; left: 0; right: 0; top: 100%; height: 66.667%;
-  transform-origin: 50% 0; transform-style: preserve-3d;
-  transform: rotateX(var(--b, 0deg));
-}
-.flap__face { position: absolute; inset: 0; backface-visibility: hidden; -webkit-backface-visibility: hidden; }
-.flap__a-shape { clip-path: polygon(0 0, 100% 0, 70% 100.5%, 30% 100.5%); }
-.flap__b-shape { clip-path: polygon(30% 0, 70% 0, 50% 100%); }
-.flap__face--out { background: var(--noise), linear-gradient(180deg, #efe5d0, #f6efe0 70%, #f8f2e5); }
-.flap__b .flap__face--out { background: var(--noise), linear-gradient(180deg, #f8f2e5, #faf5ea); }
-.flap__face--out::after { content: ""; position: absolute; inset: 0; background: #3a2a14; opacity: var(--shade, 0); }
-.flap__face--in { transform: rotateX(180deg); background: var(--kilim); background-size: 30px 30px; }
-.flap__face--in::after { content: ""; position: absolute; inset: 0; background: linear-gradient(0deg, rgba(0,0,0,.35), transparent 60%); }
-
-/* the wax seal */
 .seal {
-  position: absolute; z-index: 6; left: 50%; top: 56%;
-  width: clamp(88px, 25vw, 112px); aspect-ratio: 1;
-  translate: -50% -50%;
-  border-radius: 50%;
-  animation: seal-drop .8s .9s cubic-bezier(.3, 1.5, .5, 1) both;
+  position: absolute; z-index: 5; left: 50%; top: 50%; width: 30cqw; aspect-ratio: 1; translate: -50% -50%;
+  filter: drop-shadow(0 6px 8px rgba(20, 2, 6, .55)) drop-shadow(0 1px 1px rgba(0, 0, 0, .5));
+  animation: seal-pulse 2.8s 1.2s ease-in-out infinite;
+  transition: transform .6s cubic-bezier(.3, 0, .2, 1), opacity .6s ease;
 }
-@keyframes seal-drop { from { opacity: 0; transform: scale(1.5) translateY(-10px); } }
-.seal::before {
-  content: ""; position: absolute; inset: -12px; border-radius: 50%;
-  border: 1px solid rgba(241, 220, 156, .55); opacity: 0;
-  animation: ring 2.8s 3s ease-out infinite;
+.seal svg { width: 100%; height: 100%; display: block; overflow: visible; }
+.seal::after { /* glint */
+  content: ""; position: absolute; inset: 14%; border-radius: 50%; pointer-events: none;
+  background: linear-gradient(115deg, transparent 38%, rgba(255, 246, 214, .55) 48%, transparent 58%);
+  background-size: 250% 100%; background-position: 130% 0; mix-blend-mode: screen;
+  animation: glint 4s 1.5s ease-in-out infinite;
 }
-@keyframes ring { from { transform: scale(.8); opacity: .8; } to { transform: scale(1.4); opacity: 0; } }
-.seal__whole, .seal__piece { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
-.seal__whole {
-  filter: drop-shadow(0 5px 5px rgba(40, 0, 4, .45)) drop-shadow(0 1px 1px rgba(0, 0, 0, .55));
-  transition: transform .25s var(--ease-out), filter .25s;
-}
-.seal:hover .seal__whole { transform: scale(1.03); }
-.seal.is-pressed .seal__whole { transform: scale(.93); filter: drop-shadow(0 2px 2px rgba(40, 0, 4, .5)) drop-shadow(0 1px 1px rgba(0, 0, 0, .5)); }
-.crack { stroke-dasharray: 1; stroke-dashoffset: 1; opacity: .9; }
-.seal.is-cracked .crack--1 { stroke-dashoffset: 0; transition: stroke-dashoffset .22s cubic-bezier(.7, 0, .9, .4); }
-.seal.is-cracked .crack--2 { stroke-dashoffset: 0; transition: stroke-dashoffset .18s .12s cubic-bezier(.7, 0, .9, .4); }
-.seal.is-cracked .seal__whole { animation: jolt .28s ease-out; }
-@keyframes jolt { 30% { transform: scale(.95) rotate(-2deg); } 60% { transform: scale(.98) rotate(1.5deg); } }
-.seal__pieces { position: absolute; inset: 0; visibility: hidden; }
-.seal__piece { filter: drop-shadow(0 4px 4px rgba(40, 0, 4, .45)); will-change: transform, opacity; }
-.seal.is-broken { pointer-events: none; animation: none; }
-.seal.is-broken::before { display: none; }
-.seal.is-broken .seal__whole { visibility: hidden; }
-.seal.is-broken .seal__pieces { visibility: visible; }
-.is-opening .seal::before { display: none; }
+@keyframes seal-pulse { 50% { transform: scale(1.04); } }
+@keyframes glint { 0%, 55% { background-position: 130% 0; } 85%, 100% { background-position: -30% 0; } }
+.seal-crack path { stroke-dasharray: 1; stroke-dashoffset: 1; }
+.seal.crack .seal-crack path { stroke-dashoffset: 0; transition: stroke-dashoffset .2s cubic-bezier(.7, 0, .9, .4); }
+.seal.crack { animation: none; }
+.seal.lift { transform: scale(1.18) rotate(9deg); opacity: 0; pointer-events: none; }
+.seal.lift::after { display: none; }
 
-/* ==========================================================
-   THE WEBSITE
-   ========================================================== */
-.site { position: relative; background: var(--ivory); }
-.paper { background: var(--noise), radial-gradient(ellipse 90% 70% at 50% 0%, #fdfaf2, var(--ivory) 50%, var(--paper) 100%); }
-.emerald {
-  position: relative; color: var(--ivory);
-  background: var(--noise), radial-gradient(ellipse 90% 80% at 50% 0%, var(--em-600) 0%, var(--em-800) 50%, var(--em-900) 100%);
+.intro { position: absolute; z-index: 4; top: 12%; left: 0; right: 0; text-align: center; color: var(--rose); pointer-events: none; transition: opacity .5s; }
+.intro__welcome { font-family: "Amiri", serif; font-size: 3.4cqh; text-shadow: 0 2px 10px rgba(20, 2, 6, .6); }
+.intro__for { margin-top: .6cqh; font-family: "Pinyon Script", "Amiri", cursive; font-size: 4.4cqh; text-shadow: 0 2px 10px rgba(20, 2, 6, .6); }
+.hint { position: absolute; z-index: 4; left: 0; right: 0; top: calc(50% + 19cqw); text-align: center; color: var(--rose); font-family: var(--caps); font-size: max(13px, 1.7cqh); letter-spacing: .3em; text-transform: uppercase; text-shadow: 0 1px 8px rgba(20, 2, 6, .7); animation: breathe 2.8s ease-in-out infinite; transition: opacity .5s; }
+[dir="rtl"] .hint { letter-spacing: 0; font-size: max(15px, 2.1cqh); }
+@keyframes breathe { 50% { opacity: .5; } }
+.lang { position: absolute; z-index: 6; top: calc(env(safe-area-inset-top, 0px) + 14px); right: 14px; transition: opacity .5s; }
+[dir="rtl"] .lang { right: auto; left: 14px; }
+.lang select {
+  appearance: none; -webkit-appearance: none; font-family: "Cormorant Garamond", "Amiri", serif; font-size: 14px; color: var(--rose);
+  padding: 7px 28px 7px 14px; border-radius: 999px; border: 1px solid rgba(232, 214, 211, .4);
+  background: rgba(40, 6, 12, .35) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M1 1l4 4 4-4' fill='none' stroke='%23e8d6d3' stroke-width='1.2'/%3E%3C/svg%3E") no-repeat right 11px center;
+  backdrop-filter: blur(6px);
 }
-.emerald::before { content: ""; position: absolute; inset: 0; background: var(--diamond-bg); opacity: .12; pointer-events: none; }
-.emerald > * { position: relative; }
+.lang select option { color: #2a0a10; background: #f3ebe8; }
+.envelope.opening .intro, .envelope.opening .hint, .envelope.opening .lang { opacity: 0; pointer-events: none; animation: none; }
 
-/* nav */
-.nav {
-  position: fixed; z-index: 20; top: 0; left: 0; right: 0;
-  display: flex; align-items: center; justify-content: space-between; gap: 16px;
-  padding: calc(env(safe-area-inset-top, 0px) + 16px) clamp(16px, 4vw, 40px) 16px;
-  transition: background .5s, box-shadow .5s, padding .5s, transform .6s var(--ease-out);
+.mute {
+  position: absolute; z-index: 10; top: calc(env(safe-area-inset-top, 0px) + 12px); right: 12px;
+  width: 38px; height: 38px; border-radius: 50%; display: grid; place-items: center;
+  color: var(--wine-text); background: rgba(255, 255, 255, .28); backdrop-filter: blur(6px);
+  box-shadow: 0 0 0 1px rgba(122, 42, 53, .18);
+  transition: color .8s, background .8s;
 }
-.nav.is-solid {
-  background: rgba(250, 246, 236, .86); backdrop-filter: blur(16px) saturate(1.2); -webkit-backdrop-filter: blur(16px) saturate(1.2);
-  box-shadow: 0 1px 0 var(--gold-line);
-  padding-block: calc(env(safe-area-inset-top, 0px) + 10px) 10px;
-}
-.nav__mono { font-family: "Pinyon Script", "Great Vibes", cursive; font-size: 34px; line-height: 1; color: var(--gold-deep); white-space: nowrap; }
-.nav__links { display: flex; gap: clamp(18px, 3vw, 40px); }
-.nav__links a, .nav__rsvp { font-family: var(--caps); font-size: 11px; letter-spacing: .26em; text-transform: uppercase; color: var(--ink); transition: color .3s; }
-[dir="rtl"] .nav__links a, [dir="rtl"] .nav__rsvp { letter-spacing: 0; font-size: 15px; }
-.nav__links a:hover { color: var(--gold-deep); }
-.nav__end { display: flex; align-items: center; gap: 12px; }
-.nav__rsvp { padding: 10px 18px; border: 1px solid var(--gold); color: var(--gold-deep); transition: background .3s, color .3s; }
-.nav__rsvp:hover { background: var(--gold); color: var(--ivory); }
-.langs--nav select { color: var(--ink); border-color: var(--gold-line); background-color: rgba(250, 246, 236, .6); background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M1 1l4 4 4-4' fill='none' stroke='%238d6a26' stroke-width='1.2'/%3E%3C/svg%3E"); }
-@media (max-width: 760px) {
-  .nav__links { display: none; }
-  .nav__rsvp { padding: 9px 12px; }
-  .nav__mono { font-size: 30px; }
-}
-
-/* hero = the invitation card */
-.hero {
-  position: relative; min-height: 100svh;
-  display: grid; place-items: center;
-  padding: calc(env(safe-area-inset-top, 0px) + 96px) 16px 110px;
-}
-.hero__card {
-  position: relative; width: 100%; max-width: 640px;
-  padding: clamp(56px, 9vw, 88px) clamp(26px, 7vw, 72px);
-  display: flex; flex-direction: column; align-items: center; gap: 14px; text-align: center;
-  background: var(--noise), linear-gradient(170deg, #fffdf8, #f9f3e6);
-  border: 1px solid var(--gold-line);
-  box-shadow: 0 1px 2px rgba(80, 60, 20, .08), 0 30px 80px -20px rgba(80, 60, 20, .22);
-}
-.corner { position: absolute; width: clamp(54px, 12vw, 80px); height: auto; aspect-ratio: 1; }
-.corner--tl { top: 10px; left: 10px; }
-.corner--tr { top: 10px; right: 10px; transform: scaleX(-1); }
-.corner--bl { bottom: 10px; left: 10px; transform: scaleY(-1); }
-.corner--br { bottom: 10px; right: 10px; transform: scale(-1); }
-.hero__sun { width: 58px; height: 58px; color: var(--gold); animation: spin 60s linear infinite; }
-@keyframes spin { to { rotate: 360deg; } }
-.kurdish-welcome { font-family: var(--arabic); font-weight: 600; font-size: 24px; color: var(--gold-deep); margin-bottom: 6px; }
-.names {
-  display: flex; flex-direction: column; align-items: center;
-  font-family: var(--script); font-weight: 400;
-  font-size: clamp(66px, 15vw, 118px); line-height: 1.02; margin-block: 8px 4px;
-}
-[dir="rtl"] .names { font-weight: 700; font-size: clamp(54px, 12vw, 92px); line-height: 1.35; }
-.names__amp { font-family: "Cormorant Garamond", serif; font-style: italic; font-weight: 300; font-size: .38em; color: var(--gold); margin-block: -.05em; }
-.hero__honour { font-style: italic; font-weight: 400; font-size: clamp(19px, 2.6vw, 23px); line-height: 1.45; max-width: 28ch; color: var(--ink); }
-[dir="rtl"] .hero__honour { font-style: normal; }
-.diamonds { display: flex; align-items: center; gap: 10px; margin-block: 8px; }
-.diamonds::before, .diamonds::after { content: ""; width: 56px; height: 1px; background: linear-gradient(90deg, transparent, var(--gold)); }
-.diamonds::after { transform: scaleX(-1); }
-.diamonds i { width: 6px; height: 6px; rotate: 45deg; background: var(--gold); }
-.diamonds i:nth-child(2) { width: 9px; height: 9px; }
-.hero__date { font-family: var(--caps); font-size: clamp(12.5px, 1.9vw, 15px); letter-spacing: .14em; text-wrap: balance; text-transform: uppercase; color: var(--em-700); line-height: 1.7; }
-[dir="rtl"] .hero__date { letter-spacing: 0; font-size: 22px; font-family: var(--serif); font-weight: 700; }
-.hero__time { font-style: italic; font-size: 20px; color: var(--ink-soft); }
-.scroll-cue {
-  position: absolute; bottom: 26px; left: 50%; translate: -50% 0;
-  display: flex; flex-direction: column; align-items: center; gap: 10px;
-  font-family: var(--caps); font-size: 10px; letter-spacing: .4em; text-transform: uppercase; color: var(--gold-deep);
-}
-.scroll-cue i { width: 1px; height: 42px; background: linear-gradient(var(--gold), transparent); animation: cue 2.2s ease-in-out infinite; transform-origin: top; }
-@keyframes cue { 0% { transform: scaleY(0); } 50% { transform: scaleY(1); } 100% { transform: scaleY(1); opacity: 0; } }
-
-.rise { opacity: 0; }
-.site.is-in .rise { animation: rise 1.6s calc(var(--i, 0) * .09s + .2s) var(--ease-out) both; }
-@keyframes rise { from { opacity: 0; transform: translateY(22px); filter: blur(6px); } to { opacity: 1; transform: none; filter: none; } }
-
-/* photo band */
-.band { position: relative; height: clamp(440px, 86vh, 820px); display: grid; place-items: center; overflow: hidden; background: var(--em-900); }
-.band__img { position: absolute; inset: -18% 0; }
-.band__img img { width: 100%; height: 100%; object-fit: cover; will-change: transform; }
-.band::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(3, 18, 13, .55), rgba(3, 18, 13, .15) 40%, rgba(3, 18, 13, .7)); }
-.band__quote { position: relative; z-index: 1; padding-inline: 20px; max-width: 900px; text-align: center; color: var(--ivory); display: flex; flex-direction: column; gap: 22px; align-items: center; }
-.band__quote p { font-style: italic; font-weight: 300; font-size: clamp(30px, 5.4vw, 58px); line-height: 1.2; text-wrap: balance; text-shadow: 0 2px 30px rgba(0, 0, 0, .4); }
-[dir="rtl"] .band__quote p { font-style: normal; font-weight: 400; line-height: 1.6; }
-.band__quote cite { font-style: normal; font-family: var(--caps); font-size: 12px; letter-spacing: .34em; color: var(--gold-hi); }
-
-/* sections */
-.section { padding-block: clamp(96px, 13vw, 160px); }
-.wrap { width: 100%; max-width: 1120px; margin: 0 auto; padding-inline: 20px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 14px; }
-.eyebrow { font-family: var(--caps); font-size: 11.5px; letter-spacing: .38em; text-transform: uppercase; color: var(--gold-deep); }
-.emerald .eyebrow { color: var(--gold); }
-.title { font-family: var(--script); font-weight: 400; font-size: clamp(56px, 9.5vw, 96px); line-height: 1.1; color: var(--em-700); margin-bottom: 10px; text-wrap: balance; }
-[dir="rtl"] .title { font-weight: 700; font-size: clamp(38px, 7vw, 64px); line-height: 1.5; }
-.title--light { color: var(--gold-hi); }
-.lead { font-weight: 300; font-size: clamp(23px, 3.2vw, 32px); line-height: 1.55; max-width: 32ch; color: var(--ink); text-wrap: balance; }
-[dir="rtl"] .lead { font-weight: 400; line-height: 1.9; font-size: clamp(21px, 2.8vw, 28px); }
-.divider { display: flex; align-items: center; gap: 18px; margin-block: 40px 30px; }
-.divider::before, .divider::after { content: ""; width: clamp(60px, 14vw, 120px); height: 1px; background: linear-gradient(90deg, transparent, var(--gold)); }
-.divider::after { transform: scaleX(-1); }
-.divider svg { width: 34px; height: 34px; color: var(--gold); }
-
-.reveal { opacity: 0; transform: translateY(30px); filter: blur(5px); transition: opacity 1.4s var(--ease-out), transform 1.4s var(--ease-out), filter 1.4s var(--ease-out); transition-delay: var(--d, 0s); }
-.reveal.is-in { opacity: 1; transform: none; filter: none; }
-
-/* gallery: arched frames, like the niches of old Kurdish houses */
-.arches { width: 100%; display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(18px, 3vw, 40px); margin-top: 36px; align-items: start; }
-.arch { display: flex; flex-direction: column; align-items: center; gap: 18px; }
-.arch:nth-child(2) { margin-top: 56px; }
-.arch__frame {
-  width: 100%; aspect-ratio: 3 / 4.3; overflow: hidden;
-  border-radius: 999px 999px 4px 4px;
-  box-shadow: 0 0 0 1px var(--gold-line), 0 0 0 8px var(--ivory), 0 0 0 9px var(--gold-line), 0 30px 60px -20px rgba(60, 40, 10, .45);
-}
-.arch__frame img { width: 100%; height: 100%; object-fit: cover; transition: transform 1.6s var(--ease-out); }
-.arch:hover img { transform: scale(1.06); }
-.arch figcaption { font-style: italic; font-size: 21px; color: var(--ink-soft); }
-[dir="rtl"] .arch figcaption { font-style: normal; }
-@media (max-width: 720px) {
-  .arches { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 22px; padding: 12px 20px 20px; margin-inline: -20px; width: calc(100% + 40px); scrollbar-width: none; }
-  .arches::-webkit-scrollbar { display: none; }
-  .arch { flex: 0 0 70%; scroll-snap-align: center; }
-  .arch:nth-child(2) { margin-top: 0; }
-}
-
-/* countdown */
-.count { display: flex; justify-content: center; margin-block: 30px 34px; }
-.count div { display: flex; flex-direction: column; align-items: center; gap: 8px; padding-inline: clamp(12px, 4vw, 48px); }
-.count div + div { border-inline-start: 1px solid rgba(201, 162, 78, .35); }
-.count b {
-  font-family: "Cormorant Garamond", serif; font-weight: 300; font-size: clamp(46px, 10vw, 104px); line-height: 1;
-  font-variant-numeric: tabular-nums; color: var(--gold-hi);
-}
-.count small { font-family: var(--caps); font-size: 10.5px; letter-spacing: .3em; text-transform: uppercase; color: rgba(250, 246, 236, .65); }
-[dir="rtl"] .count small { letter-spacing: 0; font-size: 14px; }
-
-/* buttons */
-.btn {
-  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
-  padding: 17px 34px; border-radius: 1px;
-  font-family: var(--caps); font-size: 12px; letter-spacing: .26em; text-transform: uppercase;
-  transition: background .35s, color .35s, box-shadow .35s, transform .35s var(--ease-out);
-}
-[dir="rtl"] .btn { letter-spacing: 0; font-size: 16px; }
-.btn:active { transform: scale(.97); }
-.btn--outline { border: 1px solid var(--gold); color: var(--gold-hi); }
-.btn--outline:hover { background: rgba(201, 162, 78, .12); }
-.btn--gold { color: var(--em-900); background: linear-gradient(120deg, #b88f3e, #e9cf86 45%, #c9a24e); box-shadow: 0 12px 30px -10px rgba(201, 162, 78, .6); }
-.btn--gold:hover { box-shadow: 0 16px 40px -10px rgba(201, 162, 78, .8); }
-.btn--emerald { color: var(--gold-hi); background: var(--em-700); border: 1px solid var(--gold); }
-.btn--emerald:hover { background: var(--em-600); }
-
-/* details */
-.facts { width: 100%; max-width: 980px; display: grid; grid-template-columns: repeat(3, 1fr); margin-top: 30px; }
-.fact { display: flex; flex-direction: column; align-items: center; gap: 8px; padding: 18px clamp(14px, 3vw, 34px); }
-.fact + .fact { border-inline-start: 1px solid var(--gold-line); }
-.fact__main { font-weight: 600; font-size: clamp(22px, 2.6vw, 27px); color: var(--em-700); line-height: 1.25; }
-.fact__sub { font-style: italic; font-size: 18px; color: var(--ink-soft); line-height: 1.4; }
-[dir="rtl"] .fact__sub { font-style: normal; }
-@media (max-width: 760px) {
-  .facts { grid-template-columns: 1fr; }
-  .fact + .fact { border-inline-start: 0; border-top: 1px solid var(--gold-line); }
-  .fact { padding-block: 24px; }
-}
-.subtitle { margin-top: 72px; font-style: italic; font-weight: 400; font-size: clamp(30px, 4vw, 40px); color: var(--em-700); }
-[dir="rtl"] .subtitle { font-style: normal; font-weight: 700; }
-.programme { list-style: none; width: 100%; max-width: 620px; margin-top: 18px; position: relative; }
-.programme::before { content: ""; position: absolute; left: 50%; top: 22px; bottom: 22px; width: 1px; background: linear-gradient(transparent, var(--gold) 12%, var(--gold) 88%, transparent); }
-.programme li { display: grid; grid-template-columns: 1fr 44px 1fr; align-items: start; padding-block: 16px; }
-.programme time { font-family: var(--caps); font-size: 15px; letter-spacing: .12em; color: var(--gold-deep); text-align: end; padding-top: 6px; }
-.programme .dot { justify-self: center; margin-top: 10px; width: 11px; height: 11px; rotate: 45deg; background: var(--ivory); border: 1px solid var(--gold); box-shadow: 0 0 0 4px var(--ivory); position: relative; }
-.programme .dot::after { content: ""; position: absolute; inset: 2px; background: var(--gold); }
-.programme li > div { text-align: start; display: flex; flex-direction: column; gap: 2px; }
-.programme strong { font-weight: 600; font-size: 24px; color: var(--ink); }
-.programme span { font-style: italic; font-size: 17px; color: var(--ink-soft); }
-[dir="rtl"] .programme span { font-style: normal; }
-
-/* location */
-.venue { font-weight: 500; font-size: clamp(30px, 4.4vw, 46px); line-height: 1.15; color: var(--ivory); }
-.venue__addr { font-style: italic; font-size: 20px; color: rgba(250, 246, 236, .7); }
-.map {
-  position: relative; width: 100%; max-width: 940px; aspect-ratio: 16 / 8.5; margin-block: 34px 22px;
-  overflow: hidden; padding: 0;
-  box-shadow: 0 0 0 1px var(--gold), 0 0 0 9px rgba(3, 18, 13, .6), 0 0 0 10px var(--gold-line), 0 40px 80px -30px rgba(0, 0, 0, .7);
-  background: var(--diamond-bg), radial-gradient(circle at 50% 45%, rgba(201, 162, 78, .22), transparent 50%), var(--em-800);
-}
-.map iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; filter: saturate(.75) contrast(1.05) sepia(.12); }
-.map__open { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px; color: var(--gold-hi); font-family: var(--caps); font-size: 12px; letter-spacing: .28em; text-transform: uppercase; }
-.map__open svg { width: 54px; height: 54px; color: var(--gold); filter: drop-shadow(0 10px 12px rgba(0, 0, 0, .5)); animation: pin 2s ease-in-out infinite; }
-@keyframes pin { 50% { transform: translateY(-8px); } }
-@media (max-width: 600px) { .map { aspect-ratio: 4 / 3.6; } }
-
-/* RSVP reply card */
-.reply {
-  width: 100%; max-width: 580px; position: relative;
-  padding: clamp(40px, 7vw, 70px) clamp(22px, 6vw, 60px);
-  background: var(--noise), linear-gradient(170deg, #fffdf8, #f8f1e2);
-  border: 1px solid var(--gold-line); outline: 1px solid rgba(201, 162, 78, .25); outline-offset: -10px;
-  box-shadow: 0 30px 80px -24px rgba(80, 60, 20, .3);
-  display: flex; flex-direction: column; align-items: center; gap: 10px;
-}
-.reply__by { font-style: italic; font-size: 20px; color: var(--ink-soft); }
-[dir="rtl"] .reply__by { font-style: normal; }
-.form { width: 100%; display: flex; flex-direction: column; gap: 24px; margin-top: 22px; text-align: start; }
-.field { display: flex; flex-direction: column; gap: 6px; }
-.field > span { font-family: var(--caps); font-size: 10.5px; letter-spacing: .28em; text-transform: uppercase; color: var(--gold-deep); }
-[dir="rtl"] .field > span { letter-spacing: 0; font-size: 14px; }
-.field input, .field select, .field textarea {
-  width: 100%; font-family: var(--serif); font-size: 22px; color: var(--ink);
-  padding: 8px 2px 10px; border: 0; border-bottom: 1px solid rgba(43, 35, 25, .22); border-radius: 0;
-  background: transparent; outline: none; resize: vertical; transition: border-color .3s;
-  appearance: none; -webkit-appearance: none;
-}
-.field select { background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='7'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%238d6a26' stroke-width='1.2'/%3E%3C/svg%3E") no-repeat right 4px center; }
-[dir="rtl"] .field select { background-position: left 4px center; }
-.field input:focus, .field select:focus, .field textarea:focus { border-bottom-color: var(--gold); }
-.field input::placeholder, .field textarea::placeholder { color: rgba(117, 100, 76, .5); font-style: italic; }
-.choice { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-.choice label { display: flex; align-items: center; gap: 12px; padding: 14px 16px; border: 1px solid var(--gold-line); cursor: pointer; font-size: 19px; transition: background .3s, border-color .3s; }
-.choice input { position: absolute; opacity: 0; pointer-events: none; }
-.choice i { flex: none; width: 18px; height: 18px; border-radius: 50%; border: 1px solid var(--gold); display: grid; place-items: center; }
-.choice i::after { content: ""; width: 10px; height: 10px; border-radius: 50%; background: var(--gold); transform: scale(0); transition: transform .3s var(--ease-out); }
-.choice input:checked + i::after { transform: scale(1); }
-.choice label:has(input:checked) { background: rgba(201, 162, 78, .1); border-color: var(--gold); }
-.choice label:has(input:focus-visible) { outline: 1.5px solid var(--gold); outline-offset: 2px; }
-@media (max-width: 460px) { .choice { grid-template-columns: 1fr; } }
-.form .btn { margin-top: 8px; }
-.form__note { text-align: center; font-style: italic; font-size: 16px; color: var(--ink-soft); }
-
-/* footer */
-.footer { padding: 100px 20px calc(env(safe-area-inset-bottom, 0px) + 150px); display: flex; flex-direction: column; align-items: center; gap: 12px; text-align: center; }
-.footer__seal { width: 96px; height: 96px; margin-bottom: 10px; filter: drop-shadow(0 8px 10px rgba(0, 0, 0, .5)); }
-.footer__names { font-family: var(--script); font-size: clamp(48px, 8vw, 72px); line-height: 1.2; }
-[dir="rtl"] .footer__names { font-weight: 700; font-size: clamp(38px, 6vw, 54px); }
-.footer__bless { font-family: var(--arabic); font-size: 24px; color: var(--gold-hi); margin-top: 6px; }
-[dir="ltr"] .footer__bless { font-family: var(--serif); font-style: italic; }
-
-/* music: spinning gold record */
-.music {
-  position: fixed; z-index: 30; bottom: calc(env(safe-area-inset-bottom, 0px) + 18px); inset-inline-end: 18px;
-  display: flex; align-items: center; gap: 10px; flex-direction: row-reverse;
-}
-.music__disc {
-  position: relative; width: 56px; height: 56px; border-radius: 50%;
-  box-shadow: 0 0 0 1px rgba(201, 162, 78, .55), 0 12px 30px rgba(0, 0, 0, .45);
-}
-.music__disc svg { width: 100%; height: 100%; animation: spin 4.5s linear infinite; animation-play-state: paused; }
-.music.is-playing .music__disc svg { animation-play-state: running; }
-.music__disc::after {
-  content: ""; position: absolute; inset: 0; margin: auto; width: 16px; height: 16px;
-  background: var(--em-900); clip-path: polygon(20% 8%, 92% 50%, 20% 92%);
-  transition: opacity .3s;
-}
-.music.is-playing .music__disc::after { opacity: 0; }
-.music__label {
-  display: flex; flex-direction: column; align-items: flex-start; gap: 1px;
-  padding: 9px 16px; border-radius: 14px;
-  background: rgba(250, 246, 236, .9); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
-  box-shadow: 0 0 0 1px var(--gold-line), 0 12px 30px rgba(0, 0, 0, .18);
-  transition: opacity .6s, transform .6s var(--ease-out);
-}
-.music__label.is-hidden { opacity: 0; transform: translateX(12px); pointer-events: none; }
-[dir="rtl"] .music__label.is-hidden { transform: translateX(-12px); }
-.music__label small { font-family: var(--caps); font-size: 9px; letter-spacing: .28em; text-transform: uppercase; color: var(--gold-deep); }
-[dir="rtl"] .music__label small { letter-spacing: 0; font-size: 12px; }
-.music__label strong { font-style: italic; font-weight: 500; font-size: 17px; color: var(--ink); white-space: nowrap; }
-.music__add { position: relative; margin-top: 4px; font-family: var(--caps); font-size: 10px; letter-spacing: .2em; text-transform: uppercase; color: var(--em-700); border-bottom: 1px solid var(--gold); cursor: pointer; }
-.music__add input { position: absolute; inset: 0; opacity: 0; cursor: pointer; }
-.music__add[hidden] { display: none; }
-
-.toast {
-  position: fixed; z-index: 40; left: 50%; bottom: calc(env(safe-area-inset-bottom, 0px) + 96px);
-  transform: translate(-50%, 16px); opacity: 0; pointer-events: none;
-  padding: 12px 22px; background: var(--em-800); color: var(--gold-hi); border: 1px solid var(--gold);
-  font-size: 17px; font-style: italic; transition: .4s var(--ease-out); max-width: calc(100% - 32px); text-align: center;
-}
-.toast.show { opacity: 1; transform: translate(-50%, 0); }
+.mute svg { width: 20px; height: 20px; }
+.mute .off { display: none; }
+.mute.muted .off { display: block; }
+.mute.muted .on { display: none; }
+.frame.dark .mute { color: var(--rose); background: rgba(0, 0, 0, .2); box-shadow: 0 0 0 1px rgba(232, 214, 211, .25); }
+.addsong { position: absolute; z-index: 10; top: calc(env(safe-area-inset-top, 0px) + 18px); left: 14px; font-family: var(--caps); font-size: 13px; color: var(--wine-text); border-bottom: 1px solid currentColor; cursor: pointer; opacity: .75; }
+.addsong input { position: absolute; inset: 0; opacity: 0; cursor: pointer; }
+.frame.dark .addsong { color: var(--rose); }
+.addsong[hidden], .mute[hidden] { display: none; }
 
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
-  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; transition-delay: 0s !important; }
 }
 
 </style>
 
-  <!-- Shared SVG definitions -->
-  <svg class="defs" width="0" height="0" aria-hidden="true">
-    <defs>
-      <symbol id="sun" viewBox="-50 -50 100 100"><g id="sun-g" fill="currentColor"></g></symbol>
+  <div class="stage">
+    <div class="frame" id="frame">
 
-      <linearGradient id="foil" x1="0" y1="0" x2="1" y2="1">
-        <stop offset="0" stop-color="#8a6524"/><stop offset=".3" stop-color="#e6c677"/><stop offset=".5" stop-color="#fbeab3"/>
-        <stop offset=".7" stop-color="#c49a48"/><stop offset="1" stop-color="#8a6524"/>
-      </linearGradient>
+      <!-- Cream card: the pages of the invitation -->
+      <div class="card" id="card">
+        <div class="card__light" aria-hidden="true"></div>
+        <div class="pampas" id="pampas" aria-hidden="true"></div>
 
-      <!-- Kilim liner pattern (inside of the envelope) -->
-      <pattern id="kilim-liner" width="36" height="36" patternUnits="userSpaceOnUse">
-        <rect width="36" height="36" fill="#0b3a2c"/>
-        <path d="M18 2 L34 18 L18 34 L2 18 Z" fill="none" stroke="url(#foil)" stroke-width="1.3"/>
-        <path d="M18 9 L27 18 L18 27 L9 18 Z" fill="none" stroke="url(#foil)" stroke-width="1"/>
-        <path d="M18 14 L22 18 L18 22 L14 18 Z" fill="url(#foil)"/>
-        <path d="M0 0 L4 4 M36 0 L32 4 M0 36 L4 32 M36 36 L32 32" stroke="url(#foil)" stroke-width="1"/>
-      </pattern>
+        <section class="page p-invite" id="p-invite">
+          <p class="caps caps--lg" data-w="youre"></p>
+          <p class="script script--md" data-w="cordially"></p>
+          <p class="caps caps--lg" data-w="invited"></p>
+        </section>
 
-      <!-- Wax lighting: dome bevel on the blob, raised emblem, pressed disc -->
-      <radialGradient id="wax" cx="40%" cy="35%" r="70%">
-        <stop offset="0" stop-color="#c3242c"/><stop offset=".55" stop-color="#8f1119"/><stop offset="1" stop-color="#5c070d"/>
-      </radialGradient>
-      <filter id="wax-dome" x="-15%" y="-15%" width="130%" height="130%" color-interpolation-filters="sRGB">
-        <feGaussianBlur in="SourceAlpha" stdDeviation="5" result="b"/>
-        <feDiffuseLighting in="b" surfaceScale="6" diffuseConstant="1.05" lighting-color="#ffffff" result="d">
-          <feDistantLight azimuth="225" elevation="42"/>
-        </feDiffuseLighting>
-        <feComposite in="SourceGraphic" in2="d" operator="arithmetic" k1="1.25" result="lit"/>
-        <feSpecularLighting in="b" surfaceScale="6" specularConstant="1.1" specularExponent="28" lighting-color="#ffd6cf" result="s">
-          <fePointLight x="30" y="12" z="110"/>
-        </feSpecularLighting>
-        <feComposite in="s" in2="SourceAlpha" operator="in" result="s2"/>
-        <feComposite in="lit" in2="SourceAlpha" operator="in" result="lit2"/>
-        <feComposite in="lit2" in2="s2" operator="arithmetic" k2="1" k3=".75"/>
-      </filter>
-      <filter id="wax-press" x="-10%" y="-10%" width="120%" height="120%" color-interpolation-filters="sRGB">
-        <feGaussianBlur in="SourceAlpha" stdDeviation="2.4" result="b"/>
-        <feDiffuseLighting in="b" surfaceScale="-3" diffuseConstant="1" lighting-color="#ffffff" result="d">
-          <feDistantLight azimuth="225" elevation="48"/>
-        </feDiffuseLighting>
-        <feComposite in="SourceGraphic" in2="d" operator="arithmetic" k1="1.2" result="lit"/>
-        <feComposite in="lit" in2="SourceAlpha" operator="in"/>
-      </filter>
-      <filter id="wax-emboss" x="-10%" y="-10%" width="120%" height="120%" color-interpolation-filters="sRGB">
-        <feGaussianBlur in="SourceAlpha" stdDeviation=".9" result="b"/>
-        <feDiffuseLighting in="b" surfaceScale="2.4" diffuseConstant="1.1" lighting-color="#ffffff" result="d">
-          <feDistantLight azimuth="225" elevation="40"/>
-        </feDiffuseLighting>
-        <feComposite in="SourceGraphic" in2="d" operator="arithmetic" k1="1.3" result="lit"/>
-        <feSpecularLighting in="b" surfaceScale="2.4" specularConstant=".8" specularExponent="18" lighting-color="#ffc9c0" result="s">
-          <feDistantLight azimuth="225" elevation="40"/>
-        </feSpecularLighting>
-        <feComposite in="s" in2="SourceAlpha" operator="in" result="s2"/>
-        <feComposite in="lit" in2="SourceAlpha" operator="in" result="lit2"/>
-        <feComposite in="lit2" in2="s2" operator="arithmetic" k2="1" k3=".6"/>
-      </filter>
+        <section class="page p-names" id="p-names">
+          <div class="getting"><p class="caps" data-w="getting"></p><p class="caps" data-w="married"></p></div>
+          <p class="script name name--1" data-c="bride"></p>
+          <p class="amp" data-w="amp"></p>
+          <p class="script name name--2" data-c="groom"></p>
+        </section>
 
-      <!-- The complete seal artwork (filled in by script.js) -->
-      <symbol id="seal-art" viewBox="0 0 160 160"><g id="seal-g"></g></symbol>
+        <section class="page p-date" id="p-date">
+          <div class="std"><p class="script std__1" data-w="save"></p><p class="script std__2" data-w="the"></p><p class="script std__3" data-w="dateWord"></p></div>
+          <p class="caps date" data-c="date"></p>
+          <div class="venue"><p data-c="time"></p><p data-c="venue"></p><p data-c="address"></p></div>
+        </section>
 
-      <!-- Seal pieces after it cracks -->
-      <clipPath id="piece-1"><polygon points="0,0 84,0 76,34 88,66 71,96 83,126 75,160 0,160"/></clipPath>
-      <clipPath id="piece-2"><polygon points="84,0 160,0 160,88 150,90 118,82 88,66 76,34"/></clipPath>
-      <clipPath id="piece-3"><polygon points="88,66 118,82 150,90 160,88 160,160 75,160 83,126 71,96"/></clipPath>
-
-      <filter id="paper-noise" x="0" y="0" width="100%" height="100%">
-        <feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="3" stitchTiles="stitch"/>
-        <feColorMatrix values="0 0 0 0 .45  0 0 0 0 .38  0 0 0 0 .28  0 0 0 .16 0"/>
-      </filter>
-
-      <!-- Corner ornament: kilim diamonds and a stepped Kurdish border -->
-      <symbol id="corner" viewBox="0 0 80 80">
-        <g fill="none" stroke="url(#foil)" stroke-width="1.2">
-          <path d="M2 78 V2 H78"/>
-          <path d="M8 78 V8 H78" stroke-width=".6"/>
-          <path d="M8 40 h6 v-6 h6 v-6 h6 v-6 h6 v-6 h6 v-6 h6"/>
-        </g>
-        <path d="M8 14 l6 -6 l6 6 l-6 6 z M30 30 l4 -4 l4 4 l-4 4 z M20 44 l3 -3 l3 3 l-3 3 z M44 20 l3 -3 l3 3 l-3 3 z" fill="url(#foil)"/>
-      </symbol>
-    </defs>
-  </svg>
-
-  <!-- ============ The envelope ============ -->
-  <section class="scene" id="scene" aria-label="Invitation envelope">
-    <div class="scene__light" aria-hidden="true"></div>
-    <div class="scene__dust" id="dust" aria-hidden="true"></div>
-
-    <div class="scene__top">
-      <div class="langs" role="group" aria-label="Language" data-langs></div>
-    </div>
-
-    <div class="scene__stage">
-      <p class="scene__welcome">بەخێربێن</p>
-      <p class="scene__to" id="scene-to"></p>
-
-      <div class="env-tilt" id="env-tilt">
-        <div class="env" id="env">
-          <div class="env__shadow" aria-hidden="true"></div>
-          <div class="env__back" aria-hidden="true"></div>
-          <svg class="env__liner" viewBox="0 0 400 280" preserveAspectRatio="none" aria-hidden="true">
-            <path d="M8 6 H392 L200 150 Z" fill="url(#kilim-liner)"/>
-          </svg>
-
-          <!-- The invitation card inside -->
-          <div class="card" id="card">
-            <div class="card__frame">
-              <svg class="card__sun" viewBox="-50 -50 100 100" aria-hidden="true"><use href="#sun" x="-50" y="-50" width="100" height="100"/></svg>
-              <p class="card__small" data-i18n="together"></p>
-              <p class="card__names" data-bind="couple"></p>
-              <p class="card__small" data-bind="dateShort"></p>
-            </div>
-          </div>
-
-          <svg class="env__pocket" viewBox="0 0 400 280" preserveAspectRatio="none" aria-hidden="true">
-            <defs>
-              <linearGradient id="pk-l" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#efe5d1"/><stop offset="1" stop-color="#e4d6bb"/></linearGradient>
-              <linearGradient id="pk-r" x1="1" y1="0" x2="0" y2="0"><stop offset="0" stop-color="#e9dec8"/><stop offset="1" stop-color="#dccdb0"/></linearGradient>
-              <linearGradient id="pk-b" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#f4ecdb"/><stop offset="1" stop-color="#e8dcc4"/></linearGradient>
-              <filter id="fsh" x="-5%" y="-5%" width="110%" height="120%"><feGaussianBlur stdDeviation="3"/></filter>
-              <clipPath id="pk-clip"><path d="M0 0 L204 150 L0 280 Z M400 0 L196 150 L400 280 Z M0 280 L200 124 L400 280 Z"/></clipPath>
-            </defs>
-            <path d="M0 0 L204 150 L0 280 Z" fill="url(#pk-l)"/>
-            <path d="M400 0 L196 150 L400 280 Z" fill="url(#pk-r)"/>
-            <path d="M0 280 L200 124 L400 280 Z" fill="url(#pk-b)"/>
-            <path d="M0 280 L200 124 L400 280" fill="none" stroke="#b9a684" stroke-opacity=".55" stroke-width="1" vector-effect="non-scaling-stroke"/>
-            <path d="M0 0 L204 150 M400 0 L196 150" fill="none" stroke="#c7b490" stroke-opacity=".45" stroke-width="1" vector-effect="non-scaling-stroke"/>
-            <rect width="400" height="280" filter="url(#paper-noise)" clip-path="url(#pk-clip)"/>
-            <path class="pocket__flapshadow" d="M0 0 H400 L200 166 Z" fill="#4a3418" opacity=".32" filter="url(#fsh)" clip-path="url(#pk-clip)"/>
-          </svg>
-
-          <!-- Two-part flap so the paper bends as it opens -->
-          <div class="flap" id="flap">
-            <div class="flap__a" id="flap-a">
-              <div class="flap__face flap__face--out flap__a-shape"></div>
-              <div class="flap__face flap__face--in flap__a-shape"></div>
-              <div class="flap__b" id="flap-b">
-                <div class="flap__face flap__face--out flap__b-shape"></div>
-                <div class="flap__face flap__face--in flap__b-shape"></div>
-              </div>
-            </div>
-          </div>
-
-          <button class="seal" id="seal" type="button" aria-label="Break the wax seal to open">
-            <svg class="seal__whole" viewBox="0 0 160 160" aria-hidden="true"><use href="#seal-art"/>
-              <g class="seal__cracks" fill="none" stroke="#2a0306" stroke-linecap="round" stroke-linejoin="round">
-                <path class="crack crack--1" pathLength="1" d="M84 0 L76 34 L88 66 L71 96 L83 126 L75 160" stroke-width="2.2"/>
-                <path class="crack crack--2" pathLength="1" d="M88 66 L118 82 L150 90 L160 88" stroke-width="1.8"/>
-              </g>
-            </svg>
-            <span class="seal__pieces" aria-hidden="true">
-              <svg class="seal__piece" viewBox="0 0 160 160"><g clip-path="url(#piece-1)"><use href="#seal-art"/></g></svg>
-              <svg class="seal__piece" viewBox="0 0 160 160"><g clip-path="url(#piece-2)"><use href="#seal-art"/></g></svg>
-              <svg class="seal__piece" viewBox="0 0 160 160"><g clip-path="url(#piece-3)"><use href="#seal-art"/></g></svg>
-            </span>
-          </button>
-        </div>
+        <section class="page p-rsvp" id="p-rsvp">
+          <p class="script script--sm" data-w="kindly"></p>
+          <p class="caps rsvp" data-w="rsvp"></p>
+          <p class="caps taupe by" data-c="rsvpBy"></p>
+          <div class="contact"><p class="caps" data-c="rsvpName"></p><p class="caps" data-w="callOrText"></p><p class="caps" data-c="phone" dir="ltr"></p></div>
+          <p class="caps site" data-c="website"></p>
+        </section>
       </div>
 
-      <p class="scene__hint" id="scene-hint"><span data-i18n="tapSeal"></span><span class="scene__sound"> · <span data-i18n="soundOn"></span> ♪</span></p>
-    </div>
-  </section>
-
-  <!-- ============ The website ============ -->
-  <div class="site" id="site" hidden>
-    <nav class="nav" id="nav">
-      <a class="nav__mono" href="#home" data-bind="monogram" aria-label="Home"></a>
-      <div class="nav__links">
-        <a href="#story" data-i18n="navStory"></a>
-        <a href="#details" data-i18n="navDetails"></a>
-        <a href="#location" data-i18n="navLocation"></a>
+      <!-- Burgundy finale with the monogram -->
+      <div class="finale" id="finale">
+        <div class="crest" id="crest" aria-hidden="true"></div>
+        <div class="mono" aria-hidden="true"><span class="mono__1" data-c="i1"></span><span class="mono__2" data-c="i2"></span></div>
+        <nav class="actions" id="actions">
+          <a class="act" id="a-rsvp" target="_blank" rel="noopener" data-w="btnRsvp"></a>
+          <a class="act" id="a-cal" target="_blank" rel="noopener" data-w="btnCalendar"></a>
+          <a class="act" id="a-map" target="_blank" rel="noopener" data-w="btnMap"></a>
+        </nav>
+        <button class="replay" id="replay" type="button">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12a8 8 0 1 0 2.4-5.7M4 4v4.5h4.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span data-w="replay"></span>
+        </button>
       </div>
-      <div class="nav__end">
-        <div class="langs langs--nav" role="group" aria-label="Language" data-langs></div>
-        <a class="nav__rsvp" href="#rsvp" data-i18n="navRsvp"></a>
+
+      <!-- The envelope (back side, four flaps) with the wax seal -->
+      <div class="envelope" id="envelope">
+        <div class="flap flap--top" id="f-top"></div>
+        <div class="flap flap--bottom" id="f-bottom"></div>
+        <div class="flap flap--left" id="f-left"></div>
+        <div class="flap flap--right" id="f-right"></div>
+        <button class="seal" id="seal" type="button" aria-label="Open the invitation"></button>
+        <div class="intro" id="intro">
+          <p class="intro__welcome" data-w="welcome"></p>
+          <p class="intro__for" id="for-guest"></p>
+        </div>
+        <p class="hint" id="hint" data-w="tap"></p>
+        <label class="lang"><span class="sr">Language</span><select id="lang"></select></label>
       </div>
-    </nav>
 
-    <main>
-      <!-- Hero: the invitation card itself -->
-      <header class="hero paper" id="home">
-        <div class="hero__card">
-          <svg class="corner corner--tl" viewBox="0 0 80 80" aria-hidden="true"><use href="#corner"/></svg>
-          <svg class="corner corner--tr" viewBox="0 0 80 80" aria-hidden="true"><use href="#corner"/></svg>
-          <svg class="corner corner--bl" viewBox="0 0 80 80" aria-hidden="true"><use href="#corner"/></svg>
-          <svg class="corner corner--br" viewBox="0 0 80 80" aria-hidden="true"><use href="#corner"/></svg>
-
-          <svg class="hero__sun rise" viewBox="-50 -50 100 100" aria-hidden="true"><use href="#sun" x="-50" y="-50" width="100" height="100"/></svg>
-          <p class="kurdish-welcome rise">بەخێربێن</p>
-          <p class="caps rise" data-bind="families"></p>
-          <p class="caps caps--soft rise" data-i18n="together"></p>
-          <h1 class="names rise">
-            <span class="foil" data-bind="bride"></span>
-            <span class="names__amp" data-bind="amp">&amp;</span>
-            <span class="foil" data-bind="groom"></span>
-          </h1>
-          <p class="hero__honour rise" data-i18n="honour"></p>
-          <div class="diamonds rise" aria-hidden="true"><i></i><i></i><i></i></div>
-          <p class="hero__date rise" data-bind="dateLong"></p>
-          <p class="hero__time rise" data-bind="timeLine"></p>
-          <p class="caps caps--soft rise" data-bind="venueCity"></p>
-        </div>
-        <a class="scroll-cue" href="#story"><span data-i18n="scroll"></span><i></i></a>
-      </header>
-
-      <!-- Photo band with quote -->
-      <section class="band" aria-label="Quote">
-        <div class="band__img"><img id="band-img" alt="" /></div>
-        <blockquote class="band__quote reveal"><p data-i18n="quote"></p><cite data-bind="hashtag"></cite></blockquote>
-      </section>
-
-      <!-- Invitation message + gallery -->
-      <section class="section paper" id="story">
-        <div class="wrap">
-          <p class="lead reveal" data-i18n="lead"></p>
-          <div class="divider reveal" aria-hidden="true"><svg viewBox="-50 -50 100 100"><use href="#sun" x="-50" y="-50" width="100" height="100"/></svg></div>
-          <p class="eyebrow reveal" data-i18n="storyEyebrow"></p>
-          <h2 class="title reveal" data-i18n="storyTitle"></h2>
-          <div class="arches" id="gallery"></div>
-        </div>
-      </section>
-
-      <!-- Countdown -->
-      <section class="section emerald" id="countdown">
-        <div class="wrap">
-          <p class="eyebrow reveal" data-i18n="countEyebrow"></p>
-          <h2 class="title title--light reveal" data-bind="dateShort"></h2>
-          <div class="count reveal" id="count">
-            <div><b data-u="d">00</b><small data-i18n="days"></small></div>
-            <div><b data-u="h">00</b><small data-i18n="hours"></small></div>
-            <div><b data-u="m">00</b><small data-i18n="minutes"></small></div>
-            <div><b data-u="s">00</b><small data-i18n="seconds"></small></div>
-          </div>
-          <a class="btn btn--outline reveal" id="cal-link" href="#" target="_blank" rel="noopener" data-i18n="addCal"></a>
-        </div>
-      </section>
-
-      <!-- Details + programme -->
-      <section class="section paper" id="details">
-        <div class="wrap">
-          <p class="eyebrow reveal" data-i18n="detailsEyebrow"></p>
-          <h2 class="title reveal" data-i18n="detailsTitle"></h2>
-          <div class="facts">
-            <div class="fact reveal"><p class="caps" data-i18n="when"></p><p class="fact__main" data-bind="dateShort"></p><p class="fact__sub" data-bind="timeLine"></p></div>
-            <div class="fact reveal"><p class="caps" data-i18n="where"></p><p class="fact__main" data-bind="venueName"></p><p class="fact__sub" data-bind="venueAddress"></p></div>
-            <div class="fact reveal"><p class="caps" data-i18n="attire"></p><p class="fact__main" data-i18n="attireValue"></p><p class="fact__sub" data-i18n="attireNote"></p></div>
-          </div>
-          <h3 class="subtitle reveal" data-i18n="programTitle"></h3>
-          <ol class="programme" id="programme"></ol>
-        </div>
-      </section>
-
-      <!-- Location -->
-      <section class="section emerald" id="location">
-        <div class="wrap">
-          <p class="eyebrow reveal" data-i18n="locationEyebrow"></p>
-          <h2 class="title title--light reveal" data-i18n="locationTitle"></h2>
-          <p class="venue reveal" data-bind="venueName"></p>
-          <p class="venue__addr reveal" data-bind="venueAddress"></p>
-          <div class="map reveal" id="map"></div>
-          <a class="btn btn--gold reveal" id="directions" href="#" target="_blank" rel="noopener" data-i18n="directions"></a>
-        </div>
-      </section>
-
-      <!-- RSVP -->
-      <section class="section paper" id="rsvp">
-        <div class="wrap">
-          <div class="reply reveal">
-            <p class="eyebrow" data-i18n="rsvpEyebrow"></p>
-            <h2 class="title" data-i18n="rsvpTitle"></h2>
-            <p class="reply__by" data-bind="rsvpBy"></p>
-            <form class="form" id="rsvp-form" novalidate>
-              <label class="field"><span data-i18n="name"></span><input id="f-name" name="name" autocomplete="name" data-i18n-ph="namePh" required /></label>
-              <div class="choice" role="radiogroup">
-                <label><input type="radio" name="attend" id="f-yes" value="yes" checked /><i></i><span data-i18n="accept"></span></label>
-                <label><input type="radio" name="attend" id="f-no" value="no" /><i></i><span data-i18n="decline"></span></label>
-              </div>
-              <label class="field"><span data-i18n="guests"></span>
-                <select id="f-guests" name="guests"><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option></select>
-              </label>
-              <label class="field"><span data-i18n="message"></span><textarea id="f-msg" name="msg" rows="2" data-i18n-ph="messagePh"></textarea></label>
-              <a class="btn btn--emerald" id="f-send" href="#" target="_blank" rel="noopener" data-i18n="send"></a>
-              <p class="form__note" data-i18n="sendNote"></p>
-            </form>
-          </div>
-        </div>
-      </section>
-    </main>
-
-    <footer class="footer emerald">
-      <svg class="footer__seal" viewBox="0 0 160 160" aria-hidden="true"><use href="#seal-art"/></svg>
-      <p class="footer__names"><span class="foil" data-bind="couple"></span></p>
-      <p class="caps caps--light" data-bind="dateShort"></p>
-      <p class="footer__bless" data-i18n="blessing"></p>
-    </footer>
-
-    <!-- Music: a gold record that spins while playing -->
-    <div class="music" id="music">
-      <button class="music__disc" id="music-btn" type="button" aria-label="Pause music">
-        <svg viewBox="0 0 48 48" aria-hidden="true">
-          <circle cx="24" cy="24" r="23" fill="#101010"/>
-          <circle cx="24" cy="24" r="19" fill="none" stroke="#2e2e2e" stroke-width=".6"/>
-          <circle cx="24" cy="24" r="15.5" fill="none" stroke="#2e2e2e" stroke-width=".6"/>
-          <circle cx="24" cy="24" r="12" fill="none" stroke="#2e2e2e" stroke-width=".6"/>
-          <circle cx="24" cy="24" r="8.5" fill="url(#foil)"/>
-          <circle cx="24" cy="24" r="1.6" fill="#101010"/>
-          <path d="M8 16 A18 18 0 0 1 20 7" stroke="#fff" stroke-opacity=".25" stroke-width="1.4" fill="none" stroke-linecap="round"/>
+      <button class="mute" id="mute" type="button" aria-label="Mute music" hidden>
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M4 9.5h3.5L12 6v12l-4.5-3.5H4z" fill="currentColor"/>
+          <path class="on" d="M15.5 9a4 4 0 0 1 0 6M18 6.5a7.5 7.5 0 0 1 0 11" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          <path class="off" d="M16 9.5l5 5M21 9.5l-5 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
         </svg>
       </button>
-      <div class="music__label" id="music-label">
-        <small data-i18n="nowPlaying"></small>
-        <strong id="song-title"></strong>
-        <label class="music__add" id="song-add" hidden><span data-i18n="addSong"></span><input type="file" id="song-file" accept="audio/*" /></label>
-      </div>
+      <label class="addsong" id="addsong" hidden>♪ <span>Add “Perfect”</span><input type="file" id="songfile" accept="audio/*" /></label>
     </div>
-
-    <div class="toast" id="toast" role="status"></div>
   </div>
 
-  <audio id="audio" loop preload="auto"></audio>
-
+  <audio id="audio" preload="auto" loop></audio>
   <script>
-/* Interface text in every language. Couple-specific text lives in config.js. */
-window.I18N = {
-  en: {
-    label: "English", dir: "ltr", locale: "en-GB",
-    letterFor: "A letter for you", letterForName: "A letter for {name}",
-    tapSeal: "Tap the wax seal to open", soundOn: "Sound on",
-    together: "Together with their families",
-    honour: "request the honour of your presence at the celebration of their marriage",
-    at: "at",
-    scroll: "Scroll",
-    navStory: "Our Story", navDetails: "Details", navLocation: "Location", navRsvp: "RSVP",
-    lead: "With joy in our hearts and the blessing of our families, we invite you to celebrate the beginning of our forever — an evening of love, music, dîlan and govend.",
-    quote: "Two souls, one mountain path, a lifetime of sunrises.",
-    storyEyebrow: "Moments we treasure", storyTitle: "Our Story",
-    countEyebrow: "Counting down to forever",
-    days: "Days", hours: "Hours", minutes: "Minutes", seconds: "Seconds",
-    addCal: "Add to Calendar",
-    detailsEyebrow: "The celebration", detailsTitle: "Wedding Details",
-    when: "When", where: "Where", attire: "Attire",
-    attireValue: "Black tie", attireNote: "Kurdish traditional dress is warmly welcome",
-    programTitle: "Programme of the Evening",
-    locationEyebrow: "Find your way", locationTitle: "The Venue", directions: "Get Directions",
-    rsvpEyebrow: "Répondez s'il vous plaît", rsvpTitle: "Kindly Reply", rsvpBy: "Kindly reply by {date}",
-    name: "Your name", namePh: "Full name",
-    accept: "Joyfully accepts", decline: "Regretfully declines",
-    guests: "Number of guests", message: "A message for the couple", messagePh: "Optional",
-    send: "Send reply via WhatsApp", sendNote: "Opens WhatsApp with your reply written for you.",
-    nameFirst: "Please write your name first",
-    rsvpYes: "Hello! {name} joyfully accepts the invitation to {couple}'s wedding. Guests: {guests}",
-    rsvpNo: "Hello! {name} regretfully cannot attend {couple}'s wedding, but sends love and congratulations.",
-    nowPlaying: "Now playing", addSong: "Add song", musicOn: "Play music", musicOff: "Pause music",
-    welcome: "Welcome", blessing: "Congratulations",
-  },
+/* ============================================================
+   EDIT THIS FILE — all the words on the card.
+   Every text has a version per language: en (English),
+   ckb (Sorani), kmr (Kurmanji), ar (Arabic).
+   ============================================================ */
+window.CARD = {
+  defaultLang: "en", // or open the link with ?lang=ckb
 
-  ckb: {
-    label: "کوردی", dir: "rtl", locale: "ckb-IQ",
-    letterFor: "نامەیەک بۆ تۆ", letterForName: "نامەیەک بۆ {name}",
-    tapSeal: "بۆ کردنەوە دەست لە مۆرەکە بدە", soundOn: "دەنگ هەڵبکە",
-    together: "لەگەڵ خێزانەکانیان",
-    honour: "شانازی دەکەن بە بانگهێشتکردنت بۆ ئاهەنگی هاوسەرگیرییان",
-    at: "لە",
-    scroll: "خوارەوە",
-    navStory: "چیرۆکمان", navDetails: "وردەکاری", navLocation: "شوێن", navRsvp: "وەڵام",
-    lead: "بە دڵێکی پڕ لە خۆشی و بە دوعای خێزانەکانمان، بانگهێشتت دەکەین بۆ ئاهەنگی دەستپێکی ژیانی هاوبەشمان؛ ئێوارەیەک لە خۆشەویستی، مۆسیقا، دیلان و گۆڤەند.",
-    quote: "دوو دڵ، یەک ڕێگای چیا، تەمەنێک لە خۆرهەڵاتن.",
-    storyEyebrow: "ساتە جوانەکانمان", storyTitle: "چیرۆکی ئێمە",
-    countEyebrow: "بەرەو ڕۆژی خۆشی",
-    days: "ڕۆژ", hours: "کاتژمێر", minutes: "خولەک", seconds: "چرکە",
-    addCal: "زیادکردن بۆ ڕۆژژمێر",
-    detailsEyebrow: "ئاهەنگەکە", detailsTitle: "وردەکاری ئاهەنگ",
-    when: "کەی", where: "لە کوێ", attire: "جلوبەرگ",
-    attireValue: "جلی فەرمی", attireNote: "جلی کوردی بە گەرمی پێشوازی لێدەکرێت",
-    programTitle: "بەرنامەی ئێوارە",
-    locationEyebrow: "ڕێگاکەت بدۆزەرەوە", locationTitle: "شوێنی ئاهەنگ", directions: "ڕێنمایی ڕێگا",
-    rsvpEyebrow: "چاوەڕێی وەڵامتین", rsvpTitle: "تکایە وەڵام بدەرەوە", rsvpBy: "تکایە تا {date} وەڵام بدەرەوە",
-    name: "ناوت", namePh: "ناوی تەواو",
-    accept: "بە خۆشحاڵییەوە دێم", decline: "بە داخەوە ناتوانم بێم",
-    guests: "ژمارەی میوان", message: "پەیامێک بۆ بووک و زاوا", messagePh: "ئارەزوومەندانە",
-    send: "ناردنی وەڵام لە ڕێگەی واتسئاپ", sendNote: "واتسئاپ دەکاتەوە و وەڵامەکەت بۆ نووسراوە.",
-    nameFirst: "تکایە سەرەتا ناوت بنووسە",
-    rsvpYes: "سڵاو! {name} بە خۆشحاڵییەوە بەشداری ئاهەنگی هاوسەرگیری {couple} دەکات. ژمارەی میوان: {guests}",
-    rsvpNo: "سڵاو! {name} بە داخەوە ناتوانێت بەشداری ئاهەنگی {couple} بکات، بەڵام پیرۆزبایی و خۆشەویستی دەنێرێت.",
-    nowPlaying: "ئێستا لێدەدرێت", addSong: "زیادکردنی گۆرانی", musicOn: "لێدانی مۆسیقا", musicOff: "وەستاندنی مۆسیقا",
-    welcome: "بەخێربێن", blessing: "پیرۆز بێت",
-  },
+  bride: { en: "Shilan", ckb: "شیلان", kmr: "Şîlan", ar: "شيلان" },
+  groom: { en: "Aram", ckb: "ئارام", kmr: "Aram", ar: "آرام" },
+  initials: ["S", "A"], // monogram at the end
 
-  kmr: {
-    label: "Kurmancî", dir: "ltr", locale: "ku",
-    letterFor: "Nameyek ji bo te", letterForName: "Nameyek ji bo {name}",
-    tapSeal: "Ji bo vekirinê li morê bixe", soundOn: "Deng veke",
-    together: "Bi malbatên xwe re",
-    honour: "bi serbilindî te vedixwînin şahiya daweta xwe",
-    at: "li",
-    scroll: "Jêr",
-    navStory: "Çîroka Me", navDetails: "Hûrgulî", navLocation: "Cih", navRsvp: "Bersiv",
-    lead: "Bi dilekî tijî şahî û bi duaya malbatên me, em te vedixwînin şahiya destpêka jiyana me ya hevbeş — êvarek ji evîn, muzîk, dîlan û govendê.",
-    quote: "Du dil, rêyeke çiyayî, jiyanek ji rojhilatinan.",
-    storyEyebrow: "Kêliyên me yên delal", storyTitle: "Çîroka Me",
-    countEyebrow: "Ber bi roja şahiyê ve",
-    days: "Roj", hours: "Saet", minutes: "Deqe", seconds: "Çirk",
-    addCal: "Li salnameyê zêde bike",
-    detailsEyebrow: "Şahî", detailsTitle: "Hûrguliyên Dawetê",
-    when: "Kengê", where: "Li ku", attire: "Cil û berg",
-    attireValue: "Cilên fermî", attireNote: "Cilên kurdî bi germî tên pêşwazîkirin",
-    programTitle: "Bernameya Êvarê",
-    locationEyebrow: "Rêya xwe bibîne", locationTitle: "Cihê Dawetê", directions: "Rê nîşan bide",
-    rsvpEyebrow: "Em li benda bersiva te ne", rsvpTitle: "Ji kerema xwe bersiv bide", rsvpBy: "Ji kerema xwe heta {date} bersiv bide",
-    name: "Navê te", namePh: "Navê tevahî",
-    accept: "Bi kêfxweşî têm", decline: "Mixabin nikarim bêm",
-    guests: "Hejmara mêvanan", message: "Peyamek ji bo bûk û zavê", messagePh: "Bijarte",
-    send: "Bersivê bi WhatsAppê bişîne", sendNote: "WhatsApp vedibe û bersiva te amade ye.",
-    nameFirst: "Ji kerema xwe pêşî navê xwe binivîse",
-    rsvpYes: "Silav! {name} bi kêfxweşî tê daweta {couple}. Hejmara mêvanan: {guests}",
-    rsvpNo: "Silav! {name} mixabin nikare were daweta {couple}, lê evîn û pîrozbahiyê dişîne.",
-    nowPlaying: "Niha lê dide", addSong: "Stran zêde bike", musicOn: "Muzîkê lê bide", musicOff: "Muzîkê rawestîne",
-    welcome: "Bi xêr hatin", blessing: "Pîroz be",
-  },
+  // Used for "Add to calendar"
+  start: "2026-12-19T18:00:00",
+  end: "2026-12-19T23:00:00",
 
-  ar: {
-    label: "العربية", dir: "rtl", locale: "ar-IQ",
-    letterFor: "رسالة لك", letterForName: "رسالة إلى {name}",
-    tapSeal: "المس الختم لفتح الدعوة", soundOn: "شغّل الصوت",
-    together: "بمباركة عائلتيهما",
-    honour: "يتشرفان بدعوتكم لحضور حفل زفافهما",
-    at: "في",
-    scroll: "للأسفل",
-    navStory: "قصتنا", navDetails: "التفاصيل", navLocation: "الموقع", navRsvp: "تأكيد الحضور",
-    lead: "بقلوب ملؤها الفرح وبمباركة عائلتينا، ندعوكم للاحتفال ببداية حياتنا معاً؛ أمسية من الحب والموسيقى والدبكة الكردية.",
-    quote: "قلبان، ودرب جبلي واحد، وعمر من الشروق.",
-    storyEyebrow: "لحظات نعتز بها", storyTitle: "قصتنا",
-    countEyebrow: "العد التنازلي لأجمل يوم",
-    days: "يوم", hours: "ساعة", minutes: "دقيقة", seconds: "ثانية",
-    addCal: "أضف إلى التقويم",
-    detailsEyebrow: "الحفل", detailsTitle: "تفاصيل الزفاف",
-    when: "متى", where: "أين", attire: "اللباس",
-    attireValue: "لباس رسمي", attireNote: "نرحب بالزي الكردي التقليدي",
-    programTitle: "برنامج الأمسية",
-    locationEyebrow: "الطريق إلينا", locationTitle: "مكان الحفل", directions: "احصل على الاتجاهات",
-    rsvpEyebrow: "بانتظار ردكم", rsvpTitle: "يرجى تأكيد الحضور", rsvpBy: "يرجى الرد قبل {date}",
-    name: "اسمك", namePh: "الاسم الكامل",
-    accept: "يسعدني الحضور", decline: "أعتذر عن الحضور",
-    guests: "عدد الضيوف", message: "رسالة للعروسين", messagePh: "اختياري",
-    send: "أرسل الرد عبر واتساب", sendNote: "سيفتح واتساب ورسالتك جاهزة.",
-    nameFirst: "يرجى كتابة اسمك أولاً",
-    rsvpYes: "مرحباً! يسعد {name} حضور حفل زفاف {couple}. عدد الضيوف: {guests}",
-    rsvpNo: "مرحباً! يعتذر {name} عن حضور حفل زفاف {couple}، مع أطيب التهاني والمحبة.",
-    nowPlaying: "يُعزف الآن", addSong: "أضف أغنية", musicOn: "تشغيل الموسيقى", musicOff: "إيقاف الموسيقى",
-    welcome: "أهلاً وسهلاً", blessing: "مبارك",
+  // Scene 4: Save the Date
+  date: { en: "DECEMBER 19, 2026", ckb: "١٩ی کانوونی یەکەمی ٢٠٢٦", kmr: "19 KANÛN 2026", ar: "١٩ كانون الأول ٢٠٢٦" },
+  time: { en: "06:00 PM – 11:00 PM", ckb: "٦ی ئێوارە تا ١١ی شەو", kmr: "18:00 – 23:00", ar: "٦:٠٠ مساءً – ١١:٠٠ مساءً" },
+  venue: { en: "Rotana Grand Hall", ckb: "هۆڵی گەورەی ڕۆتانا", kmr: "Salona Rotana", ar: "قاعة روتانا الكبرى" },
+  address: { en: "100M STREET · ERBIL · KURDISTAN", ckb: "شەقامی ١٠٠ مەتری · هەولێر", kmr: "KOLANA 100M · HEWLÊR", ar: "شارع ١٠٠ متر · أربيل" },
+  mapQuery: "Erbil Rotana Hotel, Erbil",
+
+  // Scene 5: RSVP
+  rsvpBy: { en: "BY DECEMBER 1 TO", ckb: "تا ١ی کانوونی یەکەم بۆ", kmr: "HETA 1Ê KANÛNÊ JI BO", ar: "قبل ١ كانون الأول إلى" },
+  rsvpName: { en: "HAMA", ckb: "حەمە", kmr: "HEME", ar: "حمه" },
+  phone: "+964 750 000 0000",
+  whatsapp: "9647500000000", // digits only, used by the RSVP button
+  website: "WWW.SHILANANDARAM.COM",
+
+  // Music: "Perfect" by Ed Sheeran. The song is copyrighted, so it is not
+  // included — save your mp3 as assets/music/perfect.mp3. Until then an
+  // original piano waltz plays.
+  song: { title: "Perfect", artist: "Ed Sheeran", src: "assets/music/perfect.mp3" },
+
+  // Optional: "?to=Hama" in the link shows "For Hama" on the envelope.
+  guestName: "",
+
+  /* ---- Fixed words of the card, per language ---- */
+  words: {
+    en: {
+      dir: "ltr", label: "English",
+      tap: "Tap to open", welcome: "بەخێربێن",
+      youre: "YOU'RE", cordially: "cordially", invited: "INVITED",
+      getting: "WE'RE GETTING", married: "MARRIED", amp: "&",
+      save: "Save", the: "the", dateWord: "Date",
+      kindly: "kindly", rsvp: "RSVP", callOrText: "CALL OR TEXT",
+      forGuest: "For {name}",
+      btnRsvp: "RSVP", btnCalendar: "Add to calendar", btnMap: "Directions", replay: "Watch again",
+      rsvpMsg: "Hello! I'd love to confirm my attendance at {couple}'s wedding.",
+    },
+    ckb: {
+      dir: "rtl", label: "کوردی",
+      tap: "بۆ کردنەوە دەستی لێبدە", welcome: "بەخێربێن",
+      youre: "بە خۆشحاڵییەوە", cordially: "بانگهێشتی", invited: "ئاهەنگەکەمان دەکەین",
+      getting: "ئێمە", married: "هاوسەرگیری دەکەین", amp: "و",
+      save: "ئەم", the: "ڕۆژە", dateWord: "بپارێزە",
+      kindly: "تکایە", rsvp: "وەڵام بدەرەوە", callOrText: "پەیوەندی یان نامە",
+      forGuest: "بۆ {name}",
+      btnRsvp: "وەڵام", btnCalendar: "ڕۆژژمێر", btnMap: "ڕێگا", replay: "دووبارە ببینە",
+      rsvpMsg: "سڵاو! بە خۆشحاڵییەوە بەشداری ئاهەنگی هاوسەرگیری {couple} دەکەم.",
+    },
+    kmr: {
+      dir: "ltr", label: "Kurmancî",
+      tap: "Ji bo vekirinê bitikîne", welcome: "Bi xêr hatin",
+      youre: "HÛN", cordially: "bi dilgermî", invited: "VEXWENDÎ NE",
+      getting: "EM", married: "DIZEWICIN", amp: "û",
+      save: "Vê", the: "rojê", dateWord: "biparêze",
+      kindly: "ji kerema xwe", rsvp: "BERSIV", callOrText: "BIGERE AN BINIVÎSE",
+      forGuest: "Ji bo {name}",
+      btnRsvp: "Bersiv", btnCalendar: "Salname", btnMap: "Rê", replay: "Dîsa temaşe bike",
+      rsvpMsg: "Silav! Ez bi kêfxweşî têm daweta {couple}.",
+    },
+    ar: {
+      dir: "rtl", label: "العربية",
+      tap: "المس لفتح الدعوة", welcome: "أهلاً وسهلاً",
+      youre: "يسعدنا", cordially: "دعوتكم", invited: "لحضور حفلنا",
+      getting: "نحن", married: "سنتزوج", amp: "و",
+      save: "احفظوا", the: "هذا", dateWord: "التاريخ",
+      kindly: "نرجو", rsvp: "تأكيد الحضور", callOrText: "اتصال أو رسالة",
+      forGuest: "إلى {name}",
+      btnRsvp: "تأكيد", btnCalendar: "التقويم", btnMap: "الموقع", replay: "شاهد مجدداً",
+      rsvpMsg: "مرحباً! يسعدني تأكيد حضوري حفل زفاف {couple}.",
+    },
   },
 };
 
 </script>
   <script>
-/* ============================================================
-   EDIT THIS FILE — everything personal on the invitation.
-   Each text has a version per language: en, ckb (Sorani),
-   kmr (Kurmanji), ar (Arabic).
-   ============================================================ */
-window.WEDDING = {
-  defaultLang: "en",
+/* Procedural artwork for the card, drawn as SVG so it is original and sharp:
+   embossed floral envelope flaps, embossed pampas grass, a baroque monogram
+   frame and a gold wax seal with a dove. Everything uses a 540×960 canvas. */
+window.ART = (() => {
+  const W = 540, H = 960;
+  const f = (n) => n.toFixed(1);
+  const rng = (seed) => () => ((seed = (seed * 16807) % 2147483647) - 1) / 2147483646;
 
-  bride: { en: "Shilan", ckb: "شیلان", kmr: "Şîlan", ar: "شيلان" },
-  groom: { en: "Aram", ckb: "ئارام", kmr: "Aram", ar: "آرام" },
-  initials: "S A", // shown on the wax seal and monogram
+  /* ---------- shared filters ---------- */
+  // Raised relief: a light edge up-left, a shadow down-right, the face on top.
+  const emboss = (id, face, light, dark, depth = 1.2, soft = 0.7) => `
+    <filter id="${id}" x="-5%" y="-5%" width="110%" height="110%" color-interpolation-filters="sRGB">
+      <feOffset in="SourceAlpha" dx="${-depth}" dy="${-depth}" result="o1"/>
+      <feGaussianBlur in="o1" stdDeviation="${soft}" result="b1"/>
+      <feFlood flood-color="${light}"/><feComposite in2="b1" operator="in" result="hi"/>
+      <feOffset in="SourceAlpha" dx="${depth * 1.3}" dy="${depth * 1.5}" result="o2"/>
+      <feGaussianBlur in="o2" stdDeviation="${soft * 1.4}" result="b2"/>
+      <feFlood flood-color="${dark}"/><feComposite in2="b2" operator="in" result="sh"/>
+      <feFlood flood-color="${face}"/><feComposite in2="SourceAlpha" operator="in" result="fa"/>
+      <feMerge><feMergeNode in="sh"/><feMergeNode in="hi"/><feMergeNode in="fa"/></feMerge>
+    </filter>`;
+  // Engraved lines: the reverse (shadow up-left, light down-right).
+  const engrave = (id, face, light, dark) => emboss(id, face, dark, light, 0.7, 0.4);
+  const grain = (id, a = 0.14, freq = 0.9) => `
+    <filter id="${id}" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="${freq}" numOctaves="3" stitchTiles="stitch" seed="3"/>
+      <feColorMatrix values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 ${a} 0"/>
+    </filter>`;
 
-  families: {
-    en: "The families of Ahmed & Karim",
-    ckb: "خێزانەکانی ئەحمەد و کەریم",
-    kmr: "Malbatên Ehmed û Kerîm",
-    ar: "عائلتا أحمد وكريم",
-  },
+  /* ---------- botanical shapes ---------- */
+  function petal(cx, cy, r, a, w = 0.42) {
+    const tip = [cx + Math.cos(a) * r, cy + Math.sin(a) * r];
+    const c1 = [cx + Math.cos(a - w) * r * 0.95, cy + Math.sin(a - w) * r * 0.95];
+    const c2 = [cx + Math.cos(a + w) * r * 0.95, cy + Math.sin(a + w) * r * 0.95];
+    const k1 = [cx + Math.cos(a - w * 1.1) * r * 0.35, cy + Math.sin(a - w * 1.1) * r * 0.35];
+    const k2 = [cx + Math.cos(a + w * 1.1) * r * 0.35, cy + Math.sin(a + w * 1.1) * r * 0.35];
+    return `M${f(cx)} ${f(cy)} C${f(k1[0])} ${f(k1[1])} ${f(c1[0])} ${f(c1[1])} ${f(tip[0])} ${f(tip[1])} C${f(c2[0])} ${f(c2[1])} ${f(k2[0])} ${f(k2[1])} ${f(cx)} ${f(cy)}Z`;
+  }
+  function flower(cx, cy, r, rot, n, R) {
+    let raised = "", lines = "";
+    for (let i = 0; i < n; i++) {
+      const a = rot + (i / n) * Math.PI * 2;
+      raised += `<path d="${petal(cx, cy, r, a)}"/>`;
+      // petal veins
+      for (const off of [-0.18, 0, 0.18]) {
+        const a2 = a + off;
+        lines += `<path d="M${f(cx + Math.cos(a2) * r * 0.3)} ${f(cy + Math.sin(a2) * r * 0.3)} Q${f(cx + Math.cos(a + off * 0.5) * r * 0.6)} ${f(cy + Math.sin(a + off * 0.5) * r * 0.6)} ${f(cx + Math.cos(a2) * r * 0.82)} ${f(cy + Math.sin(a2) * r * 0.82)}"/>`;
+      }
+    }
+    raised += `<circle cx="${f(cx)}" cy="${f(cy)}" r="${f(r * 0.2)}"/>`;
+    for (let i = 0; i < 10; i++) { const a = (i / 10) * Math.PI * 2 + R(); lines += `<circle cx="${f(cx + Math.cos(a) * r * 0.12)}" cy="${f(cy + Math.sin(a) * r * 0.12)}" r="1"/>`; }
+    return { raised, lines };
+  }
+  function leaf(x, y, len, wid, a) {
+    const tx = x + Math.cos(a) * len, ty = y + Math.sin(a) * len;
+    const nx = -Math.sin(a) * wid, ny = Math.cos(a) * wid;
+    const mx = x + Math.cos(a) * len * 0.45, my = y + Math.sin(a) * len * 0.45;
+    const raised = `<path d="M${f(x)} ${f(y)} Q${f(mx + nx)} ${f(my + ny)} ${f(tx)} ${f(ty)} Q${f(mx - nx)} ${f(my - ny)} ${f(x)} ${f(y)}Z"/>`;
+    let lines = `<path d="M${f(x)} ${f(y)} L${f(tx)} ${f(ty)}"/>`;
+    for (let k = 1; k < 5; k++) {
+      const t = k / 5, px = x + (tx - x) * t, py = y + (ty - y) * t, s = wid * 0.55 * Math.sin(Math.PI * t) + 1;
+      lines += `<path d="M${f(px)} ${f(py)} l${f(nx / wid * s + Math.cos(a) * s)} ${f(ny / wid * s + Math.sin(a) * s)} M${f(px)} ${f(py)} l${f(-nx / wid * s + Math.cos(a) * s)} ${f(-ny / wid * s + Math.sin(a) * s)}"/>`;
+    }
+    return { raised, lines };
+  }
+  function bezierPt(p, t) {
+    const u = 1 - t;
+    return [u ** 3 * p[0][0] + 3 * u * u * t * p[1][0] + 3 * u * t * t * p[2][0] + t ** 3 * p[3][0],
+      u ** 3 * p[0][1] + 3 * u * u * t * p[1][1] + 3 * u * t * t * p[2][1] + t ** 3 * p[3][1]];
+  }
+  // a flowering vine along a cubic curve
+  function sprig(pts, R, { flowers = [], leaves = 12, buds = 3, scale: sc = 1 } = {}) {
+    const scale = sc * 1.45;
+    let stems = `<path d="M${pts[0]} C${pts[1]} ${pts[2]} ${pts[3]}" fill="none" stroke-width="${2.6 * scale}"/>`;
+    let raised = "", lines = "";
+    for (let i = 0; i < leaves; i++) {
+      const t = 0.08 + (i / leaves) * 0.85;
+      const [x, y] = bezierPt(pts, t), [x2, y2] = bezierPt(pts, t + 0.01);
+      const dir = Math.atan2(y2 - y, x2 - x), side = i % 2 ? 1 : -1;
+      const a = dir + side * (0.7 + R() * 0.5);
+      const L = (22 + R() * 16) * scale;
+      // little stalk + leaf
+      const sx = x + Math.cos(a) * 6 * scale, sy = y + Math.sin(a) * 6 * scale;
+      stems += `<path d="M${f(x)} ${f(y)} L${f(sx)} ${f(sy)}" fill="none" stroke-width="${1.4 * scale}"/>`;
+      const l = leaf(sx, sy, L, L * 0.28, a);
+      raised += l.raised; lines += l.lines;
+    }
+    for (let i = 0; i < buds; i++) {
+      const t = 0.2 + R() * 0.7;
+      const [x, y] = bezierPt(pts, t);
+      const a = -Math.PI / 2 + (R() - 0.5) * 1.6, L = (14 + R() * 10) * scale;
+      const bx = x + Math.cos(a) * L, by = y + Math.sin(a) * L;
+      stems += `<path d="M${f(x)} ${f(y)} Q${f(x + Math.cos(a + 0.4) * L * 0.5)} ${f(y + Math.sin(a + 0.4) * L * 0.5)} ${f(bx)} ${f(by)}" fill="none" stroke-width="${1.2 * scale}"/>`;
+      raised += `<ellipse cx="${f(bx)}" cy="${f(by)}" rx="${f(3.6 * scale)}" ry="${f(5.4 * scale)}" transform="rotate(${f(a * 57.3 + 90)} ${f(bx)} ${f(by)})"/>`;
+    }
+    flowers.forEach(([t, r, n]) => {
+      const [x, y] = bezierPt(pts, t);
+      const fl = flower(x, y, r * sc * 1.25, R() * 6, n || 6, R);
+      raised += fl.raised; lines += fl.lines;
+    });
+    return { stems, raised, lines };
+  }
+  function florals(list, seed) {
+    const R = rng(seed);
+    const parts = list.map((s) => sprig(s.pts, R, s));
+    return {
+      stems: parts.map((p) => p.stems).join(""),
+      raised: parts.map((p) => p.raised).join(""),
+      lines: parts.map((p) => p.lines).join(""),
+    };
+  }
 
-  // Ceremony date and time (venue local time)
-  date: "2026-12-19T18:00:00",
-  rsvpBy: "2026-12-01",
+  /* ---------- envelope flaps ---------- */
+  const flapShapes = {
+    top: "M-10 -10 H550 L286 438 Q270 462 254 438 Z",
+    bottom: "M-10 970 H550 L292 530 Q270 500 248 530 Z",
+    left: "M-10 -10 L250 452 Q270 482 250 512 L-10 970 Z",
+    right: "M550 -10 L290 452 Q270 482 290 512 L550 970 Z",
+  };
+  const flapFlorals = {
+    top: [
+      { pts: [[300, 40], [340, 120], [420, 110], [470, 200]], flowers: [[0.55, 34, 6], [0.98, 20, 5]], leaves: 10 },
+      { pts: [[60, 20], [120, 90], [140, 150], [210, 210]], flowers: [[1, 18, 5]], leaves: 8, scale: 0.8 },
+    ],
+    bottom: [
+      { pts: [[120, 960], [170, 880], [230, 850], [330, 800]], flowers: [[0.35, 36, 6], [0.9, 22, 5]], leaves: 10 },
+      { pts: [[400, 960], [420, 900], [470, 880], [520, 820]], flowers: [[0.7, 20, 5]], leaves: 7, scale: 0.8 },
+    ],
+    left: [
+      { pts: [[30, 960], [80, 760], [10, 520], [90, 250]], flowers: [[0.18, 44, 6], [0.95, 40, 6]], leaves: 18, buds: 5 },
+      { pts: [[90, 320], [150, 360], [170, 420], [230, 470]], flowers: [], leaves: 7, scale: 0.8 },
+      { pts: [[40, 180], [60, 120], [40, 80], [80, 20]], flowers: [[0.9, 18, 5]], leaves: 6, scale: 0.8 },
+    ],
+    right: [
+      { pts: [[520, 960], [470, 780], [540, 560], [470, 300]], flowers: [[0.2, 30, 6], [0.55, 38, 6], [0.95, 40, 6]], leaves: 18, buds: 5 },
+      { pts: [[460, 700], [420, 690], [380, 640], [330, 620]], flowers: [[1, 22, 5]], leaves: 6, scale: 0.8 },
+      { pts: [[500, 200], [480, 150], [510, 90], [480, 30]], flowers: [], leaves: 7, scale: 0.8 },
+    ],
+  };
+  function flap(which) {
+    const shade = { top: "#6f1f2c", bottom: "#65182a", left: "#72202e", right: "#6c1d2b" }[which];
+    const fl = florals(flapFlorals[which], { top: 11, bottom: 23, left: 37, right: 53 }[which]);
+    const id = `fl-${which}`;
+    return `<svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+      <defs>
+        ${emboss(`${id}-e`, shade, "#9a4050", "#2e0710", 1.3, 0.8)}
+        ${engrave(`${id}-g`, shade, "#9a4050", "#2e0710")}
+        ${grain(`${id}-n`, 0.22, 0.95)}
+        <clipPath id="${id}-c"><path d="${flapShapes[which]}"/></clipPath>
+        <pattern id="${id}-p" width="3" height="3" patternUnits="userSpaceOnUse"><path d="M0 0 V3" stroke="#000" stroke-opacity=".06" stroke-width="1"/></pattern>
+      </defs>
+      <g clip-path="url(#${id}-c)">
+        <path d="${flapShapes[which]}" fill="${shade}"/>
+        <rect width="${W}" height="${H}" fill="url(#${id}-p)"/>
+        <rect width="${W}" height="${H}" filter="url(#${id}-n)"/>
+        <g filter="url(#${id}-e)" fill="#000" stroke="#000" stroke-linecap="round">${fl.stems}<g stroke="none">${fl.raised}</g></g>
+        <g filter="url(#${id}-g)" fill="none" stroke="#000" stroke-width=".9" stroke-linecap="round">${fl.lines}</g>
+      </g>
+      <path d="${flapShapes[which]}" fill="none" stroke="#a24a58" stroke-opacity=".45" stroke-width="1.2"/>
+    </svg>`;
+  }
 
-  venue: {
-    name: { en: "Rotana Grand Hall", ckb: "هۆڵی گەورەی ڕۆتانا", kmr: "Salona Mezin a Rotana", ar: "قاعة روتانا الكبرى" },
-    city: { en: "Erbil, Kurdistan", ckb: "هەولێر، کوردستان", kmr: "Hewlêr, Kurdistan", ar: "أربيل، كردستان" },
-    address: { en: "100m Street, Erbil", ckb: "شەقامی ١٠٠ مەتری، هەولێر", kmr: "Kolana 100m, Hewlêr", ar: "شارع ١٠٠ متر، أربيل" },
-    mapQuery: "Erbil Rotana Hotel, Erbil",
-  },
-  mapEmbed: true, // live Google map on the real website
+  /* ---------- pampas grass (cream on cream) ---------- */
+  function pampas(seed = 5) {
+    const R = rng(seed);
+    let stems = "", plumes = "";
+    const count = 7;
+    for (let s = 0; s < count; s++) {
+      const x0 = 10 + s * 22 + R() * 14, y0 = 975;
+      const h = 380 + R() * 280, lean = 30 + s * 26 + R() * 30;
+      const pts = [[x0, y0], [x0 + lean * 0.2, y0 - h * 0.4], [x0 + lean * 0.6, y0 - h * 0.75], [x0 + lean, y0 - h]];
+      stems += `<path d="M${pts[0]} C${pts[1]} ${pts[2]} ${pts[3]}" fill="none" stroke-width="${2.2 + R()}"/>`;
+      const plumeFrom = 0.55 + R() * 0.12;
+      const n = 46 + Math.floor(R() * 20);
+      for (let i = 0; i < n; i++) {
+        const t = plumeFrom + (i / n) * (1 - plumeFrom);
+        const [x, y] = bezierPt(pts, t), [x2, y2] = bezierPt(pts, Math.min(1, t + 0.01));
+        const dir = Math.atan2(y2 - y, x2 - x);
+        const side = i % 2 ? 1 : -1;
+        const taper = Math.sin(Math.PI * Math.min(1, (t - plumeFrom) / (1 - plumeFrom)) * 0.9 + 0.2);
+        const a = dir + side * (0.35 + R() * 0.3);
+        const L = (16 + R() * 18) * taper + 6;
+        const tx = x + Math.cos(a) * L, ty = y + Math.sin(a) * L;
+        const cx = x + Math.cos(a + side * 0.25) * L * 0.6, cy = y + Math.sin(a + side * 0.25) * L * 0.6;
+        plumes += `<path d="M${f(x)} ${f(y)} Q${f(cx)} ${f(cy)} ${f(tx)} ${f(ty)}" stroke-width="${f(2.2 + R() * 1.8)}"/>`;
+      }
+    }
+    // a few long grass blades
+    for (let b = 0; b < 4; b++) {
+      const x0 = 30 + b * 40, h = 220 + R() * 160, lean = 60 + R() * 80;
+      plumes += `<path d="M${f(x0)} 975 Q${f(x0 + lean * 0.3)} ${f(975 - h * 0.6)} ${f(x0 + lean)} ${f(975 - h)} Q${f(x0 + lean * 0.4)} ${f(975 - h * 0.55)} ${f(x0 + 7)} 975Z" fill="#000" stroke="none"/>`;
+    }
+    return `<svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMinYMax slice" aria-hidden="true">
+      <defs>${emboss("pampas-e", "#e3d9ca", "#fffaf1", "#a89a86", 1.4, 1)}</defs>
+      <g filter="url(#pampas-e)" fill="none" stroke="#000" stroke-linecap="round">${stems}${plumes}</g>
+    </svg>`;
+  }
 
-  program: [
-    { time: "18:00", title: { en: "Guests Arrive", ckb: "گەیشتنی میوانان", kmr: "Hatina mêvanan", ar: "وصول الضيوف" },
-      note: { en: "Welcome drinks & zurna", ckb: "خواردنەوە و زوڕنا", kmr: "Vexwarin û zirne", ar: "مشروبات الترحيب والزرنة" } },
-    { time: "19:00", title: { en: "The Grand Entrance", ckb: "هاتنی بووک و زاوا", kmr: "Hatina bûk û zavê", ar: "دخول العروسين" },
-      note: { en: "Bride & groom arrive", ckb: "بووک و زاوا دێنە هۆڵەکە", kmr: "Bûk û zava tên salonê", ar: "يدخل العروسان القاعة" } },
-    { time: "19:30", title: { en: "Dîlan & Govend", ckb: "دیلان و گۆڤەند", kmr: "Dîlan û Govend", ar: "الدبكة الكردية" },
-      note: { en: "Join the halparke circle", ckb: "بەشداری هەڵپەڕکێ بکە", kmr: "Tev li govendê bibe", ar: "انضموا إلى حلقة الرقص" } },
-    { time: "21:00", title: { en: "Dinner", ckb: "نانی ئێوارە", kmr: "Şîva êvarê", ar: "العشاء" },
-      note: { en: "A traditional Kurdish feast", ckb: "خوانێکی کوردی ڕەسەن", kmr: "Sifreyeke kurdî ya kevneşopî", ar: "مأدبة كردية تقليدية" } },
-  ],
+  /* ---------- baroque monogram frame ---------- */
+  function spiral(cx, cy, r0, turns, dir = 1, start = 0) {
+    const pts = [];
+    const steps = 40 * turns;
+    for (let i = 0; i <= steps; i++) {
+      const t = i / steps, th = start + dir * t * turns * Math.PI * 2, r = r0 * (1 - t * 0.85);
+      pts.push([cx + Math.cos(th) * r, cy + Math.sin(th) * r]);
+    }
+    return `M${pts.map((p) => `${f(p[0])} ${f(p[1])}`).join(" L")}`;
+  }
+  function acanthus(p0, p1, p2, p3, lobes, side, size) {
+    // a scalloped leaf along a curve: outer edge bumps out, inner edge follows the curve
+    const n = lobes * 8, outer = [], inner = [];
+    for (let i = 0; i <= n; i++) {
+      const t = i / n, [x, y] = bezierPt([p0, p1, p2, p3], t), [x2, y2] = bezierPt([p0, p1, p2, p3], Math.min(1, t + 0.01));
+      const a = Math.atan2(y2 - y, x2 - x) + (side * Math.PI) / 2;
+      const w = size * Math.sin(Math.PI * t) * (0.55 + 0.45 * Math.abs(Math.sin(t * lobes * Math.PI)));
+      outer.push([x + Math.cos(a) * w, y + Math.sin(a) * w]);
+      inner.push([x, y]);
+    }
+    const pts = outer.concat(inner.reverse());
+    return `M${pts.map((p) => `${f(p[0])} ${f(p[1])}`).join(" L")}Z`;
+  }
+  function frameHalf() {
+    // right half of the frame, centred on (270, 480); mirrored for the left half
+    let fill = "", stroke = "";
+    // outer scroll from the top crest down the shoulder
+    stroke += `<path d="M285 318 C330 300 380 300 395 340 C405 370 380 392 360 380 C345 370 352 350 368 352"/>`;
+    stroke += `<path d="${spiral(362, 364, 14, 1.4, -1, 0.5)}"/>`;
+    fill += `<path d="${acanthus([282, 328], [320, 312], [360, 318], [380, 350], 4, -1, 12)}"/>`;
+    // right side: long C-scrolls
+    stroke += `<path d="M392 380 C418 420 418 470 404 500 C396 520 404 540 420 548"/>`;
+    stroke += `<path d="${spiral(418, 556, 12, 1.3, 1, -1.2)}"/>`;
+    stroke += `<path d="M404 500 C430 520 432 560 416 590 C404 612 406 640 420 660"/>`;
+    fill += `<path d="${acanthus([396, 395], [420, 430], [420, 470], [404, 505], 3, 1, 9)}"/>`;
+    fill += `<path d="${acanthus([410, 560], [430, 580], [428, 620], [412, 648], 3, 1, 8)}"/>`;
+    // lower shoulder scroll into the bottom crest
+    stroke += `<path d="M420 660 C404 690 370 700 340 690 C320 684 318 662 334 658 C346 656 350 670 340 674"/>`;
+    stroke += `<path d="${spiral(336, 666, 11, 1.3, 1, 2)}"/>`;
+    fill += `<path d="${acanthus([408, 676], [380, 700], [330, 712], [290, 700], 4, 1, 11)}"/>`;
+    // beads along the inner oval
+    for (let i = 0; i < 9; i++) {
+      const a = -Math.PI / 2 + ((i + 1) / 10) * Math.PI;
+      fill += `<circle cx="${f(270 + Math.cos(a) * 112)}" cy="${f(480 + Math.sin(a) * 158)}" r="2.2"/>`;
+    }
+    return { fill, stroke };
+  }
+  function crest(y, flip) {
+    const s = flip ? -1 : 1;
+    const g = (d) => `<path d="${d}"/>`;
+    return `<g transform="translate(270 ${y}) scale(1 ${s})">
+      ${g("M0 -46 C10 -30 12 -14 0 0 C-12 -14 -10 -30 0 -46Z")}
+      ${g("M0 -8 C18 -22 38 -18 40 -2 C41 10 30 14 24 6 C20 0 26 -6 30 -2")}
+      ${g("M0 -8 C-18 -22 -38 -18 -40 -2 C-41 10 -30 14 -24 6 C-20 0 -26 -6 -30 -2")}
+      ${g("M-14 6 H14 L10 14 H-10Z")}
+      <circle cx="0" cy="-52" r="4"/><circle cx="0" cy="22" r="3"/>
+      ${g("M-6 -30 L0 -22 L6 -30")}
+    </g>`;
+  }
+  function baroqueFrame(color = "#E8D6D3") {
+    const half = frameHalf();
+    const part = `<g fill="${color}" stroke="none">${half.fill}</g><g fill="none" stroke="${color}" stroke-width="3.2" stroke-linecap="round">${half.stroke}</g>`;
+    return `<svg viewBox="100 236 340 510" aria-hidden="true">
+      <defs><filter id="frame-sh"><feDropShadow dx="1" dy="2" stdDeviation="1.4" flood-color="#1d0409" flood-opacity=".7"/></filter></defs>
+      <g filter="url(#frame-sh)">
+        <ellipse cx="270" cy="480" rx="122" ry="168" fill="none" stroke="${color}" stroke-width="3"/>
+        <ellipse cx="270" cy="480" rx="114" ry="160" fill="none" stroke="${color}" stroke-width="1"/>
+        ${part}
+        <g transform="translate(540 0) scale(-1 1)">${part}</g>
+        <g fill="${color}" stroke="none">${crest(300, false)}${crest(662, true)}</g>
+      </g>
+    </svg>`;
+  }
 
-  // Photos (portrait photos look best). Replace the placeholders with your own.
-  cover: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNjAwIDEwMDAiIHByZXNlcnZlQXNwZWN0UmF0aW89InhNaWRZTWlkIHNsaWNlIj4KICAKICA8ZGVmcz4KICAgIDxmaWx0ZXIgaWQ9ImJsdXIiIHg9Ii0yMCUiIHk9Ii0yMCUiIHdpZHRoPSIxNDAlIiBoZWlnaHQ9IjE0MCUiPjxmZUdhdXNzaWFuQmx1ciBzdGREZXZpYXRpb249IjE4Ii8+PC9maWx0ZXI+CiAgICA8ZmlsdGVyIGlkPSJibHVyMiIgeD0iLTIwJSIgeT0iLTIwJSIgd2lkdGg9IjE0MCUiIGhlaWdodD0iMTQwJSI+PGZlR2F1c3NpYW5CbHVyIHN0ZERldmlhdGlvbj0iNiIvPjwvZmlsdGVyPgogICAgPGZpbHRlciBpZD0ic29mdCI+PGZlR2F1c3NpYW5CbHVyIHN0ZERldmlhdGlvbj0iMTQiLz48L2ZpbHRlcj4KICAgIDxmaWx0ZXIgaWQ9ImdyYWluIj48ZmVUdXJidWxlbmNlIHR5cGU9ImZyYWN0YWxOb2lzZSIgYmFzZUZyZXF1ZW5jeT0iLjkiIG51bU9jdGF2ZXM9IjIiIHN0aXRjaFRpbGVzPSJzdGl0Y2giLz48ZmVDb2xvck1hdHJpeCB2YWx1ZXM9IjAgMCAwIDAgMSAgMCAwIDAgMCAuOSAgMCAwIDAgMCAuNyAgMCAwIDAgLjA2IDAiLz48L2ZpbHRlcj4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0iZ29sZCIgeDE9IjAiIHkxPSIwIiB4Mj0iMSIgeTI9IjEiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiM3YTVhMWUiLz48c3RvcCBvZmZzZXQ9Ii4yNSIgc3RvcC1jb2xvcj0iI2U5Yzg3OCIvPjxzdG9wIG9mZnNldD0iLjQ1IiBzdG9wLWNvbG9yPSIjZmZmMWMyIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iLjYiIHN0b3AtY29sb3I9IiNjNzlhNDUiLz48c3RvcCBvZmZzZXQ9Ii44IiBzdG9wLWNvbG9yPSIjOGE2NDIwIi8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjZTJiZjZlIi8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogICAgPGxpbmVhckdyYWRpZW50IGlkPSJkaWFtb25kIiB4MT0iMCIgeTE9IjAiIHgyPSIxIiB5Mj0iMSI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjZmZmZmZmIi8+PHN0b3Agb2Zmc2V0PSIuNSIgc3RvcC1jb2xvcj0iI2NmZTZmZiIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzhmYjZkOSIvPjwvbGluZWFyR3JhZGllbnQ+CiAgICA8Y2xpcFBhdGggaWQ9Im92ZXIiPjxyZWN0IHg9IjgwMCIgeT0iMjc0LjI4NTcxNDI4NTcxNDMiIHdpZHRoPSI4NS43MTQyODU3MTQyODU3MiIgaGVpZ2h0PSIyODUuNzE0Mjg1NzE0Mjg1NyIvPjwvY2xpcFBhdGg+CiAgICA8cmFkaWFsR3JhZGllbnQgaWQ9Imdsb3ciIGN4PSI1MCUiIGN5PSI1NSUiIHI9IjYwJSI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjZjZjODcyIiBzdG9wLW9wYWNpdHk9Ii41NSIvPjxzdG9wIG9mZnNldD0iLjUiIHN0b3AtY29sb3I9IiNiODc1MmEiIHN0b3Atb3BhY2l0eT0iLjE1Ii8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjMDAwIiBzdG9wLW9wYWNpdHk9IjAiLz48L3JhZGlhbEdyYWRpZW50PgogIDwvZGVmcz4KICA8bGluZWFyR3JhZGllbnQgaWQ9ImJnIiB4MT0iMCIgeTE9IjAiIHgyPSIwIiB5Mj0iMSI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjMDYyMzFhIi8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjMGIxNzEyIi8+PC9saW5lYXJHcmFkaWVudD4KICA8cmVjdCB3aWR0aD0iMTYwMCIgaGVpZ2h0PSIxMDAwIiBmaWxsPSJ1cmwoI2JnKSIvPgogIDxyZWN0IHdpZHRoPSIxNjAwIiBoZWlnaHQ9IjEwMDAiIGZpbGw9InVybCgjZ2xvdykiLz4KICA8ZyBmaWx0ZXI9InVybCgjYmx1cikiPjxjaXJjbGUgY3g9Ijg5NyIgY3k9IjEwNCIgcj0iOTkiIGZpbGw9IiNmM2NmN2EiIGZpbGwtb3BhY2l0eT0iMC40NyIvPjxjaXJjbGUgY3g9IjEyNiIgY3k9Ijc5MSIgcj0iMTAwIiBmaWxsPSIjZDk5YTNlIiBmaWxsLW9wYWNpdHk9IjAuNDYiLz48Y2lyY2xlIGN4PSIxMjUwIiBjeT0iNTkyIiByPSI4MCIgZmlsbD0iI2YzY2Y3YSIgZmlsbC1vcGFjaXR5PSIwLjUwIi8+PGNpcmNsZSBjeD0iMTA3NSIgY3k9IjE0MiIgcj0iNzUiIGZpbGw9IiNkOTlhM2UiIGZpbGwtb3BhY2l0eT0iMC40OSIvPjxjaXJjbGUgY3g9IjgwIiBjeT0iODQ1IiByPSI3MCIgZmlsbD0iI2ZmZjRkNiIgZmlsbC1vcGFjaXR5PSIwLjMxIi8+PGNpcmNsZSBjeD0iMTUyOSIgY3k9IjE3MCIgcj0iOTQiIGZpbGw9IiNmZmUzYTMiIGZpbGwtb3BhY2l0eT0iMC41MyIvPjxjaXJjbGUgY3g9IjQ0OSIgY3k9IjE1MyIgcj0iMTE1IiBmaWxsPSIjZmZmNGQ2IiBmaWxsLW9wYWNpdHk9IjAuNDciLz48Y2lyY2xlIGN4PSI4NzUiIGN5PSIyOTciIHI9Ijc1IiBmaWxsPSIjZjNjZjdhIiBmaWxsLW9wYWNpdHk9IjAuNjQiLz48Y2lyY2xlIGN4PSI1NjAiIGN5PSI3MiIgcj0iODYiIGZpbGw9IiNmZmY0ZDYiIGZpbGwtb3BhY2l0eT0iMC4zNyIvPjxjaXJjbGUgY3g9Ijc1MyIgY3k9IjIxMiIgcj0iMTM1IiBmaWxsPSIjZDk5YTNlIiBmaWxsLW9wYWNpdHk9IjAuNDUiLz48Y2lyY2xlIGN4PSIxMDQ1IiBjeT0iMTIyIiByPSIxMjMiIGZpbGw9IiNmM2NmN2EiIGZpbGwtb3BhY2l0eT0iMC40OCIvPjxjaXJjbGUgY3g9Ijc2IiBjeT0iMzcxIiByPSI2MiIgZmlsbD0iI2Q5OWEzZSIgZmlsbC1vcGFjaXR5PSIwLjU3Ii8+PGNpcmNsZSBjeD0iNTIwIiBjeT0iMzk0IiByPSIxNDEiIGZpbGw9IiNmZmUzYTMiIGZpbGwtb3BhY2l0eT0iMC40NyIvPjxjaXJjbGUgY3g9IjcyMSIgY3k9IjM5NSIgcj0iMTMxIiBmaWxsPSIjZmZlM2EzIiBmaWxsLW9wYWNpdHk9IjAuMzciLz48Y2lyY2xlIGN4PSIyMTEiIGN5PSIyNDMiIHI9IjEyMiIgZmlsbD0iI2ZmZjRkNiIgZmlsbC1vcGFjaXR5PSIwLjY4Ii8+PGNpcmNsZSBjeD0iMTQ4MyIgY3k9Ijc3NCIgcj0iMTQzIiBmaWxsPSIjZDk5YTNlIiBmaWxsLW9wYWNpdHk9IjAuNTciLz48Y2lyY2xlIGN4PSIzOSIgY3k9IjI5MSIgcj0iMTA0IiBmaWxsPSIjZmZlM2EzIiBmaWxsLW9wYWNpdHk9IjAuMzYiLz48Y2lyY2xlIGN4PSIxMDk3IiBjeT0iNjY0IiByPSI5MCIgZmlsbD0iI2ZmZTNhMyIgZmlsbC1vcGFjaXR5PSIwLjczIi8+PGNpcmNsZSBjeD0iNTc2IiBjeT0iNTI3IiByPSI1NCIgZmlsbD0iI2ZmZTNhMyIgZmlsbC1vcGFjaXR5PSIwLjI5Ii8+PGNpcmNsZSBjeD0iNzMwIiBjeT0iNzg1IiByPSIxNDUiIGZpbGw9IiNkOTlhM2UiIGZpbGwtb3BhY2l0eT0iMC40OCIvPjxjaXJjbGUgY3g9IjEyNjkiIGN5PSI4MDciIHI9IjY1IiBmaWxsPSIjZmZlM2EzIiBmaWxsLW9wYWNpdHk9IjAuMjYiLz48Y2lyY2xlIGN4PSIxMTMxIiBjeT0iNjI4IiByPSI2OCIgZmlsbD0iI2Q5OWEzZSIgZmlsbC1vcGFjaXR5PSIwLjY4Ii8+PGNpcmNsZSBjeD0iMTMyOSIgY3k9IjE1MiIgcj0iNzUiIGZpbGw9IiNmM2NmN2EiIGZpbGwtb3BhY2l0eT0iMC4yOSIvPjxjaXJjbGUgY3g9Ijg1OSIgY3k9Ijc0OCIgcj0iNTUiIGZpbGw9IiNmZmY0ZDYiIGZpbGwtb3BhY2l0eT0iMC4zMiIvPjxjaXJjbGUgY3g9IjgzIiBjeT0iMjUyIiByPSI5OSIgZmlsbD0iI2ZmZTNhMyIgZmlsbC1vcGFjaXR5PSIwLjI4Ii8+PGNpcmNsZSBjeD0iMzY4IiBjeT0iMjY2IiByPSI4NiIgZmlsbD0iI2ZmZjRkNiIgZmlsbC1vcGFjaXR5PSIwLjMyIi8+PGNpcmNsZSBjeD0iMSIgY3k9IjU2MiIgcj0iNjgiIGZpbGw9IiNmM2NmN2EiIGZpbGwtb3BhY2l0eT0iMC40NSIvPjxjaXJjbGUgY3g9Ijc2NSIgY3k9IjM3MyIgcj0iNjMiIGZpbGw9IiNmM2NmN2EiIGZpbGwtb3BhY2l0eT0iMC42MyIvPjxjaXJjbGUgY3g9IjExODIiIGN5PSIzMDQiIHI9Ijk1IiBmaWxsPSIjZmZmNGQ2IiBmaWxsLW9wYWNpdHk9IjAuNjEiLz48Y2lyY2xlIGN4PSI0MjkiIGN5PSIzMjMiIHI9IjExMiIgZmlsbD0iI2YzY2Y3YSIgZmlsbC1vcGFjaXR5PSIwLjY5Ii8+PGNpcmNsZSBjeD0iMTA5IiBjeT0iMTY4IiByPSI2MSIgZmlsbD0iI2ZmZTNhMyIgZmlsbC1vcGFjaXR5PSIwLjI2Ii8+PGNpcmNsZSBjeD0iNzAzIiBjeT0iMzM5IiByPSIxMDkiIGZpbGw9IiNkOTlhM2UiIGZpbGwtb3BhY2l0eT0iMC43MCIvPjxjaXJjbGUgY3g9IjY3NCIgY3k9IjEwOCIgcj0iMTAyIiBmaWxsPSIjZmZmNGQ2IiBmaWxsLW9wYWNpdHk9IjAuNTgiLz48Y2lyY2xlIGN4PSIxNDUwIiBjeT0iNjEwIiByPSI5OSIgZmlsbD0iI2ZmZTNhMyIgZmlsbC1vcGFjaXR5PSIwLjczIi8+PGNpcmNsZSBjeD0iNjY1IiBjeT0iNDQ4IiByPSIxMzUiIGZpbGw9IiNkOTlhM2UiIGZpbGwtb3BhY2l0eT0iMC42NCIvPjxjaXJjbGUgY3g9Ijg3MiIgY3k9Ijg5MSIgcj0iMTM4IiBmaWxsPSIjZDk5YTNlIiBmaWxsLW9wYWNpdHk9IjAuNjYiLz48Y2lyY2xlIGN4PSIxMjEiIGN5PSI4NzUiIHI9Ijk0IiBmaWxsPSIjZDk5YTNlIiBmaWxsLW9wYWNpdHk9IjAuNTgiLz48Y2lyY2xlIGN4PSIxMjAxIiBjeT0iNzA0IiByPSI4OSIgZmlsbD0iI2Q5OWEzZSIgZmlsbC1vcGFjaXR5PSIwLjQ3Ii8+PGNpcmNsZSBjeD0iMTE1NSIgY3k9IjQ3IiByPSIxMzUiIGZpbGw9IiNmZmUzYTMiIGZpbGwtb3BhY2l0eT0iMC40OCIvPjxjaXJjbGUgY3g9IjEwNTQiIGN5PSIxMzkiIHI9IjE0NSIgZmlsbD0iI2Q5OWEzZSIgZmlsbC1vcGFjaXR5PSIwLjMzIi8+PGNpcmNsZSBjeD0iODQ0IiBjeT0iMjgzIiByPSI3MiIgZmlsbD0iI2YzY2Y3YSIgZmlsbC1vcGFjaXR5PSIwLjczIi8+PGNpcmNsZSBjeD0iNTYiIGN5PSIzNTAiIHI9IjEwMSIgZmlsbD0iI2YzY2Y3YSIgZmlsbC1vcGFjaXR5PSIwLjU4Ii8+PGNpcmNsZSBjeD0iMTE4NCIgY3k9IjI3NSIgcj0iNzUiIGZpbGw9IiNmZmY0ZDYiIGZpbGwtb3BhY2l0eT0iMC41NSIvPjxjaXJjbGUgY3g9IjEzMjgiIGN5PSIxNjEiIHI9IjkwIiBmaWxsPSIjZmZlM2EzIiBmaWxsLW9wYWNpdHk9IjAuNDYiLz48Y2lyY2xlIGN4PSI5MDkiIGN5PSI3NyIgcj0iMTM2IiBmaWxsPSIjZjNjZjdhIiBmaWxsLW9wYWNpdHk9IjAuNDkiLz48Y2lyY2xlIGN4PSI2NDMiIGN5PSI0NTkiIHI9Ijc2IiBmaWxsPSIjZmZlM2EzIiBmaWxsLW9wYWNpdHk9IjAuMjYiLz48L2c+CiAgPGcgZmlsdGVyPSJ1cmwoI2JsdXIyKSI+PGNpcmNsZSBjeD0iMTE4NiIgY3k9IjM2MSIgcj0iMjEiIGZpbGw9IiNkOTlhM2UiIGZpbGwtb3BhY2l0eT0iMC43MCIvPjxjaXJjbGUgY3g9IjY0OCIgY3k9IjE1MSIgcj0iMjIiIGZpbGw9IiNmZmUzYTMiIGZpbGwtb3BhY2l0eT0iMC4yNyIvPjxjaXJjbGUgY3g9IjExNjYiIGN5PSI3MTYiIHI9IjIzIiBmaWxsPSIjZjNjZjdhIiBmaWxsLW9wYWNpdHk9IjAuNTIiLz48Y2lyY2xlIGN4PSI1NTIiIGN5PSIxNTkiIHI9IjI2IiBmaWxsPSIjZDk5YTNlIiBmaWxsLW9wYWNpdHk9IjAuNTAiLz48Y2lyY2xlIGN4PSIxMDA1IiBjeT0iNzQ4IiByPSIyNSIgZmlsbD0iI2ZmZjRkNiIgZmlsbC1vcGFjaXR5PSIwLjQ0Ii8+PGNpcmNsZSBjeD0iMTI4NCIgY3k9IjMyMSIgcj0iMzkiIGZpbGw9IiNmM2NmN2EiIGZpbGwtb3BhY2l0eT0iMC4zNiIvPjxjaXJjbGUgY3g9IjExNTgiIGN5PSI0NzkiIHI9IjIzIiBmaWxsPSIjZmZmNGQ2IiBmaWxsLW9wYWNpdHk9IjAuMzkiLz48Y2lyY2xlIGN4PSI1MTMiIGN5PSI5MyIgcj0iMjciIGZpbGw9IiNmZmY0ZDYiIGZpbGwtb3BhY2l0eT0iMC41NiIvPjxjaXJjbGUgY3g9IjExMzIiIGN5PSIxOTkiIHI9IjM2IiBmaWxsPSIjZDk5YTNlIiBmaWxsLW9wYWNpdHk9IjAuMzIiLz48Y2lyY2xlIGN4PSIxNTM5IiBjeT0iNDk4IiByPSIzNCIgZmlsbD0iI2ZmZTNhMyIgZmlsbC1vcGFjaXR5PSIwLjQyIi8+PGNpcmNsZSBjeD0iOTA3IiBjeT0iNjEiIHI9IjMxIiBmaWxsPSIjZmZlM2EzIiBmaWxsLW9wYWNpdHk9IjAuNjYiLz48Y2lyY2xlIGN4PSI4NDQiIGN5PSI0MjQiIHI9IjM1IiBmaWxsPSIjZDk5YTNlIiBmaWxsLW9wYWNpdHk9IjAuNDQiLz48Y2lyY2xlIGN4PSIyMjYiIGN5PSIyOTAiIHI9IjIyIiBmaWxsPSIjZmZmNGQ2IiBmaWxsLW9wYWNpdHk9IjAuNjMiLz48Y2lyY2xlIGN4PSI3MjAiIGN5PSI3MjgiIHI9IjM4IiBmaWxsPSIjZmZlM2EzIiBmaWxsLW9wYWNpdHk9IjAuMjkiLz48Y2lyY2xlIGN4PSI1NTEiIGN5PSIxNzMiIHI9IjM4IiBmaWxsPSIjZjNjZjdhIiBmaWxsLW9wYWNpdHk9IjAuMjgiLz48Y2lyY2xlIGN4PSI1NTUiIGN5PSI4MzAiIHI9IjI3IiBmaWxsPSIjZmZmNGQ2IiBmaWxsLW9wYWNpdHk9IjAuNTYiLz48Y2lyY2xlIGN4PSI4NCIgY3k9IjM2NiIgcj0iMzEiIGZpbGw9IiNmM2NmN2EiIGZpbGwtb3BhY2l0eT0iMC40OSIvPjxjaXJjbGUgY3g9IjM4OCIgY3k9IjQyMCIgcj0iMjYiIGZpbGw9IiNkOTlhM2UiIGZpbGwtb3BhY2l0eT0iMC4zNiIvPjxjaXJjbGUgY3g9IjEwNTciIGN5PSIzOTIiIHI9IjMyIiBmaWxsPSIjZjNjZjdhIiBmaWxsLW9wYWNpdHk9IjAuMjUiLz48Y2lyY2xlIGN4PSI3MzQiIGN5PSItNDciIHI9IjMwIiBmaWxsPSIjZDk5YTNlIiBmaWxsLW9wYWNpdHk9IjAuMzAiLz48Y2lyY2xlIGN4PSI0ODgiIGN5PSIzMzkiIHI9IjIyIiBmaWxsPSIjZDk5YTNlIiBmaWxsLW9wYWNpdHk9IjAuNzMiLz48Y2lyY2xlIGN4PSIyNjciIGN5PSItNDciIHI9IjM3IiBmaWxsPSIjZmZmNGQ2IiBmaWxsLW9wYWNpdHk9IjAuNzUiLz48Y2lyY2xlIGN4PSIxMjAyIiBjeT0iNDYzIiByPSIzNyIgZmlsbD0iI2ZmZjRkNiIgZmlsbC1vcGFjaXR5PSIwLjI2Ii8+PGNpcmNsZSBjeD0iOTg1IiBjeT0iNyIgcj0iMjYiIGZpbGw9IiNkOTlhM2UiIGZpbGwtb3BhY2l0eT0iMC40NCIvPjxjaXJjbGUgY3g9IjE1MTgiIGN5PSI0ODYiIHI9IjI2IiBmaWxsPSIjZjNjZjdhIiBmaWxsLW9wYWNpdHk9IjAuNTkiLz48Y2lyY2xlIGN4PSIyMiIgY3k9IjE3MSIgcj0iMzQiIGZpbGw9IiNmM2NmN2EiIGZpbGwtb3BhY2l0eT0iMC40MSIvPjxjaXJjbGUgY3g9IjQxMSIgY3k9IjM5NyIgcj0iMjEiIGZpbGw9IiNkOTlhM2UiIGZpbGwtb3BhY2l0eT0iMC41MSIvPjxjaXJjbGUgY3g9IjE0MyIgY3k9IjI2NyIgcj0iMzkiIGZpbGw9IiNmM2NmN2EiIGZpbGwtb3BhY2l0eT0iMC4zMiIvPjxjaXJjbGUgY3g9IjUyNyIgY3k9IjUxIiByPSIyMyIgZmlsbD0iI2ZmZTNhMyIgZmlsbC1vcGFjaXR5PSIwLjMwIi8+PGNpcmNsZSBjeD0iNTAwIiBjeT0iNjg1IiByPSIyOCIgZmlsbD0iI2ZmZTNhMyIgZmlsbC1vcGFjaXR5PSIwLjUxIi8+PGNpcmNsZSBjeD0iMTA3NSIgY3k9IjI3MiIgcj0iMzgiIGZpbGw9IiNkOTlhM2UiIGZpbGwtb3BhY2l0eT0iMC40OCIvPjxjaXJjbGUgY3g9IjEyNTAiIGN5PSIxODAiIHI9IjI1IiBmaWxsPSIjZDk5YTNlIiBmaWxsLW9wYWNpdHk9IjAuNDciLz48Y2lyY2xlIGN4PSIxMzg1IiBjeT0iNDYiIHI9IjI5IiBmaWxsPSIjZmZlM2EzIiBmaWxsLW9wYWNpdHk9IjAuNDYiLz48Y2lyY2xlIGN4PSIxMjQ4IiBjeT0iNTc0IiByPSIyNCIgZmlsbD0iI2YzY2Y3YSIgZmlsbC1vcGFjaXR5PSIwLjYxIi8+PGNpcmNsZSBjeD0iNzI2IiBjeT0iNjMxIiByPSIyMiIgZmlsbD0iI2YzY2Y3YSIgZmlsbC1vcGFjaXR5PSIwLjQ1Ii8+PGNpcmNsZSBjeD0iMCIgY3k9IjM1NSIgcj0iMjYiIGZpbGw9IiNkOTlhM2UiIGZpbGwtb3BhY2l0eT0iMC40MSIvPjxjaXJjbGUgY3g9Ijc5NSIgY3k9IjM0OSIgcj0iMjEiIGZpbGw9IiNkOTlhM2UiIGZpbGwtb3BhY2l0eT0iMC4yNiIvPjwvZz4KICAKICA8ZWxsaXBzZSBjeD0iODAwIiBjeT0iNzQ1LjcxNDI4NTcxNDI4NTgiIHJ4PSIzNzEuNDI4NTcxNDI4NTcxNDQiIHJ5PSIzNy4xNDI4NTcxNDI4NTcxNDYiIGZpbGw9IiMwMDAiIGZpbGwtb3BhY2l0eT0iLjQ1IiBmaWx0ZXI9InVybCgjc29mdCkiLz4KICAKICAgIDxlbGxpcHNlIGN4PSI3MDAiIGN5PSI1NjAiIHJ4PSIxNjguNTcxNDI4NTcxNDI4NTgiIHJ5PSIxNDguNTcxNDI4NTcxNDI4NTgiIGZpbGw9Im5vbmUiIHN0cm9rZT0idXJsKCNnb2xkKSIgc3Ryb2tlLXdpZHRoPSIzNC4yODU3MTQyODU3MTQyODUiLz4KICAgIDxlbGxpcHNlIGN4PSI3MDAiIGN5PSI1NjAiIHJ4PSIxNjguNTcxNDI4NTcxNDI4NTgiIHJ5PSIxNDguNTcxNDI4NTcxNDI4NTgiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2ZmZjhkYyIgc3Ryb2tlLW9wYWNpdHk9Ii41NSIgc3Ryb2tlLXdpZHRoPSI0LjI4NTcxNDI4NTcxNDI4NiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTUuNzE0Mjg1NzE0Mjg1NzE0IC0xMCkiLz4KICAgIDxlbGxpcHNlIGN4PSI3MDAiIGN5PSI1NjAiIHJ4PSIxNTEuNDI4NTcxNDI4NTcxNDQiIHJ5PSIxMzEuNDI4NTcxNDI4NTcxNDQiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzVhM2QxMiIgc3Ryb2tlLW9wYWNpdHk9Ii41IiBzdHJva2Utd2lkdGg9IjIuODU3MTQyODU3MTQyODU3Ii8+CiAgCiAgICA8ZWxsaXBzZSBjeD0iOTAwIiBjeT0iNTc0LjI4NTcxNDI4NTcxNDMiIHJ4PSIxNjguNTcxNDI4NTcxNDI4NTgiIHJ5PSIxNDguNTcxNDI4NTcxNDI4NTgiIGZpbGw9Im5vbmUiIHN0cm9rZT0idXJsKCNnb2xkKSIgc3Ryb2tlLXdpZHRoPSIzNC4yODU3MTQyODU3MTQyODUiLz4KICAgIDxlbGxpcHNlIGN4PSI5MDAiIGN5PSI1NzQuMjg1NzE0Mjg1NzE0MyIgcng9IjE2OC41NzE0Mjg1NzE0Mjg1OCIgcnk9IjE0OC41NzE0Mjg1NzE0Mjg1OCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZmZmOGRjIiBzdHJva2Utb3BhY2l0eT0iLjU1IiBzdHJva2Utd2lkdGg9IjQuMjg1NzE0Mjg1NzE0Mjg2IiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtNS43MTQyODU3MTQyODU3MTQgLTEwKSIvPgogICAgPGVsbGlwc2UgY3g9IjkwMCIgY3k9IjU3NC4yODU3MTQyODU3MTQzIiByeD0iMTUxLjQyODU3MTQyODU3MTQ0IiByeT0iMTMxLjQyODU3MTQyODU3MTQ0IiBmaWxsPSJub25lIiBzdHJva2U9IiM1YTNkMTIiIHN0cm9rZS1vcGFjaXR5PSIuNSIgc3Ryb2tlLXdpZHRoPSIyLjg1NzE0Mjg1NzE0Mjg1NyIvPgogIDxnIGNsaXAtcGF0aD0idXJsKCNvdmVyKSI+CiAgICA8ZWxsaXBzZSBjeD0iNzAwIiBjeT0iNTYwIiByeD0iMTY4LjU3MTQyODU3MTQyODU4IiByeT0iMTQ4LjU3MTQyODU3MTQyODU4IiBmaWxsPSJub25lIiBzdHJva2U9InVybCgjZ29sZCkiIHN0cm9rZS13aWR0aD0iMzQuMjg1NzE0Mjg1NzE0Mjg1Ii8+CiAgICA8ZWxsaXBzZSBjeD0iNzAwIiBjeT0iNTYwIiByeD0iMTY4LjU3MTQyODU3MTQyODU4IiByeT0iMTQ4LjU3MTQyODU3MTQyODU4IiBmaWxsPSJub25lIiBzdHJva2U9IiNmZmY4ZGMiIHN0cm9rZS1vcGFjaXR5PSIuNTUiIHN0cm9rZS13aWR0aD0iNC4yODU3MTQyODU3MTQyODYiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC01LjcxNDI4NTcxNDI4NTcxNCAtMTApIi8+CiAgICA8ZWxsaXBzZSBjeD0iNzAwIiBjeT0iNTYwIiByeD0iMTUxLjQyODU3MTQyODU3MTQ0IiByeT0iMTMxLjQyODU3MTQyODU3MTQ0IiBmaWxsPSJub25lIiBzdHJva2U9IiM1YTNkMTIiIHN0cm9rZS1vcGFjaXR5PSIuNSIgc3Ryb2tlLXdpZHRoPSIyLjg1NzE0Mjg1NzE0Mjg1NyIvPjwvZz4KICA8ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSg3MDAgNDExLjQyODU3MTQyODU3MTQ0KSI+CiAgICA8cGF0aCBkPSJNLTM3LjE0Mjg1NzE0Mjg1NzE0NiAwIEwtMjAgLTMxLjQyODU3MTQyODU3MTQzIEwyMCAtMzEuNDI4NTcxNDI4NTcxNDMgTDM3LjE0Mjg1NzE0Mjg1NzE0NiAwIEwwIDM3LjE0Mjg1NzE0Mjg1NzE0NiBaIiBmaWxsPSJ1cmwoI2RpYW1vbmQpIiBzdHJva2U9IiNmZmYiIHN0cm9rZS1vcGFjaXR5PSIuNyIgc3Ryb2tlLXdpZHRoPSIxLjcxNDI4NTcxNDI4NTcxNDIiLz4KICAgIDxwYXRoIGQ9Ik0tMzcuMTQyODU3MTQyODU3MTQ2IDAgSDM3LjE0Mjg1NzE0Mjg1NzE0NiBNLTIwIC0zMS40Mjg1NzE0Mjg1NzE0MyBMLTExLjQyODU3MTQyODU3MTQyOSAwIEwwIDM3LjE0Mjg1NzE0Mjg1NzE0NiBMMTEuNDI4NTcxNDI4NTcxNDI5IDAgTDIwIC0zMS40Mjg1NzE0Mjg1NzE0MyIgc3Ryb2tlPSIjZmZmIiBzdHJva2Utb3BhY2l0eT0iLjUiIHN0cm9rZS13aWR0aD0iMS40Mjg1NzE0Mjg1NzE0Mjg2IiBmaWxsPSJub25lIi8+CiAgICA8cGF0aCBkPSJNNDIuODU3MTQyODU3MTQyODYgLTU3LjE0Mjg1NzE0Mjg1NzE0NiBsNS43MTQyODU3MTQyODU3MTQgMjAgbDIwIDUuNzE0Mjg1NzE0Mjg1NzE0IGwtMjAgNS43MTQyODU3MTQyODU3MTQgbC01LjcxNDI4NTcxNDI4NTcxNCAyMCBsLTUuNzE0Mjg1NzE0Mjg1NzE0IC0yMCBsLTIwIC01LjcxNDI4NTcxNDI4NTcxNCBsMjAgLTUuNzE0Mjg1NzE0Mjg1NzE0IFoiIGZpbGw9IiNmZmYiIG9wYWNpdHk9Ii45NSIvPgogIDwvZz4KICA8cmVjdCB3aWR0aD0iMTYwMCIgaGVpZ2h0PSIxMDAwIiBmaWx0ZXI9InVybCgjZ3JhaW4pIi8+Cjwvc3ZnPg==",
-  gallery: [
-    { src: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA4MDAgMTA2NiIgcHJlc2VydmVBc3BlY3RSYXRpbz0ieE1pZFlNaWQgc2xpY2UiPgogIAogIDxkZWZzPgogICAgPGZpbHRlciBpZD0iYmx1ciIgeD0iLTIwJSIgeT0iLTIwJSIgd2lkdGg9IjE0MCUiIGhlaWdodD0iMTQwJSI+PGZlR2F1c3NpYW5CbHVyIHN0ZERldmlhdGlvbj0iOSIvPjwvZmlsdGVyPgogICAgPGZpbHRlciBpZD0iYmx1cjIiIHg9Ii0yMCUiIHk9Ii0yMCUiIHdpZHRoPSIxNDAlIiBoZWlnaHQ9IjE0MCUiPjxmZUdhdXNzaWFuQmx1ciBzdGREZXZpYXRpb249IjMiLz48L2ZpbHRlcj4KICAgIDxmaWx0ZXIgaWQ9InNvZnQiPjxmZUdhdXNzaWFuQmx1ciBzdGREZXZpYXRpb249IjE0Ii8+PC9maWx0ZXI+CiAgICA8ZmlsdGVyIGlkPSJncmFpbiI+PGZlVHVyYnVsZW5jZSB0eXBlPSJmcmFjdGFsTm9pc2UiIGJhc2VGcmVxdWVuY3k9Ii45IiBudW1PY3RhdmVzPSIyIiBzdGl0Y2hUaWxlcz0ic3RpdGNoIi8+PGZlQ29sb3JNYXRyaXggdmFsdWVzPSIwIDAgMCAwIDEgIDAgMCAwIDAgLjkgIDAgMCAwIDAgLjcgIDAgMCAwIC4wNiAwIi8+PC9maWx0ZXI+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImdvbGQiIHgxPSIwIiB5MT0iMCIgeDI9IjEiIHkyPSIxIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjN2E1YTFlIi8+PHN0b3Agb2Zmc2V0PSIuMjUiIHN0b3AtY29sb3I9IiNlOWM4NzgiLz48c3RvcCBvZmZzZXQ9Ii40NSIgc3RvcC1jb2xvcj0iI2ZmZjFjMiIvPgogICAgICA8c3RvcCBvZmZzZXQ9Ii42IiBzdG9wLWNvbG9yPSIjYzc5YTQ1Ii8+PHN0b3Agb2Zmc2V0PSIuOCIgc3RvcC1jb2xvcj0iIzhhNjQyMCIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iI2UyYmY2ZSIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0iZGlhbW9uZCIgeDE9IjAiIHkxPSIwIiB4Mj0iMSIgeTI9IjEiPjxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIvPjxzdG9wIG9mZnNldD0iLjUiIHN0b3AtY29sb3I9IiNjZmU2ZmYiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiM4ZmI2ZDkiLz48L2xpbmVhckdyYWRpZW50PgogICAgPGNsaXBQYXRoIGlkPSJvdmVyIj48cmVjdCB4PSI0MDAiIHk9IjM2OC4zODg1NzE0Mjg1NzE1IiB3aWR0aD0iNjguNTcxNDI4NTcxNDI4NTciIGhlaWdodD0iMjI4LjU3MTQyODU3MTQyODU2Ii8+PC9jbGlwUGF0aD4KICAgIDxyYWRpYWxHcmFkaWVudCBpZD0iZ2xvdyIgY3g9IjUwJSIgY3k9IjU1JSIgcj0iNjAlIj48c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiNmNmM4NzIiIHN0b3Atb3BhY2l0eT0iLjU1Ii8+PHN0b3Agb2Zmc2V0PSIuNSIgc3RvcC1jb2xvcj0iI2I4NzUyYSIgc3RvcC1vcGFjaXR5PSIuMTUiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiMwMDAiIHN0b3Atb3BhY2l0eT0iMCIvPjwvcmFkaWFsR3JhZGllbnQ+CiAgPC9kZWZzPgogIDxsaW5lYXJHcmFkaWVudCBpZD0iYmciIHgxPSIwIiB5MT0iMCIgeDI9IjAiIHkyPSIxIj48c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiMxYTBkMDgiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiMzYTIwMTIiLz48L2xpbmVhckdyYWRpZW50PgogIDxyZWN0IHdpZHRoPSI4MDAiIGhlaWdodD0iMTA2NiIgZmlsbD0idXJsKCNiZykiLz4KICA8cmVjdCB3aWR0aD0iODAwIiBoZWlnaHQ9IjEwNjYiIGZpbGw9InVybCgjZ2xvdykiLz4KICA8ZyBmaWx0ZXI9InVybCgjYmx1cikiPjxjaXJjbGUgY3g9IjM0MyIgY3k9IjY3MiIgcj0iNjMiIGZpbGw9IiNmZmU2YjAiIGZpbGwtb3BhY2l0eT0iMC4yOSIvPjxjaXJjbGUgY3g9IjYzOSIgY3k9Ijg5MyIgcj0iNzEiIGZpbGw9IiNmZmNmNzMiIGZpbGwtb3BhY2l0eT0iMC40MCIvPjxjaXJjbGUgY3g9IjcyNSIgY3k9IjY2MyIgcj0iNDQiIGZpbGw9IiNmZmU2YjAiIGZpbGwtb3BhY2l0eT0iMC40NiIvPjxjaXJjbGUgY3g9IjYzMyIgY3k9IjE2MyIgcj0iNDQiIGZpbGw9IiNmZmU2YjAiIGZpbGwtb3BhY2l0eT0iMC41NCIvPjxjaXJjbGUgY3g9IjI3NiIgY3k9IjYwNSIgcj0iNTQiIGZpbGw9IiNmZmNmNzMiIGZpbGwtb3BhY2l0eT0iMC40NyIvPjxjaXJjbGUgY3g9IjcyIiBjeT0iNDk5IiByPSI0NCIgZmlsbD0iI2ZmY2Y3MyIgZmlsbC1vcGFjaXR5PSIwLjI1Ii8+PGNpcmNsZSBjeD0iNDk4IiBjeT0iMjM4IiByPSI3MiIgZmlsbD0iI2ZmY2Y3MyIgZmlsbC1vcGFjaXR5PSIwLjcyIi8+PGNpcmNsZSBjeD0iNTc4IiBjeT0iNjA4IiByPSIzOCIgZmlsbD0iI2ZmYjM0NyIgZmlsbC1vcGFjaXR5PSIwLjY3Ii8+PGNpcmNsZSBjeD0iMTA3IiBjeT0iMTIiIHI9IjMxIiBmaWxsPSIjZmZlNmIwIiBmaWxsLW9wYWNpdHk9IjAuNjgiLz48Y2lyY2xlIGN4PSI2IiBjeT0iMTciIHI9IjU3IiBmaWxsPSIjZmZjZjczIiBmaWxsLW9wYWNpdHk9IjAuNDAiLz48Y2lyY2xlIGN4PSIxMSIgY3k9IjIyIiByPSI3MyIgZmlsbD0iI2ZmY2Y3MyIgZmlsbC1vcGFjaXR5PSIwLjUzIi8+PGNpcmNsZSBjeD0iOTUiIGN5PSIyNDMiIHI9IjU1IiBmaWxsPSIjZmZiMzQ3IiBmaWxsLW9wYWNpdHk9IjAuMzAiLz48Y2lyY2xlIGN4PSIyNCIgY3k9IjU0MSIgcj0iNDkiIGZpbGw9IiNmZmU2YjAiIGZpbGwtb3BhY2l0eT0iMC42MCIvPjxjaXJjbGUgY3g9IjI0MyIgY3k9Ijg0NyIgcj0iNzAiIGZpbGw9IiNmZmIzNDciIGZpbGwtb3BhY2l0eT0iMC42MCIvPjxjaXJjbGUgY3g9IjEwNCIgY3k9IjMxMiIgcj0iMjciIGZpbGw9IiNmZmIzNDciIGZpbGwtb3BhY2l0eT0iMC42MyIvPjxjaXJjbGUgY3g9IjYxNyIgY3k9IjkyOSIgcj0iNTQiIGZpbGw9IiNmZmU2YjAiIGZpbGwtb3BhY2l0eT0iMC4zNiIvPjxjaXJjbGUgY3g9IjUzOSIgY3k9IjI4NCIgcj0iMzUiIGZpbGw9IiNmZmU2YjAiIGZpbGwtb3BhY2l0eT0iMC40MiIvPjxjaXJjbGUgY3g9IjIwMCIgY3k9IjI5OSIgcj0iNDUiIGZpbGw9IiNmZmU2YjAiIGZpbGwtb3BhY2l0eT0iMC43MiIvPjxjaXJjbGUgY3g9IjI1MyIgY3k9IjMwMiIgcj0iMjciIGZpbGw9IiNmZmU2YjAiIGZpbGwtb3BhY2l0eT0iMC43NCIvPjxjaXJjbGUgY3g9IjE2NyIgY3k9IjMzMSIgcj0iNjIiIGZpbGw9IiNmZmU2YjAiIGZpbGwtb3BhY2l0eT0iMC41MyIvPjxjaXJjbGUgY3g9IjQ0OSIgY3k9IjI4MyIgcj0iNjQiIGZpbGw9IiNmZmU2YjAiIGZpbGwtb3BhY2l0eT0iMC42MyIvPjxjaXJjbGUgY3g9IjU5OCIgY3k9IjY1OSIgcj0iNjUiIGZpbGw9IiNmZmIzNDciIGZpbGwtb3BhY2l0eT0iMC4yNyIvPjxjaXJjbGUgY3g9Ijc5MyIgY3k9IjExMCIgcj0iNjMiIGZpbGw9IiNmZmIzNDciIGZpbGwtb3BhY2l0eT0iMC40NyIvPjxjaXJjbGUgY3g9IjExOSIgY3k9IjM0NiIgcj0iNDQiIGZpbGw9IiNmZmNmNzMiIGZpbGwtb3BhY2l0eT0iMC4zNyIvPjxjaXJjbGUgY3g9IjExOSIgY3k9IjE2MSIgcj0iMzQiIGZpbGw9IiNmZmNmNzMiIGZpbGwtb3BhY2l0eT0iMC40OSIvPjxjaXJjbGUgY3g9Ijg0IiBjeT0iNjU5IiByPSI0MiIgZmlsbD0iI2ZmY2Y3MyIgZmlsbC1vcGFjaXR5PSIwLjI5Ii8+PGNpcmNsZSBjeD0iNzYiIGN5PSI1NjYiIHI9IjM0IiBmaWxsPSIjZmZjZjczIiBmaWxsLW9wYWNpdHk9IjAuNTEiLz48Y2lyY2xlIGN4PSI0ODIiIGN5PSI4MDYiIHI9IjMwIiBmaWxsPSIjZmZlNmIwIiBmaWxsLW9wYWNpdHk9IjAuNDUiLz48Y2lyY2xlIGN4PSI1MDYiIGN5PSIxNDAiIHI9IjUwIiBmaWxsPSIjZmZlNmIwIiBmaWxsLW9wYWNpdHk9IjAuNTIiLz48Y2lyY2xlIGN4PSIzODYiIGN5PSI2NCIgcj0iMzgiIGZpbGw9IiNmZmNmNzMiIGZpbGwtb3BhY2l0eT0iMC41NyIvPjxjaXJjbGUgY3g9IjE1NSIgY3k9Ijc1NyIgcj0iNTciIGZpbGw9IiNmZmU2YjAiIGZpbGwtb3BhY2l0eT0iMC42OSIvPjxjaXJjbGUgY3g9IjUyNyIgY3k9IjU1MiIgcj0iNDMiIGZpbGw9IiNmZmU2YjAiIGZpbGwtb3BhY2l0eT0iMC43MCIvPjxjaXJjbGUgY3g9IjMxNyIgY3k9IjgzOSIgcj0iNjAiIGZpbGw9IiNmZmU2YjAiIGZpbGwtb3BhY2l0eT0iMC42MCIvPjxjaXJjbGUgY3g9IjQiIGN5PSI5MiIgcj0iNzIiIGZpbGw9IiNmZmIzNDciIGZpbGwtb3BhY2l0eT0iMC43NCIvPjwvZz4KICA8ZyBmaWx0ZXI9InVybCgjYmx1cjIpIj48Y2lyY2xlIGN4PSIyMTIiIGN5PSIyIiByPSIyMCIgZmlsbD0iI2ZmZTZiMCIgZmlsbC1vcGFjaXR5PSIwLjM5Ii8+PGNpcmNsZSBjeD0iNzM1IiBjeT0iMzkiIHI9IjE3IiBmaWxsPSIjZmZjZjczIiBmaWxsLW9wYWNpdHk9IjAuNjUiLz48Y2lyY2xlIGN4PSI5NiIgY3k9Ijc1OCIgcj0iMTEiIGZpbGw9IiNmZmU2YjAiIGZpbGwtb3BhY2l0eT0iMC42NSIvPjxjaXJjbGUgY3g9IjQyOCIgY3k9IjU5NiIgcj0iMTUiIGZpbGw9IiNmZmNmNzMiIGZpbGwtb3BhY2l0eT0iMC42MiIvPjxjaXJjbGUgY3g9IjEwNyIgY3k9IjczMCIgcj0iMTIiIGZpbGw9IiNmZmU2YjAiIGZpbGwtb3BhY2l0eT0iMC4yNSIvPjxjaXJjbGUgY3g9IjQ5NiIgY3k9IjYyIiByPSIxMiIgZmlsbD0iI2ZmY2Y3MyIgZmlsbC1vcGFjaXR5PSIwLjQ3Ii8+PGNpcmNsZSBjeD0iNDQzIiBjeT0iNDQxIiByPSIxOSIgZmlsbD0iI2ZmZTZiMCIgZmlsbC1vcGFjaXR5PSIwLjQzIi8+PGNpcmNsZSBjeD0iOTkiIGN5PSI2MCIgcj0iMTMiIGZpbGw9IiNmZmNmNzMiIGZpbGwtb3BhY2l0eT0iMC40NSIvPjxjaXJjbGUgY3g9IjQ3MyIgY3k9Ii01MCIgcj0iMTMiIGZpbGw9IiNmZmNmNzMiIGZpbGwtb3BhY2l0eT0iMC43MiIvPjxjaXJjbGUgY3g9IjMyMyIgY3k9IjU3OCIgcj0iMTQiIGZpbGw9IiNmZmU2YjAiIGZpbGwtb3BhY2l0eT0iMC4zNiIvPjxjaXJjbGUgY3g9Ijc3OCIgY3k9IjI2IiByPSIxMSIgZmlsbD0iI2ZmZTZiMCIgZmlsbC1vcGFjaXR5PSIwLjI4Ii8+PGNpcmNsZSBjeD0iOTIiIGN5PSI1MDIiIHI9IjE0IiBmaWxsPSIjZmZiMzQ3IiBmaWxsLW9wYWNpdHk9IjAuNDYiLz48Y2lyY2xlIGN4PSIxMzQiIGN5PSIxMjUiIHI9IjE5IiBmaWxsPSIjZmZiMzQ3IiBmaWxsLW9wYWNpdHk9IjAuNDYiLz48Y2lyY2xlIGN4PSI2MTEiIGN5PSI3MTAiIHI9IjE4IiBmaWxsPSIjZmZlNmIwIiBmaWxsLW9wYWNpdHk9IjAuMzAiLz48Y2lyY2xlIGN4PSIyMjAiIGN5PSI4MzkiIHI9IjE3IiBmaWxsPSIjZmZiMzQ3IiBmaWxsLW9wYWNpdHk9IjAuNzMiLz48Y2lyY2xlIGN4PSI3NDMiIGN5PSIxMjQiIHI9IjE3IiBmaWxsPSIjZmZlNmIwIiBmaWxsLW9wYWNpdHk9IjAuMjYiLz48Y2lyY2xlIGN4PSI0NjQiIGN5PSIyNzMiIHI9IjEzIiBmaWxsPSIjZmZlNmIwIiBmaWxsLW9wYWNpdHk9IjAuNTMiLz48Y2lyY2xlIGN4PSIxMjUiIGN5PSI4MSIgcj0iMTMiIGZpbGw9IiNmZmNmNzMiIGZpbGwtb3BhY2l0eT0iMC41NyIvPjxjaXJjbGUgY3g9IjYxOCIgY3k9IjY1MyIgcj0iMTciIGZpbGw9IiNmZmU2YjAiIGZpbGwtb3BhY2l0eT0iMC4zMiIvPjxjaXJjbGUgY3g9IjQwNCIgY3k9IjcxMyIgcj0iMTkiIGZpbGw9IiNmZmIzNDciIGZpbGwtb3BhY2l0eT0iMC41MyIvPjxjaXJjbGUgY3g9IjY3MiIgY3k9IjIyNyIgcj0iMTIiIGZpbGw9IiNmZmU2YjAiIGZpbGwtb3BhY2l0eT0iMC41MiIvPjxjaXJjbGUgY3g9IjYyMyIgY3k9IjgzNCIgcj0iMTEiIGZpbGw9IiNmZmIzNDciIGZpbGwtb3BhY2l0eT0iMC42NiIvPjxjaXJjbGUgY3g9IjQ5OCIgY3k9IjE5MSIgcj0iMTQiIGZpbGw9IiNmZmIzNDciIGZpbGwtb3BhY2l0eT0iMC4zNCIvPjxjaXJjbGUgY3g9IjMyOCIgY3k9IjM5NyIgcj0iMTUiIGZpbGw9IiNmZmU2YjAiIGZpbGwtb3BhY2l0eT0iMC42MiIvPjxjaXJjbGUgY3g9IjI3IiBjeT0iNzQ2IiByPSIxOSIgZmlsbD0iI2ZmZTZiMCIgZmlsbC1vcGFjaXR5PSIwLjM0Ii8+PGNpcmNsZSBjeD0iMTIiIGN5PSI3MDYiIHI9IjExIiBmaWxsPSIjZmZjZjczIiBmaWxsLW9wYWNpdHk9IjAuNDkiLz48Y2lyY2xlIGN4PSI3NjAiIGN5PSI2NzIiIHI9IjEzIiBmaWxsPSIjZmZjZjczIiBmaWxsLW9wYWNpdHk9IjAuNDEiLz48L2c+CiAgCiAgPHJlY3Qgd2lkdGg9IjgwMCIgaGVpZ2h0PSIxMDY2IiBmaWx0ZXI9InVybCgjZ3JhaW4pIi8+Cjwvc3ZnPg==", caption: { en: "Where it all began", ckb: "لێرەوە دەستی پێکرد", kmr: "Li vir dest pê kir", ar: "هنا كانت البداية" } },
-    { src: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA4MDAgMTA2NiIgcHJlc2VydmVBc3BlY3RSYXRpbz0ieE1pZFlNaWQgc2xpY2UiPgogIAogIDxkZWZzPgogICAgPGZpbHRlciBpZD0iYmx1ciIgeD0iLTIwJSIgeT0iLTIwJSIgd2lkdGg9IjE0MCUiIGhlaWdodD0iMTQwJSI+PGZlR2F1c3NpYW5CbHVyIHN0ZERldmlhdGlvbj0iOSIvPjwvZmlsdGVyPgogICAgPGZpbHRlciBpZD0iYmx1cjIiIHg9Ii0yMCUiIHk9Ii0yMCUiIHdpZHRoPSIxNDAlIiBoZWlnaHQ9IjE0MCUiPjxmZUdhdXNzaWFuQmx1ciBzdGREZXZpYXRpb249IjMiLz48L2ZpbHRlcj4KICAgIDxmaWx0ZXIgaWQ9InNvZnQiPjxmZUdhdXNzaWFuQmx1ciBzdGREZXZpYXRpb249IjE0Ii8+PC9maWx0ZXI+CiAgICA8ZmlsdGVyIGlkPSJncmFpbiI+PGZlVHVyYnVsZW5jZSB0eXBlPSJmcmFjdGFsTm9pc2UiIGJhc2VGcmVxdWVuY3k9Ii45IiBudW1PY3RhdmVzPSIyIiBzdGl0Y2hUaWxlcz0ic3RpdGNoIi8+PGZlQ29sb3JNYXRyaXggdmFsdWVzPSIwIDAgMCAwIDEgIDAgMCAwIDAgLjkgIDAgMCAwIDAgLjcgIDAgMCAwIC4wNiAwIi8+PC9maWx0ZXI+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImdvbGQiIHgxPSIwIiB5MT0iMCIgeDI9IjEiIHkyPSIxIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjN2E1YTFlIi8+PHN0b3Agb2Zmc2V0PSIuMjUiIHN0b3AtY29sb3I9IiNlOWM4NzgiLz48c3RvcCBvZmZzZXQ9Ii40NSIgc3RvcC1jb2xvcj0iI2ZmZjFjMiIvPgogICAgICA8c3RvcCBvZmZzZXQ9Ii42IiBzdG9wLWNvbG9yPSIjYzc5YTQ1Ii8+PHN0b3Agb2Zmc2V0PSIuOCIgc3RvcC1jb2xvcj0iIzhhNjQyMCIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iI2UyYmY2ZSIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0iZGlhbW9uZCIgeDE9IjAiIHkxPSIwIiB4Mj0iMSIgeTI9IjEiPjxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIvPjxzdG9wIG9mZnNldD0iLjUiIHN0b3AtY29sb3I9IiNjZmU2ZmYiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiM4ZmI2ZDkiLz48L2xpbmVhckdyYWRpZW50PgogICAgPGNsaXBQYXRoIGlkPSJvdmVyIj48cmVjdCB4PSI0MDAiIHk9IjM2OC4zODg1NzE0Mjg1NzE1IiB3aWR0aD0iNjguNTcxNDI4NTcxNDI4NTciIGhlaWdodD0iMjI4LjU3MTQyODU3MTQyODU2Ii8+PC9jbGlwUGF0aD4KICAgIDxyYWRpYWxHcmFkaWVudCBpZD0iZ2xvdyIgY3g9IjUwJSIgY3k9IjU1JSIgcj0iNjAlIj48c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiNmNmM4NzIiIHN0b3Atb3BhY2l0eT0iLjU1Ii8+PHN0b3Agb2Zmc2V0PSIuNSIgc3RvcC1jb2xvcj0iI2I4NzUyYSIgc3RvcC1vcGFjaXR5PSIuMTUiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiMwMDAiIHN0b3Atb3BhY2l0eT0iMCIvPjwvcmFkaWFsR3JhZGllbnQ+CiAgPC9kZWZzPgogIDxsaW5lYXJHcmFkaWVudCBpZD0iYmciIHgxPSIwIiB5MT0iMCIgeDI9IjAiIHkyPSIxIj48c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiMwYTJhMjAiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiMxMDIzMWIiLz48L2xpbmVhckdyYWRpZW50PgogIDxyZWN0IHdpZHRoPSI4MDAiIGhlaWdodD0iMTA2NiIgZmlsbD0idXJsKCNiZykiLz4KICA8cmVjdCB3aWR0aD0iODAwIiBoZWlnaHQ9IjEwNjYiIGZpbGw9InVybCgjZ2xvdykiLz4KICA8ZyBmaWx0ZXI9InVybCgjYmx1cikiPjxjaXJjbGUgY3g9IjQ5NiIgY3k9IjUyMiIgcj0iNDAiIGZpbGw9IiNmZmYxYzkiIGZpbGwtb3BhY2l0eT0iMC4zOSIvPjxjaXJjbGUgY3g9IjYxMyIgY3k9IjQ3MyIgcj0iMjkiIGZpbGw9IiNmM2NmN2EiIGZpbGwtb3BhY2l0eT0iMC41MiIvPjxjaXJjbGUgY3g9IjQzNSIgY3k9IjIyNSIgcj0iNTgiIGZpbGw9IiNmM2NmN2EiIGZpbGwtb3BhY2l0eT0iMC40NCIvPjxjaXJjbGUgY3g9IjQ5NiIgY3k9IjEzNyIgcj0iMzgiIGZpbGw9IiNmM2NmN2EiIGZpbGwtb3BhY2l0eT0iMC4zNiIvPjxjaXJjbGUgY3g9Ijc2OCIgY3k9IjQyNCIgcj0iMzkiIGZpbGw9IiNmM2NmN2EiIGZpbGwtb3BhY2l0eT0iMC40OSIvPjxjaXJjbGUgY3g9IjIxOSIgY3k9Ijk0OCIgcj0iNjAiIGZpbGw9IiNmZmYxYzkiIGZpbGwtb3BhY2l0eT0iMC43NCIvPjxjaXJjbGUgY3g9Ijk0IiBjeT0iNjgyIiByPSI2OSIgZmlsbD0iI2U3Yjc1ZiIgZmlsbC1vcGFjaXR5PSIwLjI4Ii8+PGNpcmNsZSBjeD0iNTQ0IiBjeT0iNjkzIiByPSI2NyIgZmlsbD0iI2U3Yjc1ZiIgZmlsbC1vcGFjaXR5PSIwLjQyIi8+PGNpcmNsZSBjeD0iMTc5IiBjeT0iOTciIHI9IjUxIiBmaWxsPSIjZTdiNzVmIiBmaWxsLW9wYWNpdHk9IjAuMzYiLz48Y2lyY2xlIGN4PSIxNTciIGN5PSIzMTgiIHI9IjQzIiBmaWxsPSIjZmZmMWM5IiBmaWxsLW9wYWNpdHk9IjAuNzAiLz48Y2lyY2xlIGN4PSI2IiBjeT0iNDAwIiByPSI3MSIgZmlsbD0iI2ZmZjFjOSIgZmlsbC1vcGFjaXR5PSIwLjM3Ii8+PGNpcmNsZSBjeD0iMzgxIiBjeT0iNjI5IiByPSIzNCIgZmlsbD0iI2ZmZjFjOSIgZmlsbC1vcGFjaXR5PSIwLjM0Ii8+PGNpcmNsZSBjeD0iNzUxIiBjeT0iODYiIHI9IjU2IiBmaWxsPSIjZmZmMWM5IiBmaWxsLW9wYWNpdHk9IjAuNjciLz48Y2lyY2xlIGN4PSIyMiIgY3k9IjU4NCIgcj0iNTQiIGZpbGw9IiNmM2NmN2EiIGZpbGwtb3BhY2l0eT0iMC4zOCIvPjxjaXJjbGUgY3g9IjkzIiBjeT0iNzA3IiByPSI1OCIgZmlsbD0iI2ZmZjFjOSIgZmlsbC1vcGFjaXR5PSIwLjczIi8+PGNpcmNsZSBjeD0iMzQ0IiBjeT0iNjQiIHI9IjY3IiBmaWxsPSIjZjNjZjdhIiBmaWxsLW9wYWNpdHk9IjAuNzEiLz48Y2lyY2xlIGN4PSI2NTkiIGN5PSIzNjciIHI9IjY3IiBmaWxsPSIjZTdiNzVmIiBmaWxsLW9wYWNpdHk9IjAuNDgiLz48Y2lyY2xlIGN4PSIxODEiIGN5PSI0MDgiIHI9IjM3IiBmaWxsPSIjZTdiNzVmIiBmaWxsLW9wYWNpdHk9IjAuNTUiLz48Y2lyY2xlIGN4PSI2MDEiIGN5PSIzMzQiIHI9IjMzIiBmaWxsPSIjZjNjZjdhIiBmaWxsLW9wYWNpdHk9IjAuMzgiLz48Y2lyY2xlIGN4PSIzODIiIGN5PSI3ODciIHI9IjY2IiBmaWxsPSIjZmZmMWM5IiBmaWxsLW9wYWNpdHk9IjAuNzIiLz48Y2lyY2xlIGN4PSI3MTEiIGN5PSI3NzQiIHI9IjY2IiBmaWxsPSIjZTdiNzVmIiBmaWxsLW9wYWNpdHk9IjAuMzciLz48Y2lyY2xlIGN4PSI3OTAiIGN5PSIxNSIgcj0iNTAiIGZpbGw9IiNmZmYxYzkiIGZpbGwtb3BhY2l0eT0iMC43MSIvPjxjaXJjbGUgY3g9IjYwIiBjeT0iNSIgcj0iNTciIGZpbGw9IiNmZmYxYzkiIGZpbGwtb3BhY2l0eT0iMC42NCIvPjxjaXJjbGUgY3g9IjE1MSIgY3k9IjkyNCIgcj0iNTYiIGZpbGw9IiNmM2NmN2EiIGZpbGwtb3BhY2l0eT0iMC43MCIvPjxjaXJjbGUgY3g9IjE3NyIgY3k9IjE0NyIgcj0iMzAiIGZpbGw9IiNmZmYxYzkiIGZpbGwtb3BhY2l0eT0iMC4yNiIvPjxjaXJjbGUgY3g9IjU1NyIgY3k9IjIwIiByPSI0MiIgZmlsbD0iI2U3Yjc1ZiIgZmlsbC1vcGFjaXR5PSIwLjI3Ii8+PGNpcmNsZSBjeD0iMTY2IiBjeT0iOTM5IiByPSI1NyIgZmlsbD0iI2ZmZjFjOSIgZmlsbC1vcGFjaXR5PSIwLjYxIi8+PGNpcmNsZSBjeD0iNDI5IiBjeT0iODA5IiByPSI2OSIgZmlsbD0iI2YzY2Y3YSIgZmlsbC1vcGFjaXR5PSIwLjU1Ii8+PGNpcmNsZSBjeD0iMzQyIiBjeT0iOTEzIiByPSI3MiIgZmlsbD0iI2ZmZjFjOSIgZmlsbC1vcGFjaXR5PSIwLjY3Ii8+PGNpcmNsZSBjeD0iMjQiIGN5PSI4OTkiIHI9IjI4IiBmaWxsPSIjZjNjZjdhIiBmaWxsLW9wYWNpdHk9IjAuNjMiLz48Y2lyY2xlIGN4PSIxMyIgY3k9IjE2NCIgcj0iMzEiIGZpbGw9IiNlN2I3NWYiIGZpbGwtb3BhY2l0eT0iMC42MyIvPjxjaXJjbGUgY3g9IjI4MCIgY3k9Ijg0NSIgcj0iNTkiIGZpbGw9IiNlN2I3NWYiIGZpbGwtb3BhY2l0eT0iMC4zOCIvPjxjaXJjbGUgY3g9IjU5MiIgY3k9Ijg4MiIgcj0iNjQiIGZpbGw9IiNlN2I3NWYiIGZpbGwtb3BhY2l0eT0iMC4zMCIvPjxjaXJjbGUgY3g9IjU5NCIgY3k9IjIwOSIgcj0iNjEiIGZpbGw9IiNmM2NmN2EiIGZpbGwtb3BhY2l0eT0iMC41NCIvPjxjaXJjbGUgY3g9IjQzOSIgY3k9Ijg1MyIgcj0iNTEiIGZpbGw9IiNmZmYxYzkiIGZpbGwtb3BhY2l0eT0iMC40MyIvPjxjaXJjbGUgY3g9IjMzNSIgY3k9IjExIiByPSIzMSIgZmlsbD0iI2ZmZjFjOSIgZmlsbC1vcGFjaXR5PSIwLjY2Ii8+PC9nPgogIDxnIGZpbHRlcj0idXJsKCNibHVyMikiPjxjaXJjbGUgY3g9IjY0MSIgY3k9IjEyIiByPSIxOSIgZmlsbD0iI2ZmZjFjOSIgZmlsbC1vcGFjaXR5PSIwLjMzIi8+PGNpcmNsZSBjeD0iODQiIGN5PSI3IiByPSIxNiIgZmlsbD0iI2U3Yjc1ZiIgZmlsbC1vcGFjaXR5PSIwLjM3Ii8+PGNpcmNsZSBjeD0iMTIxIiBjeT0iMjMwIiByPSIxOSIgZmlsbD0iI2YzY2Y3YSIgZmlsbC1vcGFjaXR5PSIwLjI1Ii8+PGNpcmNsZSBjeD0iMjE4IiBjeT0iNzE5IiByPSIxNyIgZmlsbD0iI2U3Yjc1ZiIgZmlsbC1vcGFjaXR5PSIwLjUzIi8+PGNpcmNsZSBjeD0iODQiIGN5PSI0MTIiIHI9IjIwIiBmaWxsPSIjZTdiNzVmIiBmaWxsLW9wYWNpdHk9IjAuNzQiLz48Y2lyY2xlIGN4PSIxNiIgY3k9Ijc2NyIgcj0iMTUiIGZpbGw9IiNlN2I3NWYiIGZpbGwtb3BhY2l0eT0iMC42MyIvPjxjaXJjbGUgY3g9IjE5NCIgY3k9IjQzOCIgcj0iMTEiIGZpbGw9IiNmM2NmN2EiIGZpbGwtb3BhY2l0eT0iMC42OSIvPjxjaXJjbGUgY3g9IjUwNCIgY3k9IjE3NCIgcj0iMTciIGZpbGw9IiNlN2I3NWYiIGZpbGwtb3BhY2l0eT0iMC41OCIvPjxjaXJjbGUgY3g9Ijg3IiBjeT0iNjg5IiByPSIxNyIgZmlsbD0iI2U3Yjc1ZiIgZmlsbC1vcGFjaXR5PSIwLjMyIi8+PGNpcmNsZSBjeD0iNjM1IiBjeT0iMjA4IiByPSIxNCIgZmlsbD0iI2U3Yjc1ZiIgZmlsbC1vcGFjaXR5PSIwLjM1Ii8+PGNpcmNsZSBjeD0iNjExIiBjeT0iMzM0IiByPSIxOSIgZmlsbD0iI2ZmZjFjOSIgZmlsbC1vcGFjaXR5PSIwLjQzIi8+PGNpcmNsZSBjeD0iNDAwIiBjeT0iNzUiIHI9IjE4IiBmaWxsPSIjZTdiNzVmIiBmaWxsLW9wYWNpdHk9IjAuMzciLz48Y2lyY2xlIGN4PSI3IiBjeT0iMTA5IiByPSIxNSIgZmlsbD0iI2U3Yjc1ZiIgZmlsbC1vcGFjaXR5PSIwLjU1Ii8+PGNpcmNsZSBjeD0iNDcxIiBjeT0iMTIiIHI9IjE3IiBmaWxsPSIjZjNjZjdhIiBmaWxsLW9wYWNpdHk9IjAuMzQiLz48Y2lyY2xlIGN4PSIyMjMiIGN5PSItMzUiIHI9IjE4IiBmaWxsPSIjZmZmMWM5IiBmaWxsLW9wYWNpdHk9IjAuMzIiLz48Y2lyY2xlIGN4PSI3NzgiIGN5PSIyMjEiIHI9IjE1IiBmaWxsPSIjZjNjZjdhIiBmaWxsLW9wYWNpdHk9IjAuMzMiLz48Y2lyY2xlIGN4PSIxNTIiIGN5PSIyNDgiIHI9IjExIiBmaWxsPSIjZjNjZjdhIiBmaWxsLW9wYWNpdHk9IjAuMzQiLz48Y2lyY2xlIGN4PSI0MjIiIGN5PSI0NDAiIHI9IjE5IiBmaWxsPSIjZjNjZjdhIiBmaWxsLW9wYWNpdHk9IjAuNzIiLz48Y2lyY2xlIGN4PSI2MTMiIGN5PSI2MjMiIHI9IjE2IiBmaWxsPSIjZTdiNzVmIiBmaWxsLW9wYWNpdHk9IjAuNzMiLz48Y2lyY2xlIGN4PSI1MjAiIGN5PSIxNjEiIHI9IjEyIiBmaWxsPSIjZTdiNzVmIiBmaWxsLW9wYWNpdHk9IjAuNDgiLz48Y2lyY2xlIGN4PSIyNjQiIGN5PSI2MTkiIHI9IjE5IiBmaWxsPSIjZmZmMWM5IiBmaWxsLW9wYWNpdHk9IjAuNjAiLz48Y2lyY2xlIGN4PSIzODAiIGN5PSI0MzgiIHI9IjE4IiBmaWxsPSIjZjNjZjdhIiBmaWxsLW9wYWNpdHk9IjAuMzAiLz48Y2lyY2xlIGN4PSI0MiIgY3k9Ijc5MiIgcj0iMTIiIGZpbGw9IiNmM2NmN2EiIGZpbGwtb3BhY2l0eT0iMC4zMCIvPjxjaXJjbGUgY3g9IjYxNCIgY3k9IjU4MyIgcj0iMTIiIGZpbGw9IiNmZmYxYzkiIGZpbGwtb3BhY2l0eT0iMC41MSIvPjxjaXJjbGUgY3g9IjE0NSIgY3k9IjcwMyIgcj0iMTEiIGZpbGw9IiNlN2I3NWYiIGZpbGwtb3BhY2l0eT0iMC41OCIvPjxjaXJjbGUgY3g9IjM4NCIgY3k9IjMwMSIgcj0iMTAiIGZpbGw9IiNmZmYxYzkiIGZpbGwtb3BhY2l0eT0iMC4zNSIvPjxjaXJjbGUgY3g9Ijc0MSIgY3k9IjQxMSIgcj0iMTciIGZpbGw9IiNmM2NmN2EiIGZpbGwtb3BhY2l0eT0iMC40OCIvPjxjaXJjbGUgY3g9Ijc3NCIgY3k9IjUzOSIgcj0iMTgiIGZpbGw9IiNmZmYxYzkiIGZpbGwtb3BhY2l0eT0iMC42MSIvPjxjaXJjbGUgY3g9IjEzIiBjeT0iNjg4IiByPSIxOCIgZmlsbD0iI2ZmZjFjOSIgZmlsbC1vcGFjaXR5PSIwLjY1Ii8+PC9nPgogIAogIDxyZWN0IHdpZHRoPSI4MDAiIGhlaWdodD0iMTA2NiIgZmlsdGVyPSJ1cmwoI2dyYWluKSIvPgo8L3N2Zz4=", caption: { en: "Two hearts, one path", ckb: "دوو دڵ، یەک ڕێگا", kmr: "Du dil, yek rê", ar: "قلبان وطريق واحد" } },
-    { src: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA4MDAgMTA2NiIgcHJlc2VydmVBc3BlY3RSYXRpbz0ieE1pZFlNaWQgc2xpY2UiPgogIAogIDxkZWZzPgogICAgPGZpbHRlciBpZD0iYmx1ciIgeD0iLTIwJSIgeT0iLTIwJSIgd2lkdGg9IjE0MCUiIGhlaWdodD0iMTQwJSI+PGZlR2F1c3NpYW5CbHVyIHN0ZERldmlhdGlvbj0iOSIvPjwvZmlsdGVyPgogICAgPGZpbHRlciBpZD0iYmx1cjIiIHg9Ii0yMCUiIHk9Ii0yMCUiIHdpZHRoPSIxNDAlIiBoZWlnaHQ9IjE0MCUiPjxmZUdhdXNzaWFuQmx1ciBzdGREZXZpYXRpb249IjMiLz48L2ZpbHRlcj4KICAgIDxmaWx0ZXIgaWQ9InNvZnQiPjxmZUdhdXNzaWFuQmx1ciBzdGREZXZpYXRpb249IjE0Ii8+PC9maWx0ZXI+CiAgICA8ZmlsdGVyIGlkPSJncmFpbiI+PGZlVHVyYnVsZW5jZSB0eXBlPSJmcmFjdGFsTm9pc2UiIGJhc2VGcmVxdWVuY3k9Ii45IiBudW1PY3RhdmVzPSIyIiBzdGl0Y2hUaWxlcz0ic3RpdGNoIi8+PGZlQ29sb3JNYXRyaXggdmFsdWVzPSIwIDAgMCAwIDEgIDAgMCAwIDAgLjkgIDAgMCAwIDAgLjcgIDAgMCAwIC4wNiAwIi8+PC9maWx0ZXI+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImdvbGQiIHgxPSIwIiB5MT0iMCIgeDI9IjEiIHkyPSIxIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjN2E1YTFlIi8+PHN0b3Agb2Zmc2V0PSIuMjUiIHN0b3AtY29sb3I9IiNlOWM4NzgiLz48c3RvcCBvZmZzZXQ9Ii40NSIgc3RvcC1jb2xvcj0iI2ZmZjFjMiIvPgogICAgICA8c3RvcCBvZmZzZXQ9Ii42IiBzdG9wLWNvbG9yPSIjYzc5YTQ1Ii8+PHN0b3Agb2Zmc2V0PSIuOCIgc3RvcC1jb2xvcj0iIzhhNjQyMCIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iI2UyYmY2ZSIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0iZGlhbW9uZCIgeDE9IjAiIHkxPSIwIiB4Mj0iMSIgeTI9IjEiPjxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIvPjxzdG9wIG9mZnNldD0iLjUiIHN0b3AtY29sb3I9IiNjZmU2ZmYiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiM4ZmI2ZDkiLz48L2xpbmVhckdyYWRpZW50PgogICAgPGNsaXBQYXRoIGlkPSJvdmVyIj48cmVjdCB4PSI0MDAiIHk9IjM2OC4zODg1NzE0Mjg1NzE1IiB3aWR0aD0iNjguNTcxNDI4NTcxNDI4NTciIGhlaWdodD0iMjI4LjU3MTQyODU3MTQyODU2Ii8+PC9jbGlwUGF0aD4KICAgIDxyYWRpYWxHcmFkaWVudCBpZD0iZ2xvdyIgY3g9IjUwJSIgY3k9IjU1JSIgcj0iNjAlIj48c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiNmNmM4NzIiIHN0b3Atb3BhY2l0eT0iLjU1Ii8+PHN0b3Agb2Zmc2V0PSIuNSIgc3RvcC1jb2xvcj0iI2I4NzUyYSIgc3RvcC1vcGFjaXR5PSIuMTUiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiMwMDAiIHN0b3Atb3BhY2l0eT0iMCIvPjwvcmFkaWFsR3JhZGllbnQ+CiAgPC9kZWZzPgogIDxsaW5lYXJHcmFkaWVudCBpZD0iYmciIHgxPSIwIiB5MT0iMCIgeDI9IjAiIHkyPSIxIj48c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiMyYTBjMTAiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiMxMjA2MGEiLz48L2xpbmVhckdyYWRpZW50PgogIDxyZWN0IHdpZHRoPSI4MDAiIGhlaWdodD0iMTA2NiIgZmlsbD0idXJsKCNiZykiLz4KICA8cmVjdCB3aWR0aD0iODAwIiBoZWlnaHQ9IjEwNjYiIGZpbGw9InVybCgjZ2xvdykiLz4KICA8ZyBmaWx0ZXI9InVybCgjYmx1cikiPjxjaXJjbGUgY3g9IjcxMCIgY3k9IjIzNyIgcj0iNTIiIGZpbGw9IiNmZjlmN2EiIGZpbGwtb3BhY2l0eT0iMC41NyIvPjxjaXJjbGUgY3g9IjczNiIgY3k9IjgwIiByPSI2MiIgZmlsbD0iI2ZmZTljNCIgZmlsbC1vcGFjaXR5PSIwLjQzIi8+PGNpcmNsZSBjeD0iNTk1IiBjeT0iMTY2IiByPSI1NiIgZmlsbD0iI2ZmZTljNCIgZmlsbC1vcGFjaXR5PSIwLjI2Ii8+PGNpcmNsZSBjeD0iNTg4IiBjeT0iMzUiIHI9IjYzIiBmaWxsPSIjZmY5ZjdhIiBmaWxsLW9wYWNpdHk9IjAuMzEiLz48Y2lyY2xlIGN4PSI5NSIgY3k9IjI1OSIgcj0iMzciIGZpbGw9IiNmZmU5YzQiIGZpbGwtb3BhY2l0eT0iMC41OCIvPjxjaXJjbGUgY3g9IjU5OSIgY3k9IjYyOCIgcj0iNTUiIGZpbGw9IiNmZjlmN2EiIGZpbGwtb3BhY2l0eT0iMC43MSIvPjxjaXJjbGUgY3g9IjQ0MyIgY3k9Ijg5NiIgcj0iNTIiIGZpbGw9IiNmZmU5YzQiIGZpbGwtb3BhY2l0eT0iMC43NCIvPjxjaXJjbGUgY3g9IjUxOSIgY3k9IjI0OCIgcj0iMzUiIGZpbGw9IiNmZmQyOGEiIGZpbGwtb3BhY2l0eT0iMC42MCIvPjxjaXJjbGUgY3g9Ijg5IiBjeT0iMjg4IiByPSI2NCIgZmlsbD0iI2ZmZDI4YSIgZmlsbC1vcGFjaXR5PSIwLjU1Ii8+PGNpcmNsZSBjeD0iMzQwIiBjeT0iMjIiIHI9IjY3IiBmaWxsPSIjZmZlOWM0IiBmaWxsLW9wYWNpdHk9IjAuNDAiLz48Y2lyY2xlIGN4PSI0NzUiIGN5PSIxMjkiIHI9IjYyIiBmaWxsPSIjZmZkMjhhIiBmaWxsLW9wYWNpdHk9IjAuNTQiLz48Y2lyY2xlIGN4PSI3MzMiIGN5PSIxODYiIHI9IjQxIiBmaWxsPSIjZmZkMjhhIiBmaWxsLW9wYWNpdHk9IjAuMzMiLz48Y2lyY2xlIGN4PSIzNDYiIGN5PSIzNzIiIHI9IjY3IiBmaWxsPSIjZmZkMjhhIiBmaWxsLW9wYWNpdHk9IjAuMzUiLz48Y2lyY2xlIGN4PSIyOCIgY3k9Ijk0MSIgcj0iMjgiIGZpbGw9IiNmZjlmN2EiIGZpbGwtb3BhY2l0eT0iMC40MyIvPjxjaXJjbGUgY3g9IjE5NyIgY3k9IjQwMSIgcj0iMzYiIGZpbGw9IiNmZmQyOGEiIGZpbGwtb3BhY2l0eT0iMC41NyIvPjxjaXJjbGUgY3g9IjUyOCIgY3k9IjEwNyIgcj0iNTUiIGZpbGw9IiNmZjlmN2EiIGZpbGwtb3BhY2l0eT0iMC42MSIvPjxjaXJjbGUgY3g9IjQ3IiBjeT0iODQ0IiByPSIzMCIgZmlsbD0iI2ZmZTljNCIgZmlsbC1vcGFjaXR5PSIwLjMzIi8+PGNpcmNsZSBjeD0iMTQ4IiBjeT0iNTUiIHI9IjUzIiBmaWxsPSIjZmZkMjhhIiBmaWxsLW9wYWNpdHk9IjAuMzIiLz48Y2lyY2xlIGN4PSIxNTMiIGN5PSIyNjciIHI9IjM1IiBmaWxsPSIjZmZlOWM0IiBmaWxsLW9wYWNpdHk9IjAuNzMiLz48Y2lyY2xlIGN4PSI1OTciIGN5PSI4NzgiIHI9IjcyIiBmaWxsPSIjZmZlOWM0IiBmaWxsLW9wYWNpdHk9IjAuMjYiLz48Y2lyY2xlIGN4PSI2NTMiIGN5PSIxODYiIHI9IjQ5IiBmaWxsPSIjZmZkMjhhIiBmaWxsLW9wYWNpdHk9IjAuNjMiLz48Y2lyY2xlIGN4PSI4NyIgY3k9IjkzMCIgcj0iNTciIGZpbGw9IiNmZmU5YzQiIGZpbGwtb3BhY2l0eT0iMC4yNSIvPjxjaXJjbGUgY3g9IjE0NSIgY3k9IjE2NCIgcj0iNjUiIGZpbGw9IiNmZmU5YzQiIGZpbGwtb3BhY2l0eT0iMC4yOCIvPjxjaXJjbGUgY3g9IjE3OSIgY3k9Ijg3NSIgcj0iMjgiIGZpbGw9IiNmZmQyOGEiIGZpbGwtb3BhY2l0eT0iMC41NCIvPjxjaXJjbGUgY3g9IjM5NyIgY3k9IjI1OSIgcj0iMzMiIGZpbGw9IiNmZmQyOGEiIGZpbGwtb3BhY2l0eT0iMC43MiIvPjxjaXJjbGUgY3g9IjM1OCIgY3k9IjcwMCIgcj0iNTkiIGZpbGw9IiNmZmQyOGEiIGZpbGwtb3BhY2l0eT0iMC40MiIvPjxjaXJjbGUgY3g9IjM5MSIgY3k9IjI4MiIgcj0iNDEiIGZpbGw9IiNmZmQyOGEiIGZpbGwtb3BhY2l0eT0iMC41OCIvPjxjaXJjbGUgY3g9IjM0OSIgY3k9IjI1MSIgcj0iNjAiIGZpbGw9IiNmZmQyOGEiIGZpbGwtb3BhY2l0eT0iMC42NyIvPjxjaXJjbGUgY3g9IjUwMyIgY3k9IjY0NyIgcj0iNTgiIGZpbGw9IiNmZjlmN2EiIGZpbGwtb3BhY2l0eT0iMC43MyIvPjxjaXJjbGUgY3g9IjU1NyIgY3k9IjQwNiIgcj0iNDQiIGZpbGw9IiNmZjlmN2EiIGZpbGwtb3BhY2l0eT0iMC4zMSIvPjwvZz4KICA8ZyBmaWx0ZXI9InVybCgjYmx1cjIpIj48Y2lyY2xlIGN4PSIxMSIgY3k9Ii0yNSIgcj0iMTQiIGZpbGw9IiNmZjlmN2EiIGZpbGwtb3BhY2l0eT0iMC42NCIvPjxjaXJjbGUgY3g9IjY0NSIgY3k9IjMzIiByPSIxOSIgZmlsbD0iI2ZmZDI4YSIgZmlsbC1vcGFjaXR5PSIwLjc0Ii8+PGNpcmNsZSBjeD0iNzQ0IiBjeT0iMzE1IiByPSIxMyIgZmlsbD0iI2ZmZTljNCIgZmlsbC1vcGFjaXR5PSIwLjI1Ii8+PGNpcmNsZSBjeD0iMjQ5IiBjeT0iNTc2IiByPSIxNCIgZmlsbD0iI2ZmOWY3YSIgZmlsbC1vcGFjaXR5PSIwLjY5Ii8+PGNpcmNsZSBjeD0iNTMiIGN5PSIzIiByPSIxMyIgZmlsbD0iI2ZmOWY3YSIgZmlsbC1vcGFjaXR5PSIwLjUxIi8+PGNpcmNsZSBjeD0iMjE3IiBjeT0iMTk1IiByPSIxMyIgZmlsbD0iI2ZmZTljNCIgZmlsbC1vcGFjaXR5PSIwLjQ2Ii8+PGNpcmNsZSBjeD0iMzI5IiBjeT0iMTYzIiByPSIxNyIgZmlsbD0iI2ZmZDI4YSIgZmlsbC1vcGFjaXR5PSIwLjM1Ii8+PGNpcmNsZSBjeD0iMzkyIiBjeT0iNTgzIiByPSIxMSIgZmlsbD0iI2ZmOWY3YSIgZmlsbC1vcGFjaXR5PSIwLjU2Ii8+PGNpcmNsZSBjeD0iNjQ0IiBjeT0iNzMiIHI9IjEyIiBmaWxsPSIjZmY5ZjdhIiBmaWxsLW9wYWNpdHk9IjAuNDciLz48Y2lyY2xlIGN4PSIzMTkiIGN5PSI3MzMiIHI9IjE0IiBmaWxsPSIjZmZlOWM0IiBmaWxsLW9wYWNpdHk9IjAuNjUiLz48Y2lyY2xlIGN4PSIxMjkiIGN5PSI4OTUiIHI9IjE0IiBmaWxsPSIjZmY5ZjdhIiBmaWxsLW9wYWNpdHk9IjAuNDQiLz48Y2lyY2xlIGN4PSI0OTIiIGN5PSIyOSIgcj0iMTQiIGZpbGw9IiNmZjlmN2EiIGZpbGwtb3BhY2l0eT0iMC4zMyIvPjxjaXJjbGUgY3g9IjI4NCIgY3k9IjQ0OCIgcj0iMTciIGZpbGw9IiNmZjlmN2EiIGZpbGwtb3BhY2l0eT0iMC42NSIvPjxjaXJjbGUgY3g9IjEzMSIgY3k9IjU4IiByPSIxMSIgZmlsbD0iI2ZmOWY3YSIgZmlsbC1vcGFjaXR5PSIwLjcwIi8+PGNpcmNsZSBjeD0iNjI2IiBjeT0iMTQyIiByPSIxNyIgZmlsbD0iI2ZmZTljNCIgZmlsbC1vcGFjaXR5PSIwLjU3Ii8+PGNpcmNsZSBjeD0iMjkyIiBjeT0iMzQ3IiByPSIxNSIgZmlsbD0iI2ZmZDI4YSIgZmlsbC1vcGFjaXR5PSIwLjM5Ii8+PGNpcmNsZSBjeD0iNDY0IiBjeT0iNzIiIHI9IjE1IiBmaWxsPSIjZmY5ZjdhIiBmaWxsLW9wYWNpdHk9IjAuMzgiLz48Y2lyY2xlIGN4PSIzMTUiIGN5PSI0OTMiIHI9IjEzIiBmaWxsPSIjZmZkMjhhIiBmaWxsLW9wYWNpdHk9IjAuNzUiLz48Y2lyY2xlIGN4PSI0MTAiIGN5PSI1MTEiIHI9IjE5IiBmaWxsPSIjZmZlOWM0IiBmaWxsLW9wYWNpdHk9IjAuNDAiLz48Y2lyY2xlIGN4PSIzOTYiIGN5PSI1OCIgcj0iMTYiIGZpbGw9IiNmZjlmN2EiIGZpbGwtb3BhY2l0eT0iMC41MSIvPjxjaXJjbGUgY3g9IjQyMyIgY3k9IjIwMiIgcj0iMTQiIGZpbGw9IiNmZjlmN2EiIGZpbGwtb3BhY2l0eT0iMC4zOSIvPjxjaXJjbGUgY3g9IjcwMyIgY3k9IjU5IiByPSIxMSIgZmlsbD0iI2ZmOWY3YSIgZmlsbC1vcGFjaXR5PSIwLjczIi8+PGNpcmNsZSBjeD0iNzkyIiBjeT0iOTQiIHI9IjE0IiBmaWxsPSIjZmZlOWM0IiBmaWxsLW9wYWNpdHk9IjAuNjQiLz48Y2lyY2xlIGN4PSIyMTkiIGN5PSIzMDkiIHI9IjE5IiBmaWxsPSIjZmY5ZjdhIiBmaWxsLW9wYWNpdHk9IjAuNTUiLz48L2c+CiAgCiAgPGVsbGlwc2UgY3g9IjQwMCIgY3k9Ijc0NS41MzE0Mjg1NzE0Mjg2IiByeD0iMjk3LjE0Mjg1NzE0Mjg1NzEiIHJ5PSIyOS43MTQyODU3MTQyODU3MSIgZmlsbD0iIzAwMCIgZmlsbC1vcGFjaXR5PSIuNDUiIGZpbHRlcj0idXJsKCNzb2Z0KSIvPgogIAogICAgPGVsbGlwc2UgY3g9IjMyMCIgY3k9IjU5Ni45NiIgcng9IjEzNC44NTcxNDI4NTcxNDI4NiIgcnk9IjExOC44NTcxNDI4NTcxNDI4NSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJ1cmwoI2dvbGQpIiBzdHJva2Utd2lkdGg9IjI3LjQyODU3MTQyODU3MTQyNyIvPgogICAgPGVsbGlwc2UgY3g9IjMyMCIgY3k9IjU5Ni45NiIgcng9IjEzNC44NTcxNDI4NTcxNDI4NiIgcnk9IjExOC44NTcxNDI4NTcxNDI4NSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZmZmOGRjIiBzdHJva2Utb3BhY2l0eT0iLjU1IiBzdHJva2Utd2lkdGg9IjMuNDI4NTcxNDI4NTcxNDI4NCIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTQuNTcxNDI4NTcxNDI4NTcxIC04KSIvPgogICAgPGVsbGlwc2UgY3g9IjMyMCIgY3k9IjU5Ni45NiIgcng9IjEyMS4xNDI4NTcxNDI4NTcxNCIgcnk9IjEwNS4xNDI4NTcxNDI4NTcxNCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjNWEzZDEyIiBzdHJva2Utb3BhY2l0eT0iLjUiIHN0cm9rZS13aWR0aD0iMi4yODU3MTQyODU3MTQyODU2Ii8+CiAgCiAgICA8ZWxsaXBzZSBjeD0iNDgwIiBjeT0iNjA4LjM4ODU3MTQyODU3MTUiIHJ4PSIxMzQuODU3MTQyODU3MTQyODYiIHJ5PSIxMTguODU3MTQyODU3MTQyODUiIGZpbGw9Im5vbmUiIHN0cm9rZT0idXJsKCNnb2xkKSIgc3Ryb2tlLXdpZHRoPSIyNy40Mjg1NzE0Mjg1NzE0MjciLz4KICAgIDxlbGxpcHNlIGN4PSI0ODAiIGN5PSI2MDguMzg4NTcxNDI4NTcxNSIgcng9IjEzNC44NTcxNDI4NTcxNDI4NiIgcnk9IjExOC44NTcxNDI4NTcxNDI4NSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZmZmOGRjIiBzdHJva2Utb3BhY2l0eT0iLjU1IiBzdHJva2Utd2lkdGg9IjMuNDI4NTcxNDI4NTcxNDI4NCIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTQuNTcxNDI4NTcxNDI4NTcxIC04KSIvPgogICAgPGVsbGlwc2UgY3g9IjQ4MCIgY3k9IjYwOC4zODg1NzE0Mjg1NzE1IiByeD0iMTIxLjE0Mjg1NzE0Mjg1NzE0IiByeT0iMTA1LjE0Mjg1NzE0Mjg1NzE0IiBmaWxsPSJub25lIiBzdHJva2U9IiM1YTNkMTIiIHN0cm9rZS1vcGFjaXR5PSIuNSIgc3Ryb2tlLXdpZHRoPSIyLjI4NTcxNDI4NTcxNDI4NTYiLz4KICA8ZyBjbGlwLXBhdGg9InVybCgjb3ZlcikiPgogICAgPGVsbGlwc2UgY3g9IjMyMCIgY3k9IjU5Ni45NiIgcng9IjEzNC44NTcxNDI4NTcxNDI4NiIgcnk9IjExOC44NTcxNDI4NTcxNDI4NSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJ1cmwoI2dvbGQpIiBzdHJva2Utd2lkdGg9IjI3LjQyODU3MTQyODU3MTQyNyIvPgogICAgPGVsbGlwc2UgY3g9IjMyMCIgY3k9IjU5Ni45NiIgcng9IjEzNC44NTcxNDI4NTcxNDI4NiIgcnk9IjExOC44NTcxNDI4NTcxNDI4NSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZmZmOGRjIiBzdHJva2Utb3BhY2l0eT0iLjU1IiBzdHJva2Utd2lkdGg9IjMuNDI4NTcxNDI4NTcxNDI4NCIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTQuNTcxNDI4NTcxNDI4NTcxIC04KSIvPgogICAgPGVsbGlwc2UgY3g9IjMyMCIgY3k9IjU5Ni45NiIgcng9IjEyMS4xNDI4NTcxNDI4NTcxNCIgcnk9IjEwNS4xNDI4NTcxNDI4NTcxNCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjNWEzZDEyIiBzdHJva2Utb3BhY2l0eT0iLjUiIHN0cm9rZS13aWR0aD0iMi4yODU3MTQyODU3MTQyODU2Ii8+PC9nPgogIDxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDMyMCA0NzguMTAyODU3MTQyODU3MikiPgogICAgPHBhdGggZD0iTS0yOS43MTQyODU3MTQyODU3MSAwIEwtMTYgLTI1LjE0Mjg1NzE0Mjg1NzE0MiBMMTYgLTI1LjE0Mjg1NzE0Mjg1NzE0MiBMMjkuNzE0Mjg1NzE0Mjg1NzEgMCBMMCAyOS43MTQyODU3MTQyODU3MSBaIiBmaWxsPSJ1cmwoI2RpYW1vbmQpIiBzdHJva2U9IiNmZmYiIHN0cm9rZS1vcGFjaXR5PSIuNyIgc3Ryb2tlLXdpZHRoPSIxLjM3MTQyODU3MTQyODU3MTIiLz4KICAgIDxwYXRoIGQ9Ik0tMjkuNzE0Mjg1NzE0Mjg1NzEgMCBIMjkuNzE0Mjg1NzE0Mjg1NzEgTS0xNiAtMjUuMTQyODU3MTQyODU3MTQyIEwtOS4xNDI4NTcxNDI4NTcxNDIgMCBMMCAyOS43MTQyODU3MTQyODU3MSBMOS4xNDI4NTcxNDI4NTcxNDIgMCBMMTYgLTI1LjE0Mjg1NzE0Mjg1NzE0MiIgc3Ryb2tlPSIjZmZmIiBzdHJva2Utb3BhY2l0eT0iLjUiIHN0cm9rZS13aWR0aD0iMS4xNDI4NTcxNDI4NTcxNDI4IiBmaWxsPSJub25lIi8+CiAgICA8cGF0aCBkPSJNMzQuMjg1NzE0Mjg1NzE0Mjg1IC00NS43MTQyODU3MTQyODU3MSBsNC41NzE0Mjg1NzE0Mjg1NzEgMTYgbDE2IDQuNTcxNDI4NTcxNDI4NTcxIGwtMTYgNC41NzE0Mjg1NzE0Mjg1NzEgbC00LjU3MTQyODU3MTQyODU3MSAxNiBsLTQuNTcxNDI4NTcxNDI4NTcxIC0xNiBsLTE2IC00LjU3MTQyODU3MTQyODU3MSBsMTYgLTQuNTcxNDI4NTcxNDI4NTcxIFoiIGZpbGw9IiNmZmYiIG9wYWNpdHk9Ii45NSIvPgogIDwvZz4KICA8cmVjdCB3aWR0aD0iODAwIiBoZWlnaHQ9IjEwNjYiIGZpbHRlcj0idXJsKCNncmFpbikiLz4KPC9zdmc+", caption: { en: "She said yes", ckb: "گوتی بەڵێ", kmr: "Got erê", ar: "قالت نعم" } },
-  ],
+  /* ---------- gold wax seal with a dove ---------- */
+  function blob(cx, cy, r, n = 64) {
+    const bump = (th, at, w, h) => { let d = Math.abs(th - at); d = Math.min(d, Math.PI * 2 - d); return h * Math.exp(-((d / w) ** 2)); };
+    const pts = Array.from({ length: n }, (_, i) => {
+      const th = (i / n) * Math.PI * 2;
+      const k = 1 + 0.028 * Math.sin(3 * th + 0.7) + 0.02 * Math.sin(5 * th + 2.1) + 0.012 * Math.sin(11 * th + 0.4) + bump(th, 2.2, 0.18, 0.06) + bump(th, 5.3, 0.12, 0.05);
+      return [cx + Math.cos(th) * r * k, cy + Math.sin(th) * r * k];
+    });
+    let d = `M${f(pts[0][0])} ${f(pts[0][1])}`;
+    for (let i = 0; i < n; i++) {
+      const p0 = pts[(i - 1 + n) % n], p1 = pts[i], p2 = pts[(i + 1) % n], p3 = pts[(i + 2) % n];
+      d += ` C${f(p1[0] + (p2[0] - p0[0]) / 6)} ${f(p1[1] + (p2[1] - p0[1]) / 6)} ${f(p2[0] - (p3[0] - p1[0]) / 6)} ${f(p2[1] - (p3[1] - p1[1]) / 6)} ${f(p2[0])} ${f(p2[1])}`;
+    }
+    return `${d}Z`;
+  }
+  const DOVE = "M-30 4 L-24 1 C-22 -5 -15 -8 -10 -5 C-7 -3 -5 0 -3 2 C4 -10 14 -26 32 -34 C27 -20 22 -8 14 2 C24 -6 34 -10 42 -10 C36 0 26 8 16 12 C24 14 32 20 36 28 C27 28 19 26 12 20 C4 24 -6 24 -14 20 C-20 16 -24 10 -26 7 Z";
+  function seal() {
+    const dots = Array.from({ length: 36 }, (_, i) => { const a = (i / 36) * Math.PI * 2; return `<circle cx="${f(80 + Math.cos(a) * 44)}" cy="${f(80 + Math.sin(a) * 44)}" r="1.4"/>`; }).join("");
+    return `<svg viewBox="0 0 160 160" aria-hidden="true">
+      <defs>
+        <radialGradient id="gold-wax" cx="38%" cy="32%" r="75%">
+          <stop offset="0" stop-color="#f6dc93"/><stop offset=".45" stop-color="#cf9f45"/><stop offset=".8" stop-color="#9a6a20"/><stop offset="1" stop-color="#6e4610"/>
+        </radialGradient>
+        <filter id="seal-dome" x="-15%" y="-15%" width="130%" height="130%" color-interpolation-filters="sRGB">
+          <feGaussianBlur in="SourceAlpha" stdDeviation="5" result="b"/>
+          <feSpecularLighting in="b" surfaceScale="6" specularConstant="1.2" specularExponent="24" lighting-color="#fff6dc" result="s"><fePointLight x="40" y="20" z="120"/></feSpecularLighting>
+          <feComposite in="s" in2="SourceAlpha" operator="in" result="s2"/>
+          <feDiffuseLighting in="b" surfaceScale="5" diffuseConstant="1" lighting-color="#fff" result="d"><feDistantLight azimuth="225" elevation="45"/></feDiffuseLighting>
+          <feComposite in="SourceGraphic" in2="d" operator="arithmetic" k1="1.15" result="l"/>
+          <feComposite in="l" in2="SourceAlpha" operator="in" result="l2"/>
+          <feComposite in="l2" in2="s2" operator="arithmetic" k2="1" k3=".7"/>
+        </filter>
+        <filter id="seal-press" x="-10%" y="-10%" width="120%" height="120%" color-interpolation-filters="sRGB">
+          <feGaussianBlur in="SourceAlpha" stdDeviation="2.5" result="b"/>
+          <feDiffuseLighting in="b" surfaceScale="-3" diffuseConstant="1" lighting-color="#fff" result="d"><feDistantLight azimuth="225" elevation="50"/></feDiffuseLighting>
+          <feComposite in="SourceGraphic" in2="d" operator="arithmetic" k1="1.1" result="l"/>
+          <feComposite in="l" in2="SourceAlpha" operator="in"/>
+        </filter>
+        ${emboss("seal-relief", "#d9ae58", "#fff3cf", "#6e4610", 1, 0.6)}
+        ${emboss("dove-relief", "#f8f1e2", "#ffffff", "#8a6a3a", 0.9, 0.5)}
+      </defs>
+      <path d="${blob(80, 80, 66)}" fill="url(#gold-wax)" filter="url(#seal-dome)"/>
+      <circle cx="80" cy="80" r="50" fill="#b98934" filter="url(#seal-press)"/>
+      <g filter="url(#seal-relief)" fill="#000">${dots}<circle cx="80" cy="80" r="48" fill="none" stroke="#000" stroke-width="1.6"/></g>
+      <g transform="translate(82 82) scale(1.05)" filter="url(#dove-relief)" fill="#000">
+        <path d="${DOVE}"/>
+        <path d="M-30 4 C-36 8 -40 14 -38 20" fill="none" stroke="#000" stroke-width="1.6" stroke-linecap="round"/>
+        <ellipse cx="-38" cy="18" rx="2.6" ry="1.4" transform="rotate(-40 -38 18)"/><ellipse cx="-35" cy="12" rx="2.6" ry="1.4" transform="rotate(30 -35 12)"/>
+      </g>
+      <circle cx="-18" cy="-2" r="1.3" fill="#6e4610" transform="translate(82 82) scale(1.05)"/>
+      <g class="seal-crack" fill="none" stroke="#5a3608" stroke-linecap="round" stroke-linejoin="round">
+        <path pathLength="1" d="M84 14 L78 44 L90 70 L74 98 L86 124 L80 148" stroke-width="2"/>
+        <path pathLength="1" d="M90 70 L116 82 L142 86" stroke-width="1.6"/>
+      </g>
+    </svg>`;
+  }
 
-  // Background music: "Perfect" by Ed Sheeran.
-  // The song is copyrighted, so it is not included. Save your mp3 as
-  // assets/music/perfect.mp3. Until then an original piano waltz plays.
-  song: { title: "Perfect", artist: "Ed Sheeran", src: "assets/music/perfect.mp3" },
-
-  rsvpWhatsApp: "9647500000000", // international format, digits only
-  hashtag: "#ShilanAndAram",
-
-  // Optional: personalise the envelope, e.g. "Hama" → "A letter for Hama".
-  // Also works from the link: index.html?to=Hama
-  guestName: "",
-};
-
-window.WEDDING.mapEmbed = false;
+  return { flap, pampas, baroqueFrame, seal };
+})();
 
 </script>
   <script>
 (() => {
-  const W = window.WEDDING;
-  const I18N = window.I18N;
+  const C = window.CARD;
   const $ = (s, el = document) => el.querySelector(s);
   const $$ = (s, el = document) => [...el.querySelectorAll(s)];
-  const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
-  const fill = (tpl, vars) => tpl.replace(/\{(\w+)\}/g, (_, k) => vars[k] ?? "");
-  const wait = (ms) => new Promise((r) => setTimeout(r, ms));
   const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
-  document.body.classList.add("is-locked");
+  const params = new URLSearchParams(location.search);
   const store = {
     get(k) { try { return localStorage.getItem(k); } catch { return null; } },
-    set(k, v) { try { localStorage.setItem(k, v); } catch { /* storage unavailable */ } },
+    set(k, v) { try { localStorage.setItem(k, v); } catch { /* storage blocked */ } },
   };
 
-  /* ==========================================================
-     Language
-     ========================================================== */
-  const params = new URLSearchParams(location.search);
-  let lang = [params.get("lang"), store.get("lang"), W.defaultLang, "en"].find((l) => l && I18N[l]);
-  const guest = params.get("to") || W.guestName || "";
-  const t = (k) => I18N[lang][k] ?? I18N.en[k] ?? "";
-  const pick = (obj) => (obj && typeof obj === "object" ? obj[lang] ?? obj.en : obj);
+  let lang = [params.get("lang"), store.get("card-lang"), C.defaultLang, "en"].find((l) => l && C.words[l]);
+  const guest = params.get("to") || C.guestName;
+  const w = (k) => C.words[lang][k] ?? C.words.en[k] ?? "";
+  const pick = (v) => (v && typeof v === "object" && !Array.isArray(v) ? v[lang] ?? v.en : v);
+  const rtl = () => w("dir") === "rtl";
 
-  /* ---------- Dates (Kurdish is formatted by hand; browsers lack it) ---------- */
-  const start = new Date(W.date);
-  const easternDigits = (s) => String(s).replace(/\d/g, (d) => "٠١٢٣٤٥٦٧٨٩"[d]);
-  const KU = {
-    ckb: {
-      months: ["کانوونی دووەم", "شوبات", "ئازار", "نیسان", "ئایار", "حوزەیران", "تەممووز", "ئاب", "ئەیلوول", "تشرینی یەکەم", "تشرینی دووەم", "کانوونی یەکەم"],
-      days: ["یەکشەممە", "دووشەممە", "سێشەممە", "چوارشەممە", "پێنجشەممە", "هەینی", "شەممە"],
-    },
-    kmr: {
-      months: ["Kanûna Paşîn", "Sibat", "Adar", "Nîsan", "Gulan", "Hezîran", "Tîrmeh", "Tebax", "Îlon", "Cotmeh", "Mijdar", "Kanûn"],
-      days: ["Yekşem", "Duşem", "Sêşem", "Çarşem", "Pêncşem", "În", "Şemî"],
-    },
-  };
-  const num = (n, pad = 1) => {
-    const s = String(n).padStart(pad, "0");
-    return lang === "ckb" || lang === "ar" ? easternDigits(s) : s;
-  };
-  const hm = (d) => `${num(d.getHours())}:${num(d.getMinutes(), 2)}`;
+  /* ---------- artwork ---------- */
+  ["top", "bottom", "left", "right"].forEach((k) => { $(`#f-${k}`).innerHTML = ART.flap(k); });
+  $("#pampas").innerHTML = ART.pampas();
+  $("#crest").innerHTML = ART.baroqueFrame();
+  $("#seal").innerHTML = ART.seal();
 
-  const EN_ORD = ["First", "Second", "Third", "Fourth", "Fifth", "Sixth", "Seventh", "Eighth", "Ninth", "Tenth", "Eleventh", "Twelfth", "Thirteenth", "Fourteenth", "Fifteenth", "Sixteenth", "Seventeenth", "Eighteenth", "Nineteenth", "Twentieth", "Twenty-First", "Twenty-Second", "Twenty-Third", "Twenty-Fourth", "Twenty-Fifth", "Twenty-Sixth", "Twenty-Seventh", "Twenty-Eighth", "Twenty-Ninth", "Thirtieth", "Thirty-First"];
-  const EN_ONES = ["", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Eleven", "Twelve", "Thirteen", "Fourteen", "Fifteen", "Sixteen", "Seventeen", "Eighteen", "Nineteen"];
-  const EN_TENS = ["", "", "Twenty", "Thirty", "Forty", "Fifty", "Sixty", "Seventy", "Eighty", "Ninety"];
-  const enWords = (n) => (n < 20 ? EN_ONES[n] : EN_TENS[Math.floor(n / 10)] + (n % 10 ? `-${EN_ONES[n % 10]}` : ""));
-  const enYear = (y) => `Two Thousand${y % 100 ? ` and ${enWords(y % 100)}` : ""}`;
+  /* ---------- text ---------- */
+  const couple = () => `${pick(C.bride)} ${w("amp")} ${pick(C.groom)}`;
+  const content = () => ({
+    bride: pick(C.bride), groom: pick(C.groom), i1: C.initials[0], i2: C.initials[1],
+    date: pick(C.date), time: pick(C.time), venue: pick(C.venue), address: pick(C.address),
+    rsvpBy: pick(C.rsvpBy), rsvpName: pick(C.rsvpName), phone: C.phone, website: C.website,
+  });
 
-  function dateLong(d) {
-    if (lang === "en") {
-      const wd = d.toLocaleDateString("en-GB", { weekday: "long" });
-      const mo = d.toLocaleDateString("en-GB", { month: "long" });
-      return `${wd}, the ${EN_ORD[d.getDate() - 1]} of ${mo}\n${enYear(d.getFullYear())}`;
-    }
-    if (KU[lang]) return `${KU[lang].days[d.getDay()]}، ${dateShort(d)}`.replace("،", lang === "kmr" ? "," : "،");
-    return new Intl.DateTimeFormat(t("locale"), { weekday: "long", day: "numeric", month: "long", year: "numeric" }).format(d);
-  }
-  function dateShort(d, withYear = true) {
-    if (KU[lang]) return `${num(d.getDate())} ${KU[lang].months[d.getMonth()]}${withYear ? ` ${num(d.getFullYear())}` : ""}`;
-    return new Intl.DateTimeFormat(t("locale"), { day: "numeric", month: "long", ...(withYear ? { year: "numeric" } : {}) }).format(d);
-  }
-  function timeLine(d) {
-    if (lang === "en") {
-      const h = d.getHours() % 12 || 12, m = d.getMinutes();
-      const part = d.getHours() < 12 ? "in the morning" : d.getHours() < 17 ? "in the afternoon" : "in the evening";
-      const clock = m === 0 ? `${enWords(h).toLowerCase()} o'clock` : m === 30 ? `half past ${enWords(h).toLowerCase()}` : d.toLocaleTimeString("en-GB", { hour: "numeric", minute: "2-digit" });
-      return `at ${clock} ${part}`;
-    }
-    if (lang === "ckb") return `کاتژمێر ${num(d.getHours() % 12 || 12)}ی ${d.getHours() < 12 ? "بەیانی" : d.getHours() < 17 ? "دوای نیوەڕۆ" : "ئێوارە"}`;
-    if (lang === "kmr") return `saet ${hm(d)}`;
-    return `${t("at")} ${new Intl.DateTimeFormat(t("locale"), { hour: "numeric", minute: "2-digit" }).format(d)}`;
-  }
-
-  /* ==========================================================
-     Links
-     ========================================================== */
-  const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(W.venue.mapQuery)}`;
-  const embedUrl = `https://maps.google.com/maps?q=${encodeURIComponent(W.venue.mapQuery)}&z=15&output=embed`;
-  const pad2 = (n) => String(n).padStart(2, "0");
-  const gcal = (d) => `${d.getFullYear()}${pad2(d.getMonth() + 1)}${pad2(d.getDate())}T${pad2(d.getHours())}${pad2(d.getMinutes())}00`;
-  const calUrl = () => "https://calendar.google.com/calendar/render?action=TEMPLATE" +
-    `&text=${encodeURIComponent(`${W.bride.en} & ${W.groom.en} Wedding`)}` +
-    `&dates=${gcal(start)}/${gcal(new Date(start.getTime() + 5 * 3600e3))}` +
-    `&location=${encodeURIComponent(`${W.venue.name.en}, ${W.venue.address.en}`)}` +
-    `&details=${encodeURIComponent(mapsUrl)}`;
-
-  /* ==========================================================
-     Artwork: Kurdish sun + wax seal
-     ========================================================== */
-  const rays = Array.from({ length: 21 }, (_, i) => `<path d="M0 -47 L5.2 -25 L-5.2 -25 Z" transform="rotate(${(360 / 21) * i})"/>`).join("");
-  $("#sun-g").innerHTML = `${rays}<circle r="21"/>`;
-
-  function blobPath(cx, cy, r, n = 72) {
-    const bump = (th, at, w, h) => { let d = Math.abs(th - at); d = Math.min(d, Math.PI * 2 - d); return h * Math.exp(-((d / w) ** 2)); };
-    const pts = Array.from({ length: n }, (_, i) => {
-      const th = (i / n) * Math.PI * 2;
-      const k = 1 + 0.03 * Math.sin(3 * th + 0.7) + 0.022 * Math.sin(5 * th + 2.1) + 0.014 * Math.sin(9 * th + 0.4) + 0.008 * Math.sin(15 * th + 1.3)
-        + bump(th, 2.35, 0.16, 0.07) + bump(th, 5.05, 0.12, 0.055) + bump(th, 0.9, 0.1, 0.035);
-      return [cx + Math.cos(th) * r * k, cy + Math.sin(th) * r * k];
+  // Split text into letters (Latin) or words (Arabic script, so letters stay joined),
+  // each with a slightly random delay so the words "materialise".
+  function split(el, text) {
+    const parts = rtl() || /[؀-ۿ]/.test(text) ? text.split(/(\s+)/) : [...text];
+    const order = parts.map((_, i) => i).sort(() => Math.random() - 0.5);
+    const rank = new Map(order.map((idx, r) => [idx, r]));
+    const step = rtl() ? 0.12 : 0.05;
+    el.innerHTML = "";
+    parts.forEach((p, i) => {
+      const s = document.createElement("span");
+      s.className = "ch";
+      s.textContent = p;
+      s.style.setProperty("--d", `${(rank.get(i) * step + Math.random() * 0.02).toFixed(3)}s`);
+      el.appendChild(s);
     });
-    let d = `M${pts[0][0].toFixed(2)} ${pts[0][1].toFixed(2)}`;
-    for (let i = 0; i < n; i++) {
-      const p0 = pts[(i - 1 + n) % n], p1 = pts[i], p2 = pts[(i + 1) % n], p3 = pts[(i + 2) % n];
-      const c1 = [p1[0] + (p2[0] - p0[0]) / 6, p1[1] + (p2[1] - p0[1]) / 6];
-      const c2 = [p2[0] - (p3[0] - p1[0]) / 6, p2[1] - (p3[1] - p1[1]) / 6];
-      d += ` C${c1[0].toFixed(2)} ${c1[1].toFixed(2)} ${c2[0].toFixed(2)} ${c2[1].toFixed(2)} ${p2[0].toFixed(2)} ${p2[1].toFixed(2)}`;
-    }
-    return `${d} Z`;
   }
-  const sealRays = Array.from({ length: 21 }, (_, i) => `<path d="M0 -44 L3.6 -31 L-3.6 -31 Z" transform="rotate(${(360 / 21) * i})"/>`).join("");
-  $("#seal-g").innerHTML = `
-    <path d="${blobPath(80, 80, 68)}" fill="url(#wax)" filter="url(#wax-dome)"/>
-    <circle cx="80" cy="80" r="51" fill="#7a0c14" filter="url(#wax-press)"/>
-    <g filter="url(#wax-emboss)" fill="#a01822">
-      <circle cx="80" cy="80" r="47" fill="none" stroke="#a01822" stroke-width="2"/>
-      <circle cx="80" cy="80" r="43.5" fill="none" stroke="#a01822" stroke-width=".8"/>
-      <g transform="translate(80 80)">${sealRays}</g>
-      <circle cx="80" cy="80" r="27" fill="none" stroke="#a01822" stroke-width="1.4"/>
-      <text x="80" y="89" text-anchor="middle" font-family="Pinyon Script, Great Vibes, cursive" font-size="27" fill="#a01822">${esc(W.initials.replace(" ", " "))}</text>
-    </g>`;
 
-  /* ==========================================================
-     Render all text for the current language
-     ========================================================== */
   function render() {
-    const I = I18N[lang];
+    const d = C.words[lang];
     document.documentElement.lang = lang === "kmr" ? "ku" : lang;
-    document.documentElement.dir = I.dir;
-
-    $$("[data-i18n]").forEach((el) => { el.textContent = t(el.dataset.i18n); });
-    $$("[data-i18n-ph]").forEach((el) => { el.placeholder = t(el.dataset.i18nPh); });
-
-    const bride = pick(W.bride), groom = pick(W.groom);
-    const couple = `${bride} ${I.dir === "rtl" ? "و" : "&"} ${groom}`;
-    const coupleFor = lang === "kmr" ? `${bride} û ${groom}` : couple;
-    const binds = {
-      bride, groom, couple: coupleFor,
-      amp: I.dir === "rtl" ? "و" : lang === "kmr" ? "û" : "&",
-      monogram: W.initials.split(" ").join(" & "),
-      families: pick(W.families),
-      dateLong: dateLong(start),
-      dateShort: dateShort(start),
-      timeLine: timeLine(start),
-      venueName: pick(W.venue.name),
-      venueCity: pick(W.venue.city),
-      venueAddress: pick(W.venue.address),
-      hashtag: W.hashtag,
-      rsvpBy: fill(t("rsvpBy"), { date: dateShort(new Date(`${W.rsvpBy}T12:00:00`), false) }),
-    };
-    $$("[data-bind]").forEach((el) => { el.textContent = binds[el.dataset.bind] ?? ""; });
-    $$(".hero__date").forEach((el) => { el.innerHTML = esc(binds.dateLong).replace("\n", "<br>"); });
-
-    const sceneTo = $("#scene-to");
-    if (sceneTo) sceneTo.textContent = guest ? fill(t("letterForName"), { name: guest }) : t("letterFor");
-    document.title = `${coupleFor} · ${lang === "en" ? "Wedding" : t("detailsEyebrow")}`;
-
-    $("#gallery").innerHTML = W.gallery.map((p, i) => `
-      <figure class="arch reveal" style="--d:${i * 0.15}s">
-        <div class="arch__frame"><img src="${esc(p.src)}" alt="${esc(pick(p.caption))}" loading="lazy" decoding="async" /></div>
-        <figcaption>${esc(pick(p.caption))}</figcaption>
-      </figure>`).join("");
-
-    const day = W.date.slice(0, 10);
-    $("#programme").innerHTML = W.program.map((p, i) => `
-      <li class="reveal" style="--d:${i * 0.12}s">
-        <time>${esc(lang === "en" ? new Date(`${day}T${p.time}`).toLocaleTimeString("en-GB", { hour: "numeric", minute: "2-digit", hour12: true }) : hm(new Date(`${day}T${p.time}`)))}</time>
-        <span class="dot" aria-hidden="true"></span>
-        <div><strong>${esc(pick(p.title))}</strong><span>${esc(pick(p.note))}</span></div>
-      </li>`).join("");
-
-    $("#cal-link").href = calUrl();
-    $("#directions").href = mapsUrl;
-    updateRsvp();
-    updateSongLabel();
-    countdown();
-
-    $$(".hero__card > .rise").forEach((el, i) => el.style.setProperty("--i", i));
-    $$("[data-langs] select").forEach((s) => { s.value = lang; });
-    if (siteShown) watchReveals(true);
+    document.documentElement.dir = d.dir;
+    const c = content();
+    $$("[data-w]").forEach((el) => (el.classList.contains("act") || el.closest(".intro, .hint, .replay") ? (el.textContent = w(el.dataset.w)) : split(el, w(el.dataset.w))));
+    $$("[data-c]").forEach((el) => (el.closest(".mono") ? (el.textContent = c[el.dataset.c]) : split(el, c[el.dataset.c] ?? "")));
+    $(".amp").textContent = w("amp");
+    $("#for-guest").textContent = guest ? w("forGuest").replace("{name}", guest) : couple();
+    document.title = `${couple()} · Invitation`;
+    links();
   }
 
-  // Language pickers
-  $$("[data-langs]").forEach((box) => {
-    const sel = document.createElement("select");
-    sel.setAttribute("aria-label", "Language");
-    sel.innerHTML = Object.entries(I18N).map(([k, v]) => `<option value="${k}">${v.label}</option>`).join("");
-    sel.addEventListener("change", () => { lang = sel.value; store.set("lang", lang); render(); });
-    box.appendChild(sel);
-  });
-
-  // Map: live embed on the real site, a styled link card where embeds are blocked
-  $("#map").innerHTML = W.mapEmbed !== false
-    ? `<iframe loading="lazy" title="Map" referrerpolicy="no-referrer-when-downgrade" src="${embedUrl}"></iframe>`
-    : `<a class="map__open" href="${mapsUrl}" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s7-6.2 7-12a7 7 0 10-14 0c0 5.8 7 12 7 12z" fill="currentColor"/><circle cx="12" cy="10" r="2.6" fill="#052019"/></svg><span>Google Maps</span></a>`;
-  $("#band-img").src = W.cover;
-
-  /* ==========================================================
-     RSVP → WhatsApp
-     ========================================================== */
-  function updateRsvp() {
-    const name = $("#f-name").value.trim() || "—";
-    const vars = { name, couple: `${pick(W.bride)} & ${pick(W.groom)}`, guests: $("#f-guests").value };
-    let text = fill(t($("#f-yes").checked ? "rsvpYes" : "rsvpNo"), vars);
-    const msg = $("#f-msg").value.trim();
-    if (msg) text += `\n\n“${msg}”`;
-    $("#f-send").href = `https://wa.me/${W.rsvpWhatsApp}?text=${encodeURIComponent(text)}`;
+  /* ---------- links for the final screen ---------- */
+  function links() {
+    const pad = (n) => String(n).padStart(2, "0");
+    const g = (s) => { const x = new Date(s); return `${x.getFullYear()}${pad(x.getMonth() + 1)}${pad(x.getDate())}T${pad(x.getHours())}${pad(x.getMinutes())}00`; };
+    const maps = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(C.mapQuery)}`;
+    $("#a-rsvp").href = `https://wa.me/${C.whatsapp}?text=${encodeURIComponent(w("rsvpMsg").replace("{couple}", couple()))}`;
+    $("#a-cal").href = "https://calendar.google.com/calendar/render?action=TEMPLATE" +
+      `&text=${encodeURIComponent(`${C.bride.en} & ${C.groom.en} Wedding`)}&dates=${g(C.start)}/${g(C.end)}` +
+      `&location=${encodeURIComponent(`${C.venue.en}, ${C.address.en}`)}&details=${encodeURIComponent(maps)}`;
+    $("#a-map").href = maps;
   }
-  $("#rsvp-form").addEventListener("input", updateRsvp);
-  $("#rsvp-form").addEventListener("change", updateRsvp);
-  $("#rsvp-form").addEventListener("submit", (e) => e.preventDefault());
-  $("#f-send").addEventListener("click", (e) => {
-    if (!$("#f-name").value.trim()) { e.preventDefault(); $("#f-name").focus(); toast(t("nameFirst")); }
-  });
+
+  const sel = $("#lang");
+  sel.innerHTML = Object.entries(C.words).map(([k, v]) => `<option value="${k}">${v.label}</option>`).join("");
+  sel.value = lang;
+  sel.addEventListener("change", () => { lang = sel.value; store.set("card-lang", lang); render(); });
 
   /* ==========================================================
-     Countdown
-     ========================================================== */
-  function countdown() {
-    const s = Math.max(0, Math.floor((start - Date.now()) / 1000));
-    const v = { d: Math.floor(s / 86400), h: Math.floor(s / 3600) % 24, m: Math.floor(s / 60) % 60, s: s % 60 };
-    $$("#count b").forEach((b) => { const n = num(v[b.dataset.u], 2); if (b.textContent !== n) b.textContent = n; });
-  }
-  setInterval(countdown, 1000);
-
-  /* ==========================================================
-     Sound: effects for the seal and paper, and the music
+     Sound: seal crack + paper, and the music
      ========================================================== */
   const AC = window.AudioContext || window.webkitAudioContext;
-  let ctx = null, sfxBus = null, musicBus = null, noiseBuf = null, reverb = null;
+  let ctx, sfxBus, musicBus, noiseBuf, reverb;
   function audioInit() {
     if (ctx || !AC) return;
     ctx = new AC();
-    const comp = ctx.createDynamicsCompressor();
-    comp.connect(ctx.destination);
-    sfxBus = ctx.createGain(); sfxBus.gain.value = 0.9; sfxBus.connect(comp);
+    const comp = ctx.createDynamicsCompressor(); comp.connect(ctx.destination);
+    sfxBus = ctx.createGain(); sfxBus.gain.value = 0.8; sfxBus.connect(comp);
     musicBus = ctx.createGain(); musicBus.gain.value = 0; musicBus.connect(comp);
     noiseBuf = ctx.createBuffer(1, ctx.sampleRate * 2, ctx.sampleRate);
-    const nd = noiseBuf.getChannelData(0);
-    for (let i = 0; i < nd.length; i++) nd[i] = Math.random() * 2 - 1;
-    // Concert-hall reverb from a decaying noise impulse
-    const len = ctx.sampleRate * 3.2, ir = ctx.createBuffer(2, len, ctx.sampleRate);
-    for (let c = 0; c < 2; c++) { const d = ir.getChannelData(c); for (let i = 0; i < len; i++) d[i] = (Math.random() * 2 - 1) * (1 - i / len) ** 3.2; }
+    const nd = noiseBuf.getChannelData(0); for (let i = 0; i < nd.length; i++) nd[i] = Math.random() * 2 - 1;
+    const len = ctx.sampleRate * 3, ir = ctx.createBuffer(2, len, ctx.sampleRate);
+    for (let ch = 0; ch < 2; ch++) { const d = ir.getChannelData(ch); for (let i = 0; i < len; i++) d[i] = (Math.random() * 2 - 1) * (1 - i / len) ** 3.2; }
     reverb = ctx.createConvolver(); reverb.buffer = ir;
-    const wet = ctx.createGain(); wet.gain.value = 0.42;
-    reverb.connect(wet).connect(musicBus);
+    const wet = ctx.createGain(); wet.gain.value = 0.4; reverb.connect(wet).connect(musicBus);
   }
   function noise(at, dur, { type = "bandpass", freq = 2000, q = 1, gain = 0.3, curve } = {}) {
-    const src = ctx.createBufferSource(); src.buffer = noiseBuf;
-    const f = ctx.createBiquadFilter(); f.type = type; f.frequency.value = freq; f.Q.value = q;
+    const s = ctx.createBufferSource(); s.buffer = noiseBuf;
+    const fl = ctx.createBiquadFilter(); fl.type = type; fl.frequency.value = freq; fl.Q.value = q;
     const g = ctx.createGain();
     if (curve) { g.gain.setValueAtTime(0, at); g.gain.setValueCurveAtTime(curve.map((v) => v * gain), at, dur); }
     else { g.gain.setValueAtTime(gain, at); g.gain.exponentialRampToValueAtTime(0.0001, at + dur); }
-    src.connect(f).connect(g).connect(sfxBus);
-    src.start(at, Math.random()); src.stop(at + dur + 0.05);
+    s.connect(fl).connect(g).connect(sfxBus); s.start(at, Math.random()); s.stop(at + dur + 0.05);
   }
   const sfx = {
     crack() {
       if (!ctx) return;
       const n = ctx.currentTime;
-      [0, 0.03, 0.075, 0.12].forEach((o, i) => noise(n + o, 0.05 - i * 0.006, { type: "highpass", freq: 1800 + i * 600, gain: 0.55 - i * 0.1 }));
+      [0, 0.03, 0.08].forEach((o, i) => noise(n + o, 0.05, { type: "highpass", freq: 1800 + i * 700, gain: 0.5 - i * 0.12 }));
       const o = ctx.createOscillator(), g = ctx.createGain();
-      o.frequency.setValueAtTime(140, n); o.frequency.exponentialRampToValueAtTime(45, n + 0.12);
-      g.gain.setValueAtTime(0.35, n); g.gain.exponentialRampToValueAtTime(0.0001, n + 0.16);
+      o.frequency.setValueAtTime(130, n); o.frequency.exponentialRampToValueAtTime(45, n + 0.12);
+      g.gain.setValueAtTime(0.3, n); g.gain.exponentialRampToValueAtTime(0.0001, n + 0.16);
       o.connect(g).connect(sfxBus); o.start(n); o.stop(n + 0.2);
     },
-    rustle(dur, gain = 0.2) {
+    paper(dur, gain) {
       if (!ctx) return;
-      const pts = 48, curve = new Float32Array(pts);
-      for (let i = 0; i < pts; i++) { const x = i / (pts - 1); curve[i] = Math.sin(Math.PI * x) ** 0.7 * (0.45 + 0.55 * Math.random()); }
-      noise(ctx.currentTime, dur, { freq: 2600, q: 0.6, gain, curve });
-      noise(ctx.currentTime, dur, { type: "lowpass", freq: 900, q: 0.4, gain: gain * 0.6, curve });
+      const pts = 40, curve = new Float32Array(pts);
+      for (let i = 0; i < pts; i++) curve[i] = Math.sin(Math.PI * (i / (pts - 1))) ** 0.8 * (0.5 + 0.5 * Math.random());
+      noise(ctx.currentTime, dur, { freq: 2400, q: 0.6, gain, curve });
+      noise(ctx.currentTime, dur, { type: "lowpass", freq: 800, q: 0.4, gain: gain * 0.6, curve });
     },
-    tick() { if (ctx) noise(ctx.currentTime, 0.03, { type: "highpass", freq: 3000, gain: 0.12 }); },
   };
 
-  /* ---------- Music: the couple's mp3, or an original piano waltz ---------- */
+  // Music: the couple's mp3 if present, otherwise an original piano waltz.
   const audio = $("#audio");
-  let songReady = false, songFailed = !W.song?.src, usingPiano = false, playing = false;
-  if (W.song?.src) {
-    audio.src = W.song.src;
-    audio.addEventListener("canplay", () => { songReady = true; }, { once: true });
-    audio.addEventListener("error", () => { songFailed = true; });
-  }
+  let songOk = !!C.song?.src, usingPiano = false, playing = false, muted = false;
+  if (songOk) { audio.src = C.song.src; audio.addEventListener("error", () => { songOk = false; }); }
 
   const piano = (() => {
-    const bpm = 76, beat = 60 / bpm;
-    const m = (n) => 440 * 2 ** ((n - 69) / 12);
-    // chords: [bass, [chord tones]] — D, Bm, G, A (a waltz in D major)
-    const C = { D: [50, [62, 66, 69]], Bm: [47, [62, 66, 71]], G: [43, [62, 67, 71]], A: [45, [61, 64, 69]], Em: [52, [64, 67, 71]] };
+    const beat = 60 / 76, m = (n) => 440 * 2 ** ((n - 69) / 12);
+    const CH = { D: [50, [62, 66, 69]], Bm: [47, [62, 66, 71]], G: [43, [62, 67, 71]], A: [45, [61, 64, 69]], Em: [52, [64, 67, 71]] };
     const prog = ["D", "Bm", "G", "A", "D", "Bm", "Em", "A", "D", "Bm", "G", "A", "G", "A", "D", "D"];
-    // melody per bar: [beat, midi, beats]
     const mel = [
       [[0, 78, 2], [2, 76, 1]], [[0, 74, 2], [2, 73, 1]], [[0, 71, 1], [1, 74, 1], [2, 79, 1]], [[0, 78, 3]],
       [[0, 78, 1], [1, 81, 1], [2, 78, 1]], [[0, 76, 2], [2, 74, 1]], [[0, 76, 1], [1, 79, 1], [2, 83, 1]], [[0, 81, 2], [2, 79, 1]],
       [[0, 78, 2], [2, 81, 1]], [[0, 86, 2], [2, 83, 1]], [[0, 83, 1], [1, 79, 1], [2, 83, 1]], [[0, 81, 3]],
       [[0, 79, 1.5], [1.5, 78, 0.5], [2, 76, 1]], [[0, 76, 1], [1, 78, 1], [2, 73, 1]], [[0, 74, 3]], [],
     ];
-    let bar = 0, nextBar = 0, timer = 0, on = false;
+    let bar = 0, next = 0, timer = 0, on = false;
     function note(midi, at, vel, len) {
-      const f = m(midi);
       const out = ctx.createGain();
-      out.gain.setValueAtTime(0, at);
-      out.gain.linearRampToValueAtTime(vel, at + 0.008);
-      out.gain.setTargetAtTime(vel * 0.35, at + 0.01, 0.35);
-      out.gain.setTargetAtTime(0, at + len, 0.28);
-      const lp = ctx.createBiquadFilter(); lp.type = "lowpass"; lp.frequency.value = 1400 + vel * 5000;
+      out.gain.setValueAtTime(0, at); out.gain.linearRampToValueAtTime(vel, at + 0.008);
+      out.gain.setTargetAtTime(vel * 0.35, at + 0.01, 0.35); out.gain.setTargetAtTime(0, at + len, 0.28);
+      const lp = ctx.createBiquadFilter(); lp.frequency.value = 1400 + vel * 5000;
       [1, 2, 3, 4, 5].forEach((h, i) => {
         const o = ctx.createOscillator(), g = ctx.createGain();
-        o.frequency.value = f * h * (1 + 0.0003 * h * h);
-        g.gain.value = [1, 0.42, 0.2, 0.1, 0.05][i];
-        g.gain.setTargetAtTime(0, at, 0.9 / h);
+        o.frequency.value = m(midi) * h * (1 + 0.0003 * h * h);
+        g.gain.value = [1, 0.42, 0.2, 0.1, 0.05][i]; g.gain.setTargetAtTime(0, at, 0.9 / h);
         o.connect(g).connect(lp); o.start(at); o.stop(at + len + 1.6);
       });
       lp.connect(out); out.connect(musicBus); out.connect(reverb);
     }
-    function scheduleBar(i, at) {
-      const [bass, tones] = C[prog[i]];
-      note(bass, at, 0.32, beat * 2.6);
-      note(bass + 12, at + 0.01, 0.12, beat * 2.4);
-      [1, 2].forEach((b) => tones.forEach((tn, k) => note(tn, at + b * beat + k * 0.012, 0.085, beat * 0.9)));
-      mel[i].forEach(([b, n, d]) => note(n, at + b * beat, 0.26, beat * d * 0.98));
-      if (i === 15) note(86, at + beat, 0.12, beat * 2);
-    }
     function loop() {
-      while (nextBar < ctx.currentTime + 0.4) {
-        scheduleBar(bar, nextBar);
-        nextBar += beat * 3;
-        bar = (bar + 1) % 16;
+      while (next < ctx.currentTime + 0.4) {
+        const [bass, tones] = CH[prog[bar]];
+        note(bass, next, 0.32, beat * 2.6); note(bass + 12, next + 0.01, 0.12, beat * 2.4);
+        [1, 2].forEach((b) => tones.forEach((tn, k) => note(tn, next + b * beat + k * 0.012, 0.085, beat * 0.9)));
+        mel[bar].forEach(([b, n, d]) => note(n, next + b * beat, 0.26, beat * d * 0.98));
+        next += beat * 3; bar = (bar + 1) % 16;
       }
     }
     return {
-      start() { if (on) return; on = true; nextBar = Math.max(nextBar, ctx.currentTime + 0.1); loop(); timer = setInterval(loop, 120); },
+      start() { if (on) return; on = true; next = Math.max(next, ctx.currentTime + 0.1); loop(); timer = setInterval(loop, 120); },
       stop() { on = false; clearInterval(timer); },
     };
   })();
@@ -1418,258 +907,149 @@ window.WEDDING.mapEmbed = false;
   function fadeAudio(to, ms, done) {
     cancelAnimationFrame(fadeRaf);
     const from = audio.volume, t0 = performance.now();
-    const step = (now) => {
-      const k = Math.min(1, (now - t0) / ms);
-      audio.volume = from + (to - from) * k;
-      if (k < 1) fadeRaf = requestAnimationFrame(step); else done?.();
-    };
+    const step = (now) => { const k = Math.min(1, (now - t0) / ms); audio.volume = from + (to - from) * k; k < 1 ? (fadeRaf = requestAnimationFrame(step)) : done?.(); };
     fadeRaf = requestAnimationFrame(step);
   }
-  function startPiano(fadeMs) {
+  function startPiano() {
     if (!ctx) return;
-    usingPiano = true;
-    ctx.resume();
-    piano.start();
+    usingPiano = true; ctx.resume(); piano.start();
     musicBus.gain.cancelScheduledValues(ctx.currentTime);
-    musicBus.gain.setTargetAtTime(0.85, ctx.currentTime, fadeMs / 3000);
-    setPlaying(true);
+    musicBus.gain.setTargetAtTime(0.85, ctx.currentTime, 1.2);
+    playing = true; $("#addsong").hidden = false;
   }
-  function playMusic(fadeMs = 3500) {
-    if (!songFailed && W.song?.src) {
-      usingPiano = false;
-      audio.volume = 0;
-      const p = audio.play();
-      if (p) p.then(() => { setPlaying(true); fadeAudio(0.9, fadeMs); }).catch(() => { songFailed = true; startPiano(fadeMs); });
-      return;
-    }
-    startPiano(fadeMs);
+  function playMusic() {
+    $("#mute").hidden = false;
+    if (songOk) {
+      usingPiano = false; audio.volume = 0;
+      audio.play().then(() => { playing = true; fadeAudio(0.9, 3000); }).catch(() => { songOk = false; startPiano(); });
+    } else startPiano();
   }
-  function pauseMusic() {
-    if (usingPiano) {
-      musicBus.gain.setTargetAtTime(0, ctx.currentTime, 0.2);
-      setTimeout(() => { if (!playing) piano.stop(); }, 900);
-    } else fadeAudio(0, 600, () => audio.pause());
-    setPlaying(false);
+  function setMuted(m) {
+    muted = m;
+    $("#mute").classList.toggle("muted", m);
+    $("#mute").setAttribute("aria-label", m ? "Play music" : "Mute music");
+    if (usingPiano) { if (m) { musicBus.gain.setTargetAtTime(0, ctx.currentTime, 0.15); } else { ctx.resume(); piano.start(); musicBus.gain.setTargetAtTime(0.85, ctx.currentTime, 0.4); } }
+    else if (m) fadeAudio(0, 400, () => audio.pause());
+    else { audio.play().catch(() => {}); fadeAudio(0.9, 800); }
   }
-  function setPlaying(on) {
-    playing = on;
-    $("#music").classList.toggle("is-playing", on);
-    $("#music-btn").setAttribute("aria-label", t(on ? "musicOff" : "musicOn"));
-    updateSongLabel();
-  }
-  function updateSongLabel() {
-    const real = !usingPiano && !songFailed && W.song?.src;
-    $("#song-title").textContent = real ? `${W.song.title} · ${W.song.artist}` : "Wedding Waltz · Piano";
-    $("#song-add").hidden = !!real;
-  }
-  let labelTimer = 0;
-  function flashLabel() {
-    const l = $("#music-label");
-    l.classList.remove("is-hidden");
-    clearTimeout(labelTimer);
-    labelTimer = setTimeout(() => l.classList.add("is-hidden"), 6000);
-  }
-  $("#music-btn").addEventListener("click", () => { audioInit(); playing ? pauseMusic() : playMusic(800); flashLabel(); });
-  $("#song-file").addEventListener("change", (e) => {
+  $("#mute").addEventListener("click", () => setMuted(!muted));
+  $("#songfile").addEventListener("change", (e) => {
     const file = e.target.files[0];
     if (!file) return;
     if (usingPiano) { musicBus.gain.setTargetAtTime(0, ctx.currentTime, 0.2); setTimeout(() => piano.stop(), 800); }
-    audio.src = URL.createObjectURL(file);
-    songFailed = false;
-    W.song = { ...W.song, src: audio.src };
-    playMusic(1500);
-    flashLabel();
+    audio.src = URL.createObjectURL(file); songOk = true; muted = false; $("#mute").classList.remove("muted");
+    $("#addsong").hidden = true;
+    playMusic();
   });
 
   /* ==========================================================
-     Website behaviour
+     The timeline
      ========================================================== */
-  let siteShown = false;
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach((en) => { if (en.isIntersecting) { en.target.classList.add("is-in"); io.unobserve(en.target); } });
-  }, { threshold: 0.12, rootMargin: "0px 0px -30px 0px" });
-  function watchReveals(instantVisible) {
-    $$(".reveal:not(.is-in)").forEach((el) => {
-      if (instantVisible) { const r = el.getBoundingClientRect(); if (r.top < innerHeight && r.bottom > 0) { el.classList.add("is-in"); return; } }
-      io.observe(el);
-    });
+  const frame = $("#frame"), env = $("#envelope"), seal = $("#seal"), finale = $("#finale");
+  const pages = { invite: $("#p-invite"), names: $("#p-names"), date: $("#p-date"), rsvp: $("#p-rsvp") };
+  let run = 0; // increases on replay so an old timeline stops
+
+  const sleep = (ms, id) => new Promise((res, rej) => setTimeout(() => (id === run ? res() : rej(new Error("cancelled"))), reduced ? Math.min(ms, 300) : ms));
+  const showBlock = (el) => { el.classList.add("show"); };
+  const pageOut = (p) => p.classList.add("out");
+
+  function resetCard() {
+    Object.values(pages).forEach((p) => { p.classList.remove("out"); $$(".show", p).forEach((e) => e.classList.remove("show")); });
+    $(".amp").classList.remove("show-soft");
+    $("#pampas").classList.remove("grow");
+    $("#card").style.opacity = 1;
+    finale.classList.remove("on");
+    $("#crest").classList.remove("on");
+    $(".mono").classList.remove("on");
+    $("#actions").classList.remove("on");
+    frame.classList.remove("dark");
+    render();
   }
 
-  const nav = $("#nav"), bandImg = $("#band-img"), band = $(".band");
-  let ticking = false;
-  addEventListener("scroll", () => {
-    if (ticking) return;
-    ticking = true;
-    requestAnimationFrame(() => {
-      nav.classList.toggle("is-solid", scrollY > 40);
-      const r = band.getBoundingClientRect();
-      if (r.bottom > 0 && r.top < innerHeight) {
-        const p = (r.top + r.height / 2 - innerHeight / 2) / innerHeight;
-        bandImg.style.transform = `translate3d(0, ${p * -12}%, 0) scale(1.05)`;
-      }
-      ticking = false;
-    });
-  }, { passive: true });
+  async function timeline(id) {
+    const P = pages;
+    // envelope opens
+    env.classList.add("open");
+    sfx.paper(1.6, 0.18);
+    await sleep(2600, id);
+    env.classList.add("gone");
+    await sleep(700, id);
 
-  let toastTimer = 0;
-  function toast(msg) {
-    const el = $("#toast");
-    el.textContent = msg;
-    el.classList.add("show");
-    clearTimeout(toastTimer);
-    toastTimer = setTimeout(() => el.classList.remove("show"), 2600);
+    // 1. You're cordially invited
+    $$("p", P.invite).forEach((p, i) => setTimeout(() => showBlock(p), i * 250));
+    await sleep(2700, id);
+    pageOut(P.invite);
+    await sleep(700, id);
+
+    // 2. Names
+    $("#pampas").classList.add("grow");
+    showBlock($$(".getting p", P.names)[0]); setTimeout(() => showBlock($$(".getting p", P.names)[1]), 200);
+    await sleep(900, id);
+    showBlock($(".name--1", P.names));
+    await sleep(500, id);
+    $(".amp").classList.add("show-soft");
+    await sleep(300, id);
+    showBlock($(".name--2", P.names));
+    await sleep(3800, id);
+    pageOut(P.names);
+    await sleep(900, id);
+
+    // 3. Date & venue, then Save the Date
+    showBlock($(".date", P.date));
+    $$(".venue p", P.date).forEach((p, i) => setTimeout(() => showBlock(p), 300 + i * 250));
+    await sleep(1400, id);
+    $$(".std p", P.date).forEach((p, i) => setTimeout(() => showBlock(p), i * 350));
+    await sleep(3800, id);
+    pageOut(P.date);
+    await sleep(900, id);
+
+    // 4. RSVP
+    $$(".p-rsvp .script, .p-rsvp .rsvp, .p-rsvp .by, .p-rsvp .contact p, .p-rsvp .site", document).forEach((p, i) => setTimeout(() => showBlock(p), i * 280));
+    await sleep(4200, id);
+
+    // 5. Cross-fade to burgundy and the monogram
+    frame.classList.add("dark");
+    finale.classList.add("on");
+    await sleep(1000, id);
+    $("#card").style.opacity = 0;
+    await sleep(1300, id);
+    $("#crest").classList.add("on");
+    await sleep(1600, id);
+    $(".mono").classList.add("on");
+    await sleep(2200, id);
+    $("#actions").classList.add("on");
   }
 
-  /* ==========================================================
-     The opening
-     ========================================================== */
-  // gold dust in the candlelight
-  const dust = $("#dust");
-  for (let i = 0; i < 26; i++) {
-    const d = document.createElement("span");
-    const s = 1.5 + Math.random() * 2.5;
-    Object.assign(d.style, { left: `${Math.random() * 100}%`, width: `${s}px`, height: `${s}px`, animationDuration: `${12 + Math.random() * 14}s`, animationDelay: `${-Math.random() * 24}s` });
-    d.style.setProperty("--dx", `${Math.random() * 90 - 45}px`);
-    d.style.setProperty("--o", (0.25 + Math.random() * 0.6).toFixed(2));
-    dust.appendChild(d);
+  function start() {
+    const id = ++run;
+    timeline(id).catch(() => { /* replaced by a newer run */ });
   }
-
-  // the envelope leans toward the pointer, like a card held in the hand
-  const scene = $("#scene"), tilt = $("#env-tilt");
-  scene.addEventListener("pointermove", (e) => {
-    if (e.pointerType === "touch" || scene.classList.contains("is-opening")) return;
-    const x = e.clientX / innerWidth - 0.5, y = e.clientY / innerHeight - 0.5;
-    tilt.style.setProperty("--tx", `${(-y * 8).toFixed(2)}deg`);
-    tilt.style.setProperty("--ty", `${(x * 10).toFixed(2)}deg`);
-  });
-
-  const seal = $("#seal"), flap = $("#flap"), flapA = $("#flap-a"), flapB = $("#flap-b"), card = $("#card"), env = $("#env");
-  const press = () => { audioInit(); ctx?.resume(); seal.classList.add("is-pressed"); };
-  const release = () => seal.classList.remove("is-pressed");
-  seal.addEventListener("pointerdown", press);
-  seal.addEventListener("pointerleave", release);
-  seal.addEventListener("pointercancel", release);
-
-  const ease = {
-    out: (x) => 1 - (1 - x) ** 3,
-    inOut: (x) => (x < 0.5 ? 4 * x * x * x : 1 - (-2 * x + 2) ** 3 / 2),
-    paper: (x) => (x < 0.5 ? 2 * x * x : 1 - (-2 * x + 2) ** 2 / 2),
-  };
-  const tween = (ms, fn) => new Promise((res) => {
-    if (reduced) { fn(1); return res(); }
-    const t0 = performance.now();
-    const step = (now) => { const k = Math.min(1, (now - t0) / ms); fn(k); k < 1 ? requestAnimationFrame(step) : res(); };
-    requestAnimationFrame(step);
-  });
-
-  function breakSeal() {
-    seal.classList.add("is-broken");
-    const pieces = $$(".seal__piece", seal);
-    const size = seal.offsetWidth;
-    const init = [
-      { vx: -0.9, vy: -1.3, vr: -140, sx: 1.06 },
-      { vx: 1.1, vy: -1.7, vr: 170, sx: 1.1 },
-      { vx: 0.7, vy: -0.6, vr: 90, sx: 1.04 },
-    ];
-    const g = 5.2; // in seal-widths per second²
-    tween(1100, (k) => {
-      const s = k * 1.1;
-      pieces.forEach((p, i) => {
-        const v = init[i];
-        const x = v.vx * s * size, y = (v.vy * s + 0.5 * g * s * s) * size;
-        p.style.transform = `translate(${x.toFixed(1)}px, ${y.toFixed(1)}px) rotate(${(v.vr * s).toFixed(1)}deg) scale(${1 + (v.sx - 1) * k})`;
-        p.style.opacity = String(Math.max(0, 1 - Math.max(0, k - 0.45) / 0.55));
-      });
-    });
-    setTimeout(sfx.tick, 240);
-    setTimeout(sfx.tick, 420);
-  }
-
-  function openFlap() {
-    env.classList.add("flap-lifting");
-    sfx.rustle(1.0, 0.22);
-    let behind = false;
-    // 1) the paper sticks for a moment, 2) it lifts free, 3) it settles open
-    return tween(1150, (k) => {
-      let a, b;
-      if (k < 0.14) { const q = ease.out(k / 0.14); a = 14 * q; b = -10 * q; }
-      else if (k < 0.2) { a = 14; b = -10; }
-      else { const q = ease.paper((k - 0.2) / 0.8); a = 14 + (182 - 14) * q; b = -10 - 16 * Math.sin(Math.PI * q) + 10 * q; }
-      if (k === 1) { a = 180; b = 0; }
-      flapA.style.setProperty("--a", `${a.toFixed(2)}deg`);
-      flapB.style.setProperty("--b", `${b.toFixed(2)}deg`);
-      flapA.style.setProperty("--shade", (Math.min(a, 90) / 90 * 0.28).toFixed(3));
-      $$(".flap__face--out", flap).forEach((f) => f.style.setProperty("--shade", (Math.min(a, 90) / 90 * 0.28).toFixed(3)));
-      if (!behind && a > 96) { behind = true; flap.classList.add("is-behind"); }
-    });
-  }
-
-  const anim = (el, frames, opts) => (reduced ? Promise.resolve() : el.animate(frames, { fill: "forwards", ...opts }).finished);
 
   let opened = false;
-  async function open() {
+  seal.addEventListener("pointerdown", () => { audioInit(); ctx?.resume(); });
+  seal.addEventListener("click", async () => {
     if (opened) return;
     opened = true;
     audioInit();
-    playMusic(5000);
-    scene.classList.add("is-opening");
-    tilt.style.setProperty("--tx", "0deg");
-    tilt.style.setProperty("--ty", "0deg");
-
-    release();
-    seal.classList.add("is-cracked");
+    playMusic();
+    env.classList.add("opening");
+    seal.classList.add("crack");
     sfx.crack();
-    if (navigator.vibrate) navigator.vibrate([14, 40, 22]);
-    await wait(reduced ? 0 : 300);
-    breakSeal();
-    await wait(reduced ? 0 : 200);
+    if (navigator.vibrate) navigator.vibrate([12, 30, 18]);
+    await new Promise((r) => setTimeout(r, reduced ? 0 : 260));
+    seal.classList.add("lift");
+    await new Promise((r) => setTimeout(r, reduced ? 0 : 450));
+    start();
+  });
 
-    await openFlap();
-    await wait(reduced ? 0 : 60);
-
-    // slide the card out with the small tug of paper against paper
-    sfx.rustle(1.1, 0.12);
-    anim(tilt, [{ transform: "translateY(0)" }, { transform: "translateY(16%)" }], { duration: 1150, easing: "cubic-bezier(.4,0,.2,1)" });
-    await anim(card, [
-      { transform: "translateY(0) rotate(0deg)" },
-      { transform: "translateY(-7%) rotate(-.4deg)", offset: 0.16 },
-      { transform: "translateY(-6%) rotate(-.3deg)", offset: 0.24 },
-      { transform: "translateY(-60%) rotate(-.8deg)" },
-    ], { duration: 1150, easing: "cubic-bezier(.3,.05,.25,1)" });
-    await wait(reduced ? 0 : 250);
-
-    // lift it free, then bring it forward as the envelope falls away
-    sfx.rustle(0.6, 0.1);
-    await anim(card, [{ transform: "translateY(-60%) rotate(-.8deg)" }, { transform: "translateY(-104%) rotate(0deg)" }], { duration: 600, easing: "cubic-bezier(.45,0,.2,1)" });
-    card.style.zIndex = 8;
-    const parts = [".env__back", ".env__liner", ".env__pocket", ".flap", ".env__shadow", ".seal"].map((s) => $(s, env));
-    parts.forEach((p) => anim(p, [{ transform: "translateY(0)", opacity: 1 }, { transform: "translateY(45%) rotate(2deg)", opacity: 0 }], { duration: 850, easing: "cubic-bezier(.5,0,.75,0)" }));
-    await anim(card, [{ transform: "translateY(-104%) rotate(0deg) scale(1)" }, { transform: "translateY(-45%) scale(1.22)" }], { duration: 850, easing: "cubic-bezier(.3,0,.2,1)" });
-
-    showSite();
-  }
-  seal.addEventListener("click", open);
-  // A second tap anywhere skips straight to the website
-  scene.addEventListener("click", (e) => { if (opened && !e.target.closest("#seal")) showSite(); });
-
-  function showSite() {
-    if (siteShown) return;
-    const site = $("#site");
-    site.hidden = false;
-    siteShown = true;
-    scrollTo(0, 0);
-    document.body.classList.remove("is-locked");
-    requestAnimationFrame(() => {
-      site.classList.add("is-in");
-      scene.classList.add("is-gone");
-      watchReveals(false);
-      flashLabel();
-    });
-    setTimeout(() => scene.remove(), 1600);
-  }
+  $("#replay").addEventListener("click", () => {
+    run++;
+    resetCard();
+    env.classList.remove("gone", "open");
+    requestAnimationFrame(() => requestAnimationFrame(() => start()));
+  });
 
   render();
-  [W.cover, ...W.gallery.map((g) => g.src)].forEach((src) => { const i = new Image(); i.src = src; });
 })();
 
 </script>
