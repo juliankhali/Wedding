@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#1a0f12" />
+  <title>Wedding Invitation</title>
+  <meta name="description" content="You are invited to our wedding." />
+  <meta property="og:title" content="You're invited 💍" />
+  <meta property="og:description" content="Tap to open our wedding invitation." />
+  <meta property="og:image" content="assets/photos/cover.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Great+Vibes&family=Inter:wght@400;500;600&family=Noto+Naskh+Arabic:wght@500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Blurred ambient backdrop (desktop) -->
+  <div class="ambient" aria-hidden="true"></div>
+
+  <!-- Reusable Kurdish motifs -->
+  <svg width="0" height="0" style="position:absolute;color:#d8b36a" aria-hidden="true">
+    <defs>
+      <!-- Kilim (Kurdish rug) band -->
+      <pattern id="kilim" width="40" height="20" patternUnits="userSpaceOnUse">
+        <path d="M0 10 L10 0 L20 10 L10 20 Z" fill="none" stroke="currentColor" stroke-width="1.2"/>
+        <path d="M20 10 L30 0 L40 10 L30 20 Z" fill="none" stroke="currentColor" stroke-width="1.2"/>
+        <path d="M10 6 L14 10 L10 14 L6 10 Z" fill="currentColor"/>
+        <path d="M30 6 L34 10 L30 14 L26 10 Z" fill="currentColor" opacity=".55"/>
+      </pattern>
+      <!-- Sun of Kurdistan: 21 rays -->
+      <symbol id="sun" viewBox="-50 -50 100 100">
+        <g fill="currentColor"></g>
+      </symbol>
+    </defs>
+  </svg>
+
+  <!-- Opening envelope -->
+  <section class="opener" id="opener">
+    <div class="opener__pattern" aria-hidden="true"></div>
+    <div class="opener__inner">
+      <svg class="sun sun--spin" viewBox="0 0 100 100" aria-hidden="true"><use href="#sun" width="100" height="100"/></svg>
+      <p class="kurdish" id="op-welcome"></p>
+      <p class="eyebrow">You are invited to the wedding of</p>
+      <h1 class="script" id="op-names"></h1>
+      <p class="opener__date" id="op-date"></p>
+      <button class="btn btn--gold" id="open-btn">
+        <span>Open Invitation</span>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0l-5-5m5 5l5-5M5 21h14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <p class="opener__hint">🎵 Best with sound on</p>
+    </div>
+  </section>
+
+  <!-- Stories player -->
+  <main class="stories" id="stories" aria-live="polite" hidden>
+    <div class="stories__frame" id="frame">
+      <div class="progress" id="progress"></div>
+
+      <header class="topbar">
+        <img class="avatar" id="avatar" alt="" />
+        <div class="topbar__meta">
+          <strong id="handle"></strong>
+          <svg class="verified" viewBox="0 0 24 24" aria-label="Verified"><path d="M12 1.5l2.6 1.9 3.2-.2 1 3 2.7 1.8-.9 3.1.9 3.1-2.7 1.8-1 3-3.2-.2L12 22.5l-2.6-1.9-3.2.2-1-3-2.7-1.8.9-3.1-.9-3.1 2.7-1.8 1-3 3.2.2z" fill="#3897f0"/><path d="M8 12.2l2.6 2.6L16.2 9" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span class="sponsored">Sponsored · Wedding</span>
+        </div>
+        <button class="icon-btn" id="pause-btn" aria-label="Pause">
+          <svg viewBox="0 0 24 24"><path class="i-pause" d="M8 5v14M16 5v14" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/><path class="i-play" d="M7 4.5v15l12-7.5z" fill="currentColor"/></svg>
+        </button>
+        <button class="icon-btn music-btn" id="music-btn" aria-label="Toggle music">
+          <span class="eq"><i></i><i></i><i></i><i></i></span>
+          <svg class="muted-ico" viewBox="0 0 24 24"><path d="M4 9h4l5-4v14l-5-4H4zM17 9l4 6M21 9l-4 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </header>
+
+      <div class="slides" id="slides"></div>
+
+      <div class="tap tap--prev" aria-hidden="true"></div>
+      <div class="tap tap--next" aria-hidden="true"></div>
+
+      <footer class="actions">
+        <a class="cta" id="cta" href="#" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 15l6-6 6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span id="cta-label">RSVP</span>
+        </a>
+        <div class="actions__row">
+          <button class="icon-btn like" id="like-btn" aria-label="Like">
+            <svg viewBox="0 0 24 24"><path d="M12 20.5s-7.5-4.6-9.3-9.2C1.4 8 3.6 4.5 7.2 4.5c2 0 3.6 1.1 4.8 2.8 1.2-1.7 2.8-2.8 4.8-2.8 3.6 0 5.8 3.5 4.5 6.8-1.8 4.6-9.3 9.2-9.3 9.2z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+          </button>
+          <button class="icon-btn" id="cal-btn" aria-label="Add to calendar">
+            <svg viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="15.5" rx="3" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M3.5 10h17M8 3v4M16 3v4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+          </button>
+          <button class="icon-btn" id="share-btn" aria-label="Share">
+            <svg viewBox="0 0 24 24"><path d="M21 3L10 14M21 3l-7 18-4-7-7-4z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+          </button>
+        </div>
+      </footer>
+
+      <div class="hearts" id="hearts" aria-hidden="true"></div>
+      <div class="toast" id="toast" role="status"></div>
+    </div>
+  </main>
+
+  <audio id="music" loop preload="auto"></audio>
+
+  <script src="config.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
