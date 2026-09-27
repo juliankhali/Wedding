@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <meta name="theme-color" content="#1a0f12" />
-  <title>Wedding Invitation</title>
+  <title>Shilan &amp; Aram Invitation</title>
   <meta name="description" content="You are invited to our wedding." />
   <meta property="og:title" content="You're invited 💍" />
   <meta property="og:description" content="Tap to open our wedding invitation." />
@@ -32,23 +32,86 @@
       <symbol id="sun" viewBox="-50 -50 100 100">
         <g fill="currentColor"></g>
       </symbol>
+      <linearGradient id="envSide" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0" stop-color="#5a1824"/><stop offset=".5" stop-color="#6d1f2d"/><stop offset="1" stop-color="#5a1824"/>
+      </linearGradient>
+      <linearGradient id="envBottom" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#7a2433"/><stop offset="1" stop-color="#4f1520"/>
+      </linearGradient>
+      <linearGradient id="envFlap" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#6a1d2b"/><stop offset="1" stop-color="#832b3b"/>
+      </linearGradient>
+      <pattern id="liner" width="28" height="28" patternUnits="userSpaceOnUse">
+        <path d="M14 1 L27 14 L14 27 L1 14 Z" fill="none" stroke="#d8b36a" stroke-width="1" opacity=".75"/>
+        <path d="M14 8 L20 14 L14 20 L8 14 Z" fill="#d8b36a" opacity=".55"/>
+      </pattern>
+      <radialGradient id="waxG" cx="38%" cy="32%" r="75%">
+        <stop offset="0" stop-color="#e0484a"/><stop offset=".45" stop-color="#a81d25"/><stop offset="1" stop-color="#5a0b12"/>
+      </radialGradient>
+      <filter id="waxEdge" x="-20%" y="-20%" width="140%" height="140%">
+        <feTurbulence type="fractalNoise" baseFrequency=".045" numOctaves="2" seed="7"/>
+        <feDisplacementMap in="SourceGraphic" scale="9"/>
+      </filter>
+      <symbol id="seal-art" viewBox="0 0 120 120">
+        <circle cx="60" cy="60" r="52" fill="url(#waxG)" filter="url(#waxEdge)"/>
+        <circle cx="60" cy="60" r="39" fill="none" stroke="#5a0b12" stroke-width="3" opacity=".7"/>
+        <circle cx="60" cy="61" r="39" fill="none" stroke="#ff8a80" stroke-width="1" opacity=".35"/>
+        <g transform="translate(60 60) scale(.62)" fill="#6e0f18" opacity=".85">
+          <g id="seal-rays"></g>
+        </g>
+        <circle cx="60" cy="60" r="17" fill="#8e1720"/>
+        <text id="seal-initials" x="60" y="66" text-anchor="middle" font-family="Cormorant Garamond, Georgia, serif" font-size="17" font-style="italic" font-weight="600" fill="#f6c9a8" opacity=".9"></text>
+        <ellipse cx="44" cy="36" rx="16" ry="8" fill="#fff" opacity=".18" transform="rotate(-30 44 36)"/>
+      </symbol>
     </defs>
   </svg>
 
-  <!-- Opening envelope -->
+  <!-- Opening: sealed envelope -->
   <section class="opener" id="opener">
-    <div class="opener__pattern" aria-hidden="true"></div>
+    <div class="candle-glow" aria-hidden="true"><i></i><i></i></div>
+    <div class="dust" id="dust" aria-hidden="true"></div>
     <div class="opener__inner">
-      <svg class="sun sun--spin" viewBox="0 0 100 100" aria-hidden="true"><use href="#sun" width="100" height="100"/></svg>
       <p class="kurdish" id="op-welcome"></p>
-      <p class="eyebrow">You are invited to the wedding of</p>
-      <h1 class="script" id="op-names"></h1>
-      <p class="opener__date" id="op-date"></p>
-      <button class="btn btn--gold" id="open-btn">
-        <span>Open Invitation</span>
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0l-5-5m5 5l5-5M5 21h14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </button>
-      <p class="opener__hint">🎵 Best with sound on</p>
+      <p class="eyebrow" id="op-to">A letter for you</p>
+
+      <div class="envelope" id="envelope">
+        <div class="env__back"></div>
+
+        <div class="letter" id="letter">
+          <div class="letter__inner">
+            <svg class="sun" viewBox="0 0 100 100" aria-hidden="true"><use href="#sun" width="100" height="100"/></svg>
+            <p class="letter__eyebrow">Together with their families</p>
+            <p class="letter__names script" id="op-names"></p>
+            <div class="tricolor"></div>
+            <p class="letter__date" id="op-date"></p>
+          </div>
+        </div>
+
+        <svg class="env__front" viewBox="0 0 400 280" preserveAspectRatio="none" aria-hidden="true">
+          <path d="M0 0 L206 152 L0 280 Z" fill="url(#envSide)"/>
+          <path d="M400 0 L194 152 L400 280 Z" fill="url(#envSide)"/>
+          <path d="M0 280 L200 128 L400 280 Z" fill="url(#envBottom)"/>
+          <path d="M0 280 L200 128 L400 280" fill="none" stroke="#d8b36a" stroke-opacity=".45" vector-effect="non-scaling-stroke"/>
+        </svg>
+
+        <div class="env__flap" id="flap">
+          <svg class="flap__face flap__out" viewBox="0 0 400 160" preserveAspectRatio="none" aria-hidden="true">
+            <path d="M0 0 H400 L200 160 Z" fill="url(#envFlap)"/>
+            <path d="M0 0 L200 160 L400 0" fill="none" stroke="#d8b36a" stroke-opacity=".7" vector-effect="non-scaling-stroke"/>
+          </svg>
+          <svg class="flap__face flap__in" viewBox="0 0 400 160" preserveAspectRatio="none" aria-hidden="true">
+            <path d="M0 0 H400 L200 160 Z" fill="#3a0f18"/>
+            <path d="M0 0 H400 L200 160 Z" fill="url(#liner)"/>
+          </svg>
+        </div>
+
+        <button class="seal" id="open-btn" aria-label="Break the wax seal to open the invitation">
+          <span class="seal__half seal__l"><svg viewBox="0 0 120 120"><use href="#seal-art"/></svg></span>
+          <span class="seal__half seal__r"><svg viewBox="0 0 120 120"><use href="#seal-art"/></svg></span>
+        </button>
+      </div>
+
+      <p class="opener__hint" id="op-hint">Tap the wax seal to open <span>· sound on 🎵</span></p>
     </div>
   </section>
 
@@ -87,9 +150,9 @@
           <button class="icon-btn like" id="like-btn" aria-label="Like">
             <svg viewBox="0 0 24 24"><path d="M12 20.5s-7.5-4.6-9.3-9.2C1.4 8 3.6 4.5 7.2 4.5c2 0 3.6 1.1 4.8 2.8 1.2-1.7 2.8-2.8 4.8-2.8 3.6 0 5.8 3.5 4.5 6.8-1.8 4.6-9.3 9.2-9.3 9.2z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
           </button>
-          <button class="icon-btn" id="cal-btn" aria-label="Add to calendar">
+          <a class="icon-btn" id="cal-btn" href="#" target="_blank" rel="noopener" aria-label="Add to calendar">
             <svg viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="15.5" rx="3" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M3.5 10h17M8 3v4M16 3v4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
-          </button>
+          </a>
           <button class="icon-btn" id="share-btn" aria-label="Share">
             <svg viewBox="0 0 24 24"><path d="M21 3L10 14M21 3l-7 18-4-7-7-4z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
           </button>

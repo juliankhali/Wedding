@@ -7,6 +7,8 @@
   const rays = Array.from({ length: 21 }, (_, i) =>
     `<path d="M0 -46 L5 -24 L-5 -24 Z" transform="rotate(${(360 / 21) * i})"/>`).join("");
   $("#sun g").innerHTML = `${rays}<circle r="21"/>`;
+  $("#seal-rays").innerHTML = `${rays}<circle r="21"/>`;
+  $("#seal-initials").textContent = `${W.bride[0]}&${W.groom[0]}`;
   const sun = (cls = "") => `<svg class="sun ${cls}" viewBox="0 0 100 100" aria-hidden="true"><use href="#sun" width="100" height="100"/></svg>`;
   const kilim = `<svg class="kilim-band" aria-hidden="true"><rect width="100%" height="20" fill="url(#kilim)"/></svg>`;
 
@@ -14,12 +16,21 @@
   const names = `${esc(W.bride)} <span class="amp">&amp;</span> ${esc(W.groom)}`;
   $("#op-welcome").textContent = W.welcomeSorani;
   $("#op-names").innerHTML = `${esc(W.bride)} &amp; ${esc(W.groom)}`;
+  if (W.guestName) $("#op-to").textContent = `A letter for ${W.guestName}`;
   $("#op-date").textContent = W.dateLabel;
   document.title = `${W.bride} & ${W.groom} · Wedding`;
 
   /* ---------- Links ---------- */
   const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(W.venue.mapQuery)}`;
   const embedUrl = `https://maps.google.com/maps?q=${encodeURIComponent(W.venue.mapQuery)}&z=15&output=embed`;
+  const pad = (n) => String(n).padStart(2, "0");
+  const gcal = (d) => `${d.getFullYear()}${pad(d.getMonth() + 1)}${pad(d.getDate())}T${pad(d.getHours())}${pad(d.getMinutes())}00`;
+  const startDate = new Date(W.date);
+  const calUrl = "https://calendar.google.com/calendar/render?action=TEMPLATE" +
+    `&text=${encodeURIComponent(`${W.bride} & ${W.groom} Wedding`)}` +
+    `&dates=${gcal(startDate)}/${gcal(new Date(startDate.getTime() + 5 * 3600e3))}` +
+    `&location=${encodeURIComponent(`${W.venue.name}, ${W.venue.address}`)}` +
+    `&details=${encodeURIComponent(mapsUrl)}`;
   const rsvpText = `Hi! I'm happy to confirm my attendance at ${W.bride} & ${W.groom}'s wedding 💍`;
   const rsvpUrl = `https://wa.me/${W.rsvpWhatsApp}?text=${encodeURIComponent(rsvpText)}`;
 
@@ -46,11 +57,11 @@
         </div>`,
     },
     ...W.gallery.map((p) => ({
-      cls: "slide--photo", bg: p.src, cta: ["Save the Date", "#calendar"],
+      cls: "slide--photo", bg: p.src, cta: ["Save the Date", calUrl],
       html: `<p class="caption">${esc(p.caption)}</p><p class="muted gap">${esc(W.hashtag)}</p>`,
     })),
     {
-      cls: "slide--plain", cta: ["Add to Calendar", "#calendar"],
+      cls: "slide--plain", cta: ["Add to Calendar", calUrl],
       html: `
         ${sun("sun--spin")}
         <p class="eyebrow gap">The countdown begins</p>
@@ -70,7 +81,11 @@
         <p class="eyebrow">The celebration will be held at</p>
         <p class="venue gap">${esc(W.venue.name)}</p>
         <p class="muted">${esc(W.venue.address)}</p>
-        <div class="map"><iframe loading="lazy" title="Venue map" referrerpolicy="no-referrer-when-downgrade" data-src="${embedUrl}"></iframe></div>
+        <a class="map" href="${mapsUrl}" target="_blank" rel="noopener" aria-label="Open ${esc(W.venue.name)} in Google Maps">
+          <span class="map__pin"><svg viewBox="0 0 24 24"><path d="M12 22s7-6.2 7-12a7 7 0 10-14 0c0 5.8 7 12 7 12z" fill="currentColor"/><circle cx="12" cy="10" r="2.6" fill="#1a0f12"/></svg></span>
+          <span class="map__label">Open in Google Maps</span>
+          ${W.mapEmbed !== false ? `<iframe loading="lazy" title="Venue map" referrerpolicy="no-referrer-when-downgrade" data-src="${embedUrl}"></iframe>` : ""}
+        </a>
         <p class="muted">${esc(W.timeLabel)} · ${esc(W.dateLabel)}</p>`,
     },
     {
@@ -182,26 +197,127 @@
   document.addEventListener("visibilitychange", () => { if (document.hidden) setPaused(true); });
   $("#pause-btn").addEventListener("click", () => setPaused(!paused));
 
-  /* ---------- Music ---------- */
-  const audio = $("#music");
+  /* ---------- Music ----------
+     Uses config.music (an mp3) when set; otherwise plays a built-in
+     Kurdish-style melody (Hijaz maqam, santur plucks, drone and daf). */
   const musicBtn = $("#music-btn");
-  audio.src = W.music;
-  audio.volume = 0;
-  const fadeTo = (target, ms = 1500) => {
-    const start = audio.volume, t0 = performance.now();
-    const step = (t) => {
-      const k = Math.min(1, (t - t0) / ms);
-      audio.volume = start + (target - start) * k;
-      if (k < 1) requestAnimationFrame(step); else if (target === 0) audio.pause();
-    };
-    requestAnimationFrame(step);
-  };
-  const playMusic = () => audio.play().then(() => { musicBtn.classList.remove("is-muted"); fadeTo(0.8); })
-    .catch(() => musicBtn.classList.add("is-muted"));
-  audio.addEventListener("error", () => { musicBtn.classList.add("is-muted"); });
+  const player = W.music ? fileMusic(W.music) : synthMusic();
+  const setMuted = (m) => musicBtn.classList.toggle("is-muted", m);
+  const playMusic = () => player.play().then(() => setMuted(false)).catch(() => setMuted(true));
   musicBtn.addEventListener("click", () => {
-    if (audio.paused) playMusic(); else { musicBtn.classList.add("is-muted"); fadeTo(0, 500); }
+    if (player.playing()) { player.pause(); setMuted(true); } else playMusic();
   });
+
+  function fileMusic(src) {
+    const audio = $("#music");
+    audio.src = src;
+    audio.volume = 0;
+    let fading = 0;
+    const fadeTo = (target, ms) => {
+      cancelAnimationFrame(fading);
+      const from = audio.volume, t0 = performance.now();
+      const step = (t) => {
+        const k = Math.min(1, (t - t0) / ms);
+        audio.volume = from + (target - from) * k;
+        if (k < 1) fading = requestAnimationFrame(step); else if (target === 0) audio.pause();
+      };
+      fading = requestAnimationFrame(step);
+    };
+    return {
+      play: () => audio.play().then(() => fadeTo(0.8, 1800)),
+      pause: () => fadeTo(0, 500),
+      playing: () => !audio.paused && audio.volume > 0,
+    };
+  }
+
+  function synthMusic() {
+    const AC = window.AudioContext || window.webkitAudioContext;
+    let ctx, master, echo, noise, timer = 0, next = 0, step = 0, on = false;
+    const bpm = 92, sixteenth = 60 / bpm / 4;
+    const root = 146.83; // D3
+    const hijaz = [0, 1, 4, 5, 7, 8, 10, 12, 13, 16, 17, 19];
+    const hz = (deg) => root * 2 ** (hijaz[deg] / 12);
+    // [step, scale degree] over 4 bars of 16 steps
+    const melody = [[0,4],[3,5],[4,4],[6,3],[8,2],[10,3],[12,1],[14,0],
+      [16,2],[18,3],[20,4],[22,5],[24,6],[26,5],[28,4],
+      [32,7],[34,8],[35,7],[36,6],[38,5],[40,6],[42,5],[44,4],[46,3],
+      [48,4],[50,3],[52,2],[53,1],[54,2],[56,1],[58,0]];
+    const dum = new Set([0, 10]), tek = new Set([4, 6, 12, 14]);
+
+    function init() {
+      ctx = new AC();
+      master = ctx.createGain(); master.gain.value = 0;
+      const comp = ctx.createDynamicsCompressor();
+      master.connect(comp).connect(ctx.destination);
+      echo = ctx.createDelay(); echo.delayTime.value = sixteenth * 3;
+      const fb = ctx.createGain(); fb.gain.value = 0.32;
+      const wet = ctx.createGain(); wet.gain.value = 0.35;
+      echo.connect(fb).connect(echo); echo.connect(wet).connect(master);
+      noise = ctx.createBuffer(1, ctx.sampleRate * 0.2, ctx.sampleRate);
+      const d = noise.getChannelData(0);
+      for (let i = 0; i < d.length; i++) d[i] = Math.random() * 2 - 1;
+      // drone: D + A, softly filtered
+      const lp = ctx.createBiquadFilter(); lp.type = "lowpass"; lp.frequency.value = 520;
+      const dg = ctx.createGain(); dg.gain.value = 0.05;
+      lp.connect(dg).connect(master);
+      [root / 2, root * 0.75].forEach((f, i) => {
+        const o = ctx.createOscillator(); o.type = "sawtooth"; o.frequency.value = f; o.detune.value = i ? 4 : -4;
+        o.connect(lp); o.start();
+      });
+    }
+    function pluck(f, t, v = 0.22) {
+      [[1, "triangle", v], [2.005, "sine", v * 0.35], [3, "sine", v * 0.08]].forEach(([m, type, g]) => {
+        const o = ctx.createOscillator(), e = ctx.createGain();
+        o.type = type; o.frequency.value = f * m;
+        e.gain.setValueAtTime(0.0001, t);
+        e.gain.exponentialRampToValueAtTime(g, t + 0.004);
+        e.gain.exponentialRampToValueAtTime(0.0001, t + 1.4);
+        o.connect(e); e.connect(master); e.connect(echo);
+        o.start(t); o.stop(t + 1.5);
+      });
+    }
+    function daf(t, low) {
+      if (low) {
+        const o = ctx.createOscillator(), e = ctx.createGain();
+        o.frequency.setValueAtTime(120, t); o.frequency.exponentialRampToValueAtTime(48, t + 0.18);
+        e.gain.setValueAtTime(0.55, t); e.gain.exponentialRampToValueAtTime(0.0001, t + 0.4);
+        o.connect(e).connect(master); o.start(t); o.stop(t + 0.45);
+      }
+      const n = ctx.createBufferSource(), bp = ctx.createBiquadFilter(), e = ctx.createGain();
+      n.buffer = noise; bp.type = "bandpass"; bp.frequency.value = low ? 900 : 3200; bp.Q.value = 0.8;
+      e.gain.setValueAtTime(low ? 0.12 : 0.16, t); e.gain.exponentialRampToValueAtTime(0.0001, t + (low ? 0.12 : 0.07));
+      n.connect(bp).connect(e).connect(master); n.start(t);
+    }
+    function schedule() {
+      while (next < ctx.currentTime + 0.15) {
+        const s16 = step % 16;
+        melody.forEach(([st, deg]) => { if (st === step) { pluck(hz(deg), next); if (st % 8 === 0) pluck(hz(deg) / 2, next, 0.1); } });
+        // santur-style tremolo on the long notes
+        if (step === 30 || step === 62) for (let k = 1; k < 4; k++) pluck(hz(step === 30 ? 4 : 0), next + k * sixteenth / 2, 0.08);
+        if (dum.has(s16)) daf(next, true);
+        if (tek.has(s16)) daf(next, false);
+        next += sixteenth;
+        step = (step + 1) % 64;
+      }
+    }
+    return {
+      play: async () => {
+        if (!AC) throw new Error("no audio");
+        if (!ctx) init();
+        await ctx.resume();
+        if (!on) { on = true; next = ctx.currentTime + 0.05; timer = setInterval(schedule, 25); }
+        master.gain.cancelScheduledValues(ctx.currentTime);
+        master.gain.setTargetAtTime(0.7, ctx.currentTime, 0.6);
+      },
+      pause: () => {
+        if (!ctx) return;
+        on = false;
+        master.gain.setTargetAtTime(0, ctx.currentTime, 0.15);
+        setTimeout(() => { if (!on) { clearInterval(timer); ctx.suspend(); } }, 600);
+      },
+      playing: () => on,
+    };
+  }
 
   /* ---------- Social actions ---------- */
   function like(burst) {
@@ -223,33 +339,15 @@
   }
   $("#like-btn").addEventListener("click", () => like(false));
 
-  function downloadIcs() {
-    const start = new Date(W.date);
-    const end = new Date(start.getTime() + 5 * 3600e3);
-    const f = (d) => d.toISOString().replace(/[-:]/g, "").replace(/\.\d{3}/, "");
-    const ics = [
-      "BEGIN:VCALENDAR", "VERSION:2.0", "PRODID:-//wedding//EN", "BEGIN:VEVENT",
-      `UID:${f(start)}-wedding`, `DTSTAMP:${f(new Date())}`, `DTSTART:${f(start)}`, `DTEND:${f(end)}`,
-      `SUMMARY:${W.bride} & ${W.groom} Wedding`, `LOCATION:${W.venue.name}\\, ${W.venue.address.replace(/,/g, "\\,")}`,
-      `DESCRIPTION:${mapsUrl}`, "END:VEVENT", "END:VCALENDAR",
-    ].join("\r\n");
-    const a = document.createElement("a");
-    a.href = URL.createObjectURL(new Blob([ics], { type: "text/calendar" }));
-    a.download = "wedding.ics";
-    a.click();
-    toast("Saved to your calendar 📅");
-  }
-  $("#cal-btn").addEventListener("click", downloadIcs);
-  $("#cta").addEventListener("click", (e) => {
-    if ($("#cta").getAttribute("href") === "#calendar") { e.preventDefault(); downloadIcs(); }
-  });
+  $("#cal-btn").href = calUrl;
 
   $("#share-btn").addEventListener("click", async () => {
     const data = { title: `${W.bride} & ${W.groom}`, text: "You're invited to our wedding 💍", url: location.href };
     try {
-      if (navigator.share) await navigator.share(data);
-      else { await navigator.clipboard.writeText(location.href); toast("Link copied ✨"); }
-    } catch { /* cancelled */ }
+      if (navigator.share) return await navigator.share(data);
+    } catch (e) { if (e.name === "AbortError") return; }
+    try { await navigator.clipboard.writeText(location.href); toast("Link copied ✨"); }
+    catch { toast("Copy the link from your browser's address bar"); }
   });
 
   let toastTimer = 0;
@@ -274,14 +372,44 @@
   countdown();
   setInterval(countdown, 1000);
 
-  /* ---------- Open ---------- */
-  function open() {
+  /* ---------- Opening: break the seal ---------- */
+  const dust = $("#dust");
+  for (let i = 0; i < 22; i++) {
+    const d = document.createElement("span");
+    d.style.left = `${Math.random() * 100}%`;
+    d.style.setProperty("--dx", `${Math.random() * 80 - 40}px`);
+    d.style.animationDuration = `${9 + Math.random() * 10}s`;
+    d.style.animationDelay = `${-Math.random() * 18}s`;
+    d.style.opacity = 0.3 + Math.random() * 0.6;
+    dust.appendChild(d);
+  }
+
+  const wait = (ms) => new Promise((r) => setTimeout(r, ms));
+  const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  let opened = false;
+  async function open() {
+    if (opened) return;
+    opened = true;
+    const opener = $("#opener"), env = $("#envelope"), seal = $("#open-btn");
+    playMusic();
+    opener.classList.add("is-opening");
+    if (navigator.vibrate) navigator.vibrate(18);
+    seal.classList.add("is-cracking");
+    await wait(reduced ? 0 : 320);
+    seal.classList.add("is-broken");
+    await wait(reduced ? 0 : 280);
+    env.classList.add("is-open");
+    await wait(reduced ? 0 : 520);
+    env.classList.add("flap-behind");
+    await wait(reduced ? 0 : 380);
+    env.classList.add("letter-out");
+    await wait(reduced ? 200 : 2600);
     $("#stories").hidden = false;
-    $("#opener").classList.add("is-leaving");
-    setTimeout(() => $("#opener").remove(), 1000);
     show(0);
     raf = requestAnimationFrame(tick);
-    playMusic();
+    opener.classList.add("is-leaving");
+    await wait(1100);
+    opener.remove();
   }
   $("#open-btn").addEventListener("click", open);
 

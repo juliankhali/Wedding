@@ -29,8 +29,9 @@ window.WEDDING = {
     { src: "assets/photos/3.svg", caption: "She said yes 💍" },
   ],
 
-  // Background music (mp3). Put your file in assets/music.
-  music: "assets/music/song.mp3",
+  // Background music. Leave "" to use the built-in Kurdish-style melody,
+  // or put an mp3 in assets/music and set e.g. "assets/music/song.mp3".
+  music: "",
 
   venue: {
     name: "Rotana Grand Hall",
@@ -38,6 +39,11 @@ window.WEDDING = {
     // Anything Google Maps understands: address or "lat,lng"
     mapQuery: "Erbil Rotana Hotel, Erbil",
   },
+  // Show a live Google map on the location story (false = styled card only)
+  mapEmbed: true,
+
+  // Optional: personalise the envelope ("A letter for …")
+  guestName: "",
 
   program: [
     { time: "6:00 PM", title: "Guests Arrive", note: "Welcome drinks & zurna" },
