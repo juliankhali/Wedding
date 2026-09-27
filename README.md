@@ -18,7 +18,7 @@ Everything personal is in **`config.js`**: names, initials, date, time, venue, R
 - **Personal link per guest:** `index.html?to=Hama` shows "For Hama" on the envelope.
 - Have a native speaker check the Kurdish and Arabic wording.
 
-All artwork (floral emboss, pampas, frame, seal) is drawn in code in `art.js`, so it's original.
+The photo-realistic artwork in `assets/images/` (embossed envelope, paper, pampas, frame and dove seal) was generated with Canva AI. To change a picture, replace the file with the same name. If a file is missing, the card falls back to the artwork drawn in code in `art.js`.
 
 ## Files
 `index.html` (structure) · `card.css` (look and animation) · `card.js` (timeline, sound, languages) · `art.js` (artwork) · `config.js` (content)
