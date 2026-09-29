@@ -71,6 +71,7 @@ const CONFIG = {
   // Pictures. A missing file is replaced by drawn artwork.
   images: {
     envelope: "assets/envelope.jpg", // ivory embossed envelope, portrait 9:16
+    envelopeWide: "assets/envelope-wide.jpg", // the same envelope in landscape, used on computers (optional)
     seal: "",                        // empty = the wax seal drawn in code (initials from above). Or set a picture path, e.g. "assets/seal.png"
     clouds: "assets/clouds.png",     // pastel watercolor clouds, transparent
     cover: "assets/cover.jpg",       // painted arch + lake, portrait 9:16
@@ -161,10 +162,11 @@ const CONFIG = {
   /* ---------- pictures (real files win; drawn art is the fallback) ---------- */
   (async function pictures() {
     const I = C.images;
-    const [hasEnv, hasSeal, hasCover, hasCouple, hasPhoto, hasClouds] = await Promise.all([I.envelope, I.seal, I.cover, I.couple, I.photo, I.clouds].map(imageOk));
+    const [hasEnv, hasSeal, hasCover, hasCouple, hasPhoto, hasClouds, hasWide] = await Promise.all([I.envelope, I.seal, I.cover, I.couple, I.photo, I.clouds, I.envelopeWide].map(imageOk));
     // envelope
     const envUrl = hasEnv ? I.envelope : await rasterize(ART.envelopeSVG(), 1080, 1920);
     document.documentElement.style.setProperty("--envimg", `url("${envUrl}")`);
+    if (hasWide) document.documentElement.style.setProperty("--envimg-wide", `url("${I.envelopeWide}")`);
     // seal
     if (hasSeal) { $("#seal").classList.add("pic"); $("#seal").innerHTML = `<img src="${esc(I.seal)}" alt="" /><span class="seal__ini" dir="ltr">${esc(C.initials)}</span>`; }
     else $("#seal").innerHTML = ART.sealSVG(esc(C.initials));
@@ -172,6 +174,7 @@ const CONFIG = {
     if (hasClouds) { document.documentElement.style.setProperty("--cloudimg", `url("${I.clouds}")`); document.body.classList.add("cloud-photo"); }
     // cover / couple / photo
     const coverUrl = hasCover ? I.cover : ART.uri(ART.coverSVG());
+    document.documentElement.style.setProperty("--coverimg", `url("${coverUrl}")`); // soft backdrop on computers
     asBg($("#cover-img"), coverUrl);
     asBg($("#couple"), hasCouple ? I.couple : ART.uri(ART.coupleSVG()));
     asBg($("#photo"), hasPhoto ? I.photo : coverUrl);

@@ -432,3 +432,26 @@ body { text-rendering: optimizeLegibility; }
 .cloud-decor--date { --dur: 54s; }
 .cloud-decor--prog { --dur: 62s; --dl: -18s; }
 .cloud-decor--prog2 { --dur: 70s; --dl: -34s; }
+
+
+/* =====================================================================
+   COMPUTERS / WIDE SCREENS — the envelope fills the whole window
+   and the invitation sits on a soft backdrop instead of a lavender strip
+   ===================================================================== */
+@media (min-width: 760px) and (min-aspect-ratio: 5/4) {
+  .env { width: 100vw; left: 0; translate: 0 0; }
+  .env__flap { background-image: var(--envimg-wide, var(--envimg, none)); background-size: 100% 100%; }
+  .seal { width: clamp(150px, 24vh, 250px); }
+  .env__hint { top: calc(50% + 14vh + 16px); font-size: 14px; }
+  .lang { top: 22px; right: 26px; }
+}
+@media (min-width: 700px) {
+  html { background: #eef1fb; }
+  body { background: transparent; }
+  body::before {
+    content: ""; position: fixed; inset: -60px; z-index: -1; pointer-events: none;
+    background: var(--coverimg, none) center / cover no-repeat; filter: blur(46px) saturate(1.08); opacity: .5;
+  }
+  body::after { content: ""; position: fixed; inset: 0; z-index: -1; pointer-events: none; background: linear-gradient(180deg, rgba(246, 247, 253, .55), rgba(246, 247, 253, .25) 50%, rgba(246, 247, 253, .6)); }
+  .page { box-shadow: 0 0 0 1px rgba(255, 255, 255, .6), 0 0 80px rgba(45, 77, 179, .16); }
+}
