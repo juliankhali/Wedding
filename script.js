@@ -59,8 +59,10 @@ const CONFIG = {
 
   closing: "لەگەڵ سوپاسی بێ پایان بۆ هەموو ئەو کەسانەی کە لەم ڕۆژە تایبەتەدا هاوبەشی خۆشییەکانمان دەبن. ئامادەبوونتان دەرگای خۆشحاڵییەکانمان زیاتر دەکاتەوە.",
 
-  // Music (mp3). Without the file, a soft piano waltz plays instead.
-  music: "assets/music.mp3",
+  // Music: "Perfect" by Ed Sheeran. The song is copyrighted, so it is not included:
+  // save your mp3 as assets/perfect.mp3 and it plays when the envelope opens.
+  // Without the file, a soft piano waltz plays instead.
+  song: { file: "assets/perfect.mp3", title: "Perfect", artist: "Ed Sheeran" },
 
   // Pictures. A missing file is replaced by drawn artwork.
   images: {
@@ -223,7 +225,13 @@ const CONFIG = {
   /* music: assets/music.mp3, or an original piano waltz */
   const audio = $("#audio"), musicBtn = $("#music");
   let songOk = false, usingPiano = false, playing = false, muted = false;
-  if (C.music) { audio.src = C.music; audio.addEventListener("canplay", () => { songOk = true; }, { once: true }); audio.addEventListener("error", () => { songOk = false; }); }
+  if (C.song.file) { audio.src = C.song.file; audio.addEventListener("canplay", () => { songOk = true; }, { once: true }); audio.addEventListener("error", () => { songOk = false; }); }
+  // A small caption: the song name while it plays, or a hint to add the file while the piano stands in
+  const songTag = $("#addsong"), songTagText = $("#addsong-t");
+  function showSongName() {
+    songTagText.textContent = `${C.song.title} · ${C.song.artist}`; songTag.classList.add("static"); songTag.hidden = false;
+    setTimeout(() => { songTag.hidden = true; }, 6500);
+  }
 
   const piano = (() => {
     const beat = 60 / 76, m = (n) => 440 * 2 ** ((n - 69) / 12);
@@ -275,13 +283,13 @@ const CONFIG = {
     if (!ctx) return;
     usingPiano = true; ctx.resume(); piano.start();
     musicBus.gain.cancelScheduledValues(ctx.currentTime); musicBus.gain.setTargetAtTime(0.85, ctx.currentTime, 1.2);
-    playing = true; $("#addsong").hidden = false;
+    playing = true; songTagText.textContent = `زیادکردنی گۆرانی ${C.song.title}`; songTag.classList.remove("static"); songTag.hidden = false;
   }
   function playMusic() {
     musicBtn.hidden = false;
     if (songOk) {
       usingPiano = false; audio.volume = 0;
-      audio.play().then(() => { playing = true; fadeAudio(0.9, 3000); }).catch(() => { songOk = false; startPiano(); });
+      audio.play().then(() => { playing = true; fadeAudio(0.9, 3000); showSongName(); }).catch(() => { songOk = false; startPiano(); });
     } else startPiano();
   }
   function setMuted(v) {
@@ -294,7 +302,7 @@ const CONFIG = {
   $("#songfile").addEventListener("change", (e) => {
     const file = e.target.files[0]; if (!file) return;
     if (usingPiano) { musicBus.gain.setTargetAtTime(0, ctx.currentTime, 0.2); setTimeout(() => piano.stop(), 800); }
-    audio.src = URL.createObjectURL(file); songOk = true; muted = false; musicBtn.classList.remove("muted"); $("#addsong").hidden = true; playMusic();
+    audio.src = URL.createObjectURL(file); songOk = true; muted = false; musicBtn.classList.remove("muted"); songTag.hidden = true; playMusic();
   });
 
   /* =====================================================================

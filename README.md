@@ -15,7 +15,7 @@ Everything personal is in the `CONFIG` object at the top of **`script.js`**: nam
 | `cover.jpg` | Painted arch + lake (portrait 9:16) — included | drawn stand-in |
 | `couple.jpg` | Bride & groom illustration — included | drawn stand-in |
 | `photo.jpg` | Real couple photo for the closing | the cover picture |
-| `music.mp3` | Background song | a soft piano waltz plays, with a link to load your own file |
+| `perfect.mp3` | Background song: "Perfect" by Ed Sheeran (copyrighted, so not included — add your own copy) | a soft piano waltz plays, with a link to pick the mp3 while testing |
 
 The included `cover.jpg` and `couple.jpg` were generated with Canva AI. Replace any file with the same name to change it.
 
