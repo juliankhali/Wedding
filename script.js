@@ -410,7 +410,7 @@ const CONFIG = {
     if (navigator.vibrate) navigator.vibrate([12, 30, 18]);
     await wait(550);
     env.classList.add("open"); sfx.paper(1.6, 0.16); sfx.chime();
-    await wait(1750);
+    await wait(1300);
     scrollTo(0, 0);
     document.body.classList.remove("locked");
     page.setAttribute("aria-hidden", "false");
