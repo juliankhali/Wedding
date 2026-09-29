@@ -1,102 +1,187 @@
 <!doctype html>
-<html lang="en" dir="ltr">
+<html lang="ckb" dir="rtl">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <title>Shilan &amp; Aram Invitation</title>
-  <meta name="theme-color" content="#3a0c15" />
-  <meta name="description" content="You're cordially invited. Tap to open." />
+  <title>بانگهێشتنامەی ئاهەنگی گواستنەوە</title>
+  <meta name="theme-color" content="#f6f7fc" />
+  <meta name="description" content="بانگهێشتنامەی ئاهەنگی گواستنەوە" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:wght@400;500;600&family=Pinyon+Script&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="card.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@400;700&family=Great+Vibes&family=Noto+Naskh+Arabic:wght@400;600&family=Vazirmatn:wght@300;400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
 </head>
-<body>
-  <div class="stage">
-    <div class="frame" id="frame">
+<body class="locked">
 
-      <!-- Cream card: the pages of the invitation -->
-      <div class="card" id="card">
-        <div class="card__light" aria-hidden="true"></div>
-        <div class="pampas" id="pampas" aria-hidden="true"></div>
+  <!-- shared SVG bits -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <defs>
+      <filter id="wax" x="-20%" y="-20%" width="140%" height="140%" color-interpolation-filters="sRGB">
+        <feGaussianBlur in="SourceAlpha" stdDeviation="3.2" result="b"/>
+        <feDiffuseLighting in="b" surfaceScale="5" diffuseConstant="1.05" lighting-color="#fff" result="d"><feDistantLight azimuth="225" elevation="46"/></feDiffuseLighting>
+        <feComposite in="SourceGraphic" in2="d" operator="arithmetic" k1="1.3" result="l"/>
+        <feSpecularLighting in="b" surfaceScale="5" specularConstant="1" specularExponent="26" lighting-color="#fffaf0" result="s"><fePointLight x="30" y="14" z="90"/></feSpecularLighting>
+        <feComposite in="s" in2="SourceAlpha" operator="in" result="s2"/>
+        <feComposite in="l" in2="SourceAlpha" operator="in" result="l2"/>
+        <feComposite in="l2" in2="s2" operator="arithmetic" k2="1" k3=".6"/>
+      </filter>
+      <filter id="waxpress" x="-10%" y="-10%" width="120%" height="120%" color-interpolation-filters="sRGB">
+        <feGaussianBlur in="SourceAlpha" stdDeviation="1.6" result="b"/>
+        <feDiffuseLighting in="b" surfaceScale="-2.6" diffuseConstant="1" lighting-color="#fff" result="d"><feDistantLight azimuth="225" elevation="50"/></feDiffuseLighting>
+        <feComposite in="SourceGraphic" in2="d" operator="arithmetic" k1="1.34" result="l"/>
+        <feComposite in="l" in2="SourceAlpha" operator="in"/>
+      </filter>
+      <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#b8892e"/><stop offset=".35" stop-color="#f4d67e"/><stop offset=".55" stop-color="#d9a940"/><stop offset="1" stop-color="#a87a25"/>
+      </linearGradient>
+      <radialGradient id="waxg" cx="38%" cy="30%" r="80%">
+        <stop offset="0" stop-color="#fffdf7"/><stop offset=".6" stop-color="#f1e7d2"/><stop offset="1" stop-color="#d9cbb0"/>
+      </radialGradient>
+    </defs>
+  </svg>
+
+  <!-- 1 · ENVELOPE -->
+  <section class="env" id="env" aria-label="Envelope">
+    <div class="env__glow" id="glow" aria-hidden="true"></div>
+    <div class="env__flap env__flap--l" id="f-l"></div>
+    <div class="env__flap env__flap--r" id="f-r"></div>
+    <div class="env__flap env__flap--t" id="f-t"></div>
+    <div class="env__flap env__flap--b" id="f-b"></div>
+    <button class="seal" id="seal" type="button" aria-label="کردنەوەی بانگهێشتنامە"></button>
+    <p class="env__hint" id="env-hint">دەستم لێ بدە بۆ کردنەوە</p>
+  </section>
+
+  <main class="page" id="page" aria-hidden="true">
+    <div class="clouds" id="clouds" aria-hidden="true"></div>
+
+    <!-- 2 · COVER -->
+    <header class="cover" id="cover">
+      <div class="cover__img" id="cover-img"></div>
+      <div class="cover__text">
+        <p class="cover__lead rv" style="--d:.1s" id="cover-lead"></p>
+        <p class="cover__name cover__name--1 rv" style="--d:.4s" id="name1"></p>
+        <p class="cover__and rv" style="--d:.7s" id="and">و</p>
+        <p class="cover__name cover__name--2 rv" style="--d:.9s" id="name2"></p>
       </div>
+      <a class="cover__down" href="#verse" aria-label="وەرە خوارەوە">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l6 6 6-6M6 12l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span>وەرە خوارەوە</span>
+      </a>
+    </header>
 
-      <!-- The pages guests scroll through -->
-      <main class="scroller" id="scroller">
+    <!-- 3 · VERSE -->
+    <section class="verse" id="verse">
+      <p class="verse__text rv" id="verse-text"></p>
+    </section>
 
-        <section class="page p-invite" id="p-invite">
-          <p class="caps caps--lg" data-w="youre"></p>
-          <p class="script script--md" data-w="cordially"></p>
-          <p class="caps caps--lg" data-w="invited"></p>
-          <div class="cue" aria-hidden="true"><span></span></div>
-        </section>
+    <!-- 4 · DATE (scratch) -->
+    <section class="sec date" id="date">
+      <h2 class="title rv">بەرواری ئاهەنگ</h2>
+      <p class="sub rv"><i class="spark">✦</i><span>بۆ بینینی بەروار ئەم سێ خانەیە بسڕەوە</span><i class="spark">✦</i></p>
+      <div class="scratch rv" id="scratch">
+        <div class="sc" data-k="day"><div class="sc__box"><b class="sc__num"></b><canvas class="sc__cv"></canvas></div><span class="sc__lbl">ڕۆژ</span></div>
+        <div class="sc" data-k="month"><div class="sc__box"><b class="sc__num"></b><canvas class="sc__cv"></canvas></div><span class="sc__lbl">مانگ</span></div>
+        <div class="sc" data-k="year"><div class="sc__box"><b class="sc__num"></b><canvas class="sc__cv"></canvas></div><span class="sc__lbl">ساڵ</span></div>
+        <svg class="hand" id="hand" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 11V5.5a1.5 1.5 0 013 0V10m0 0V8.5a1.5 1.5 0 013 0V11m0-1.5a1.5 1.5 0 013 0V15a6 6 0 01-6 6h-1a6 6 0 01-4.7-2.3L4 15.5a1.5 1.5 0 012.3-1.9L9 16" fill="#fff" stroke="#2d4db3" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <canvas class="confetti" id="confetti" aria-hidden="true"></canvas>
+      <div class="cloud-decor cloud-decor--date rv" aria-hidden="true"></div>
+    </section>
 
-        <section class="page p-names" id="p-names">
-          <div class="getting"><p class="caps" data-w="getting"></p><p class="caps" data-w="married"></p></div>
-          <p class="script name name--1" data-c="bride"></p>
-          <p class="amp" data-w="amp"></p>
-          <p class="script name name--2" data-c="groom"></p>
-        </section>
-
-        <section class="page p-date" id="p-date">
-          <div class="std"><p class="script std__1" data-w="save"></p><p class="script std__2" data-w="the"></p><p class="script std__3" data-w="dateWord"></p></div>
-          <p class="caps date" data-c="date"></p>
-          <div class="venue"><p data-c="time"></p><p data-c="venue"></p><p data-c="address"></p></div>
-        </section>
-
-        <section class="page p-rsvp" id="p-rsvp">
-          <p class="script script--sm" data-w="kindly"></p>
-          <p class="caps rsvp" data-w="rsvp"></p>
-          <p class="caps taupe by" data-c="rsvpBy"></p>
-          <div class="contact"><p class="caps" data-c="rsvpName"></p><p class="caps" data-w="callOrText"></p><p class="caps" data-c="phone" dir="ltr"></p></div>
-          <p class="caps site" data-c="website"></p>
-        </section>
-
-        <!-- Burgundy finale with the monogram -->
-        <section class="page finale" id="finale">
-          <div class="crest" id="crest" aria-hidden="true"></div>
-          <div class="mono" aria-hidden="true"><span class="mono__1" data-c="i1"></span><span class="mono__2" data-c="i2"></span></div>
-          <nav class="actions" id="actions">
-            <a class="act" id="a-rsvp" target="_blank" rel="noopener" data-w="btnRsvp"></a>
-            <a class="act" id="a-cal" target="_blank" rel="noopener" data-w="btnCalendar"></a>
-            <a class="act" id="a-map" target="_blank" rel="noopener" data-w="btnMap"></a>
-          </nav>
-          <button class="replay" id="replay" type="button">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M6 11l6-6 6 6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            <span data-w="replay"></span>
-          </button>
-        </section>
-      </main>
-
-      <!-- The envelope (back side, four flaps) with the wax seal -->
-      <div class="envelope" id="envelope">
-        <div class="flap flap--top" id="f-top"></div>
-        <div class="flap flap--bottom" id="f-bottom"></div>
-        <div class="flap flap--left" id="f-left"></div>
-        <div class="flap flap--right" id="f-right"></div>
-        <button class="seal" id="seal" type="button" aria-label="Open the invitation"></button>
-        <div class="intro" id="intro">
-          <p class="intro__welcome" data-w="welcome"></p>
-          <p class="intro__for" id="for-guest"></p>
+    <!-- 5 · COUNTDOWN -->
+    <section class="sec count" id="count">
+      <div class="card rv">
+        <p class="card__title"><i class="spark">✦</i><span>کاتی ماوە بۆ ئاهەنگەکە</span><i class="spark">✦</i></p>
+        <div class="cd" id="cd">
+          <div class="cd__box"><b data-u="s">٠٠</b><span>چرکە</span></div>
+          <div class="cd__box"><b data-u="m">٠٠</b><span>خولەک</span></div>
+          <div class="cd__box"><b data-u="h">٠٠</b><span>کاتژمێر</span></div>
+          <div class="cd__box"><b data-u="d">٠٠</b><span>ڕۆژ</span></div>
         </div>
-        <p class="hint" id="hint" data-w="tap"></p>
-        <label class="lang"><span class="sr">Language</span><select id="lang"></select></label>
       </div>
+    </section>
 
-      <button class="mute" id="mute" type="button" aria-label="Mute music" hidden>
-        <svg viewBox="0 0 24 24" aria-hidden="true">
-          <path d="M4 9.5h3.5L12 6v12l-4.5-3.5H4z" fill="currentColor"/>
-          <path class="on" d="M15.5 9a4 4 0 0 1 0 6M18 6.5a7.5 7.5 0 0 1 0 11" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-          <path class="off" d="M16 9.5l5 5M21 9.5l-5 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-        </svg>
-      </button>
-      <label class="addsong" id="addsong" hidden>♪ <span>Add “Perfect”</span><input type="file" id="songfile" accept="audio/*" /></label>
-    </div>
-  </div>
+    <!-- 6 · CALENDAR -->
+    <section class="sec cal" id="cal">
+      <div class="card rv">
+        <p class="card__title card__title--lg" id="cal-title"></p>
+        <div class="grid" id="cal-grid" role="grid"></div>
+        <a class="btn btn--blue" id="cal-btn" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15.5" rx="3" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M3.5 10h17M8 3v4M16 3v4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+          <span>هەڵگرتنی ڕۆژەکە</span>
+        </a>
+      </div>
+    </section>
 
-  <audio id="audio" preload="auto" loop></audio>
-  <script src="config.js"></script>
+    <!-- 7 · WELCOME LETTER -->
+    <section class="sec letter" id="letter">
+      <h2 class="title title--md rv">خۆشحاڵ دەبین بە ئامادەبوونتان</h2>
+      <div class="lt rv" id="lt">
+        <div class="lt__paper">
+          <h3 id="lt-h"></h3>
+          <p id="lt-p1"></p>
+          <p id="lt-p2"></p>
+        </div>
+        <div class="lt__pocket"></div>
+      </div>
+    </section>
+
+    <!-- 8 · TIMELINE -->
+    <section class="sec prog" id="prog">
+      <div class="cloud-decor cloud-decor--prog" data-par="-.10" aria-hidden="true"></div>
+      <h2 class="title rv">بەرنامەی ئاهەنگەکە</h2>
+      <ol class="tl" id="tl"></ol>
+      <div class="cloud-decor cloud-decor--prog2" data-par=".12" aria-hidden="true"></div>
+    </section>
+
+    <!-- 9 · LOCATION -->
+    <section class="sec loc" id="loc">
+      <h2 class="title rv">شوێنی ئاهەنگ</h2>
+      <svg class="pin rv" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s7-6.2 7-12a7 7 0 10-14 0c0 5.8 7 12 7 12z" fill="#2d4db3"/><circle cx="12" cy="10" r="2.7" fill="#fff"/></svg>
+      <p class="loc__name rv" id="loc-name"></p>
+      <p class="loc__addr rv" id="loc-addr"></p>
+      <div class="map rv" id="map"></div>
+      <a class="btn btn--blue rv" id="map-btn" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s7-6.2 7-12a7 7 0 10-14 0c0 5.8 7 12 7 12z" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="10" r="2.5" fill="currentColor"/></svg>
+        <span>کردنەوە لە نەخشە</span>
+      </a>
+    </section>
+
+    <!-- 10 · DRESS CODE -->
+    <section class="sec dress" id="dress">
+      <h2 class="title rv">شێوازی پۆشاک</h2>
+      <div class="couple rv" id="couple"></div>
+      <div class="card card--soft rv">
+        <p class="card__title card__title--md">پۆشاکی فەرمی</p>
+        <p class="card__text" id="dress-text"></p>
+      </div>
+      <p class="sub sub--tight rv">ڕەنگە پێشنیارکراوەکانی ئاهەنگ</p>
+      <div class="sw rv" id="sw"></div>
+    </section>
+
+    <!-- 11 · RSVP -->
+    <section class="sec rsvp" id="rsvp">
+      <a class="btn btn--wa rv" id="wa-btn" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 00-8.6 15.1L2 22l5-1.3A10 10 0 1012 2zm5.2 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.2-4.6-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.8s.7-2 1-2.3c.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.9 2c.1.2.1.4 0 .5l-.4.6c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.3.1.5.1.6-.1l.9-1.1c.2-.3.4-.2.6-.1l1.9.9c.3.1.4.2.5.3.1.2.1.7-.1 1.3z"/></svg>
+        <span>دڵنیاکردنەوەی ئامادەبوون لە واتسئاپ</span>
+      </a>
+    </section>
+
+    <!-- 12 · CLOSING -->
+    <footer class="sec close" id="close">
+      <p class="close__text rv" id="close-text"></p>
+      <h2 class="title title--xl rv">بەخۆشحاڵییەوە چاوەڕێتانین</h2>
+      <div class="photo rv" id="photo"></div>
+    </footer>
+  </main>
+
+  <button class="music" id="music" type="button" aria-label="مۆسیقا" hidden>
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18V6l10-2v12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><circle cx="6.5" cy="18" r="2.5" fill="currentColor"/><circle cx="16.5" cy="16" r="2.5" fill="currentColor"/><path class="off" d="M3 3l18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+  </button>
+  <label class="addsong" id="addsong" hidden>♪ <span>گۆرانی خۆت</span><input type="file" id="songfile" accept="audio/*" /></label>
+  <audio id="audio" loop preload="auto"></audio>
+
   <script src="art.js"></script>
-  <script src="card.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>

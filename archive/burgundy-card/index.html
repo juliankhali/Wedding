@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Shilan &amp; Aram Invitation</title>
+  <meta name="theme-color" content="#3a0c15" />
+  <meta name="description" content="You're cordially invited. Tap to open." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:wght@400;500;600&family=Pinyon+Script&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="card.css" />
+</head>
+<body>
+  <div class="stage">
+    <div class="frame" id="frame">
+
+      <!-- Cream card: the pages of the invitation -->
+      <div class="card" id="card">
+        <div class="card__light" aria-hidden="true"></div>
+        <div class="pampas" id="pampas" aria-hidden="true"></div>
+      </div>
+
+      <!-- The pages guests scroll through -->
+      <main class="scroller" id="scroller">
+
+        <section class="page p-invite" id="p-invite">
+          <p class="caps caps--lg" data-w="youre"></p>
+          <p class="script script--md" data-w="cordially"></p>
+          <p class="caps caps--lg" data-w="invited"></p>
+          <div class="cue" aria-hidden="true"><span></span></div>
+        </section>
+
+        <section class="page p-names" id="p-names">
+          <div class="getting"><p class="caps" data-w="getting"></p><p class="caps" data-w="married"></p></div>
+          <p class="script name name--1" data-c="bride"></p>
+          <p class="amp" data-w="amp"></p>
+          <p class="script name name--2" data-c="groom"></p>
+        </section>
+
+        <section class="page p-date" id="p-date">
+          <div class="std"><p class="script std__1" data-w="save"></p><p class="script std__2" data-w="the"></p><p class="script std__3" data-w="dateWord"></p></div>
+          <p class="caps date" data-c="date"></p>
+          <div class="venue"><p data-c="time"></p><p data-c="venue"></p><p data-c="address"></p></div>
+        </section>
+
+        <section class="page p-rsvp" id="p-rsvp">
+          <p class="script script--sm" data-w="kindly"></p>
+          <p class="caps rsvp" data-w="rsvp"></p>
+          <p class="caps taupe by" data-c="rsvpBy"></p>
+          <div class="contact"><p class="caps" data-c="rsvpName"></p><p class="caps" data-w="callOrText"></p><p class="caps" data-c="phone" dir="ltr"></p></div>
+          <p class="caps site" data-c="website"></p>
+        </section>
+
+        <!-- Burgundy finale with the monogram -->
+        <section class="page finale" id="finale">
+          <div class="crest" id="crest" aria-hidden="true"></div>
+          <div class="mono" aria-hidden="true"><span class="mono__1" data-c="i1"></span><span class="mono__2" data-c="i2"></span></div>
+          <nav class="actions" id="actions">
+            <a class="act" id="a-rsvp" target="_blank" rel="noopener" data-w="btnRsvp"></a>
+            <a class="act" id="a-cal" target="_blank" rel="noopener" data-w="btnCalendar"></a>
+            <a class="act" id="a-map" target="_blank" rel="noopener" data-w="btnMap"></a>
+          </nav>
+          <button class="replay" id="replay" type="button">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M6 11l6-6 6 6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span data-w="replay"></span>
+          </button>
+        </section>
+      </main>
+
+      <!-- The envelope (back side, four flaps) with the wax seal -->
+      <div class="envelope" id="envelope">
+        <div class="flap flap--top" id="f-top"></div>
+        <div class="flap flap--bottom" id="f-bottom"></div>
+        <div class="flap flap--left" id="f-left"></div>
+        <div class="flap flap--right" id="f-right"></div>
+        <button class="seal" id="seal" type="button" aria-label="Open the invitation"></button>
+        <div class="intro" id="intro">
+          <p class="intro__welcome" data-w="welcome"></p>
+          <p class="intro__for" id="for-guest"></p>
+        </div>
+        <p class="hint" id="hint" data-w="tap"></p>
+        <label class="lang"><span class="sr">Language</span><select id="lang"></select></label>
+      </div>
+
+      <button class="mute" id="mute" type="button" aria-label="Mute music" hidden>
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M4 9.5h3.5L12 6v12l-4.5-3.5H4z" fill="currentColor"/>
+          <path class="on" d="M15.5 9a4 4 0 0 1 0 6M18 6.5a7.5 7.5 0 0 1 0 11" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          <path class="off" d="M16 9.5l5 5M21 9.5l-5 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+      </button>
+      <label class="addsong" id="addsong" hidden>♪ <span>Add “Perfect”</span><input type="file" id="songfile" accept="audio/*" /></label>
+    </div>
+  </div>
+
+  <audio id="audio" preload="auto" loop></audio>
+  <script src="config.js"></script>
+  <script src="art.js"></script>
+  <script src="card.js"></script>
+</body>
+</html>

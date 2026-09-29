@@ -1,0 +1,9 @@
+archive
+tools
+preview
+README.md
+wrangler.jsonc
+.assetsignore
+.gitignore
+.git
+node_modules

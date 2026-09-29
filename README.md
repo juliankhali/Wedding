@@ -1,27 +1,34 @@
-# Animated Wedding Card
+# Digital Wedding Invitation — Kurdish Sorani (RTL)
 
-A 9:16 wedding invitation website, based on the "Burgundy Envelope Reveal" reference. It fills the screen on phones and is centred on desktop.
+A mobile-first, single-page wedding invitation in Kurdish Sorani. Plain HTML/CSS/JS, no framework and no build step.
 
-**Sequence:** a burgundy envelope with raised floral flaps, sealed with a gold wax seal and a dove. Tap it: the seal cracks, the music starts and the four flaps open. Then guests scroll down through the pages at their own pace. The pages are on cream cotton paper with drifting window light, and each one snaps into place and writes itself in letter by letter as it arrives:
-1. You're cordially invited
-2. We're getting married + names, with embossed pampas grass growing in
-3. Date and venue, then "Save the Date"
-4. Kindly RSVP
-5. The card fades to burgundy, and a baroque frame and monogram appear, with RSVP, Add to calendar and Directions buttons, plus "Back to top".
-
-Languages: English, Sorani (کوردی), Kurmancî and Arabic (picker on the envelope, or `?lang=ckb`).
+**What guests see, in order:** an ivory embossed envelope sealed with a wax seal (tap it: golden light bursts out, the flaps open, music starts) → painted cover with the names → Quran verse → **scratch-off date cards** → live countdown → calendar with "save the date" → welcome letter sliding out of an envelope → program timeline with drifting clouds → location map → dress code with colour swatches → WhatsApp confirmation → closing photo. A round button keeps the music on/off.
 
 ## Edit
-Everything personal is in **`config.js`**: names, initials, date, time, venue, RSVP contact, phone, WhatsApp number, website and the wording in each language.
+Everything personal is in the `CONFIG` object at the top of **`script.js`**: names, seal initials, date and time, verse, letter text, program, venue and map links, dress code and colours, WhatsApp number and message, closing text, music and picture paths.
 
-- **Music:** "Perfect" by Ed Sheeran is set up, but the song is copyrighted and not included. Save your mp3 as `assets/music/perfect.mp3`. Until then an original piano waltz plays, and an "Add Perfect" link lets you pick the mp3 while testing.
-- **Personal link per guest:** `index.html?to=Hama` shows "For Hama" on the envelope.
-- Have a native speaker check the Kurdish and Arabic wording.
+## Pictures (`/assets`)
+| File | What | If missing |
+|---|---|---|
+| `envelope.jpg` | Top view of the ivory embossed envelope (portrait 9:16, X-shaped folds meeting in the centre) | drawn in code |
+| `seal.png` | Gold/cream wax seal, transparent background | drawn in code with your initials |
+| `cover.jpg` | Painted arch + lake (portrait 9:16) — included | drawn stand-in |
+| `couple.jpg` | Bride & groom illustration — included | drawn stand-in |
+| `photo.jpg` | Real couple photo for the closing | the cover picture |
+| `music.mp3` | Background song | a soft piano waltz plays, with a link to load your own file |
 
-The photo-realistic artwork in `assets/images/` (embossed envelope, paper, pampas, frame and dove seal) was generated with Canva AI. To change a picture, replace the file with the same name. If a file is missing, the card falls back to the artwork drawn in code in `art.js`.
+The included `cover.jpg` and `couple.jpg` were generated with Canva AI. Replace any file with the same name to change it.
 
-## Files
-`index.html` (structure) · `card.css` (look and animation) · `card.js` (timeline, sound, languages) · `art.js` (artwork) · `config.js` (content)
+## Run locally
+Open `index.html`, or serve the folder: `python3 -m http.server`.
 
-## Preview and publish
-`node tools/build-preview.js` writes a single self-contained `preview/invitation.html`. Any static host works for the real site (GitHub Pages, Netlify, Vercel).
+## Deploy on Cloudflare (free `*.pages.dev` / `*.workers.dev` link)
+**Pages (easiest):** Cloudflare dashboard → Workers & Pages → Create → Pages → connect this GitHub repo (or *Upload assets* and drop the project folder). Build command: *none*. Build output directory: `/` (the repo root).
+
+**Workers:** `npx wrangler deploy` (uses `wrangler.jsonc`; `.assetsignore` keeps the notes and tools out of the upload).
+
+## Single-file version
+`node tools/build-preview.js` writes `preview/wedding-invitation.html` with all code and pictures inside one file, and `preview/invitation.html` for the Artifact preview.
+
+## Older design
+The first version (burgundy envelope, four languages) is kept in `archive/burgundy-card/`.
