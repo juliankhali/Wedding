@@ -392,3 +392,26 @@ body { text-rendering: optimizeLegibility; }
 .tl li::before { background: linear-gradient(135deg, #4a6bd6, #26439c); }
 
 @media (prefers-reduced-motion: reduce) { .petal { display: none; } }
+
+
+/* =====================================================================
+   PHOTO ARTWORK FROM CANVA: cream wax seal + watercolor clouds
+   ===================================================================== */
+.seal.pic { --sz: clamp(150px, 46vw, 212px); width: var(--sz); filter: drop-shadow(0 8px 10px rgba(110, 88, 50, .18)); }
+.seal.pic img { -webkit-mask: radial-gradient(circle at 50% 49%, #000 0 40%, transparent 47%); mask: radial-gradient(circle at 50% 49%, #000 0 40%, transparent 47%); }
+.seal__ini {
+  position: absolute; left: 50%; top: 48.5%; translate: -50% -50%; white-space: nowrap; pointer-events: none;
+  font-family: "Great Vibes", "Pinyon Script", cursive; font-size: calc(var(--sz) * .195); line-height: 1; letter-spacing: .02em;
+  background: linear-gradient(135deg, #a67a26 0%, #e9c96f 38%, #b98b2f 62%, #f0d98d 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 1px 0 rgba(255, 255, 255, .7)) drop-shadow(0 -0.5px 0 rgba(120, 88, 24, .45));
+}
+.seal.pic::after { inset: 8%; }
+.env__hint { top: calc(50% + clamp(70px, 21vw, 98px) + 16px); }
+
+.cloud-photo .cloud-decor::before { background: var(--cloudimg) center / contain no-repeat; filter: none; opacity: .95; }
+.cloud-photo .cloud-decor--date { width: min(92%, 340px); height: 190px; }
+.cloud-photo .cloud-decor--prog { width: 420px; height: 236px; left: -90px; }
+.cloud-photo .cloud-decor--prog2 { width: 400px; height: 226px; right: -110px; }
+
+/* the couple picture: fade the edges so no white box shows against the pastel page */
+.couple { mix-blend-mode: normal; -webkit-mask: radial-gradient(ellipse 60% 58% at 50% 49%, #000 64%, transparent 100%); mask: radial-gradient(ellipse 60% 58% at 50% 49%, #000 64%, transparent 100%); }
