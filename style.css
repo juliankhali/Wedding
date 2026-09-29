@@ -406,7 +406,6 @@ body { text-rendering: optimizeLegibility; }
   filter: drop-shadow(0 1px 0 rgba(255, 255, 255, .7)) drop-shadow(0 -0.5px 0 rgba(120, 88, 24, .45));
 }
 .seal.pic::after { inset: 8%; }
-.env__hint { top: calc(50% + clamp(70px, 21vw, 98px) + 16px); }
 
 .cloud-photo .cloud-decor::before { background: var(--cloudimg) center / contain no-repeat; filter: none; opacity: .95; }
 .cloud-photo .cloud-decor--date { width: min(92%, 340px); height: 190px; }

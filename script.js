@@ -71,7 +71,7 @@ const CONFIG = {
   // Pictures. A missing file is replaced by drawn artwork.
   images: {
     envelope: "assets/envelope.jpg", // ivory embossed envelope, portrait 9:16
-    seal: "assets/seal.jpg",         // cream wax seal with a gold rim and a blank centre (initials are written on it)
+    seal: "",                        // empty = the wax seal drawn in code (initials from above). Or set a picture path, e.g. "assets/seal.png"
     clouds: "assets/clouds.png",     // pastel watercolor clouds, transparent
     cover: "assets/cover.jpg",       // painted arch + lake, portrait 9:16
     couple: "assets/couple.jpg",     // bride & groom illustration
