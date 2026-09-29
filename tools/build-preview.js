@@ -16,12 +16,15 @@ const dataUri = (f) => `data:${mime[path.extname(f).toLowerCase()]};base64,${fs.
 const inlineAssets = (js) => js.replace(/"(assets\/[^"]+)"/g, (m, f) => (fs.existsSync(path.join(root, f)) ? JSON.stringify(dataUri(f)) : m));
 
 // Replacement callbacks keep "$" sequences in the code from being treated as patterns.
-const out = head
-  .replace(/<meta charset[^>]*>\s*/, "")
-  .replace(/<meta name="viewport"[^>]*>\s*/, "")
-  .replace(/<link rel="stylesheet" href="([^"]+)" \/>/g, (_, f) => `<style>\n${read(f)}\n</style>`)
-  + body.replace(/<script src="([^"]+)"><\/script>/g, (_, f) => `<script>\n${f === "config.js" ? inlineAssets(read(f)) : read(f)}\n</script>`);
+const inlineHead = head.replace(/<link rel="stylesheet" href="([^"]+)" \/>/g, (_, f) => `<style>\n${read(f)}\n</style>`);
+const inlineBody = body.replace(/<script src="([^"]+)"><\/script>/g, (_, f) => `<script>\n${f === "config.js" ? inlineAssets(read(f)) : read(f)}\n</script>`);
+
+// Page content only (the artifact host adds its own document skeleton)
+const out = inlineHead.replace(/<meta charset[^>]*>\s*/, "").replace(/<meta name="viewport"[^>]*>\s*/, "") + inlineBody;
+// A complete document that opens straight from a phone or computer
+const standalone = `<!doctype html>\n<html lang="en" dir="ltr">\n<head>${inlineHead}</head>\n<body>${inlineBody}</body>\n</html>\n`;
 
 fs.mkdirSync(path.join(root, "preview"), { recursive: true });
 fs.writeFileSync(path.join(root, "preview/invitation.html"), out.trim() + "\n");
-console.log("Wrote preview/invitation.html", (out.length / 1024).toFixed(0) + " KB");
+fs.writeFileSync(path.join(root, "preview/wedding-invitation.html"), standalone);
+console.log("Wrote preview/invitation.html and preview/wedding-invitation.html", (standalone.length / 1024).toFixed(0) + " KB");
