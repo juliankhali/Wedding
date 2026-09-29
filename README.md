@@ -31,7 +31,7 @@ Open `index.html`, or serve the folder: `python3 -m http.server`.
 **Workers:** `npx wrangler deploy` (uses `wrangler.jsonc`; `.assetsignore` keeps the notes and tools out of the upload).
 
 ## Single-file version
-`node tools/build-preview.js` writes `preview/wedding-invitation.html` with all code and pictures inside one file, and `preview/invitation.html` for the Artifact preview.
+`node tools/build-preview.js` writes `preview/wedding-invitation.html` with all code, pictures and (if `assets/perfect.mp3` exists) the song inside one file, and `preview/invitation.html` (without the song) for the Artifact preview. Both `assets/perfect.mp3` and `preview/wedding-invitation.html` are git-ignored on purpose: keep your own copy of the recording on your computer and do not publish it.
 
 ## Older design
 The first version (burgundy envelope, four languages) is kept in `archive/burgundy-card/`.
