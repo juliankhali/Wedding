@@ -339,7 +339,7 @@ const CONFIG = {
   function fadeAudio(to, ms, done) {
     cancelAnimationFrame(fadeRaf);
     const from = audio.volume, t0 = performance.now();
-    const step = (now) => { const k = Math.min(1, (now - t0) / ms); audio.volume = from + (to - from) * k; k < 1 ? (fadeRaf = requestAnimationFrame(step)) : done?.(); };
+    const step = (now) => { const k = Math.min(1, (now - t0) / ms); audio.volume = Math.min(1, Math.max(0, from + (to - from) * k)); k < 1 ? (fadeRaf = requestAnimationFrame(step)) : done?.(); };
     fadeRaf = requestAnimationFrame(step);
   }
   function startPiano() {
@@ -458,6 +458,17 @@ const CONFIG = {
       if (t < 130) requestAnimationFrame(frame); else cx.clearRect(0, 0, cv.width, cv.height);
     })();
   }
+
+  // drifting rose petals over the cover (decoration only)
+  (function petals() {
+    if (reduced) return;
+    const cover = $("#cover");
+    for (let i = 0; i < 14; i++) {
+      const p = document.createElement("i"); p.className = "petal"; p.setAttribute("aria-hidden", "true");
+      p.style.cssText = `left:${(Math.random() * 100).toFixed(1)}%;--s:${(9 + Math.random() * 8).toFixed(1)}px;--t:${(16 + Math.random() * 14).toFixed(1)}s;--d:${(-Math.random() * 24).toFixed(1)}s;--x:${(Math.random() * 90 - 30).toFixed(0)}px`;
+      cover.appendChild(p);
+    }
+  })();
 
   /* =====================================================================
      SCROLL EFFECTS
