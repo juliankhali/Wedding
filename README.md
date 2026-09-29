@@ -15,9 +15,12 @@ Everything personal is in the `CONFIG` object at the top of **`script.js`**: nam
 | `cover.jpg` | Painted arch + lake (portrait 9:16) — included | drawn stand-in |
 | `couple.jpg` | Bride & groom illustration — included | drawn stand-in |
 | `photo.jpg` | Real couple photo for the closing | the cover picture |
-| `perfect.mp3` | Background song: "Perfect" by Ed Sheeran (copyrighted, so not included — add your own copy) | a soft piano waltz plays, with a link to pick the mp3 while testing |
+| `perfect.mp3` | Optional: your own copy of the song. When present it is used instead of YouTube | the song streams from YouTube's embedded player (`CONFIG.song.youtube`); if that is unavailable, a soft piano waltz plays |
 
 The included `cover.jpg` and `couple.jpg` were generated with Canva AI. Replace any file with the same name to change it.
+
+## Music
+"Perfect" by Ed Sheeran plays from the envelope tap through YouTube's own embedded player (the video id is `CONFIG.song.youtube`). No copy of the song is stored in this project. It needs internet and works on the deployed `https://` site; it does **not** play from a local `file://` copy or inside the Claude preview (embeds are blocked there), where the piano waltz plays instead. Use of the song is subject to its rights holders' terms.
 
 ## Run locally
 Open `index.html`, or serve the folder: `python3 -m http.server`.

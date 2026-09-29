@@ -713,10 +713,14 @@ const CONFIG = {
 
   closing: "لەگەڵ سوپاسی بێ پایان بۆ هەموو ئەو کەسانەی کە لەم ڕۆژە تایبەتەدا هاوبەشی خۆشییەکانمان دەبن. ئامادەبوونتان دەرگای خۆشحاڵییەکانمان زیاتر دەکاتەوە.",
 
-  // Music: "Perfect" by Ed Sheeran. The song is copyrighted, so it is not included:
-  // save your mp3 as assets/perfect.mp3 and it plays when the envelope opens.
-  // Without the file, a soft piano waltz plays instead.
-  song: { file: "assets/perfect.mp3", title: "Perfect", artist: "Ed Sheeran" },
+  // Music: "Perfect" by Ed Sheeran, streamed from YouTube (the video id is the part after
+  // youtu.be/). The song is copyrighted, so no copy is stored here. Order of use: your own
+  // mp3 (assets/perfect.mp3) → YouTube → a soft piano waltz if neither is available.
+  song: {
+    title: "Perfect", artist: "Ed Sheeran",
+    youtube: "2Vv-BfVoq4g",         // plays through YouTube's own embedded player (needs internet)
+    file: "assets/perfect.mp3",     // optional: your own mp3; when present it is used instead of YouTube
+  },
 
   // Pictures. A missing file is replaced by drawn artwork.
   images: {
@@ -887,6 +891,65 @@ const CONFIG = {
     setTimeout(() => { songTag.hidden = true; }, 6500);
   }
 
+  /* YouTube: a hidden official embedded player, prepared at page load so that the tap on the
+     seal can start it (phones only allow sound that starts from a tap). */
+  const yt = { player: null, ready: false, failed: !C.song.youtube || !!window.NO_EMBED || location.protocol === "file:", using: false };
+  function prepareYouTube() {
+    if (yt.failed) return;
+    const host = document.createElement("div");
+    host.id = "yt";
+    host.style.cssText = "position:fixed;left:-500px;top:0;width:220px;height:220px;opacity:.01;pointer-events:none;z-index:-1";
+    host.innerHTML = '<div id="yt-player"></div>';
+    document.body.appendChild(host);
+    const make = () => {
+      try {
+        yt.player = new YT.Player("yt-player", {
+          videoId: C.song.youtube, width: 220, height: 220,
+          playerVars: { controls: 0, disablekb: 1, fs: 0, modestbranding: 1, playsinline: 1, rel: 0, loop: 1, playlist: C.song.youtube, origin: location.origin },
+          events: {
+            onReady: () => { yt.ready = true; },
+            onError: () => { yt.failed = true; if (yt.using) { yt.using = false; startPiano(); } },
+            onStateChange: (e) => { if (e.data === 1) yt.playing = true; },
+          },
+        });
+      } catch { yt.failed = true; }
+    };
+    if (window.YT && YT.Player) make();
+    else {
+      const prev = window.onYouTubeIframeAPIReady;
+      window.onYouTubeIframeAPIReady = () => { prev?.(); make(); };
+      const tag = document.createElement("script");
+      tag.src = "https://www.youtube.com/iframe_api"; tag.async = true; tag.onerror = () => { yt.failed = true; };
+      document.head.appendChild(tag);
+    }
+  }
+  let ytFade = 0;
+  function ytVolume(to, ms, done) {
+    cancelAnimationFrame(ytFade);
+    let from = 0; try { from = yt.player.getVolume(); } catch { /* not ready */ }
+    const t0 = performance.now();
+    const step = (now) => {
+      const k = Math.min(1, (now - t0) / ms);
+      try { yt.player.setVolume(Math.round(from + (to - from) * k)); } catch { /* ignore */ }
+      k < 1 ? (ytFade = requestAnimationFrame(step)) : done?.();
+    };
+    ytFade = requestAnimationFrame(step);
+  }
+  // Called from the tap: start the prepared player and wait a moment for it to really play.
+  function playYouTube() {
+    return new Promise((resolve, reject) => {
+      const t0 = Date.now();
+      (function go() {
+        if (yt.failed) return reject(new Error("youtube unavailable"));
+        if (!yt.ready) return Date.now() - t0 > 4500 ? reject(new Error("youtube slow")) : setTimeout(go, 150);
+        try { yt.player.setVolume(0); yt.player.playVideo(); } catch { return reject(new Error("youtube error")); }
+        const check = () => (yt.playing ? resolve() : Date.now() - t0 > 6500 ? reject(new Error("youtube blocked")) : setTimeout(check, 200));
+        check();
+      })();
+    });
+  }
+  prepareYouTube();
+
   const piano = (() => {
     const beat = 60 / 76, m = (n) => 440 * 2 ** ((n - 69) / 12);
     const CH = { D: [50, [62, 66, 69]], Bm: [47, [62, 66, 71]], G: [43, [62, 67, 71]], A: [45, [61, 64, 69]], Em: [52, [64, 67, 71]] };
@@ -942,13 +1005,17 @@ const CONFIG = {
   function playMusic() {
     musicBtn.hidden = false;
     if (songOk) {
-      usingPiano = false; audio.volume = 0;
+      usingPiano = false; yt.using = false; audio.volume = 0;
       audio.play().then(() => { playing = true; fadeAudio(0.9, 3000); showSongName(); }).catch(() => { songOk = false; startPiano(); });
+    } else if (!yt.failed) {
+      usingPiano = false; yt.using = true;
+      playYouTube().then(() => { playing = true; ytVolume(90, 3000); showSongName(); }).catch(() => { yt.using = false; try { yt.player.pauseVideo(); } catch { /* ignore */ } startPiano(); });
     } else startPiano();
   }
   function setMuted(v) {
     muted = v; musicBtn.classList.toggle("muted", v);
     if (usingPiano) { if (v) musicBus.gain.setTargetAtTime(0, ctx.currentTime, 0.15); else { ctx.resume(); piano.start(); musicBus.gain.setTargetAtTime(0.85, ctx.currentTime, 0.4); } }
+    else if (yt.using) { if (v) ytVolume(0, 350, () => yt.player.pauseVideo()); else { yt.player.playVideo(); ytVolume(90, 800); } }
     else if (v) fadeAudio(0, 400, () => audio.pause());
     else { audio.play().catch(() => {}); fadeAudio(0.9, 800); }
   }
@@ -956,6 +1023,7 @@ const CONFIG = {
   $("#songfile").addEventListener("change", (e) => {
     const file = e.target.files[0]; if (!file) return;
     if (usingPiano) { musicBus.gain.setTargetAtTime(0, ctx.currentTime, 0.2); setTimeout(() => piano.stop(), 800); }
+    if (yt.using) { yt.using = false; try { yt.player.pauseVideo(); } catch { /* ignore */ } }
     audio.src = URL.createObjectURL(file); songOk = true; muted = false; musicBtn.classList.remove("muted"); songTag.hidden = true; playMusic();
   });
 
