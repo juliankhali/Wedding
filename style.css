@@ -253,3 +253,87 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; transition-delay: 0s !important; }
   html { scroll-behavior: auto; }
 }
+
+/* =====================================================================
+   THEME POLISH — a softer, more cohesive look (same structure as before)
+   ===================================================================== */
+:root { --blue-2: #4666cf; --blue-deep: #26439c; --pink: #ffdbe9; --sky: #dfe8ff; --lilac: #e5ddff; --hair: rgba(45, 77, 179, .08); }
+::selection { background: rgba(45, 77, 179, .18); }
+body { text-rendering: optimizeLegibility; }
+
+/* one continuous, softly coloured page instead of a flat sheet */
+.page {
+  background:
+    radial-gradient(360px 480px at 100% 1180px, rgba(255, 214, 232, .55), transparent 72%),
+    radial-gradient(380px 520px at 0% 1900px, rgba(196, 214, 255, .60), transparent 72%),
+    radial-gradient(360px 500px at 100% 2700px, rgba(226, 214, 255, .55), transparent 72%),
+    radial-gradient(380px 520px at 0% 3600px, rgba(255, 228, 214, .50), transparent 72%),
+    radial-gradient(360px 500px at 100% 4500px, rgba(200, 220, 255, .55), transparent 72%),
+    radial-gradient(380px 520px at 0% 5400px, rgba(255, 214, 232, .45), transparent 72%),
+    linear-gradient(180deg, #f9faff 0%, #f3f5fd 45%, #f8f9ff 100%);
+  background-repeat: no-repeat;
+}
+
+/* smoother reveal */
+.rv { transform: translateY(34px) scale(.985); transition: opacity 1.3s cubic-bezier(.22, .61, .36, 1), transform 1.4s cubic-bezier(.16, 1, .3, 1); }
+.rv.in { transform: none; }
+
+/* titles: a soft blue gradient with a small ornament underneath */
+.title { background: linear-gradient(180deg, var(--blue-2) 0%, var(--blue-deep) 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+.title::after {
+  content: ""; display: block; width: 84px; height: 12px; margin: 6px auto 0;
+  background:
+    radial-gradient(circle at 50% 50%, var(--blue-soft) 0 2.6px, transparent 3.2px),
+    linear-gradient(90deg, transparent, rgba(111, 134, 214, .7)) left center / 30px 1px no-repeat,
+    linear-gradient(270deg, transparent, rgba(111, 134, 214, .7)) right center / 30px 1px no-repeat;
+}
+.sub { color: #7d88b0; }
+
+/* cards: soft glass with a hairline and layered shadows */
+.card { border-radius: 26px; background: linear-gradient(180deg, #ffffff, #fbfcff); box-shadow: 0 1px 0 rgba(255, 255, 255, .95) inset, 0 0 0 1px var(--hair), 0 22px 46px -18px rgba(45, 77, 179, .28), 0 4px 12px rgba(45, 77, 179, .05); }
+.card--soft { border: 0; background: linear-gradient(180deg, #ffffff, #f8f9ff); }
+
+/* buttons: rich gradient and a slow light sweep */
+.btn { position: relative; overflow: hidden; border-radius: 16px; }
+.btn::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(105deg, transparent 38%, rgba(255, 255, 255, .38) 50%, transparent 62%); transform: translateX(-130%); animation: shine 6s ease-in-out 1.5s infinite; }
+@keyframes shine { 0%, 55% { transform: translateX(-130%); } 100% { transform: translateX(130%); } }
+.btn--blue { background: linear-gradient(180deg, #4a6bd6, #2a47a8); box-shadow: 0 14px 28px -8px rgba(45, 77, 179, .5), inset 0 1px 0 rgba(255, 255, 255, .3); }
+.btn--wa { background: linear-gradient(180deg, #33cf6c, #1a9a48); box-shadow: 0 14px 28px -8px rgba(31, 168, 81, .5), inset 0 1px 0 rgba(255, 255, 255, .3); }
+
+/* cover: gentle haze behind the words and a very slow drift on the picture */
+.cover__text::before { content: ""; position: absolute; inset: -6% -10% -30%; z-index: -1; background: radial-gradient(ellipse at 50% 34%, rgba(255, 255, 255, .5), rgba(255, 255, 255, 0) 68%); filter: blur(8px); }
+.page.in .cover__img { animation: drift-img 42s ease-in-out 6s infinite alternate; }
+@keyframes drift-img { from { transform: scale(1) translate3d(0, 0, 0); } to { transform: scale(1.07) translate3d(-1.2%, -1.2%, 0); } }
+.cover__name { text-shadow: 0 0 22px rgba(255, 255, 255, .95), 0 2px 10px rgba(255, 255, 255, .7); }
+
+/* scratch boxes and countdown */
+.sc__box { border-radius: 20px; box-shadow: 0 14px 28px -12px rgba(45, 77, 179, .35), inset 0 0 0 1px var(--hair); }
+.cd__box { position: relative; border-top: 0; border-radius: 16px; background: linear-gradient(180deg, #fff, #eff2fd); box-shadow: inset 0 0 0 1px var(--hair), inset 0 -12px 18px -14px rgba(45, 77, 179, .22), 0 10px 18px -10px rgba(45, 77, 179, .3); }
+.cd__box::before { content: ""; position: absolute; top: 0; left: 20%; right: 20%; height: 3px; border-radius: 0 0 6px 6px; background: linear-gradient(90deg, #8ea3e6, var(--blue), #8ea3e6); }
+.cd__box b { background: linear-gradient(180deg, var(--blue-2), var(--blue-deep)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+
+/* calendar */
+.grid b.on::before { box-shadow: 0 8px 16px -2px rgba(45, 77, 179, .5); background: linear-gradient(180deg, #4a6bd6, #2a47a8); }
+
+/* letter */
+.lt__paper { background: linear-gradient(180deg, #fffefb, #f9f2e4); box-shadow: 0 -8px 30px rgba(45, 77, 179, .12), 0 0 0 1px #efe6d3; }
+.lt__pocket { background:
+    linear-gradient(to bottom right, transparent 49.6%, rgba(120, 155, 205, .5) 50%, transparent 50.9%) left top / 50% 46% no-repeat,
+    linear-gradient(to bottom left, transparent 49.6%, rgba(120, 155, 205, .5) 50%, transparent 50.9%) right top / 50% 46% no-repeat,
+    linear-gradient(180deg, #d3e6fa, #b6d4f2); box-shadow: 0 20px 34px -10px rgba(45, 77, 179, .28), inset 0 1px 0 rgba(255, 255, 255, .7); }
+
+/* timeline */
+.tl::before { width: 2.5px; filter: drop-shadow(0 0 4px rgba(45, 77, 179, .25)); background: linear-gradient(180deg, transparent, var(--blue) 8%, #5f7bd0 92%, transparent); }
+.tl li::before { box-shadow: 0 0 0 4px #f7f8fe, 0 0 14px rgba(45, 77, 179, .45); border-radius: 2px; }
+.tl .it b { font-size: 17px; background: linear-gradient(180deg, var(--blue-2), var(--blue-deep)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+
+/* map, photo and swatches get a white "photo frame" */
+.map { box-shadow: 0 0 0 6px #fff, 0 26px 44px -16px rgba(45, 77, 179, .38); border-radius: 24px; }
+.photo { border: 6px solid #fff; box-shadow: 0 30px 50px -18px rgba(45, 77, 179, .4); }
+.sw i { width: 32px; height: 32px; box-shadow: 0 0 0 1px rgba(45, 77, 179, .14), 0 8px 14px -4px rgba(45, 77, 179, .3); }
+
+/* music button */
+.music { box-shadow: 0 12px 26px -8px rgba(45, 77, 179, .4), 0 0 0 1px var(--hair); }
+
+/* envelope: slightly softer easing */
+.env__flap { transition-timing-function: cubic-bezier(.45, 0, .2, 1); }

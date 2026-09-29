@@ -391,8 +391,11 @@ const CONFIG = {
         const w = cv.width, h = cv.height;
         cx.globalCompositeOperation = "source-over";
         const gr = cx.createLinearGradient(0, 0, w, h);
-        gr.addColorStop(0, "#d3e0f9"); gr.addColorStop(0.5, "#bfd1f4"); gr.addColorStop(1, "#cbdaf7");
+        gr.addColorStop(0, "#d9e5fb"); gr.addColorStop(0.45, "#bccff4"); gr.addColorStop(0.75, "#c9d9f7"); gr.addColorStop(1, "#b3c7f0");
         cx.fillStyle = gr; cx.fillRect(0, 0, w, h);
+        const band = cx.createLinearGradient(0, h, w, 0); // a soft diagonal shine, like foil
+        band.addColorStop(0.3, "rgba(255,255,255,0)"); band.addColorStop(0.5, "rgba(255,255,255,.55)"); band.addColorStop(0.7, "rgba(255,255,255,0)");
+        cx.fillStyle = band; cx.fillRect(0, 0, w, h);
         for (let i = 0; i < 90; i++) { // light sparkle grain
           cx.fillStyle = `rgba(255,255,255,${(0.15 + Math.random() * 0.35).toFixed(2)})`;
           cx.beginPath(); cx.arc(Math.random() * w, Math.random() * h, (0.6 + Math.random() * 1.6) * dpr, 0, 6.283); cx.fill();
