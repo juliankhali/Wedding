@@ -463,6 +463,29 @@ body { text-rendering: optimizeLegibility; }
   .page { box-shadow: 0 0 0 1px rgba(255, 255, 255, .6), 0 0 80px rgba(45, 77, 179, .16); }
 }
 
+/* =====================================================================
+   FITS EVERY SCREEN — the envelope picture is never stretched.
+   Each flap is a box with the picture's own shape, scaled to just cover the
+   screen and centred, so the folds always meet exactly in the middle.
+   ===================================================================== */
+.env { container-type: size; }
+.env__flap {
+  --ar: .5625;                                   /* width / height of the envelope picture */
+  --bw: max(100cqw, calc(100cqh * var(--ar)));
+  --bh: calc(var(--bw) / var(--ar));
+  inset: auto; left: 50%; top: 50%; width: var(--bw); height: var(--bh); translate: -50% -50%;
+}
+@supports not (width: 1cqw) {
+  .env__flap { --bw: max(100vw, calc(100dvh * var(--ar))); }
+}
+@media (min-width: 760px) and (min-aspect-ratio: 5/4) {
+  .env__flap { --ar: 1.775; }
+}
+
+/* small phones: the cover fits short screens, and the song caption sits above the music button */
+.cover { min-height: 520px; }
+.addsong { left: max(18px, calc(50% - 240px + 18px)); bottom: calc(env(safe-area-inset-bottom, 0px) + 72px); font-size: 11.5px; text-shadow: 0 0 8px rgba(255, 255, 255, .9); }
+
 </style>
 
 
