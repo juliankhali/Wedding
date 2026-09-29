@@ -414,3 +414,21 @@ body { text-rendering: optimizeLegibility; }
 
 /* the couple picture: fade the edges so no white box shows against the pastel page */
 .couple { mix-blend-mode: normal; -webkit-mask: radial-gradient(ellipse 60% 58% at 50% 49%, #000 64%, transparent 100%); mask: radial-gradient(ellipse 60% 58% at 50% 49%, #000 64%, transparent 100%); }
+
+
+/* =====================================================================
+   SMOOTH CLOUDS — slow, steady drifting on the GPU
+   ===================================================================== */
+.cloud-decor { will-change: transform; backface-visibility: hidden; }
+.cloud-decor::before {
+  will-change: transform; backface-visibility: hidden;
+  animation: cloudfloat var(--dur, 48s) cubic-bezier(.45, 0, .55, 1) var(--dl, 0s) infinite alternate;
+}
+@keyframes cloudfloat {
+  0%   { transform: translate3d(-5%, 1.5%, 0) scale(1); }
+  50%  { transform: translate3d(0, -1.5%, 0) scale(1.035); }
+  100% { transform: translate3d(5%, 1%, 0) scale(1.07); }
+}
+.cloud-decor--date { --dur: 54s; }
+.cloud-decor--prog { --dur: 62s; --dl: -18s; }
+.cloud-decor--prog2 { --dur: 70s; --dl: -34s; }

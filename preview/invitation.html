@@ -422,6 +422,24 @@ body { text-rendering: optimizeLegibility; }
 /* the couple picture: fade the edges so no white box shows against the pastel page */
 .couple { mix-blend-mode: normal; -webkit-mask: radial-gradient(ellipse 60% 58% at 50% 49%, #000 64%, transparent 100%); mask: radial-gradient(ellipse 60% 58% at 50% 49%, #000 64%, transparent 100%); }
 
+
+/* =====================================================================
+   SMOOTH CLOUDS — slow, steady drifting on the GPU
+   ===================================================================== */
+.cloud-decor { will-change: transform; backface-visibility: hidden; }
+.cloud-decor::before {
+  will-change: transform; backface-visibility: hidden;
+  animation: cloudfloat var(--dur, 48s) cubic-bezier(.45, 0, .55, 1) var(--dl, 0s) infinite alternate;
+}
+@keyframes cloudfloat {
+  0%   { transform: translate3d(-5%, 1.5%, 0) scale(1); }
+  50%  { transform: translate3d(0, -1.5%, 0) scale(1.035); }
+  100% { transform: translate3d(5%, 1%, 0) scale(1.07); }
+}
+.cloud-decor--date { --dur: 54s; }
+.cloud-decor--prog { --dur: 62s; --dl: -18s; }
+.cloud-decor--prog2 { --dur: 70s; --dl: -34s; }
+
 </style>
 
 
@@ -1295,14 +1313,26 @@ const CONFIG = {
   const io = new IntersectionObserver((entries) => {
     entries.forEach((en) => { if (en.isIntersecting) { en.target.classList.add("in"); io.unobserve(en.target); } });
   }, { threshold: 0.14, rootMargin: "0px 0px -6% 0px" });
-  const clouds = $$(".cloud-decor[data-par]");
-  let ticking = false;
+  // Clouds glide toward their scroll position (eased), instead of snapping to it
+  const clouds = $$(".cloud-decor[data-par]").map((el) => ({ el, cur: 0, tgt: 0, k: parseFloat(el.dataset.par) }));
+  let ticking = false, gliding = false;
+  function glide() {
+    let moving = false;
+    clouds.forEach((c) => {
+      const d = c.tgt - c.cur;
+      if (reduced || Math.abs(d) < 0.05) c.cur = c.tgt; else { c.cur += d * 0.07; moving = true; }
+      c.el.style.transform = `translate3d(${c.cur.toFixed(2)}px, 0, 0)`;
+    });
+    gliding = moving;
+    if (moving) requestAnimationFrame(glide);
+  }
   function parallax() {
     ticking = false;
-    clouds.forEach((el) => {
-      const r = el.parentElement.getBoundingClientRect(), p = (r.top + r.height / 2 - innerHeight / 2) / innerHeight;
-      el.style.setProperty("--px", `${(p * 160 * parseFloat(el.dataset.par) * 10).toFixed(1)}px`);
+    clouds.forEach((c) => {
+      const r = c.el.parentElement.getBoundingClientRect();
+      c.tgt = ((r.top + r.height / 2 - innerHeight / 2) / innerHeight) * 1600 * c.k;
     });
+    if (!gliding) { gliding = true; requestAnimationFrame(glide); }
   }
   addEventListener("scroll", () => { if (!ticking) { ticking = true; requestAnimationFrame(parallax); } }, { passive: true });
 

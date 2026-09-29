@@ -480,14 +480,26 @@ const CONFIG = {
   const io = new IntersectionObserver((entries) => {
     entries.forEach((en) => { if (en.isIntersecting) { en.target.classList.add("in"); io.unobserve(en.target); } });
   }, { threshold: 0.14, rootMargin: "0px 0px -6% 0px" });
-  const clouds = $$(".cloud-decor[data-par]");
-  let ticking = false;
+  // Clouds glide toward their scroll position (eased), instead of snapping to it
+  const clouds = $$(".cloud-decor[data-par]").map((el) => ({ el, cur: 0, tgt: 0, k: parseFloat(el.dataset.par) }));
+  let ticking = false, gliding = false;
+  function glide() {
+    let moving = false;
+    clouds.forEach((c) => {
+      const d = c.tgt - c.cur;
+      if (reduced || Math.abs(d) < 0.05) c.cur = c.tgt; else { c.cur += d * 0.07; moving = true; }
+      c.el.style.transform = `translate3d(${c.cur.toFixed(2)}px, 0, 0)`;
+    });
+    gliding = moving;
+    if (moving) requestAnimationFrame(glide);
+  }
   function parallax() {
     ticking = false;
-    clouds.forEach((el) => {
-      const r = el.parentElement.getBoundingClientRect(), p = (r.top + r.height / 2 - innerHeight / 2) / innerHeight;
-      el.style.setProperty("--px", `${(p * 160 * parseFloat(el.dataset.par) * 10).toFixed(1)}px`);
+    clouds.forEach((c) => {
+      const r = c.el.parentElement.getBoundingClientRect();
+      c.tgt = ((r.top + r.height / 2 - innerHeight / 2) / innerHeight) * 1600 * c.k;
     });
+    if (!gliding) { gliding = true; requestAnimationFrame(glide); }
   }
   addEventListener("scroll", () => { if (!ticking) { ticking = true; requestAnimationFrame(parallax); } }, { passive: true });
 
