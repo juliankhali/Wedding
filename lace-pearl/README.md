@@ -17,3 +17,6 @@ The clasp signature is `CONFIG.initials` (Great Vibes font, SIL OFL, in `fonts/`
 - **Drag and drop:** open https://app.netlify.com/drop and drop `lace-pearl/netlify-drop.zip` (or the `dist` folder after `sh lace-pearl/tools/netlify-build.sh`).
 - Change the site name under Site configuration → Change site name. The page is set to `noindex` so search engines skip it.
 - Rebuild the zip after edits: `sh lace-pearl/tools/netlify-build.sh && (cd dist && zip -r ../lace-pearl/netlify-drop.zip .)`
+
+## Deploy on GitHub Pages
+`sh lace-pearl/tools/pages-build.sh` copies the site into `docs/` (already committed). On GitHub: Settings → Pages → Build and deployment → Source: *Deploy from a branch* → pick the branch → folder `/docs` → Save. The link is `https://<user>.github.io/Wedding/`. Run the script again and push after every edit.
