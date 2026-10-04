@@ -13,7 +13,7 @@
   --raise:-5px -5px 12px var(--hi), 6px 7px 16px var(--sh);
   --raise-s:-3px -3px 7px var(--hi), 3px 4px 9px var(--sh);
   --press:inset 3px 3px 7px rgba(120,90,70,.2), inset -3px -3px 7px rgba(255,255,255,.9);
-  --display:"Amiri","Noto Naskh Arabic",serif; --serif:"Amiri","Noto Naskh Arabic","Segoe UI",serif; --ease:cubic-bezier(.22,.8,.22,1);
+  --script:"Great Vibes","Snell Roundhand","Apple Chancery",cursive; --sans:"Helvetica Neue",Helvetica,Arial,"Segoe UI",sans-serif; --display:"Amiri","Noto Naskh Arabic",serif; --serif:"Amiri","Noto Naskh Arabic","Segoe UI",serif; --ease:cubic-bezier(.22,.8,.22,1);
   --col:430px; --sw:calc(min(100vw,var(--col)) - 40px); --cw:min(calc(var(--sw) * .52),206px);
   --grain:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' seed='7'/><feColorMatrix values='0 0 0 0 .4  0 0 0 0 .3  0 0 0 0 .22  0 0 0 .55 0'/></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='.07'/></svg>");
 }
@@ -31,9 +31,9 @@ em{font-style:normal}
 .h{font-family:var(--display);font-weight:700;font-size:31px;text-align:center;text-shadow:0 1px 0 #fff;line-height:1.4}
 .accent{font-family:var(--display);font-weight:400;font-size:26px;text-align:center;line-height:1.7;text-shadow:0 1px 0 #fff}
 .kicker{font-family:var(--display);font-size:25px;font-weight:500;text-align:center;line-height:1.9;max-width:240px;text-shadow:0 1px 0 #fff}
-.names{font-family:var(--display);font-weight:700;text-align:center;font-size:68px;line-height:1.25;text-shadow:0 1.5px 0 #fff,0 -1px 0 rgba(120,90,70,.14);display:flex;flex-direction:column;align-items:center}
+.names{font-family:var(--script);font-style:normal;font-weight:400;letter-spacing:0;text-align:center;font-size:68px;line-height:1.25;text-shadow:0 1.5px 0 #fff,0 -1px 0 rgba(120,90,70,.14);display:flex;flex-direction:column;align-items:center}
 .names .n{display:block}
-.names .amp{display:block;font-family:var(--display);font-weight:400;font-size:44px;line-height:1;margin:2px 0;color:var(--gold)}
+.names .amp{display:block;font-family:var(--script);font-weight:400;font-style:normal;font-size:44px;line-height:1;margin:2px 0;color:var(--gold)}
 .names.ending{font-size:56px;line-height:1.2;margin-top:4px}.names.ending .amp{font-size:34px}
 .hero-date{font-family:var(--display);font-size:27px;font-weight:500;text-align:center;text-shadow:0 1px 0 #fff}
 small{font-size:17px;font-weight:400}
@@ -173,3 +173,6 @@ body.done .intro{display:none}
 .ico{position:relative;width:62px;height:62px;border-radius:50%;display:grid;place-items:center;background:var(--bg);box-shadow:var(--raise-s);color:#7A6556}
 .ico > svg:not(.pearls){width:28px;height:28px}
 .trio p{font-family:var(--display);font-size:17px;line-height:1.35;font-weight:700;white-space:pre-line}
+
+.poem{font-family:var(--display);font-size:18.5px;line-height:1.7;text-align:center;text-shadow:0 1px 0 #fff;max-width:272px}
+[data-page=thanks] .copy{padding-top:150px;gap:12px}

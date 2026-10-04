@@ -4,18 +4,18 @@
    ===================================================================== */
 const CONFIG = {
   initials: "S&M",                    // signature on the clasp
-  names: ["سیڤان", "مەسوا"],          // first name flies in from the left, second from the right
-  eventDate: "2027-08-21T19:00:00",   // local time of the venue (ISO)
+  names: ["Sivan", "Maswa"],        // first name flies in from the left, second from the right
+  eventDate: "2026-10-17T17:30:00",   // local time of the venue (ISO)
   music: {
     youtube: "-dTvseRSrbY",           // YouTube video id of the song ("Buke Delale"); "" to disable
     url: ""                           // or your own mp3 file (e.g. "music.mp3"); used instead of YouTube when set
   },
   venue: {
-    name: "هۆڵی ڕۆتانا",
-    address: "شەقامی ١٠٠ مەتری، هەولێر",
+    name: "Royal Villa",
+    address: "هەولێر - شەقامی ١٥٠م نزیک مەزرەعەی شێخ باز",
     city: "هەولێر",
-    mapsUrl: "https://www.google.com/maps/search/?api=1&query=Erbil+Rotana+Hotel",   // "Directions" button + tap on the map
-    mapEmbedUrl: "https://maps.google.com/maps?q=Erbil+Rotana+Hotel&z=15&output=embed" // live Google map image; "" = drawn map picture
+    mapsUrl: "https://maps.google.com/?q=36.248325,44.114342",   // "Directions" button + tap on the map
+    mapEmbedUrl: "https://maps.google.com/maps?q=36.248325,44.114342&z=16&output=embed" // live Google map image; "" = drawn map picture
   },
   months: ["کانوونی دووەم", "شوبات", "ئازار", "نیسان", "ئایار", "حوزەیران", "تەمموز", "ئاب", "ئەیلوول", "تشرینی یەکەم", "تشرینی دووەم", "کانوونی یەکەم"],
   weekdays: ["یەکشەممە", "دووشەممە", "سێشەممە", "چوارشەممە", "پێنجشەممە", "هەینی", "شەممە"],
@@ -29,6 +29,7 @@ const CONFIG = {
     whenTitle: "ڕێکەوت و کات", hour: "کاتژمێر", countLine: "هەتا ڕۆژی بەختەوەری ماوە",
     days: "ڕۆژ", hours: "کاتژمێر", minutes: "خولەک", seconds: "چرکە", countDone: "ئەمڕۆ ڕۆژی بەختەوەرییە",
     venueTitle: "شوێنی ئاهەنگ", directions: "ڕێنمایی لە نەخشە", mapTap: "بۆ کردنەوە لە گووگڵ ماپس دەستی لێبدە",
+    joinLine: "خۆشحاڵ دەبین بە ئامادەبوونی بەڕێزتان لە شیرینیەکەمان",
     welcomeTitle: "بەخێربێن",
     welcomeText: "هاتنتان جوانترین دیاریی ئەم ڕۆژەیە. بە دڵێکی پڕ لە خۆشەویستییەوە چاوەڕێتان دەکەین.",
     footThanks: "سوپاس بۆ ئامادەبوونتان لە ڕۆژی تایبەتی ئێمە"
@@ -150,22 +151,24 @@ const music = (() => {
 /* ---------- Text ---------- */
 function fillText() {
   document.querySelectorAll("[data-t]").forEach(el => el.textContent = TX[el.dataset.t]);
-  const [a, b] = CONFIG.names, d = date.getDate(), m = CONFIG.months[date.getMonth()], y = date.getFullYear(), wd = CONFIG.weekdays[date.getDay()];
+  const [a, b] = CONFIG.names, d = date.getDate(), m = ar(date.getMonth() + 1), y = date.getFullYear(), wd = CONFIG.weekdays[date.getDay()];
   const H = date.getHours(), mi = date.getMinutes(), part = H < 12 ? "بەیانی" : H < 17 ? "دوای نیوەڕۆ" : H < 21 ? "ئێوارە" : "شەو";
   const hm = ar(`${H % 12 || 12}:${String(mi).padStart(2, "0")}`) + "ی " + part;       // e.g. ٧:٠٠ی ئێوارە
   $("#sig").textContent = CONFIG.initials;
-  ["name1", "fName1"].forEach(i => $("#" + i).textContent = a);
-  ["name2", "fName2"].forEach(i => $("#" + i).textContent = b);
-  $("#heroDate").textContent = `${wd} ${ar(d)} ${m} ${ar(y)}`;
-  $("#introDate").textContent = `${ar(d)} ${m} ${ar(y)} · ${hm}`;
+  $("#name1").textContent = a;
+  $("#name2").textContent = b;
+  $("#heroDate").textContent = `${wd} ${ar(d)}/${m}/${ar(y)}`;
+  $("#introDate").textContent = `${ar(d)}/${m}/${ar(y)} · ${hm}`;
   $("#iDate").textContent = `${wd}\n${ar(d)}/${ar(date.getMonth() + 1)}/${ar(y)}`;
   $("#iPlace").textContent = `${CONFIG.venue.name}\n${CONFIG.venue.city}`;
   $("#iTime").textContent = `${TX.hour}\n${hm}`;
   $("#vName").textContent = CONFIG.venue.name; $("#vAddress").textContent = CONFIG.venue.address;
   $("#directions").href = CONFIG.venue.mapsUrl; $("#mapHit").href = CONFIG.venue.mapsUrl;
-  if (CONFIG.venue.mapEmbedUrl) { const f = $("#mapFrame"); f.src = CONFIG.venue.mapEmbedUrl; f.hidden = false; }   // live Google map picture
-  $("#footThanks").textContent = TX.footThanks;
-  document.title = `${a} و ${b}`;
+  if (CONFIG.venue.mapEmbedUrl) {            // live Google map picture; if Google Maps can't be reached the drawn map stays
+    const f = $("#mapFrame"), ctl = new AbortController(); setTimeout(() => ctl.abort(), 4000);
+    fetch(CONFIG.venue.mapEmbedUrl, { mode: "no-cors", signal: ctl.signal }).then(() => { f.src = CONFIG.venue.mapEmbedUrl; f.hidden = false; }).catch(() => {});
+  }
+  document.title = `${a} & ${b}`;
 }
 
 /* ---------- Countdown ---------- */
