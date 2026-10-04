@@ -240,11 +240,12 @@ $("#muteBtn").onclick = () => music.toggle();
 let opened = false;
 function openInvitation() {
   if (opened) return; opened = true;
-  $("#seal").classList.add("go"); music.start();                                   // clasp glows and fades, music fades in
+  $("#seal").classList.add("go");
+  try { music.start(); } catch (e) {}                                                // music never blocks the opening
   pages[0].style.setProperty("--d", "1.1s");                                       // names arrive once the doors are apart
   setTimeout(() => { document.body.classList.add("open"); }, 650);                 // panels slide apart
   setTimeout(() => { showHint(); }, 4600);                                          // tap tip appears after the first page has settled
   setTimeout(() => { document.body.classList.remove("locked"); }, 2300);
   setTimeout(() => { document.body.classList.add("done"); }, 2600);                 // doors are gone: stop rendering them
 }
-$("#seal").onclick = openInvitation; $("#openInvite").onclick = openInvitation;
+["#seal", "#openInvite"].forEach(s => { const el = $(s); el.addEventListener("click", openInvitation); el.addEventListener("pointerup", openInvitation); });   // pointerup too, for in-app browsers
