@@ -98,8 +98,8 @@ body.open .intro{pointer-events:none;visibility:hidden;transition:visibility 0s 
 .stage{position:relative;height:100%}
 .frame-bg{position:absolute;top:0;right:0;bottom:0;left:0;background-size:100% 100%;background-repeat:no-repeat}
 .copy{position:absolute;top:0;right:0;bottom:0;left:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;padding:calc(var(--u) * 128) 30px calc(var(--u) * 86)}
-/* every page measures its content and shrinks it (zoom) when the screen is too short, so nothing leaves the frame */
-.fit{display:flex;flex-direction:column;align-items:center;gap:inherit;width:100%}
+/* every page measures its content and shrinks it (scale) when the screen is too short, so nothing leaves the frame */
+.fit{display:flex;flex-direction:column;align-items:center;gap:inherit;width:100%;flex-shrink:0;transform-origin:50% 50%}
 .hero-copy{gap:20px;padding-top:calc(var(--u) * 100);padding-bottom:calc(var(--u) * 70)}
 .corner{position:absolute;pointer-events:none;z-index:4;width:calc(var(--cw) * 1.2308);height:auto}
 .corner.tl{left:calc(-22px - var(--cw) * .1154);top:calc(-20px - var(--cw) * .1154)}.corner.br{right:calc(-22px - var(--cw) * .1154);bottom:calc(-20px - var(--cw) * .1154)}
@@ -188,3 +188,8 @@ body.done .intro{display:none}
 @supports not (aspect-ratio:1){.map{height:255px}.cell{min-height:92px}.ico{height:62px}}
 .map{flex-shrink:0;-webkit-mask-image:-webkit-radial-gradient(white,black)}
 .map-hit span{white-space:nowrap;font-size:14px;margin-bottom:10px}
+
+/* closing page */
+.closing{font-family:var(--display);font-size:40px;font-weight:700;line-height:1.55;text-align:center;max-width:250px;
+  background:linear-gradient(180deg,#E9CB7C,#C9AE85 50%,#A98A58);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 1.5px 0 rgba(255,255,255,.9))}
+[data-page=welcome] .copy{gap:22px}

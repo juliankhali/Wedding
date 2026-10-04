@@ -25,6 +25,7 @@ const CONFIG = {
     openInvite: "کردنەوەی بانگهێشتنامە",
     invite: "بانگهێشتنامە", occasion: "ئاهەنگی هاوسەرگیری",
     prev: "پێشوو", next: "دواتر",
+    closing: "هاتنتان مایەی خۆشحاڵیمانە",                 // last page
     tapHint: "دەستی لێبدە بۆ لاپەڕەی دواتر",
     whenTitle: "ڕێکەوت و کات", hour: "کاتژمێر", countLine: "هەتا ڕۆژی بەختەوەری ماوە",
     days: "ڕۆژ", hours: "کاتژمێر", minutes: "خولەک", seconds: "چرکە", countDone: "ئەمڕۆ ڕۆژی بەختەوەرییە",
@@ -165,18 +166,27 @@ function fillText() {
   const H = date.getHours(), mi = date.getMinutes(), part = H < 12 ? "بەیانی" : H < 17 ? "دوای نیوەڕۆ" : H < 21 ? "ئێوارە" : "شەو";
   const hm = ar(`${H % 12 || 12}:${String(mi).padStart(2, "0")}`) + "ی " + part;       // e.g. ٧:٠٠ی ئێوارە
   $("#sig").textContent = CONFIG.initials;
-  $("#name1").textContent = a;
+  $("#name1").textContent = a; document.querySelectorAll(".cn1").forEach(e => e.textContent = a); document.querySelectorAll(".cn2").forEach(e => e.textContent = b);
   $("#name2").textContent = b;
   $("#iDate").textContent = `${wd}\n${ar(d)}/${ar(date.getMonth() + 1)}/${ar(y)}`;
   $("#iPlace").textContent = `${CONFIG.venue.name}\n${CONFIG.venue.city}`;
   $("#iTime").textContent = `${TX.hour}\n${hm}`;
   $("#vName").textContent = CONFIG.venue.name; $("#vAddress").textContent = CONFIG.venue.address;
   $("#directions").href = CONFIG.venue.mapsUrl; $("#mapHit").href = CONFIG.venue.mapsUrl;
-  if (CONFIG.venue.mapEmbedUrl) {            // live Google map picture; if Google Maps can't be reached the drawn map stays
-    const f = $("#mapFrame"), ctl = new AbortController(); setTimeout(() => ctl.abort(), 4000);
-    fetch(CONFIG.venue.mapEmbedUrl, { mode: "no-cors", signal: ctl.signal }).then(() => { f.src = CONFIG.venue.mapEmbedUrl; f.hidden = false; }).catch(() => {});
+  if (CONFIG.venue.mapEmbedUrl) {            // live Google map: only if Google Maps answers, and only loaded when its page is shown
+    const ctl = new AbortController(); setTimeout(() => ctl.abort(), 4000);
+    fetch(CONFIG.venue.mapEmbedUrl, { mode: "no-cors", signal: ctl.signal }).then(() => { mapReady = true; showMap(); }).catch(() => {});
   }
+
   document.title = `${a}&${b}`;                     // browser tab shows: Sivan&Maswa
+}
+
+/* the Google map is put in the frame only once its page is on screen, so Google measures the real size (iPhones draw it wrong otherwise) */
+let mapReady = false;
+function showMap() {
+  const f = $("#mapFrame"), pg = f.closest(".page");
+  if (!mapReady || f.src || !pg || pg.dataset.pos !== "active") return;
+  setTimeout(() => { f.src = CONFIG.venue.mapEmbedUrl; f.hidden = false; }, 950);   // after the page has slid in
 }
 
 /* ---------- Countdown ---------- */
@@ -199,6 +209,7 @@ function go(n) {
   if (n < 0 || n >= pages.length || n === cur) return;
   cur = n; tappedOnce = true;
   pages.forEach((p, i) => { p.dataset.pos = i < cur ? "before" : i > cur ? "after" : "active"; p.style.setProperty("--d", ".35s"); });
+  showMap();
   prevBtn.hidden = cur === 0; nextBtn.hidden = cur === pages.length - 1;
   showHint();
 }
@@ -215,10 +226,10 @@ addEventListener("keydown", e => { if (e.key === "ArrowLeft") go(cur + 1); if (e
 document.querySelectorAll(".copy").forEach(c => { const w = document.createElement("div"); w.className = "fit"; while (c.firstChild) w.appendChild(c.firstChild); c.appendChild(w); });
 function fitAll() {
   document.querySelectorAll(".copy").forEach(c => {
-    const f = c.firstElementChild, cs = getComputedStyle(c); f.style.zoom = 1;
+    const f = c.firstElementChild, cs = getComputedStyle(c); f.style.transform = "";
     const availH = c.clientHeight - parseFloat(cs.paddingTop) - parseFloat(cs.paddingBottom), availW = c.clientWidth - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight);
     let k = Math.min(1, availH / f.offsetHeight); const wide = Math.max(...[...f.children].map(e => e.scrollWidth)); if (wide > availW) k = Math.min(k, availW / wide);
-    f.style.zoom = Math.max(.5, k).toFixed(3);
+    f.style.transform = k < 1 ? `scale(${Math.max(.5, k).toFixed(3)})` : "";
   });
 }
 
