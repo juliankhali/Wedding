@@ -1,18 +1,23 @@
 /* =====================================================================
    Embossed lace + pearl invitation
-   EDIT ONLY THE CONFIG BLOCK: names, date, time, venue, map link, music, language, texts.
+   EDIT ONLY THE CONFIG BLOCK: names, date, time, venue, map link, program, music, language, texts.
    ===================================================================== */
 const CONFIG = {
   names: ["Name", "Name"],            // placeholder couple
-  initials: "N&N",                    // on the seal
   eventDate: "2027-08-21T19:00:00",   // local time of the venue (ISO)
   defaultLang: "auto",                // "tr" | "en" | "auto" (follows the phone)
   music: { url: "" },                 // e.g. "music.mp3"; empty = soft built-in melody
-  events: [                           // shown in "The Details"; add or remove freely
-    { key: "ceremony",  time: "19.00", venue: "Venue Name",  address: "Street Address, City",
-      mapsUrl: "https://www.google.com/maps/search/?api=1&query=Venue+Name+City" },
-    { key: "reception", time: "20.30", venue: "Venue Name",  address: "Garden Terrace",
-      mapsUrl: "https://www.google.com/maps/search/?api=1&query=Venue+Name+City" }
+  venue: {
+    name: "Venue Name",
+    address: "Street Address, City",
+    mapsUrl: "https://www.google.com/maps/search/?api=1&query=Venue+Name+City"
+  },
+  program: [                          // vertical timeline: time + text per language
+    { time: "19.00", tr: "Karşılama ve hoş geldiniz", en: "Welcome & arrivals" },
+    { time: "19.30", tr: "Nikâh töreni",              en: "Ceremony" },
+    { time: "20.30", tr: "Akşam yemeği",              en: "Dinner" },
+    { time: "22.00", tr: "Pasta ve ilk dans",         en: "Cake & first dance" },
+    { time: "23.30", tr: "Gecenin sonu",              en: "Farewell" }
   ],
   rsvpDeadline: { tr: "1 Ağustos 2027", en: "1 August 2027" },
   gallery: [],                        // image paths for the memory wall; empty = 4 placeholder frames
@@ -21,29 +26,25 @@ const CONFIG = {
   /* ---- All visible text, per language ---- */
   i18n: {
     en: {
-      introKicker: "You are invited", introHint: "Tap the seal",
-      heroInvite: "Together with their families", heroLine: "invite you to celebrate their wedding", time: "Time", open: "Open",
-      storyTitle: "Our Story", storyScript: "It began with a smile",
-      storyBody: "Between laughter, long walks and quiet mornings, we found our home in each other. Now we would love to begin the next chapter with the people who matter most.",
+      openInvite: "Open invitation", heroKicker: "We are getting married", scrollDown: "Scroll down",
+      whenTitle: "Save the Date", time: "Time",
       countTitle: "Countdown", countLine: "Until we say “I do”", days: "Days", hours: "Hours", minutes: "Min", seconds: "Sec", countDone: "Today is the day",
-      detailsTitle: "The Details", ceremony: "Ceremony", reception: "Reception", directions: "Get Directions",
+      venueTitle: "Venue", directions: "Directions", programTitle: "The Day",
+      galleryTitle: "Memory Wall", galleryLine: "Moments we treasure", upload: "Upload your photos",
       rsvpTitle: "RSVP", rsvpLine: d => `Kindly reply by ${d}`,
       fName: "Full name", fGuests: "Number of guests", fAttending: "Will you attend?", yes: "Joyfully yes", no: "Regretfully no", send: "Send reply",
       thanksYes: n => `Thank you, ${n}. We can't wait to celebrate with you.`, thanksNo: n => `Thank you, ${n}. You will be missed.`,
-      galleryTitle: "Memory Wall", galleryLine: "Moments we treasure",
       footThanks: "Thank you for being part of our story"
     },
     tr: {
-      introKicker: "Davetlisiniz", introHint: "Mühre dokunun",
-      heroInvite: "Ailelerimizle birlikte", heroLine: "evlilik törenimize sizi davet ederiz", time: "Saat", open: "Aç",
-      storyTitle: "Hikâyemiz", storyScript: "Bir tebessümle başladı",
-      storyBody: "Kahkahaların, uzun yürüyüşlerin ve sakin sabahların arasında yuvamızı birbirimizde bulduk. Şimdi yeni bölümü en sevdiklerimizle birlikte başlatmak istiyoruz.",
+      openInvite: "Daveti aç", heroKicker: "Evleniyoruz", scrollDown: "Aşağı kaydır",
+      whenTitle: "Tarihi Not Edin", time: "Saat",
       countTitle: "Geri Sayım", countLine: "“Evet” dememize kalan süre", days: "Gün", hours: "Saat", minutes: "Dk", seconds: "Sn", countDone: "Büyük gün bugün",
-      detailsTitle: "Detaylar", ceremony: "Nikâh", reception: "Resepsiyon", directions: "Yol Tarifi Al",
+      venueTitle: "Mekân", directions: "Yol Tarifi", programTitle: "Günün Akışı",
+      galleryTitle: "Anı Duvarı", galleryLine: "Kalbimize dokunan anlar", upload: "Fotoğraflarını yükle",
       rsvpTitle: "Katılım", rsvpLine: d => `Lütfen ${d} tarihine kadar yanıtlayın`,
       fName: "Ad soyad", fGuests: "Kişi sayısı", fAttending: "Katılacak mısınız?", yes: "Evet, katılıyorum", no: "Katılamıyorum", send: "Yanıtı Gönder",
       thanksYes: n => `Teşekkürler ${n}, sizinle kutlamak için sabırsızlanıyoruz.`, thanksNo: n => `Teşekkürler ${n}, yokluğunuzu hissedeceğiz.`,
-      galleryTitle: "Anı Duvarı", galleryLine: "Kalbimize dokunan anlar",
       footThanks: "Hikâyemizin bir parçası olduğunuz için teşekkürler"
     }
   }
@@ -56,9 +57,8 @@ let lang = CONFIG.defaultLang === "auto" ? ((navigator.language || "en").toLower
 const T = () => CONFIG.i18n[lang];
 
 /* ---------------------------------------------------------------------
-   ORIGINAL LACE ARTWORK (SVG). Every raised piece sits inside a group that
-   carries the #emboss filter; rotations live INSIDE the filtered group so the
-   light always comes from the top-left, even on the mirrored bottom-right cluster.
+   ORIGINAL LACE ARTWORK (SVG). Rotations live INSIDE filtered groups so the
+   light always comes from the top-left, also on the mirrored bottom-right cluster.
    --------------------------------------------------------------------- */
 const E = 'filter="url(#emboss)"', L1 = "rgba(120,90,70,.24)", L2 = "rgba(120,90,70,.14)";
 
@@ -126,18 +126,68 @@ function cluster(flip) {
     .map(([x, y, r]) => [...M(x, y), r]);
   return scallops(chain, 7.2, 10.5) + doily(...M(80, 80), 55, 17, 8.6) + leaves + buds + roses + pearls(loose);
 }
+
+/* ---------- Door lace: big roses + leaves + pearls, denser at outer edges and top/bottom, lighter at the seam ---------- */
+function rng(seed) { return () => { seed |= 0; seed = seed + 0x6D2B79F5 | 0; let t = Math.imul(seed ^ seed >>> 15, 1 | seed); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; }; }
+const leafShape = l => `<path d="M0 0C${l*.25} ${-l*.27} ${l*.72} ${-l*.25} ${l} 0C${l*.72} ${l*.25} ${l*.25} ${l*.27} 0 0Z" fill="url(#petal)" stroke="${L1}" stroke-width=".7"/>` +
+  `<path d="M${l*.04} 0H${l*.93}M${l*.28} 0L${l*.5} ${-l*.12}M${l*.28} 0L${l*.5} ${l*.12}M${l*.5} 0L${l*.72} ${-l*.1}M${l*.5} 0L${l*.72} ${l*.1}" fill="none" stroke="${L2}" stroke-width=".7"/>`;
+const leafBatch = list => `<g ${E}>` + list.map(l => `<g transform="translate(${l.x.toFixed(1)} ${l.y.toFixed(1)}) rotate(${l.a.toFixed(0)})">${leafShape(l.l)}</g>`).join("") + `</g>`;
+const miniRose = (x, y, r, rot) => `<g transform="translate(${x.toFixed(1)} ${y.toFixed(1)})"><g ${E}>${petalRing(7, r*.64, r*.38, rot)}${petalRing(5, r*.36, r*.3, rot + 25)}<circle r="${r*.16}" fill="url(#petal)" stroke="${L1}" stroke-width=".6"/></g></g>`;
+
+function doorLace(side, seed) {
+  const W = 195, H = 844, R = rng(seed);
+  const dSeam = x => side === "L" ? W - x : x;
+  const dens = (x, y) => Math.min(1, .16 + .84 * Math.pow(dSeam(x) / W, 1.15) + Math.max(0, .6 * (1 - Math.min(y, H - y) / 190)));
+  const roses = [];
+  const place = (count, rmin, rmax, minSeam) => { let n = 0;
+    for (let t = 0; t < 1400 && n < count; t++) {
+      const x = R() * (W + 30) - 15, y = R() * (H + 30) - 15, r = rmin + R() * (rmax - rmin);
+      if (R() > dens(x, y) || dSeam(x) < minSeam + r * .3) continue;
+      if (roses.some(o => Math.hypot(o.x - x, o.y - y) < (o.r + r) * .74)) continue;
+      roses.push({ x, y, r, rot: R() * 360, big: rmax > 30 }); n++; } };
+  place(11, 36, 54, 14); place(16, 17, 27, 6);
+  const leaves = [];
+  roses.forEach(o => { const k = o.big ? 4 : 2; for (let i = 0; i < k; i++) { const a = R() * 360, rad = o.r * (.72 + R() * .25);
+    leaves.push({ x: o.x + Math.cos(a * Math.PI / 180) * rad, y: o.y + Math.sin(a * Math.PI / 180) * rad, a: a + (R() - .5) * 30, l: o.r * (.95 + R() * .5) }); } });
+  for (let t = 0; t < 400 && leaves.length < roses.length * 3 + 36; t++) { const x = R() * W, y = R() * H; if (R() > dens(x, y) * .85 + .1) continue;
+    leaves.push({ x, y, a: R() * 360, l: 22 + R() * 26 }); }
+  const pearlsL = []; roses.forEach(o => { const k = o.big ? 4 : 1; for (let i = 0; i < k; i++) { const a = R() * 6.28, rad = o.r * (1.05 + R() * .55); pearlsL.push([+(o.x + Math.cos(a) * rad).toFixed(1), +(o.y + Math.sin(a) * rad).toFixed(1), +(2.2 + R() * 2.2).toFixed(1)]); } });
+  for (let t = 0; t < 200; t++) { const x = R() * W, y = R() * H; if (R() < dens(x, y) * .18) pearlsL.push([+x.toFixed(1), +y.toFixed(1), +(1.8 + R() * 1.8).toFixed(1)]); }
+  const big = roses.filter(o => o.big).map(o => rose(o.x, o.y, o.r, o.rot)).join("");
+  const small = roses.filter(o => !o.big).map(o => miniRose(o.x, o.y, o.r, o.rot)).join("");
+  return leafBatch(leaves) + big + small + pearls(pearlsL);
+}
+
 function buildLace() {
   $("#lace-tl").innerHTML = cluster(false);
   $("#lace-br").innerHTML = cluster(true);
-  /* closing ornament */
+  $("#artL").innerHTML = doorLace("L", 11);
+  $("#artR").innerHTML = doorLace("R", 29);
   const row = []; for (let i = 0; i < 6; i++) { row.push([20 + i * 9, 25, 2], [200 - i * 9, 25, 2]); }
-  $("#orn").innerHTML =
-    `<path d="M18 25H84M136 25H202" stroke="rgba(194,165,126,.7)" stroke-width=".7"/>` + pearls(row) +
+  $("#orn").innerHTML = `<path d="M18 25H84M136 25H202" stroke="rgba(201,174,133,.7)" stroke-width=".7"/>` + pearls(row) +
     leaf(96, 27, 30, 170) + leaf(124, 27, 30, 10) + leaf(98, 22, 24, -165) + leaf(122, 22, 24, -15) + rose(110, 24, 15, 10);
-  /* small bloom for the memory-wall frames */
-  $("#bloom").innerHTML = leaf(35, 36, 24, 195) + leaf(35, 36, 24, -15) + bud(35, 34, 7, -50) + bud(35, 34, 7, 50) + rose(35, 28, 13, 6) + pearls([[12, 40, 2.6], [58, 40, 2.6], [35, 5, 2.2]]);
+  /* clasp sprig: one stem, tiny leaves, white relief */
+  let sp = `<path d="M20 60C19 46 21 32 20 6" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round"/>`;
+  [[19,50,-1],[21,44,1],[19.5,37,-1],[20.5,30,1],[20,23,-1],[20.4,16,1]].forEach(([x, y, s], i) => sp += `<path transform="translate(${x} ${y}) rotate(${s * (55 - i * 4)})" d="M0 0C5-6 12-5 15 0C12 5 5 6 0 0Z" fill="#fff"/>`);
+  sp += `<path d="M20 6C16 2 18-2 20-4C22-2 24 2 20 6Z" fill="#fff"/>`;
+  $("#sprig").innerHTML = `<g ${E}>${sp}</g>`;
 }
 
+/* ---------- Hero frame: raised double line, arch with ogee (inward-notched) shoulders ---------- */
+function framePath(w, h, i, n) {
+  const x0 = i, x1 = w - i, yb = h - i, rb = 16, r = (x1 - x0) / 2 - n, yk = i + r + 10, ys = yk + 48;
+  return `M${x0 + rb} ${yb}L${x1 - rb} ${yb}Q${x1} ${yb} ${x1} ${yb - rb}L${x1} ${ys}` +
+    `C${x1} ${ys - 22} ${x1 - n} ${ys - 14} ${x1 - n} ${yk}A${r} ${r} 0 0 0 ${x0 + n} ${yk}` +
+    `C${x0 + n} ${ys - 14} ${x0} ${ys - 22} ${x0} ${ys}L${x0} ${yb - rb}Q${x0} ${yb} ${x0 + rb} ${yb}Z`;
+}
+function drawFrame() {
+  const st = $("#stage"), w = st.clientWidth, h = st.clientHeight, svg = $("#frameSvg"); if (!w) return;
+  svg.setAttribute("viewBox", `0 0 ${w} ${h}`);
+  svg.innerHTML = `<path d="${framePath(w, h, 8, 26)}" fill="url(#face)" opacity=".7"/>` +
+    `<path d="${framePath(w, h, 10, 26)}" fill="none" stroke="#F4ECE4" stroke-width="9" stroke-linejoin="round" ${E}/>` +
+    `<path d="${framePath(w, h, 24, 24)}" fill="none" stroke="#F4ECE4" stroke-width="3" stroke-linejoin="round" ${E}/>` +
+    `<path d="${framePath(w, h, 19, 25)}" fill="none" stroke="rgba(201,174,133,.7)" stroke-width=".7" stroke-linejoin="round"/>`;
+}
 /* ---------------------------------------------------------------------
    Pearl rows: equal-spaced pearls along an arch outline or an oval.
    --------------------------------------------------------------------- */
@@ -177,25 +227,24 @@ function applyLang() {
   const t = T(), loc = lang === "tr" ? "tr-TR" : "en-GB", up = s => s.toLocaleUpperCase(loc);
   document.documentElement.lang = lang;
   document.querySelectorAll("[data-i18n]").forEach(el => el.textContent = t[el.dataset.i18n]);
-  $("#cMonth").textContent = up(date.toLocaleDateString(loc, { month: "long" }));
-  $("#cYear").textContent = date.getFullYear();
+  const longDate = up(date.toLocaleDateString(loc, { day: "numeric", month: "long", year: "numeric" })), hm = date.toLocaleTimeString("en-GB", { hour: "2-digit", minute: "2-digit" }).replace(":", ".");
+  $("#heroDate").textContent = longDate; $("#introDate").textContent = longDate + " · " + hm;
   $("#bDayLbl").textContent = up(date.toLocaleDateString(loc, { weekday: "long" }));
   $("#bDate").textContent = up(date.toLocaleDateString(loc, { day: "numeric", month: "short" }).replace(".", ""));
   $("#bTime").textContent = date.toLocaleTimeString("en-GB", { hour: "2-digit", minute: "2-digit" }).replace(":", ".");
-  $("#events").innerHTML = CONFIG.events.map((e, i) => `${i ? '<svg class="orn" viewBox="0 0 220 50" aria-hidden="true"><use href="#orn"/></svg>' : ""}
-    <div class="event reveal in"><span class="tag"><span>${t[e.key] || e.key}</span></span><p class="time">${e.time}</p>
-    <p class="venue">${e.venue}</p><p class="addr">${e.address}</p>
-    <a class="pill" href="${e.mapsUrl}" target="_blank" rel="noopener"><span>${t.directions}</span></a></div>`).join("");
+  $("#vName").textContent = CONFIG.venue.name; $("#vAddress").textContent = CONFIG.venue.address; $("#directions").href = CONFIG.venue.mapsUrl;
+  $("#timeline").innerHTML = CONFIG.program.map(p => `<li class="reveal"><span class="tl-time">${p.time}</span><p class="tl-text">${p[lang]}</p></li>`).join("");
+  document.querySelectorAll("#timeline .reveal").forEach(el => el.dataset.late = 1);
   $("#rsvpLine").textContent = t.rsvpLine(CONFIG.rsvpDeadline[lang]);
   $("#footDate").textContent = date.toLocaleDateString(loc, { day: "numeric", month: "long", year: "numeric" });
   $("#langBtn").textContent = lang === "tr" ? "EN" : "TR";
-  tick(); requestAnimationFrame(allPearls);
+  tick(); requestAnimationFrame(() => { allPearls(); drawFrame(); });
+  if (document.body.classList.contains("open")) setupReveal();
 }
 function fillStatic() {
   const [a, b] = CONFIG.names;
   ["name1", "fName1"].forEach(i => $("#" + i).textContent = a);
   ["name2", "fName2"].forEach(i => $("#" + i).textContent = b);
-  document.querySelectorAll(".ini").forEach(n => n.textContent = CONFIG.initials);
   document.title = `${a} & ${b}`;
 }
 
@@ -204,14 +253,20 @@ function tick() {
   const s = Math.max(0, Math.floor((date - Date.now()) / 1000)), p = n => String(n).padStart(2, "0");
   $("#cd-d").textContent = p(Math.floor(s / 86400)); $("#cd-h").textContent = p(Math.floor(s % 86400 / 3600));
   $("#cd-m").textContent = p(Math.floor(s % 3600 / 60)); $("#cd-s").textContent = p(s % 60);
-  if (!s) $("#countdown .script").textContent = T().countDone;
+  if (!s) $("#countdown .accent").textContent = T().countDone;
 }
 
-/* ---------- Memory wall ---------- */
+/* ---------- Memory wall (lace-cornered frames) + local upload ---------- */
+const frameHTML = src => `<div class="mframe"><svg class="lc a" viewBox="0 0 260 260" aria-hidden="true"><use href="#lace-tl"/></svg><svg class="lc b" viewBox="0 0 260 260" aria-hidden="true"><use href="#lace-br"/></svg>
+  <div class="ph">${src ? `<img src="${src}" alt="" loading="lazy">` : `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="11" r="2"/><path d="M3 17l5-4 4 3 3-2 6 4"/></svg>`}</div></div>`;
 function buildWall() {
   const items = CONFIG.gallery.length ? CONFIG.gallery : Array.from({ length: CONFIG.galleryPlaceholders }, () => null);
-  $("#wall").innerHTML = items.map(src => `<div class="frame"><svg class="bloom-mini" viewBox="0 0 70 60" aria-hidden="true"><use href="#bloom"/></svg>
-    <div class="ph">${src ? `<img src="${src}" alt="" loading="lazy">` : `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="11" r="2"/><path d="M3 17l5-4 4 3 3-2 6 4"/></svg>`}</div></div>`).join("");
+  $("#wall").innerHTML = items.map(frameHTML).join("");
+  $("#upload").addEventListener("change", e => {            // photos stay in this browser for now
+    const wall = $("#wall"); if (!CONFIG.gallery.length && !wall.dataset.filled) { wall.innerHTML = ""; wall.dataset.filled = 1; }
+    [...e.target.files].forEach(f => { wall.insertAdjacentHTML("beforeend", frameHTML(URL.createObjectURL(f))); });
+    wall.querySelectorAll(".mframe:not(.in)").forEach(el => el.classList.add("in"));
+  });
 }
 
 /* ---------- Scroll reveal (fade + rise, staggered) ---------- */
@@ -219,7 +274,7 @@ function setupReveal() {
   const io = new IntersectionObserver(es => es.forEach(e => { if (!e.isIntersecting) return;
     e.target.style.transitionDelay = Math.min([...e.target.parentElement.children].indexOf(e.target), 4) * .1 + "s";
     e.target.classList.add("in"); io.unobserve(e.target); }), { threshold: .12, rootMargin: "0px 0px -5% 0px" });
-  document.querySelectorAll(".reveal:not(.in),.frame").forEach(el => io.observe(el));
+  document.querySelectorAll(".reveal:not(.in),.mframe:not(.in)").forEach(el => io.observe(el));
 }
 
 /* ---------- Music: mp3 if provided, else a soft synthesized melody; fades in ---------- */
@@ -266,13 +321,16 @@ function setupRsvp() {
 /* ---------- Init ---------- */
 buildLace(); fillStatic(); buildWall(); setupRsvp(); applyLang();
 setInterval(tick, 1000);
-let rz; addEventListener("resize", () => { clearTimeout(rz); rz = setTimeout(allPearls, 120); });
-if (document.fonts && document.fonts.ready) document.fonts.ready.then(allPearls);
+let rz; addEventListener("resize", () => { clearTimeout(rz); rz = setTimeout(() => { allPearls(); drawFrame(); }, 120); });
+if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => { allPearls(); drawFrame(); });
 $("#langBtn").onclick = () => { lang = lang === "tr" ? "en" : "tr"; applyLang(); };
 $("#muteBtn").onclick = () => music.toggle();
-$("#seal").onclick = () => {
-  $("#seal").classList.add("cracked"); music.start();           // seal cracks, music fades in
-  setTimeout(() => { document.body.classList.add("open"); setupReveal(); }, 380);   // doors swing open
-  setTimeout(() => { document.body.classList.remove("locked"); window.scrollTo(0, 0); }, 1800);
-};
-$("#openBtn").onclick = e => { e.preventDefault(); $("#story").scrollIntoView({ behavior: "smooth" }); };
+let opened = false;
+function openInvitation() {
+  if (opened) return; opened = true;
+  $("#seal").classList.add("go"); music.start();                                   // clasp glows and fades, music fades in
+  setTimeout(() => { document.body.classList.add("open"); setupReveal(); }, 650);  // panels slide apart
+  setTimeout(() => { document.body.classList.remove("locked"); window.scrollTo(0, 0); }, 2300);
+}
+$("#seal").onclick = openInvitation; $("#openInvite").onclick = openInvitation;
+$("#scrollBtn").onclick = e => { e.preventDefault(); $("#when").scrollIntoView({ behavior: "smooth" }); };
