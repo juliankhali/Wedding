@@ -11,3 +11,9 @@ Run: `python3 -m http.server` in this folder, open http://localhost:8000.
 The lace (corners, door lace, ornament) is pre-rendered to images in `img/` by `node tools/bake.js` (then `python3 tools/webp.py`), so the page never runs SVG lighting filters while you use it. The page frame is drawn once into a bitmap at load. Edit `tools/lace-art.js` and re-bake if you want different lace.
 `python3 tools/bundle.py out.html` writes one self-contained file with everything inlined.
 The clasp signature is `CONFIG.initials` (Great Vibes font, SIL OFL, in `fonts/`).
+
+## Deploy on Netlify
+- **Git:** Netlify → Add new site → Import an existing project → GitHub → this repo and branch. `netlify.toml` (repo root) already sets the build command and publish folder `dist`. Nothing else to fill in.
+- **Drag and drop:** open https://app.netlify.com/drop and drop `lace-pearl/netlify-drop.zip` (or the `dist` folder after `sh lace-pearl/tools/netlify-build.sh`).
+- Change the site name under Site configuration → Change site name. The page is set to `noindex` so search engines skip it.
+- Rebuild the zip after edits: `sh lace-pearl/tools/netlify-build.sh && (cd dist && zip -r ../lace-pearl/netlify-drop.zip .)`
