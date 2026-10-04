@@ -70,7 +70,7 @@ function drawFrames() {                      /* the embossed frame is drawn once
   };
   img.src = "data:image/svg+xml;charset=utf-8," + encodeURIComponent(svg);
 }
-const refresh = () => { allPearls(); drawFrames(); };
+const refresh = () => { allPearls(); drawFrames(); if (typeof fitAll === "function") fitAll(); };
 
 /* ---------------------------------------------------------------------
    Pearl rows: equal-spaced pearls along an arch outline or an oval.
@@ -106,15 +106,17 @@ function placePearls(el) {
 }
 const allPearls = () => document.querySelectorAll("[data-pearls]").forEach(placePearls);
 
-/* ---------- Music: your mp3, else the YouTube song, else a soft built-in melody; fades in ---------- */
+/* ---------- Music: your mp3, else the YouTube song, else a soft built-in melody ----------
+   Browsers only allow sound after a tap, so the tap on the clasp is what starts it. The mp3 / YouTube player is prepared
+   as soon as the page loads (YouTube starts muted), and the tap just un-mutes it, which is allowed. */
 const music = (() => {
-  let ctx, master, audio, yt, on = false, fade;
+  let ctx, master, audio, yt, ytReady = false, ytFailed = false, on = false, wanted = false, fade, synthOn = false;
   const notes = [392, 494, 587, 523, 440, 523, 659, 587, 392, 494, 587, 784, 659, 587, 523, 494];
   const setMuted = m => $("#muteBtn").classList.toggle("muted", m);
   function synth() {
-    if (ctx) return;
+    if (synthOn) return; synthOn = true;
     ctx = new (window.AudioContext || window.webkitAudioContext)(); master = ctx.createGain(); master.gain.value = 0; master.connect(ctx.destination);
-    master.gain.linearRampToValueAtTime(.55, ctx.currentTime + 3.5);   // fade in
+    master.gain.linearRampToValueAtTime(.55, ctx.currentTime + 3.5);
     let i = 0;
     const play = () => { const f = notes[i++ % notes.length], t = ctx.currentTime;
       [f, f / 2].forEach((fr, k) => { const o = ctx.createOscillator(), g = ctx.createGain(); o.type = "sine"; o.frequency.value = fr;
@@ -123,26 +125,34 @@ const music = (() => {
     play(); setInterval(play, 700);
   }
   function ramp(set, max) { let v = 0; clearInterval(fade); fade = setInterval(() => { v = Math.min(max, v + 3); set(v); if (v >= max) clearInterval(fade); }, 120); }
-  function youtube(id) {                       // YouTube's own embedded player (needs internet + https); falls back to the soft melody
-    let done = false; const fallback = () => { if (!done) { done = true; if (on) synth(); } };
+  function loadYouTube(id) {
     const make = () => {
       const box = document.createElement("div"); box.id = "ytp"; box.style.cssText = "position:fixed;width:2px;height:2px;left:-20px;top:0;opacity:0;pointer-events:none"; document.body.appendChild(box);
-      yt = new YT.Player("ytp", { width: "2", height: "2", videoId: id, playerVars: { autoplay: 1, loop: 1, playlist: id, controls: 0, playsinline: 1, rel: 0 },
-        events: { onReady: e => { e.target.setVolume(0); e.target.playVideo(); done = true; ramp(v => e.target.setVolume(v), 70); }, onError: fallback } });
+      yt = new YT.Player("ytp", { width: "2", height: "2", videoId: id, playerVars: { autoplay: 1, mute: 1, loop: 1, playlist: id, controls: 0, playsinline: 1, rel: 0 },
+        events: { onReady: e => { ytReady = true; e.target.mute(); e.target.playVideo(); if (wanted) unmute(); }, onError: () => { ytFailed = true; if (wanted) synth(); } } });
     };
-    if (window.YT && YT.Player) make();
-    else { window.onYouTubeIframeAPIReady = make; const s = document.createElement("script"); s.src = "https://www.youtube.com/iframe_api"; s.onerror = fallback; document.head.appendChild(s); setTimeout(fallback, 5000); }
+    if (window.YT && YT.Player) return make();
+    window.onYouTubeIframeAPIReady = make;
+    const s = document.createElement("script"); s.src = "https://www.youtube.com/iframe_api"; s.onerror = () => { ytFailed = true; if (wanted) synth(); }; document.head.appendChild(s);
+  }
+  function unmute() {                                  // runs inside the tap, so the browser allows sound
+    yt.unMute(); yt.setVolume(0); yt.playVideo(); ramp(v => yt.setVolume(v), 70);
+    setTimeout(() => { if (on && (yt.getPlayerState() !== 1 || yt.isMuted())) { try { yt.pauseVideo(); } catch (e) {} synth(); } }, 4000);   // YouTube refused: use the melody
   }
   return {
-    start() { try {
-      on = true;
-      if (CONFIG.music.url) { audio = audio || Object.assign(new Audio(CONFIG.music.url), { loop: true, volume: 0 }); audio.play().catch(() => {}); ramp(v => audio.volume = v / 100, 70); }
-      else if (CONFIG.music.youtube) youtube(CONFIG.music.youtube);
-      else synth();
-      setMuted(false); } catch (e) {} },
+    prepare() {                                        // call at page load
+      if (CONFIG.music.url) { audio = new Audio(CONFIG.music.url); audio.loop = true; audio.preload = "auto"; audio.volume = 0; audio.load(); }
+      else if (CONFIG.music.youtube) loadYouTube(CONFIG.music.youtube);
+    },
+    start() { on = wanted = true; setMuted(false);
+      try {
+        if (audio) { audio.play().catch(() => synth()); ramp(v => audio.volume = v / 100, 70); }
+        else if (CONFIG.music.youtube && !ytFailed) { if (ytReady) unmute(); else setTimeout(() => { if (on && !ytReady) synth(); }, 5000); }
+        else synth();
+      } catch (e) { synth(); } },
     toggle() { on = !on;
       if (audio) on ? audio.play() : audio.pause();
-      if (yt && yt.playVideo) on ? yt.playVideo() : yt.pauseVideo();
+      if (yt && ytReady) { on ? (yt.unMute(), yt.playVideo()) : yt.pauseVideo(); }
       if (ctx) on ? ctx.resume() : ctx.suspend();
       setMuted(!on); }
   };
@@ -157,8 +167,6 @@ function fillText() {
   $("#sig").textContent = CONFIG.initials;
   $("#name1").textContent = a;
   $("#name2").textContent = b;
-  $("#heroDate").textContent = `${wd} ${ar(d)}/${m}/${ar(y)}`;
-  $("#introDate").textContent = `${ar(d)}/${m}/${ar(y)} · ${hm}`;
   $("#iDate").textContent = `${wd}\n${ar(d)}/${ar(date.getMonth() + 1)}/${ar(y)}`;
   $("#iPlace").textContent = `${CONFIG.venue.name}\n${CONFIG.venue.city}`;
   $("#iTime").textContent = `${TX.hour}\n${hm}`;
@@ -203,6 +211,17 @@ addEventListener("touchstart", e => { sx = e.touches[0].clientX; }, { passive: t
 addEventListener("touchend", e => { if (sx === null) return; const dx = e.changedTouches[0].clientX - sx; sx = null; if (Math.abs(dx) > 55) go(cur + (dx > 0 ? 1 : -1)); });
 addEventListener("keydown", e => { if (e.key === "ArrowLeft") go(cur + 1); if (e.key === "ArrowRight") go(cur - 1); });
 
+/* ---------- fit: shrink a page's content when the screen is too short or narrow, so nothing leaves the frame ---------- */
+document.querySelectorAll(".copy").forEach(c => { const w = document.createElement("div"); w.className = "fit"; while (c.firstChild) w.appendChild(c.firstChild); c.appendChild(w); });
+function fitAll() {
+  document.querySelectorAll(".copy").forEach(c => {
+    const f = c.firstElementChild, cs = getComputedStyle(c); f.style.zoom = 1;
+    const availH = c.clientHeight - parseFloat(cs.paddingTop) - parseFloat(cs.paddingBottom), availW = c.clientWidth - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight);
+    let k = Math.min(1, availH / f.offsetHeight); const wide = Math.max(...[...f.children].map(e => e.scrollWidth)); if (wide > availW) k = Math.min(k, availW / wide);
+    f.style.zoom = Math.max(.5, k).toFixed(3);
+  });
+}
+
 /* paint every page once, invisibly, behind the closed doors so the first page change is already smooth */
 function warmPages() {
   pages.slice(1).forEach(p => p.classList.add("warm"));
@@ -210,6 +229,7 @@ function warmPages() {
 }
 
 /* ---------- Init ---------- */
+music.prepare();
 fillText(); tick();
 document.querySelectorAll("img").forEach(i => i.decode && i.decode().catch(() => {}));   // decode every picture up front so page changes never stall setInterval(tick, 1000);
 requestAnimationFrame(refresh);

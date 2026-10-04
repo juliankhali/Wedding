@@ -33,3 +33,12 @@ sh lace-pearl/tools/pages-build.sh               # refresh docs/ after edits
 firebase deploy --only hosting:sivan-maswa
 ```
 Then Firebase console → Hosting (not App Hosting) → site `sivan-maswa` → Add custom domain → `sivan-maswa.elptronios.com` and add the DNS records it shows at your DNS provider.
+
+## Auto-deploy from GitHub to Google Cloud (Firebase Hosting)
+`.github/workflows/firebase-deploy.yml` deploys the site `sivan-maswa` (project `microcoding-cce04`) on every push to `main` or the working branch (it rebuilds `docs/` first, and creates the Hosting site on the first run).
+One-time setup, about 3 minutes:
+1. Google Cloud console → IAM & Admin → Service accounts (project `microcoding-cce04`) → Create service account `github-deploy` → roles **Firebase Hosting Admin** and **Service Usage Consumer**.
+2. Open that account → Keys → Add key → JSON. A file downloads.
+3. GitHub → repo Settings → Secrets and variables → Actions → New repository secret. Name: `FIREBASE_SERVICE_ACCOUNT`. Value: paste the whole JSON file. (Keep the file private; never paste it in chat or commit it.)
+4. Actions tab → "Deploy invitation to Firebase Hosting" → Run workflow. When it is green, the site is live at `https://sivan-maswa.web.app`.
+5. Then add the custom domain once: Firebase console → Hosting → site `sivan-maswa` → Add custom domain.

@@ -1,0 +1,43 @@
+# Deploys the invitation to Firebase Hosting (Google Cloud) every time you push to GitHub.
+# One-time setup: add the repo secret FIREBASE_SERVICE_ACCOUNT (see lace-pearl/README.md, "Auto-deploy from GitHub").
+name: Deploy invitation to Firebase Hosting
+
+on:
+  push:
+    branches: [main, claude/brave-faraday-5iq0og, claude/exciting-johnson-zrc5qu]
+    paths: ["lace-pearl/**", "docs/**", "firebase.json", ".github/workflows/firebase-deploy.yml"]
+  workflow_dispatch:
+
+concurrency:
+  group: firebase-deploy
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    env:
+      PROJECT: microcoding-cce04
+      SITE: sivan-maswa
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Check the secret exists
+        env:
+          SA: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
+        run: |
+          if [ -z "$SA" ]; then echo "::error::Add the repo secret FIREBASE_SERVICE_ACCOUNT first (README, Auto-deploy from GitHub)."; exit 1; fi
+          printf '%s' "$SA" > "$RUNNER_TEMP/sa.json"
+          echo "GOOGLE_APPLICATION_CREDENTIALS=$RUNNER_TEMP/sa.json" >> "$GITHUB_ENV"
+
+      - name: Refresh docs/ from lace-pearl/
+        run: sh lace-pearl/tools/pages-build.sh
+
+      - name: Create the Hosting site (first run only)
+        run: npx -y firebase-tools@latest hosting:sites:create "$SITE" --project "$PROJECT" || echo "site already exists"
+
+      - name: Deploy
+        run: npx -y firebase-tools@latest deploy --only "hosting:$SITE" --project "$PROJECT" --non-interactive
