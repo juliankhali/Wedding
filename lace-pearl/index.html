@@ -1,13 +1,13 @@
 <!doctype html>
-<html lang="en">
+<html lang="ckb" dir="rtl">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#EFE7DC">
-<title>Lace and Pearl Invitation</title>
+<title>Sivan and Mathwa Wedding</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 <body class="locked">
@@ -15,7 +15,7 @@
 <!-- ===== Shared SVG defs ===== -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <defs>
-    <!-- Plaster / raised-fabric emboss: relief shading + specular edge + top-left glow + bottom-right shadow -->
+    <!-- Plaster / raised-fabric emboss -->
     <filter id="emboss" x="-12%" y="-12%" width="124%" height="124%" color-interpolation-filters="sRGB">
       <feGaussianBlur in="SourceAlpha" stdDeviation="1.7" result="b"/>
       <feDiffuseLighting in="b" surfaceScale="3" diffuseConstant="1.3" lighting-color="#fff" result="d0"><feDistantLight azimuth="225" elevation="50"/></feDiffuseLighting>
@@ -41,120 +41,124 @@
   </defs>
 </svg>
 
-<!-- ===== SCREEN 1: closed lace doors ===== -->
-<div id="intro" class="intro">
+<!-- ===== Closed lace doors ===== -->
+<div id="intro" class="intro" dir="ltr">
   <div class="door left"><svg class="door-art" id="artL" viewBox="0 0 195 844" preserveAspectRatio="xMidYMid slice"></svg></div>
   <div class="door right"><svg class="door-art" id="artR" viewBox="0 0 195 844" preserveAspectRatio="xMidYMid slice"></svg></div>
   <div class="intro-ui">
-    <button id="seal" class="clasp" aria-label="Open invitation" data-pearls="oval" data-inset="3" data-r="1.7" data-gap="5.6">
+    <button id="seal" class="clasp" aria-label="کردنەوە" data-pearls="oval" data-inset="3" data-r="1.7" data-gap="5.6">
       <span class="clasp-face"><svg class="sprig" viewBox="0 0 40 64" aria-hidden="true"><use href="#sprig"/></svg></span>
     </button>
-    <div class="intro-bottom">
+    <div class="intro-bottom" dir="rtl">
       <div class="frost" id="introDate"></div>
-      <button id="openInvite" class="white-pill"><span data-i18n="openInvite"></span></button>
+      <button id="openInvite" class="white-pill"><span data-t="openInvite"></span></button>
     </div>
   </div>
 </div>
 
-<!-- ===== Controls ===== -->
-<button id="langBtn" class="ctl lang" aria-label="Language">EN</button>
-<button id="muteBtn" class="ctl mute" aria-label="Music on/off">
+<button id="muteBtn" class="ctl mute" aria-label="مۆسیقا">
   <svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 15v-3a8 8 0 0 1 16 0v3"/><rect x="3" y="14" width="4.5" height="6.5" rx="1.6"/><rect x="16.5" y="14" width="4.5" height="6.5" rx="1.6"/><path class="slash" d="M3 3l18 18"/></svg>
 </button>
 
-<main class="phone" id="page">
+<!-- ===== Pages (tabs) ===== -->
+<main class="phone" id="pages">
 
-  <!-- SCREEN 2: reveal -->
-  <section class="hero" id="hero">
-    <div class="stage" id="stage">
-      <svg class="frame-svg" id="frameSvg" aria-hidden="true"></svg>
-      <div class="hero-copy">
-        <p class="kicker seq" style="--i:0" data-i18n="heroKicker"></p>
-        <h1 class="names seq" style="--i:1"><span id="name1"></span><em class="amp">&amp;</em><span id="name2"></span></h1>
-        <p class="hero-date seq" style="--i:2" id="heroDate"></p>
+  <!-- 1 · Home -->
+  <section class="page" data-page="home">
+    <div class="stage">
+      <svg class="frame-svg" aria-hidden="true"></svg>
+      <div class="copy hero-copy">
+        <p class="kicker seq" style="--i:0" data-t="heroKicker"></p>
+        <h1 class="names">
+          <span class="n n1" id="name1"></span>
+          <em class="amp seq" style="--i:2">&amp;</em>
+          <span class="n n2" id="name2"></span>
+        </h1>
+        <p class="hero-date seq" style="--i:3" id="heroDate"></p>
       </div>
-      <a href="#when" class="white-pill bob seq" style="--i:3" id="scrollBtn"><span data-i18n="scrollDown"></span> <b aria-hidden="true">&darr;</b></a>
       <svg class="corner tl" viewBox="0 0 260 260" aria-hidden="true"><use href="#lace-tl"/></svg>
       <svg class="corner br" viewBox="0 0 260 260" aria-hidden="true"><use href="#lace-br"/></svg>
     </div>
   </section>
 
-  <!-- Date + time -->
-  <section class="sec" id="when">
-    <h2 class="h reveal" data-i18n="whenTitle"></h2>
-    <div class="badges reveal">
-      <div class="badge" data-pearls="oval" data-inset="6" data-r="1.9" data-gap="8"><small id="bDayLbl"></small><b id="bDate"></b></div>
-      <div class="badge" data-pearls="oval" data-inset="6" data-r="1.9" data-gap="8"><small data-i18n="time"></small><b id="bTime"></b></div>
-    </div>
-  </section>
-
-  <!-- Countdown -->
-  <section class="sec" id="countdown">
-    <h2 class="h reveal" data-i18n="countTitle"></h2>
-    <p class="accent reveal" data-i18n="countLine"></p>
-    <div class="count reveal">
-      <div class="cell" data-pearls="oval" data-inset="6" data-r="1.7" data-gap="7.6"><b id="cd-d">00</b><small data-i18n="days"></small></div>
-      <div class="cell" data-pearls="oval" data-inset="6" data-r="1.7" data-gap="7.6"><b id="cd-h">00</b><small data-i18n="hours"></small></div>
-      <div class="cell" data-pearls="oval" data-inset="6" data-r="1.7" data-gap="7.6"><b id="cd-m">00</b><small data-i18n="minutes"></small></div>
-      <div class="cell" data-pearls="oval" data-inset="6" data-r="1.7" data-gap="7.6"><b id="cd-s">00</b><small data-i18n="seconds"></small></div>
-    </div>
-  </section>
-
-  <!-- Venue -->
-  <section class="sec" id="venue">
-    <div class="panel reveal">
-      <h2 class="h" data-i18n="venueTitle"></h2>
-      <p class="venue-name" id="vName"></p>
-      <p class="accent" id="vAddress"></p>
-      <a id="directions" class="pill" target="_blank" rel="noopener"><span data-i18n="directions"></span></a>
-    </div>
-  </section>
-
-  <!-- Program timeline -->
-  <section class="sec" id="program">
-    <h2 class="h reveal" data-i18n="programTitle"></h2>
-    <ol class="timeline" id="timeline"></ol>
-  </section>
-
-  <!-- Memory wall -->
-  <section class="sec" id="gallery">
-    <h2 class="h reveal" data-i18n="galleryTitle"></h2>
-    <p class="accent reveal" data-i18n="galleryLine"></p>
-    <div class="wall" id="wall"></div>
-    <label class="pill reveal" for="upload"><span data-i18n="upload"></span></label>
-    <input id="upload" type="file" accept="image/*" multiple hidden>
-  </section>
-
-  <!-- RSVP -->
-  <section class="sec" id="rsvp">
-    <div class="panel reveal">
-      <h2 class="h" data-i18n="rsvpTitle"></h2>
-      <p class="accent" id="rsvpLine"></p>
-      <form id="rsvpForm" class="form" novalidate>
-        <label class="fld"><span data-i18n="fName"></span><input id="fName" name="name" autocomplete="name"></label>
-        <div class="fld"><span data-i18n="fGuests"></span>
-          <div class="stepper"><button type="button" id="gMinus" aria-label="-">&minus;</button><output id="gOut">1</output><button type="button" id="gPlus" aria-label="+">+</button></div>
+  <!-- 2 · Date, time, countdown -->
+  <section class="page" data-page="when">
+    <div class="stage">
+      <svg class="frame-svg" aria-hidden="true"></svg>
+      <div class="copy">
+        <h2 class="h seq" style="--i:0" data-t="whenTitle"></h2>
+        <div class="badges seq" style="--i:1">
+          <div class="badge" data-pearls="oval" data-inset="6" data-r="1.9" data-gap="8"><small id="bDayLbl"></small><b id="bDate"></b></div>
+          <div class="badge" data-pearls="oval" data-inset="6" data-r="1.9" data-gap="8"><small data-t="time"></small><b id="bTime"></b></div>
         </div>
-        <div class="fld"><span data-i18n="fAttending"></span>
-          <div class="pills">
-            <label class="opt"><input type="radio" name="attending" value="yes" checked><span data-i18n="yes"></span></label>
-            <label class="opt"><input type="radio" name="attending" value="no"><span data-i18n="no"></span></label>
-          </div>
+        <p class="accent seq" style="--i:2" data-t="countLine"></p>
+        <div class="count seq" style="--i:3" dir="rtl">
+          <div class="cell" data-pearls="oval" data-inset="6" data-r="1.7" data-gap="7.6"><b id="cd-d">٠٠</b><small data-t="days"></small></div>
+          <div class="cell" data-pearls="oval" data-inset="6" data-r="1.7" data-gap="7.6"><b id="cd-h">٠٠</b><small data-t="hours"></small></div>
+          <div class="cell" data-pearls="oval" data-inset="6" data-r="1.7" data-gap="7.6"><b id="cd-m">٠٠</b><small data-t="minutes"></small></div>
+          <div class="cell" data-pearls="oval" data-inset="6" data-r="1.7" data-gap="7.6"><b id="cd-s">٠٠</b><small data-t="seconds"></small></div>
         </div>
-        <button class="pill" type="submit"><span data-i18n="send"></span></button>
-        <p class="thanks" id="rsvpThanks" hidden></p>
-      </form>
+      </div>
+      <svg class="corner tl" viewBox="0 0 260 260" aria-hidden="true"><use href="#lace-tl"/></svg>
+      <svg class="corner br" viewBox="0 0 260 260" aria-hidden="true"><use href="#lace-br"/></svg>
     </div>
   </section>
 
-  <!-- Ending -->
-  <footer class="sec foot" id="footer">
-    <svg class="orn reveal" viewBox="0 0 220 50" aria-hidden="true"><use href="#orn"/></svg>
-    <p class="names small reveal"><span id="fName1"></span><em class="amp">&amp;</em><span id="fName2"></span></p>
-    <p class="accent big reveal" id="footThanks"></p>
-    <p class="tiny reveal" id="footDate"></p>
-  </footer>
+  <!-- 3 · Venue + map image -->
+  <section class="page" data-page="where">
+    <div class="stage">
+      <svg class="frame-svg" aria-hidden="true"></svg>
+      <div class="copy">
+        <h2 class="h seq" style="--i:0" data-t="venueTitle"></h2>
+        <div class="map seq" style="--i:1" id="map">
+          <!-- Original map illustration (shown when no live Google map is configured) -->
+          <svg class="map-art" viewBox="0 0 320 230" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+            <rect width="320" height="230" fill="#EDE5D8"/>
+            <path d="M-10 150C60 120 90 190 170 160S280 90 340 120V240H-10Z" fill="#D5E3E6"/>
+            <path d="M-10 150C60 120 90 190 170 160S280 90 340 120" fill="none" stroke="#fff" stroke-width="3" opacity=".7"/>
+            <rect x="20" y="18" width="70" height="44" rx="8" fill="#DCE3CD"/><rect x="214" y="22" width="84" height="52" rx="8" fill="#DCE3CD"/>
+            <g fill="#E4D8C8"><rect x="104" y="16" width="38" height="30" rx="5"/><rect x="152" y="16" width="46" height="30" rx="5"/><rect x="104" y="62" width="38" height="34" rx="5"/><rect x="152" y="62" width="46" height="34" rx="5"/><rect x="20" y="76" width="70" height="30" rx="5"/><rect x="214" y="90" width="38" height="30" rx="5"/><rect x="262" y="90" width="36" height="30" rx="5"/></g>
+            <g fill="none" stroke="#fff" stroke-linecap="round"><path d="M0 68H320M0 110H320" stroke-width="7"/><path d="M96 0V230M204 0V230" stroke-width="7"/><path d="M0 40H320M150 0V160" stroke-width="3.5"/></g>
+            <path d="M0 110H320M96 0V230" fill="none" stroke="#C9AE85" stroke-width="1.2" stroke-dasharray="1 5" stroke-linecap="round"/>
+            <g transform="translate(150 98)"><ellipse cx="0" cy="22" rx="11" ry="4" fill="#785A46" opacity=".25"/><path d="M0 22C-14 4 -18 -2 -18 -10A18 18 0 0 1 18 -10C18 -2 14 4 0 22Z" fill="#C9AE85"/><circle cx="0" cy="-10" r="8.5" fill="url(#pearl)"/></g>
+          </svg>
+          <iframe id="mapFrame" title="map" loading="lazy" referrerpolicy="no-referrer-when-downgrade" hidden></iframe>
+          <a class="map-hit" id="mapHit" target="_blank" rel="noopener" aria-label="Google Maps"><span data-t="mapTap"></span></a>
+        </div>
+        <p class="venue-name seq" style="--i:2" id="vName"></p>
+        <p class="accent seq" style="--i:2" id="vAddress"></p>
+        <a id="directions" class="pill seq" style="--i:3" target="_blank" rel="noopener"><span data-t="directions"></span></a>
+      </div>
+      <svg class="corner tl" viewBox="0 0 260 260" aria-hidden="true"><use href="#lace-tl"/></svg>
+      <svg class="corner br" viewBox="0 0 260 260" aria-hidden="true"><use href="#lace-br"/></svg>
+    </div>
+  </section>
+
+  <!-- 4 · Program + ending -->
+  <section class="page" data-page="program">
+    <div class="stage">
+      <svg class="frame-svg" aria-hidden="true"></svg>
+      <div class="copy">
+        <h2 class="h seq" style="--i:0" data-t="programTitle"></h2>
+        <ol class="timeline seq" style="--i:1" id="timeline"></ol>
+        <svg class="orn seq" style="--i:2" viewBox="0 0 220 50" aria-hidden="true"><use href="#orn"/></svg>
+        <p class="accent seq" style="--i:3" id="footThanks"></p>
+        <p class="names small seq" style="--i:3"><span id="fName1"></span><em class="amp">&amp;</em><span id="fName2"></span></p>
+      </div>
+      <svg class="corner tl" viewBox="0 0 260 260" aria-hidden="true"><use href="#lace-tl"/></svg>
+      <svg class="corner br" viewBox="0 0 260 260" aria-hidden="true"><use href="#lace-br"/></svg>
+    </div>
+  </section>
 </main>
+
+<!-- ===== Tab bar + tap tip ===== -->
+<div class="hint" id="hint" aria-hidden="true"><span data-t="tapHint"></span><i></i></div>
+<nav class="tabs" id="tabs" aria-label="Pages">
+  <button data-go="0" data-t="tabHome"></button>
+  <button data-go="1" data-t="tabWhen"></button>
+  <button data-go="2" data-t="tabWhere"></button>
+  <button data-go="3" data-t="tabProgram"></button>
+</nav>
 
 <script src="app.js"></script>
 </body>

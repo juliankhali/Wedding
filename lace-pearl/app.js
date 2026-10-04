@@ -1,60 +1,45 @@
 /* =====================================================================
-   Embossed lace + pearl invitation
-   EDIT ONLY THE CONFIG BLOCK: names, date, time, venue, map link, program, music, language, texts.
+   Wedding invitation (Kurdish Sorani, right-to-left) — embossed lace + pearls
+   EDIT ONLY THE CONFIG BLOCK: names, date, venue, map, program, music and every text.
    ===================================================================== */
 const CONFIG = {
-  names: ["Name", "Name"],            // placeholder couple
+  names: ["سیڤان", "مەسوا"],          // first name flies in from the left, second from the right
   eventDate: "2027-08-21T19:00:00",   // local time of the venue (ISO)
-  defaultLang: "auto",                // "tr" | "en" | "auto" (follows the phone)
   music: { url: "" },                 // e.g. "music.mp3"; empty = soft built-in melody
   venue: {
-    name: "Venue Name",
-    address: "Street Address, City",
-    mapsUrl: "https://www.google.com/maps/search/?api=1&query=Venue+Name+City"
+    name: "هۆڵی ڕۆتانا",
+    address: "شەقامی ١٠٠ مەتری، هەولێر",
+    mapsUrl: "https://www.google.com/maps/search/?api=1&query=Erbil+Rotana+Hotel",   // "Directions" button + tap on the map
+    mapEmbedUrl: "https://maps.google.com/maps?q=Erbil+Rotana+Hotel&z=15&output=embed" // live Google map image; "" = drawn map picture
   },
-  program: [                          // vertical timeline: time + text per language
-    { time: "19.00", tr: "Karşılama ve hoş geldiniz", en: "Welcome & arrivals" },
-    { time: "19.30", tr: "Nikâh töreni",              en: "Ceremony" },
-    { time: "20.30", tr: "Akşam yemeği",              en: "Dinner" },
-    { time: "22.00", tr: "Pasta ve ilk dans",         en: "Cake & first dance" },
-    { time: "23.30", tr: "Gecenin sonu",              en: "Farewell" }
+  program: [                          // vertical timeline
+    { time: "19:00", text: "پێشوازی و هاتنی میوانان" },
+    { time: "19:30", text: "ڕێوڕەسمی مارەبڕین" },
+    { time: "20:30", text: "نانی ئێوارە" },
+    { time: "22:00", text: "کێک و سەمای یەکەم" },
+    { time: "23:30", text: "کۆتایی ئاهەنگ" }
   ],
-  rsvpDeadline: { tr: "1 Ağustos 2027", en: "1 August 2027" },
-  gallery: [],                        // image paths for the memory wall; empty = 4 placeholder frames
-  galleryPlaceholders: 4,
+  months: ["کانوونی دووەم", "شوبات", "ئازار", "نیسان", "ئایار", "حوزەیران", "تەمموز", "ئاب", "ئەیلوول", "تشرینی یەکەم", "تشرینی دووەم", "کانوونی یەکەم"],
+  weekdays: ["یەکشەممە", "دووشەممە", "سێشەممە", "چوارشەممە", "پێنجشەممە", "هەینی", "شەممە"],
 
-  /* ---- All visible text, per language ---- */
-  i18n: {
-    en: {
-      openInvite: "Open invitation", heroKicker: "We are getting married", scrollDown: "Scroll down",
-      whenTitle: "Save the Date", time: "Time",
-      countTitle: "Countdown", countLine: "Until we say “I do”", days: "Days", hours: "Hours", minutes: "Min", seconds: "Sec", countDone: "Today is the day",
-      venueTitle: "Venue", directions: "Directions", programTitle: "The Day",
-      galleryTitle: "Memory Wall", galleryLine: "Moments we treasure", upload: "Upload your photos",
-      rsvpTitle: "RSVP", rsvpLine: d => `Kindly reply by ${d}`,
-      fName: "Full name", fGuests: "Number of guests", fAttending: "Will you attend?", yes: "Joyfully yes", no: "Regretfully no", send: "Send reply",
-      thanksYes: n => `Thank you, ${n}. We can't wait to celebrate with you.`, thanksNo: n => `Thank you, ${n}. You will be missed.`,
-      footThanks: "Thank you for being part of our story"
-    },
-    tr: {
-      openInvite: "Daveti aç", heroKicker: "Evleniyoruz", scrollDown: "Aşağı kaydır",
-      whenTitle: "Tarihi Not Edin", time: "Saat",
-      countTitle: "Geri Sayım", countLine: "“Evet” dememize kalan süre", days: "Gün", hours: "Saat", minutes: "Dk", seconds: "Sn", countDone: "Büyük gün bugün",
-      venueTitle: "Mekân", directions: "Yol Tarifi", programTitle: "Günün Akışı",
-      galleryTitle: "Anı Duvarı", galleryLine: "Kalbimize dokunan anlar", upload: "Fotoğraflarını yükle",
-      rsvpTitle: "Katılım", rsvpLine: d => `Lütfen ${d} tarihine kadar yanıtlayın`,
-      fName: "Ad soyad", fGuests: "Kişi sayısı", fAttending: "Katılacak mısınız?", yes: "Evet, katılıyorum", no: "Katılamıyorum", send: "Yanıtı Gönder",
-      thanksYes: n => `Teşekkürler ${n}, sizinle kutlamak için sabırsızlanıyoruz.`, thanksNo: n => `Teşekkürler ${n}, yokluğunuzu hissedeceğiz.`,
-      footThanks: "Hikâyemizin bir parçası olduğunuz için teşekkürler"
-    }
+  /* ---- All visible text ---- */
+  text: {
+    openInvite: "کردنەوەی بانگهێشتنامە",
+    heroKicker: "بە خۆشحاڵییەوە بانگهێشتتان دەکەین بۆ ئاهەنگی هاوسەرگیری",
+    tabHome: "سەرەتا", tabWhen: "کات", tabWhere: "شوێن", tabProgram: "بەرنامە",
+    tapHint: "دەستی لێبدە بۆ لاپەڕەی دواتر",
+    whenTitle: "ڕێکەوت و کات", time: "کاتژمێر", countLine: "هەتا ڕۆژی بەختەوەری ماوە",
+    days: "ڕۆژ", hours: "کاتژمێر", minutes: "خولەک", seconds: "چرکە", countDone: "ئەمڕۆ ڕۆژی بەختەوەرییە",
+    venueTitle: "شوێنی ئاهەنگ", directions: "ڕێنمایی لە نەخشە", mapTap: "بۆ کردنەوە لە گووگڵ ماپس دەستی لێبدە",
+    programTitle: "بەرنامەی ئەو ڕۆژە",
+    footThanks: "سوپاس بۆ ئامادەبوونتان لە ڕۆژی تایبەتی ئێمە"
   }
 };
 
 /* ===================================================================== */
 const $ = s => document.querySelector(s);
-const date = new Date(CONFIG.eventDate);
-let lang = CONFIG.defaultLang === "auto" ? ((navigator.language || "en").toLowerCase().startsWith("tr") ? "tr" : "en") : CONFIG.defaultLang;
-const T = () => CONFIG.i18n[lang];
+const date = new Date(CONFIG.eventDate), TX = CONFIG.text;
+const ar = v => String(v).replace(/\d/g, d => "٠١٢٣٤٥٦٧٨٩"[d]);          // Eastern Arabic digits
 
 /* ---------------------------------------------------------------------
    ORIGINAL LACE ARTWORK (SVG). Rotations live INSIDE filtered groups so the
@@ -173,21 +158,25 @@ function buildLace() {
   $("#sprig").innerHTML = `<g ${E}>${sp}</g>`;
 }
 
-/* ---------- Hero frame: raised double line, arch with ogee (inward-notched) shoulders ---------- */
+/* ---------- Page frame: raised double line, arch with ogee (inward-notched) shoulders ---------- */
 function framePath(w, h, i, n) {
   const x0 = i, x1 = w - i, yb = h - i, rb = 16, r = (x1 - x0) / 2 - n, yk = i + r + 10, ys = yk + 48;
   return `M${x0 + rb} ${yb}L${x1 - rb} ${yb}Q${x1} ${yb} ${x1} ${yb - rb}L${x1} ${ys}` +
     `C${x1} ${ys - 22} ${x1 - n} ${ys - 14} ${x1 - n} ${yk}A${r} ${r} 0 0 0 ${x0 + n} ${yk}` +
     `C${x0 + n} ${ys - 14} ${x0} ${ys - 22} ${x0} ${ys}L${x0} ${yb - rb}Q${x0} ${yb} ${x0 + rb} ${yb}Z`;
 }
-function drawFrame() {
-  const st = $("#stage"), w = st.clientWidth, h = st.clientHeight, svg = $("#frameSvg"); if (!w) return;
-  svg.setAttribute("viewBox", `0 0 ${w} ${h}`);
-  svg.innerHTML = `<path d="${framePath(w, h, 8, 26)}" fill="url(#face)" opacity=".7"/>` +
-    `<path d="${framePath(w, h, 10, 26)}" fill="none" stroke="#F4ECE4" stroke-width="9" stroke-linejoin="round" ${E}/>` +
-    `<path d="${framePath(w, h, 24, 24)}" fill="none" stroke="#F4ECE4" stroke-width="3" stroke-linejoin="round" ${E}/>` +
-    `<path d="${framePath(w, h, 19, 25)}" fill="none" stroke="rgba(201,174,133,.7)" stroke-width=".7" stroke-linejoin="round"/>`;
+function drawFrames() {
+  document.querySelectorAll(".stage").forEach(st => {
+    const w = st.clientWidth, h = st.clientHeight, svg = st.querySelector(".frame-svg"); if (!w) return;
+    svg.setAttribute("viewBox", `0 0 ${w} ${h}`);
+    svg.innerHTML = `<path d="${framePath(w, h, 8, 26)}" fill="url(#face)" opacity=".7"/>` +
+      `<path d="${framePath(w, h, 10, 26)}" fill="none" stroke="#F4ECE4" stroke-width="9" stroke-linejoin="round" ${E}/>` +
+      `<path d="${framePath(w, h, 24, 24)}" fill="none" stroke="#F4ECE4" stroke-width="3" stroke-linejoin="round" ${E}/>` +
+      `<path d="${framePath(w, h, 19, 25)}" fill="none" stroke="rgba(201,174,133,.7)" stroke-width=".7" stroke-linejoin="round"/>`;
+  });
 }
+const refresh = () => { allPearls(); drawFrames(); };
+
 /* ---------------------------------------------------------------------
    Pearl rows: equal-spaced pearls along an arch outline or an oval.
    --------------------------------------------------------------------- */
@@ -222,61 +211,6 @@ function placePearls(el) {
 }
 const allPearls = () => document.querySelectorAll("[data-pearls]").forEach(placePearls);
 
-/* ---------- Text / language ---------- */
-function applyLang() {
-  const t = T(), loc = lang === "tr" ? "tr-TR" : "en-GB", up = s => s.toLocaleUpperCase(loc);
-  document.documentElement.lang = lang;
-  document.querySelectorAll("[data-i18n]").forEach(el => el.textContent = t[el.dataset.i18n]);
-  const longDate = up(date.toLocaleDateString(loc, { day: "numeric", month: "long", year: "numeric" })), hm = date.toLocaleTimeString("en-GB", { hour: "2-digit", minute: "2-digit" }).replace(":", ".");
-  $("#heroDate").textContent = longDate; $("#introDate").textContent = longDate + " · " + hm;
-  $("#bDayLbl").textContent = up(date.toLocaleDateString(loc, { weekday: "long" }));
-  $("#bDate").textContent = up(date.toLocaleDateString(loc, { day: "numeric", month: "short" }).replace(".", ""));
-  $("#bTime").textContent = date.toLocaleTimeString("en-GB", { hour: "2-digit", minute: "2-digit" }).replace(":", ".");
-  $("#vName").textContent = CONFIG.venue.name; $("#vAddress").textContent = CONFIG.venue.address; $("#directions").href = CONFIG.venue.mapsUrl;
-  $("#timeline").innerHTML = CONFIG.program.map(p => `<li class="reveal"><span class="tl-time">${p.time}</span><p class="tl-text">${p[lang]}</p></li>`).join("");
-  document.querySelectorAll("#timeline .reveal").forEach(el => el.dataset.late = 1);
-  $("#rsvpLine").textContent = t.rsvpLine(CONFIG.rsvpDeadline[lang]);
-  $("#footDate").textContent = date.toLocaleDateString(loc, { day: "numeric", month: "long", year: "numeric" });
-  $("#langBtn").textContent = lang === "tr" ? "EN" : "TR";
-  tick(); requestAnimationFrame(() => { allPearls(); drawFrame(); });
-  if (document.body.classList.contains("open")) setupReveal();
-}
-function fillStatic() {
-  const [a, b] = CONFIG.names;
-  ["name1", "fName1"].forEach(i => $("#" + i).textContent = a);
-  ["name2", "fName2"].forEach(i => $("#" + i).textContent = b);
-  document.title = `${a} & ${b}`;
-}
-
-/* ---------- Countdown ---------- */
-function tick() {
-  const s = Math.max(0, Math.floor((date - Date.now()) / 1000)), p = n => String(n).padStart(2, "0");
-  $("#cd-d").textContent = p(Math.floor(s / 86400)); $("#cd-h").textContent = p(Math.floor(s % 86400 / 3600));
-  $("#cd-m").textContent = p(Math.floor(s % 3600 / 60)); $("#cd-s").textContent = p(s % 60);
-  if (!s) $("#countdown .accent").textContent = T().countDone;
-}
-
-/* ---------- Memory wall (lace-cornered frames) + local upload ---------- */
-const frameHTML = src => `<div class="mframe"><svg class="lc a" viewBox="0 0 260 260" aria-hidden="true"><use href="#lace-tl"/></svg><svg class="lc b" viewBox="0 0 260 260" aria-hidden="true"><use href="#lace-br"/></svg>
-  <div class="ph">${src ? `<img src="${src}" alt="" loading="lazy">` : `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="11" r="2"/><path d="M3 17l5-4 4 3 3-2 6 4"/></svg>`}</div></div>`;
-function buildWall() {
-  const items = CONFIG.gallery.length ? CONFIG.gallery : Array.from({ length: CONFIG.galleryPlaceholders }, () => null);
-  $("#wall").innerHTML = items.map(frameHTML).join("");
-  $("#upload").addEventListener("change", e => {            // photos stay in this browser for now
-    const wall = $("#wall"); if (!CONFIG.gallery.length && !wall.dataset.filled) { wall.innerHTML = ""; wall.dataset.filled = 1; }
-    [...e.target.files].forEach(f => { wall.insertAdjacentHTML("beforeend", frameHTML(URL.createObjectURL(f))); });
-    wall.querySelectorAll(".mframe:not(.in)").forEach(el => el.classList.add("in"));
-  });
-}
-
-/* ---------- Scroll reveal (fade + rise, staggered) ---------- */
-function setupReveal() {
-  const io = new IntersectionObserver(es => es.forEach(e => { if (!e.isIntersecting) return;
-    e.target.style.transitionDelay = Math.min([...e.target.parentElement.children].indexOf(e.target), 4) * .1 + "s";
-    e.target.classList.add("in"); io.unobserve(e.target); }), { threshold: .12, rootMargin: "0px 0px -5% 0px" });
-  document.querySelectorAll(".reveal:not(.in),.mframe:not(.in)").forEach(el => io.observe(el));
-}
-
 /* ---------- Music: mp3 if provided, else a soft synthesized melody; fades in ---------- */
 const music = (() => {
   let ctx, master, audio, timer, on = false, fade;
@@ -302,35 +236,70 @@ const music = (() => {
   };
 })();
 
-/* ---------- RSVP (saved in localStorage + console for now) ---------- */
-function setupRsvp() {
-  let guests = 1; const out = $("#gOut");
-  $("#gMinus").onclick = () => out.textContent = guests = Math.max(1, guests - 1);
-  $("#gPlus").onclick = () => out.textContent = guests = Math.min(10, guests + 1);
-  $("#rsvpForm").addEventListener("submit", e => {
-    e.preventDefault();
-    const name = $("#fName").value.trim(); $("#fName").classList.toggle("err", !name);
-    if (!name) { $("#fName").focus(); return; }
-    const entry = { name, guests, attending: $("input[name=attending]:checked").value, at: new Date().toISOString() };
-    console.log("RSVP", entry);                       // TODO: send to your backend / Google Sheet
-    try { const all = JSON.parse(localStorage.getItem("rsvp") || "[]"); all.push(entry); localStorage.setItem("rsvp", JSON.stringify(all)); } catch (_) {}
-    const th = $("#rsvpThanks"); th.hidden = false; th.textContent = entry.attending === "yes" ? T().thanksYes(name) : T().thanksNo(name);
-  });
+/* ---------- Text ---------- */
+function fillText() {
+  document.querySelectorAll("[data-t]").forEach(el => el.textContent = TX[el.dataset.t]);
+  const [a, b] = CONFIG.names, d = date.getDate(), m = CONFIG.months[date.getMonth()], y = date.getFullYear(), wd = CONFIG.weekdays[date.getDay()];
+  const hm = ar(date.toLocaleTimeString("en-GB", { hour: "2-digit", minute: "2-digit" }));
+  ["name1", "fName1"].forEach(i => $("#" + i).textContent = a);
+  ["name2", "fName2"].forEach(i => $("#" + i).textContent = b);
+  $("#heroDate").textContent = `${wd} ${ar(d)} ${m} ${ar(y)}`;
+  $("#introDate").textContent = `${ar(d)} ${m} ${ar(y)} · ${hm}`;
+  $("#bDayLbl").textContent = wd; $("#bDate").textContent = `${ar(d)} ${m}`; $("#bTime").textContent = hm;
+  $("#vName").textContent = CONFIG.venue.name; $("#vAddress").textContent = CONFIG.venue.address;
+  $("#directions").href = CONFIG.venue.mapsUrl; $("#mapHit").href = CONFIG.venue.mapsUrl;
+  if (CONFIG.venue.mapEmbedUrl) { const f = $("#mapFrame"); f.src = CONFIG.venue.mapEmbedUrl; f.hidden = false; }   // live Google map picture
+  $("#timeline").innerHTML = CONFIG.program.map(p => `<li><span class="tl-time">${ar(p.time)}</span><span class="tl-text">${p.text}</span></li>`).join("");
+  $("#footThanks").textContent = TX.footThanks;
+  document.title = `${a} و ${b}`;
 }
 
+/* ---------- Countdown ---------- */
+function tick() {
+  const s = Math.max(0, Math.floor((date - Date.now()) / 1000)), p = n => ar(String(n).padStart(2, "0"));
+  $("#cd-d").textContent = p(Math.floor(s / 86400)); $("#cd-h").textContent = p(Math.floor(s % 86400 / 3600));
+  $("#cd-m").textContent = p(Math.floor(s % 3600 / 60)); $("#cd-s").textContent = p(s % 60);
+  if (!s) document.querySelector('[data-t="countLine"]').textContent = TX.countDone;
+}
+
+/* ---------- Pages as tabs ---------- */
+const pages = [...document.querySelectorAll(".page")], tabBtns = [...document.querySelectorAll(".tabs button")];
+let cur = 0, tappedOnce = false;
+function showHint() {
+  const h = $("#hint"), nxt = tabBtns[cur + 1];
+  if (!nxt || tappedOnce || !document.body.classList.contains("open")) { h.classList.remove("show"); return; }
+  const r = nxt.getBoundingClientRect(); h.style.left = (r.left + r.width / 2) + "px"; h.classList.add("show");
+}
+function go(n) {
+  if (n < 0 || n >= pages.length || n === cur) return;
+  const forward = n > cur; cur = n;
+  pages.forEach((p, i) => { p.dataset.pos = i < cur ? "before" : i > cur ? "after" : "active"; p.style.setProperty("--d", forward || n === 0 ? ".35s" : ".35s"); });
+  tabBtns.forEach((b, i) => { b.classList.toggle("on", i === cur); b.classList.toggle("next", i === cur + 1); });
+  if (n > 0) tappedOnce = true;
+  showHint();
+}
+pages.forEach((p, i) => p.dataset.pos = i ? "after" : "active");
+tabBtns.forEach((b, i) => { b.onclick = () => go(i); });
+tabBtns[0].classList.add("on"); tabBtns[1].classList.add("next");
+/* swipe + keys (RTL: swipe right → next page) */
+let sx = null;
+addEventListener("touchstart", e => { sx = e.touches[0].clientX; }, { passive: true });
+addEventListener("touchend", e => { if (sx === null) return; const dx = e.changedTouches[0].clientX - sx; sx = null; if (Math.abs(dx) > 55) go(cur + (dx > 0 ? 1 : -1)); });
+addEventListener("keydown", e => { if (e.key === "ArrowLeft") go(cur + 1); if (e.key === "ArrowRight") go(cur - 1); });
+
 /* ---------- Init ---------- */
-buildLace(); fillStatic(); buildWall(); setupRsvp(); applyLang();
-setInterval(tick, 1000);
-let rz; addEventListener("resize", () => { clearTimeout(rz); rz = setTimeout(() => { allPearls(); drawFrame(); }, 120); });
-if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => { allPearls(); drawFrame(); });
-$("#langBtn").onclick = () => { lang = lang === "tr" ? "en" : "tr"; applyLang(); };
+buildLace(); fillText(); tick(); setInterval(tick, 1000);
+requestAnimationFrame(refresh);
+let rz; addEventListener("resize", () => { clearTimeout(rz); rz = setTimeout(() => { refresh(); showHint(); }, 120); });
+if (document.fonts && document.fonts.ready) document.fonts.ready.then(refresh);
 $("#muteBtn").onclick = () => music.toggle();
 let opened = false;
 function openInvitation() {
   if (opened) return; opened = true;
   $("#seal").classList.add("go"); music.start();                                   // clasp glows and fades, music fades in
-  setTimeout(() => { document.body.classList.add("open"); setupReveal(); }, 650);  // panels slide apart
-  setTimeout(() => { document.body.classList.remove("locked"); window.scrollTo(0, 0); }, 2300);
+  pages[0].style.setProperty("--d", "1.1s");                                       // names arrive once the doors are apart
+  setTimeout(() => { document.body.classList.add("open"); }, 650);                 // panels slide apart
+  setTimeout(() => { showHint(); }, 4600);                                          // tap tip appears after the first page has settled
+  setTimeout(() => { document.body.classList.remove("locked"); }, 2300);
 }
 $("#seal").onclick = openInvitation; $("#openInvite").onclick = openInvitation;
-$("#scrollBtn").onclick = e => { e.preventDefault(); $("#when").scrollIntoView({ behavior: "smooth" }); };
