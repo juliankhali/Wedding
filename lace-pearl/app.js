@@ -6,10 +6,14 @@ const CONFIG = {
   initials: "S&M",                    // signature on the clasp
   names: ["سیڤان", "مەسوا"],          // first name flies in from the left, second from the right
   eventDate: "2027-08-21T19:00:00",   // local time of the venue (ISO)
-  music: { url: "" },                 // e.g. "music.mp3"; empty = soft built-in melody
+  music: {
+    youtube: "-dTvseRSrbY",           // YouTube video id of the song ("Buke Delale"); "" to disable
+    url: ""                           // or your own mp3 file (e.g. "music.mp3"); used instead of YouTube when set
+  },
   venue: {
     name: "هۆڵی ڕۆتانا",
     address: "شەقامی ١٠٠ مەتری، هەولێر",
+    city: "هەولێر",
     mapsUrl: "https://www.google.com/maps/search/?api=1&query=Erbil+Rotana+Hotel",   // "Directions" button + tap on the map
     mapEmbedUrl: "https://maps.google.com/maps?q=Erbil+Rotana+Hotel&z=15&output=embed" // live Google map image; "" = drawn map picture
   },
@@ -19,10 +23,10 @@ const CONFIG = {
   /* ---- All visible text ---- */
   text: {
     openInvite: "کردنەوەی بانگهێشتنامە",
-    heroKicker: "بە خۆشحاڵییەوە بانگهێشتتان دەکەین بۆ ئاهەنگی هاوسەرگیری",
+    invite: "بانگهێشتنامە", occasion: "ئاهەنگی هاوسەرگیری",
     prev: "پێشوو", next: "دواتر",
     tapHint: "دەستی لێبدە بۆ لاپەڕەی دواتر",
-    whenTitle: "ڕێکەوت و کات", time: "کاتژمێر", countLine: "هەتا ڕۆژی بەختەوەری ماوە",
+    whenTitle: "ڕێکەوت و کات", hour: "کاتژمێر", countLine: "هەتا ڕۆژی بەختەوەری ماوە",
     days: "ڕۆژ", hours: "کاتژمێر", minutes: "خولەک", seconds: "چرکە", countDone: "ئەمڕۆ ڕۆژی بەختەوەرییە",
     venueTitle: "شوێنی ئاهەنگ", directions: "ڕێنمایی لە نەخشە", mapTap: "بۆ کردنەوە لە گووگڵ ماپس دەستی لێبدە",
     welcomeTitle: "بەخێربێن",
@@ -101,12 +105,13 @@ function placePearls(el) {
 }
 const allPearls = () => document.querySelectorAll("[data-pearls]").forEach(placePearls);
 
-/* ---------- Music: mp3 if provided, else a soft synthesized melody; fades in ---------- */
+/* ---------- Music: your mp3, else the YouTube song, else a soft built-in melody; fades in ---------- */
 const music = (() => {
-  let ctx, master, audio, timer, on = false, fade;
+  let ctx, master, audio, yt, on = false, fade;
   const notes = [392, 494, 587, 523, 440, 523, 659, 587, 392, 494, 587, 784, 659, 587, 523, 494];
   const setMuted = m => $("#muteBtn").classList.toggle("muted", m);
   function synth() {
+    if (ctx) return;
     ctx = new (window.AudioContext || window.webkitAudioContext)(); master = ctx.createGain(); master.gain.value = 0; master.connect(ctx.destination);
     master.gain.linearRampToValueAtTime(.55, ctx.currentTime + 3.5);   // fade in
     let i = 0;
@@ -114,15 +119,31 @@ const music = (() => {
       [f, f / 2].forEach((fr, k) => { const o = ctx.createOscillator(), g = ctx.createGain(); o.type = "sine"; o.frequency.value = fr;
         g.gain.setValueAtTime(0, t); g.gain.linearRampToValueAtTime(k ? .05 : .09, t + .04); g.gain.exponentialRampToValueAtTime(.0001, t + 1.8);
         o.connect(g).connect(master); o.start(t); o.stop(t + 1.9); }); };
-    play(); timer = setInterval(play, 700);
+    play(); setInterval(play, 700);
+  }
+  function ramp(set, max) { let v = 0; clearInterval(fade); fade = setInterval(() => { v = Math.min(max, v + 3); set(v); if (v >= max) clearInterval(fade); }, 120); }
+  function youtube(id) {                       // YouTube's own embedded player (needs internet + https); falls back to the soft melody
+    let done = false; const fallback = () => { if (!done) { done = true; if (on) synth(); } };
+    const make = () => {
+      const box = document.createElement("div"); box.id = "ytp"; box.style.cssText = "position:fixed;width:2px;height:2px;left:-20px;top:0;opacity:0;pointer-events:none"; document.body.appendChild(box);
+      yt = new YT.Player("ytp", { width: "2", height: "2", videoId: id, playerVars: { autoplay: 1, loop: 1, playlist: id, controls: 0, playsinline: 1, rel: 0 },
+        events: { onReady: e => { e.target.setVolume(0); e.target.playVideo(); done = true; ramp(v => e.target.setVolume(v), 70); }, onError: fallback } });
+    };
+    if (window.YT && YT.Player) make();
+    else { window.onYouTubeIframeAPIReady = make; const s = document.createElement("script"); s.src = "https://www.youtube.com/iframe_api"; s.onerror = fallback; document.head.appendChild(s); setTimeout(fallback, 5000); }
   }
   return {
     start() { try {
-      if (CONFIG.music.url) { audio = audio || Object.assign(new Audio(CONFIG.music.url), { loop: true, volume: 0 }); audio.play().catch(() => {});
-        clearInterval(fade); fade = setInterval(() => { audio.volume = Math.min(.7, audio.volume + .035); if (audio.volume >= .7) clearInterval(fade); }, 120); }
-      else if (!ctx) synth(); else ctx.resume();
-      on = true; setMuted(false); } catch (e) {} },
-    toggle() { on = !on; if (audio) on ? audio.play() : audio.pause(); if (ctx) on ? ctx.resume() : ctx.suspend(); setMuted(!on); }
+      on = true;
+      if (CONFIG.music.url) { audio = audio || Object.assign(new Audio(CONFIG.music.url), { loop: true, volume: 0 }); audio.play().catch(() => {}); ramp(v => audio.volume = v / 100, 70); }
+      else if (CONFIG.music.youtube) youtube(CONFIG.music.youtube);
+      else synth();
+      setMuted(false); } catch (e) {} },
+    toggle() { on = !on;
+      if (audio) on ? audio.play() : audio.pause();
+      if (yt && yt.playVideo) on ? yt.playVideo() : yt.pauseVideo();
+      if (ctx) on ? ctx.resume() : ctx.suspend();
+      setMuted(!on); }
   };
 })();
 
@@ -130,13 +151,16 @@ const music = (() => {
 function fillText() {
   document.querySelectorAll("[data-t]").forEach(el => el.textContent = TX[el.dataset.t]);
   const [a, b] = CONFIG.names, d = date.getDate(), m = CONFIG.months[date.getMonth()], y = date.getFullYear(), wd = CONFIG.weekdays[date.getDay()];
-  const hm = ar(date.toLocaleTimeString("en-GB", { hour: "2-digit", minute: "2-digit" }));
+  const H = date.getHours(), mi = date.getMinutes(), part = H < 12 ? "بەیانی" : H < 17 ? "دوای نیوەڕۆ" : H < 21 ? "ئێوارە" : "شەو";
+  const hm = ar(`${H % 12 || 12}:${String(mi).padStart(2, "0")}`) + "ی " + part;       // e.g. ٧:٠٠ی ئێوارە
   $("#sig").textContent = CONFIG.initials;
   ["name1", "fName1"].forEach(i => $("#" + i).textContent = a);
   ["name2", "fName2"].forEach(i => $("#" + i).textContent = b);
   $("#heroDate").textContent = `${wd} ${ar(d)} ${m} ${ar(y)}`;
   $("#introDate").textContent = `${ar(d)} ${m} ${ar(y)} · ${hm}`;
-  $("#bDayLbl").textContent = wd; $("#bDate").textContent = `${ar(d)} ${m}`; $("#bTime").textContent = hm;
+  $("#iDate").textContent = `${wd}\n${ar(d)}/${ar(date.getMonth() + 1)}/${ar(y)}`;
+  $("#iPlace").textContent = `${CONFIG.venue.name}\n${CONFIG.venue.city}`;
+  $("#iTime").textContent = `${TX.hour}\n${hm}`;
   $("#vName").textContent = CONFIG.venue.name; $("#vAddress").textContent = CONFIG.venue.address;
   $("#directions").href = CONFIG.venue.mapsUrl; $("#mapHit").href = CONFIG.venue.mapsUrl;
   if (CONFIG.venue.mapEmbedUrl) { const f = $("#mapFrame"); f.src = CONFIG.venue.mapEmbedUrl; f.hidden = false; }   // live Google map picture

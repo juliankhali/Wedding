@@ -21,6 +21,5 @@ The clasp signature is `CONFIG.initials` (Great Vibes font, SIL OFL, in `fonts/`
 ## Deploy on GitHub Pages
 `sh lace-pearl/tools/pages-build.sh` copies the site into `docs/` (already committed). On GitHub: Settings → Pages → Build and deployment → Source: *Deploy from a branch* → pick the branch → folder `/docs` → Save. The link is `https://<user>.github.io/Wedding/`. Run the script again and push after every edit.
 
-## Save the date card (`/save-the-date/`)
-A second, animated 9:16 card: gold crystal chandeliers drop in, the flower gazebo blooms, the couple walks in from both sides, then the title, names, date, place and time appear one after another, with falling white sparkles. Edit the `CONFIG` block at the top of `save-the-date/app.js` (names, text, date, place, time, music). All artwork is original SVG/CSS. The song is not included: put your own licensed mp3 next to the page and set `music.url`.
-Live link after deploy: `<your-site>/save-the-date/`
+## Music
+`CONFIG.music.youtube` is a YouTube video id (default: a "Buke Delale" upload, please check it is the recording you want; the id is the part after `v=` in the YouTube link). It plays through YouTube's own embedded player after the first tap, fades in, and needs internet + https. Set `CONFIG.music.url` to your own licensed mp3 to use that instead. If neither works, a soft built-in melody plays. No recording is stored in this project.
