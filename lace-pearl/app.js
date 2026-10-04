@@ -1,6 +1,6 @@
 /* =====================================================================
    Wedding invitation (Kurdish Sorani, right-to-left) — embossed lace + pearls
-   EDIT ONLY THE CONFIG BLOCK: names, date, venue, map, program, music and every text.
+   EDIT ONLY THE CONFIG BLOCK: names, date, venue, map, music and every text.
    ===================================================================== */
 const CONFIG = {
   names: ["سیڤان", "مەسوا"],          // first name flies in from the left, second from the right
@@ -12,13 +12,6 @@ const CONFIG = {
     mapsUrl: "https://www.google.com/maps/search/?api=1&query=Erbil+Rotana+Hotel",   // "Directions" button + tap on the map
     mapEmbedUrl: "https://maps.google.com/maps?q=Erbil+Rotana+Hotel&z=15&output=embed" // live Google map image; "" = drawn map picture
   },
-  program: [                          // vertical timeline
-    { time: "19:00", text: "پێشوازی و هاتنی میوانان" },
-    { time: "19:30", text: "ڕێوڕەسمی مارەبڕین" },
-    { time: "20:30", text: "نانی ئێوارە" },
-    { time: "22:00", text: "کێک و سەمای یەکەم" },
-    { time: "23:30", text: "کۆتایی ئاهەنگ" }
-  ],
   months: ["کانوونی دووەم", "شوبات", "ئازار", "نیسان", "ئایار", "حوزەیران", "تەمموز", "ئاب", "ئەیلوول", "تشرینی یەکەم", "تشرینی دووەم", "کانوونی یەکەم"],
   weekdays: ["یەکشەممە", "دووشەممە", "سێشەممە", "چوارشەممە", "پێنجشەممە", "هەینی", "شەممە"],
 
@@ -26,12 +19,13 @@ const CONFIG = {
   text: {
     openInvite: "کردنەوەی بانگهێشتنامە",
     heroKicker: "بە خۆشحاڵییەوە بانگهێشتتان دەکەین بۆ ئاهەنگی هاوسەرگیری",
-    tabHome: "سەرەتا", tabWhen: "کات", tabWhere: "شوێن", tabProgram: "بەرنامە",
+    tabHome: "سەرەتا", tabWhen: "کات", tabWhere: "شوێن", tabThanks: "سوپاس",
     tapHint: "دەستی لێبدە بۆ لاپەڕەی دواتر",
     whenTitle: "ڕێکەوت و کات", time: "کاتژمێر", countLine: "هەتا ڕۆژی بەختەوەری ماوە",
     days: "ڕۆژ", hours: "کاتژمێر", minutes: "خولەک", seconds: "چرکە", countDone: "ئەمڕۆ ڕۆژی بەختەوەرییە",
     venueTitle: "شوێنی ئاهەنگ", directions: "ڕێنمایی لە نەخشە", mapTap: "بۆ کردنەوە لە گووگڵ ماپس دەستی لێبدە",
-    programTitle: "بەرنامەی ئەو ڕۆژە",
+    welcomeTitle: "بەخێربێن",
+    welcomeText: "هاتنتان جوانترین دیاریی ئەم ڕۆژەیە. بە دڵێکی پڕ لە خۆشەویستییەوە چاوەڕێتان دەکەین.",
     footThanks: "سوپاس بۆ ئامادەبوونتان لە ڕۆژی تایبەتی ئێمە"
   }
 };
@@ -249,7 +243,6 @@ function fillText() {
   $("#vName").textContent = CONFIG.venue.name; $("#vAddress").textContent = CONFIG.venue.address;
   $("#directions").href = CONFIG.venue.mapsUrl; $("#mapHit").href = CONFIG.venue.mapsUrl;
   if (CONFIG.venue.mapEmbedUrl) { const f = $("#mapFrame"); f.src = CONFIG.venue.mapEmbedUrl; f.hidden = false; }   // live Google map picture
-  $("#timeline").innerHTML = CONFIG.program.map(p => `<li><span class="tl-time">${ar(p.time)}</span><span class="tl-text">${p.text}</span></li>`).join("");
   $("#footThanks").textContent = TX.footThanks;
   document.title = `${a} و ${b}`;
 }

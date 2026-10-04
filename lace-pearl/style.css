@@ -9,7 +9,7 @@
   --raise:-5px -5px 12px var(--hi), 6px 7px 16px var(--sh);
   --raise-s:-3px -3px 7px var(--hi), 3px 4px 9px var(--sh);
   --press:inset 3px 3px 7px rgba(120,90,70,.2), inset -3px -3px 7px rgba(255,255,255,.9);
-  --serif:"Noto Naskh Arabic","Segoe UI","Tahoma",serif; --ease:cubic-bezier(.22,.8,.22,1);
+  --display:"Amiri","Noto Naskh Arabic",serif; --serif:"Noto Naskh Arabic","Segoe UI","Tahoma",serif; --ease:cubic-bezier(.22,.8,.22,1);
   --col:430px;
   --grain:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' seed='7'/><feColorMatrix values='0 0 0 0 .4  0 0 0 0 .3  0 0 0 0 .22  0 0 0 .55 0'/></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='.07'/></svg>");
 }
@@ -24,14 +24,14 @@ em{font-style:normal}
   background:radial-gradient(120% 50% at 50% 0%,rgba(255,255,255,.8),rgba(255,255,255,0) 70%),var(--grain),var(--bg);box-shadow:0 0 70px rgba(120,90,70,.22)}
 
 /* ---------- Type (Kurdish Sorani, right-to-left: no letter-spacing, it would break the joined letters) ---------- */
-.h{font-weight:600;font-size:22px;text-align:center;text-shadow:0 1px 0 #fff;line-height:1.4}
-.accent{font-weight:400;font-size:19px;text-align:center;line-height:1.7;text-shadow:0 1px 0 #fff}
-.kicker{font-size:17px;font-weight:500;text-align:center;line-height:1.9;max-width:240px;text-shadow:0 1px 0 #fff}
-.names{font-weight:500;text-align:center;font-size:58px;line-height:1.25;text-shadow:0 1.5px 0 #fff,0 -1px 0 rgba(120,90,70,.14);display:flex;flex-direction:column;align-items:center}
+.h{font-family:var(--display);font-weight:700;font-size:26px;text-align:center;text-shadow:0 1px 0 #fff;line-height:1.4}
+.accent{font-family:var(--display);font-weight:400;font-size:22px;text-align:center;line-height:1.7;text-shadow:0 1px 0 #fff}
+.kicker{font-family:var(--display);font-size:20px;font-weight:500;text-align:center;line-height:1.9;max-width:240px;text-shadow:0 1px 0 #fff}
+.names{font-family:var(--display);font-weight:700;text-align:center;font-size:68px;line-height:1.25;text-shadow:0 1.5px 0 #fff,0 -1px 0 rgba(120,90,70,.14);display:flex;flex-direction:column;align-items:center}
 .names .n{display:block}
-.names .amp{display:block;font-weight:400;font-size:40px;line-height:1;margin:2px 0;color:var(--gold)}
-.names.small{font-size:30px;flex-direction:row;gap:10px;justify-content:center}.names.small .amp{font-size:26px;margin:0}
-.hero-date{font-size:19px;font-weight:500;text-align:center;text-shadow:0 1px 0 #fff}
+.names .amp{display:block;font-family:var(--display);font-weight:400;font-size:44px;line-height:1;margin:2px 0;color:var(--gold)}
+.names.small{font-size:36px;flex-direction:row;gap:10px;justify-content:center}.names.small .amp{font-size:26px;margin:0}
+.hero-date{font-family:var(--display);font-size:22px;font-weight:500;text-align:center;text-shadow:0 1px 0 #fff}
 small{font-size:14px;font-weight:500}
 
 /* ---------- Buttons ---------- */
@@ -111,12 +111,12 @@ body.open [data-pos=active] .amp.seq{animation-name:pop;animation-duration:1.2s}
 .badges{display:flex;gap:14px;justify-content:center}
 .badge{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0;height:84px;padding:0 24px;min-width:100px;border-radius:50%;background:var(--bg);box-shadow:var(--raise-s)}
 .badge:first-child{min-width:150px}
-.badge small{font-size:14px;line-height:1.3}.badge b{font-weight:500;font-size:20px;white-space:nowrap;line-height:1.4}
+.badge small{font-size:14px;line-height:1.3}.badge b{font-family:var(--display);font-weight:700;font-size:23px;white-space:nowrap;line-height:1.4}
 .count{display:grid;grid-template-columns:repeat(4,1fr);gap:9px;width:100%}
 .cell{position:relative;aspect-ratio:3/4;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;border-radius:50%;background:var(--bg);box-shadow:var(--raise-s)}
-.cell b{font-weight:500;font-size:25px;line-height:1.2;font-variant-numeric:tabular-nums}
+.cell b{font-family:var(--display);font-weight:700;font-size:25px;line-height:1.2;font-variant-numeric:tabular-nums}
 .cell small{font-size:12px;line-height:1.2}
-.venue-name{font-size:22px;font-weight:600;line-height:1.4}
+.venue-name{font-family:var(--display);font-size:26px;font-weight:700;line-height:1.4}
 .pill{margin-top:4px}
 
 /* map image */
@@ -125,22 +125,13 @@ body.open [data-pos=active] .amp.seq{animation-name:pop;animation-duration:1.2s}
 .map-hit{position:absolute;inset:6px;border-radius:17px;display:flex;align-items:flex-end;justify-content:center;text-decoration:none;color:var(--ink);-webkit-tap-highlight-color:transparent}
 .map-hit span{margin-bottom:8px;padding:3px 14px;font-size:13px;border-radius:20px;background:rgba(255,255,255,.88);box-shadow:0 2px 8px rgba(120,90,70,.2)}
 
-/* timeline: thin gold line with pearl dots (logical properties, so it flips for RTL) */
-.timeline{list-style:none;position:relative;width:100%;max-width:290px;padding-inline-start:34px;text-align:start}
-.timeline::before{content:"";position:absolute;inset-inline-start:11px;top:8px;bottom:8px;width:1px;background:linear-gradient(transparent,var(--gold) 8%,var(--gold) 92%,transparent)}
-.timeline li{position:relative;padding:0 0 12px;display:flex;align-items:baseline;gap:14px}
-.timeline li:last-child{padding-bottom:0}
-.timeline li::before{content:"";position:absolute;inset-inline-start:-29px;top:11px;width:13px;height:13px;border-radius:50%;
-  background:radial-gradient(circle at 34% 30%,#fff,#F3EAE1 50%,#DCCDC0);box-shadow:1px 2px 3px rgba(120,90,70,.4),0 0 0 3px var(--bg)}
-.tl-time{font-size:16px;font-weight:600;color:#A98A58;min-width:56px;font-variant-numeric:tabular-nums}
-.tl-text{font-size:18px;line-height:1.5}
 .orn{width:170px;height:auto;overflow:visible}
 
 /* ---------- Tab bar + tap tip ---------- */
 .tabs{position:fixed;z-index:55;left:50%;bottom:18px;transform:translate(-50%,30px);display:flex;gap:4px;padding:6px;border-radius:40px;background:var(--bg);box-shadow:var(--raise);opacity:0;pointer-events:none;
   transition:opacity .9s var(--ease) 1.6s,transform .9s var(--ease) 1.6s;max-width:calc(100vw - 24px)}
 body.open .tabs{opacity:1;transform:translateX(-50%);pointer-events:auto}
-.tabs button{position:relative;border:0;background:transparent;cursor:pointer;padding:9px 17px;border-radius:30px;font-size:16px;font-weight:500;color:var(--ink);white-space:nowrap;transition:box-shadow .4s,color .4s;-webkit-tap-highlight-color:transparent}
+.tabs button{font-family:var(--display);position:relative;border:0;background:transparent;cursor:pointer;padding:8px 17px;border-radius:30px;font-size:19px;font-weight:500;color:var(--ink);white-space:nowrap;transition:box-shadow .4s,color .4s;-webkit-tap-highlight-color:transparent}
 .tabs button.on{box-shadow:var(--press);color:#9A7A4D}
 .tabs button:focus-visible{outline:1.5px solid var(--gold);outline-offset:2px}
 /* the next tab pulses so the guest sees what to tap */
@@ -154,3 +145,6 @@ body.open .tabs{opacity:1;transform:translateX(-50%);pointer-events:auto}
 
 .pearls{position:absolute;left:0;top:0;pointer-events:none;overflow:visible}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition-duration:.01s!important}.seq,.n{opacity:1}}
+
+.welcome{font-size:34px}
+.welcome-text{max-width:260px;line-height:1.9}
