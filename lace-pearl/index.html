@@ -3,152 +3,178 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#F3EAE1">
-<title>Lace &amp; Pearl Wedding Invitation</title>
+<meta name="theme-color" content="#F4ECE4">
+<title>Lace and Pearl Invitation</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Pinyon+Script&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 <body class="locked">
 
-<!-- ================= Shared SVG defs: emboss filter, pearl gradient, lace cluster ================= -->
+<!-- ===== Shared SVG defs (filters, gradients, patterns, lace symbols built in app.js) ===== -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <defs>
-    <!-- Embossed look: soft specular highlight (top-left light) + low shadow (bottom-right) -->
-    <filter id="emboss" x="-10%" y="-10%" width="120%" height="120%">
-      <feGaussianBlur in="SourceAlpha" stdDeviation="1.1" result="blur"/>
-      <feSpecularLighting in="blur" surfaceScale="3" specularConstant="1" specularExponent="22" lighting-color="#ffffff" result="spec">
-        <feDistantLight azimuth="225" elevation="48"/>
-      </feSpecularLighting>
-      <feComposite in="spec" in2="SourceAlpha" operator="in" result="hi"/>
-      <feOffset in="SourceAlpha" dx="1.4" dy="2" result="off"/>
-      <feGaussianBlur in="off" stdDeviation="1.6" result="sh"/>
-      <feFlood flood-color="#6B5A4E" flood-opacity=".38"/>
-      <feComposite in2="sh" operator="in" result="shadow"/>
-      <feMerge><feMergeNode in="shadow"/><feMergeNode in="SourceGraphic"/><feMergeNode in="hi"/></feMerge>
+    <!-- Plaster emboss: diffuse relief shading + specular edge + white top-left glow + soft bottom-right shadow -->
+    <filter id="emboss" x="-12%" y="-12%" width="124%" height="124%" color-interpolation-filters="sRGB">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="1.7" result="b"/>
+      <feDiffuseLighting in="b" surfaceScale="3" diffuseConstant="1.3" lighting-color="#fff" result="d0"><feDistantLight azimuth="225" elevation="50"/></feDiffuseLighting>
+      <feComponentTransfer in="d0" result="d"><feFuncR type="linear" slope=".42" intercept=".6"/><feFuncG type="linear" slope=".42" intercept=".6"/><feFuncB type="linear" slope=".42" intercept=".6"/></feComponentTransfer>
+      <feBlend in="SourceGraphic" in2="d" mode="multiply" result="shaded"/>
+      <feComposite in="shaded" in2="SourceAlpha" operator="in" result="body"/>
+      <feSpecularLighting in="b" surfaceScale="4" specularConstant=".55" specularExponent="28" lighting-color="#fff" result="s"><feDistantLight azimuth="225" elevation="42"/></feSpecularLighting>
+      <feComposite in="s" in2="SourceAlpha" operator="in" result="spec"/>
+      <feOffset in="SourceAlpha" dx="3" dy="4" result="o1"/><feGaussianBlur in="o1" stdDeviation="3.2" result="o2"/>
+      <feFlood flood-color="#785A46" flood-opacity=".2"/><feComposite in2="o2" operator="in" result="shadow"/>
+      <feOffset in="SourceAlpha" dx="-2.2" dy="-2.2" result="w1"/><feGaussianBlur in="w1" stdDeviation="2" result="w2"/>
+      <feFlood flood-color="#fff" flood-opacity=".85"/><feComposite in2="w2" operator="in" result="glow"/>
+      <feMerge><feMergeNode in="glow"/><feMergeNode in="shadow"/><feMergeNode in="body"/><feMergeNode in="spec"/></feMerge>
     </filter>
-    <radialGradient id="pearl" cx="35%" cy="30%" r="75%">
-      <stop offset="0" stop-color="#fff"/><stop offset=".45" stop-color="#F6EEE6"/><stop offset="1" stop-color="#CDB9A6"/>
+    <filter id="pshadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx=".9" dy="1.2" stdDeviation=".9" flood-color="#785A46" flood-opacity=".4"/>
+    </filter>
+    <radialGradient id="pearl" cx="34%" cy="30%" r="78%">
+      <stop offset="0" stop-color="#fff"/><stop offset=".5" stop-color="#F3EAE1"/><stop offset="1" stop-color="#DCCDC0"/>
     </radialGradient>
-    <!-- Original lace floral cluster, built in app.js -->
-    <symbol id="lace-cluster" viewBox="0 0 220 220" overflow="visible"></symbol>
+    <radialGradient id="petal" cx="38%" cy="30%" r="85%">
+      <stop offset="0" stop-color="#FDFAF6"/><stop offset=".55" stop-color="#F4ECE4"/><stop offset="1" stop-color="#E7DACE"/>
+    </radialGradient>
+    <!-- Door lace: raised thread lattice -->
+    <pattern id="lacetile" width="52" height="52" patternUnits="userSpaceOnUse">
+      <g fill="none" stroke="#F6EFE8" stroke-width="2.2" stroke-linecap="round">
+        <path d="M26 3L49 26L26 49L3 26Z"/><circle cx="26" cy="26" r="9"/><circle cx="26" cy="26" r="3.4"/>
+        <path d="M26 17V8M26 35V44M17 26H8M35 26H44"/>
+      </g>
+      <g fill="#F6EFE8"><circle cx="0" cy="0" r="3.4"/><circle cx="52" cy="0" r="3.4"/><circle cx="0" cy="52" r="3.4"/><circle cx="52" cy="52" r="3.4"/></g>
+    </pattern>
+    <pattern id="scalL" width="40" height="30" patternUnits="userSpaceOnUse">
+      <circle cx="12" cy="15" r="14.5" fill="url(#petal)"/><circle cx="12" cy="15" r="8" fill="none" stroke="#E6D9CD" stroke-width="1.4"/><circle cx="12" cy="15" r="2.6" fill="#E6D9CD"/>
+    </pattern>
+    <pattern id="scalR" width="40" height="30" patternUnits="userSpaceOnUse" patternTransform="translate(0 15)">
+      <circle cx="28" cy="15" r="14.5" fill="url(#petal)"/><circle cx="28" cy="15" r="8" fill="none" stroke="#E6D9CD" stroke-width="1.4"/><circle cx="28" cy="15" r="2.6" fill="#E6D9CD"/>
+    </pattern>
+    <!-- Lace artwork, generated in app.js -->
+    <symbol id="lace-tl" viewBox="0 0 260 260" overflow="visible"></symbol>
+    <symbol id="lace-br" viewBox="0 0 260 260" overflow="visible"></symbol>
+    <symbol id="orn" viewBox="0 0 220 50" overflow="visible"></symbol>
+    <symbol id="bloom" viewBox="0 0 70 60" overflow="visible"></symbol>
   </defs>
 </svg>
 
-<!-- ================= Fixed decoration layer (lace in two corners) ================= -->
-<div class="decor" aria-hidden="true">
-  <svg class="corner tl" viewBox="0 0 220 220"><use href="#lace-cluster"/></svg>
-  <svg class="corner br" viewBox="0 0 220 220"><use href="#lace-cluster"/></svg>
-</div>
-
-<!-- ================= 1. INTRO: lace doors + mother-of-pearl seal ================= -->
+<!-- ===== Intro: two lace doors held shut by a mother-of-pearl seal ===== -->
 <div id="intro" class="intro">
-  <div class="door left"><span class="door-edge"></span></div>
-  <div class="door right"><span class="door-edge"></span></div>
-  <div class="intro-frame" aria-hidden="true"></div>
+  <div class="door left">
+    <svg class="door-art" width="100%" height="100%"><rect width="100%" height="100%" fill="url(#lacetile)" filter="url(#emboss)"/></svg>
+    <svg class="strip" width="40" height="100%"><rect width="40" height="100%" fill="url(#scalL)" filter="url(#emboss)"/></svg>
+  </div>
+  <div class="door right">
+    <svg class="door-art" width="100%" height="100%"><rect width="100%" height="100%" fill="url(#lacetile)" filter="url(#emboss)"/></svg>
+    <svg class="strip" width="40" height="100%"><rect width="40" height="100%" fill="url(#scalR)" filter="url(#emboss)"/></svg>
+  </div>
+  <div class="bloom" aria-hidden="true"></div>
   <div class="intro-center">
     <p class="intro-kicker" data-i18n="introKicker"></p>
     <button id="seal" class="seal" aria-label="Open invitation">
-      <span class="seal-ring"></span>
-      <span class="seal-core"><span id="sealInitials"></span></span>
+      <span class="half a"><i class="disc"><b class="ini"></b></i></span>
+      <span class="half b"><i class="disc"><b class="ini"></b></i></span>
     </button>
     <p class="intro-hint" data-i18n="introHint"></p>
   </div>
 </div>
 
-<!-- ================= Top-right controls ================= -->
-<div class="controls" id="controls">
-  <button id="langBtn" class="ctl" aria-label="Language">EN</button>
-  <button id="muteBtn" class="ctl" aria-label="Music on/off">
-    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9v6h4l5 4V5L8 9H4z"/><path class="wave" d="M16.5 8.5a5 5 0 0 1 0 7M19 6a8.5 8.5 0 0 1 0 12"/><path class="slash" d="M3 3l18 18"/></svg>
-  </button>
-</div>
+<!-- ===== Controls ===== -->
+<button id="langBtn" class="ctl lang" aria-label="Language">EN</button>
+<button id="muteBtn" class="ctl mute" aria-label="Music on/off">
+  <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9v6h4l5 4V5L8 9H4z"/><path class="wave" d="M16.5 8.5a5 5 0 0 1 0 7M19 6a8.5 8.5 0 0 1 0 12"/><path class="slash" d="M3 3l18 18"/></svg>
+</button>
 
-<!-- ================= Page ================= -->
 <main class="phone" id="page">
 
-  <!-- 2. HERO -->
+  <!-- 1. HERO CARD -->
   <section class="hero" id="hero">
-    <div class="arch">
-      <div class="arch-inner">
-        <p class="eyebrow reveal" data-i18n="heroInvite"></p>
-        <h1 class="names reveal">
-          <span id="name1"></span>
-          <em class="amp">&amp;</em>
-          <span id="name2"></span>
-        </h1>
-        <p class="accent reveal" data-i18n="heroLine"></p>
-        <div class="badges reveal">
-          <span class="badge" id="badgeDate"></span>
-          <span class="badge" id="badgeTime"></span>
+    <div class="card" data-arch>
+      <div class="card-face" data-pearls="arch" data-inset="15" data-rb="14" data-r="2.1" data-gap="9.4">
+        <div class="cartouche" data-pearls="oval" data-inset="5" data-r="1.5" data-gap="7">
+          <span id="cMonth"></span><i class="orn-dot"></i><span id="cYear"></span>
         </div>
-        <p class="weekday reveal" id="heroDay"></p>
+        <div class="center">
+          <p class="eyebrow" data-i18n="heroInvite"></p>
+          <h1 class="names"><span id="name1"></span><em class="amp">&amp;</em><span id="name2"></span></h1>
+          <p class="line" data-i18n="heroLine"></p>
+        </div>
+        <div class="badges">
+          <div class="badge" data-pearls="oval" data-inset="6" data-r="1.9" data-gap="8"><small id="bDayLbl"></small><b id="bDate"></b></div>
+          <div class="badge" data-pearls="oval" data-inset="6" data-r="1.9" data-gap="8"><small data-i18n="time"></small><b id="bTime"></b></div>
+        </div>
+        <a href="#story" class="pill" id="openBtn"><span data-i18n="open"></span></a>
       </div>
+      <svg class="corner tl" viewBox="0 0 260 260" aria-hidden="true"><use href="#lace-tl"/></svg>
+      <svg class="corner br" viewBox="0 0 260 260" aria-hidden="true"><use href="#lace-br"/></svg>
     </div>
-    <div class="scroll-cue" aria-hidden="true"><span></span></div>
+  </section>
+
+  <!-- 2. STORY (small arch) -->
+  <section class="sec" id="story">
+    <div class="card small reveal">
+      <div class="card-face" data-pearls="arch" data-inset="12" data-rb="12" data-r="1.9" data-gap="8.6">
+        <h2 class="h" data-i18n="storyTitle"></h2>
+        <p class="script" data-i18n="storyScript"></p>
+        <p class="body" data-i18n="storyBody"></p>
+      </div>
+      <svg class="corner tl mini" viewBox="0 0 260 260" aria-hidden="true"><use href="#lace-tl"/></svg>
+    </div>
   </section>
 
   <!-- 3. COUNTDOWN -->
-  <section class="block" id="countdown">
+  <section class="sec" id="countdown">
     <h2 class="h reveal" data-i18n="countTitle"></h2>
-    <p class="accent reveal" data-i18n="countLine"></p>
-    <div class="count reveal" id="countGrid">
-      <div class="cell"><b id="cd-d">00</b><small data-i18n="days"></small></div>
-      <div class="cell"><b id="cd-h">00</b><small data-i18n="hours"></small></div>
-      <div class="cell"><b id="cd-m">00</b><small data-i18n="minutes"></small></div>
-      <div class="cell"><b id="cd-s">00</b><small data-i18n="seconds"></small></div>
+    <p class="script reveal" data-i18n="countLine"></p>
+    <div class="count reveal">
+      <div class="cell" data-pearls="oval" data-inset="6" data-r="1.7" data-gap="7.6"><b id="cd-d">00</b><small data-i18n="days"></small></div>
+      <div class="cell" data-pearls="oval" data-inset="6" data-r="1.7" data-gap="7.6"><b id="cd-h">00</b><small data-i18n="hours"></small></div>
+      <div class="cell" data-pearls="oval" data-inset="6" data-r="1.7" data-gap="7.6"><b id="cd-m">00</b><small data-i18n="minutes"></small></div>
+      <div class="cell" data-pearls="oval" data-inset="6" data-r="1.7" data-gap="7.6"><b id="cd-s">00</b><small data-i18n="seconds"></small></div>
     </div>
   </section>
 
-  <!-- 4. DETAILS + VENUE -->
-  <section class="block" id="details">
+  <!-- 4. DETAILS -->
+  <section class="sec" id="details">
     <h2 class="h reveal" data-i18n="detailsTitle"></h2>
-    <div class="divider reveal"><i></i></div>
-    <div class="detail reveal"><small data-i18n="when"></small><p id="dWhen"></p></div>
-    <div class="detail reveal"><small data-i18n="where"></small><p id="dVenue" class="big"></p><p id="dAddress"></p></div>
-    <div class="detail reveal"><small data-i18n="program"></small><ul id="dProgram" class="program"></ul></div>
-    <a id="directions" class="btn reveal" target="_blank" rel="noopener" data-i18n="directions"></a>
+    <div id="events" class="events"></div>
   </section>
 
   <!-- 5. RSVP -->
-  <section class="block" id="rsvp">
+  <section class="sec" id="rsvp">
     <h2 class="h reveal" data-i18n="rsvpTitle"></h2>
-    <p class="accent reveal" id="rsvpLine"></p>
+    <p class="script reveal" id="rsvpLine"></p>
     <form id="rsvpForm" class="form reveal" novalidate>
-      <label><span data-i18n="fName"></span><input id="fName" name="name" required autocomplete="name"></label>
-      <div class="field">
-        <span data-i18n="fGuests"></span>
-        <div class="stepper">
-          <button type="button" id="gMinus" aria-label="-">&minus;</button>
-          <output id="gOut">1</output>
-          <button type="button" id="gPlus" aria-label="+">+</button>
-        </div>
+      <label class="fld"><span data-i18n="fName"></span><input id="fName" name="name" autocomplete="name"></label>
+      <div class="fld"><span data-i18n="fGuests"></span>
+        <div class="stepper"><button type="button" id="gMinus" aria-label="-">&minus;</button><output id="gOut">1</output><button type="button" id="gPlus" aria-label="+">+</button></div>
       </div>
-      <div class="field">
-        <span data-i18n="fAttending"></span>
+      <div class="fld"><span data-i18n="fAttending"></span>
         <div class="pills">
-          <label class="pill"><input type="radio" name="attending" value="yes" checked><span data-i18n="yes"></span></label>
-          <label class="pill"><input type="radio" name="attending" value="no"><span data-i18n="no"></span></label>
+          <label class="opt"><input type="radio" name="attending" value="yes" checked><span data-i18n="yes"></span></label>
+          <label class="opt"><input type="radio" name="attending" value="no"><span data-i18n="no"></span></label>
         </div>
       </div>
-      <button class="btn solid" type="submit" data-i18n="send"></button>
+      <button class="pill solid" type="submit"><span data-i18n="send"></span></button>
       <p class="thanks" id="rsvpThanks" hidden></p>
     </form>
   </section>
 
-  <!-- 6. GALLERY / MEMORY WALL -->
-  <section class="block" id="gallery">
+  <!-- 6. MEMORY WALL -->
+  <section class="sec" id="gallery">
     <h2 class="h reveal" data-i18n="galleryTitle"></h2>
-    <p class="accent reveal" data-i18n="galleryLine"></p>
+    <p class="script reveal" data-i18n="galleryLine"></p>
     <div class="wall" id="wall"></div>
   </section>
 
-  <!-- 7. FOOTER -->
-  <footer class="block foot" id="footer">
-    <div class="divider reveal"><i></i></div>
-    <p class="accent big reveal" id="footThanks"></p>
-    <p class="names small reveal"><span id="fName1"></span> <em class="amp">&amp;</em> <span id="fName2"></span></p>
+  <!-- 7. CLOSING -->
+  <footer class="sec foot" id="footer">
+    <svg class="orn reveal" viewBox="0 0 220 50" aria-hidden="true"><use href="#orn"/></svg>
+    <p class="script big reveal" id="footThanks"></p>
+    <p class="names small reveal"><span id="fName1"></span><em class="amp">&amp;</em><span id="fName2"></span></p>
     <p class="tiny reveal" id="footDate"></p>
   </footer>
 </main>
