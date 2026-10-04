@@ -23,3 +23,13 @@ The clasp signature is `CONFIG.initials` (Great Vibes font, SIL OFL, in `fonts/`
 
 ## Music
 `CONFIG.music.youtube` is a YouTube video id (default: a "Buke Delale" upload, please check it is the recording you want; the id is the part after `v=` in the YouTube link). It plays through YouTube's own embedded player after the first tap, fades in, and needs internet + https. Set `CONFIG.music.url` to your own licensed mp3 to use that instead. If neither works, a soft built-in melody plays. No recording is stored in this project.
+
+## Deploy on Firebase Hosting (second site in project `microcoding-cce04`)
+`firebase.json` serves the committed `docs/` folder as the site `sivan-maswa` (it never touches the main elptronios site).
+```
+npm i -g firebase-tools && firebase login
+firebase hosting:sites:create sivan-maswa        # once; pick another id if taken, then edit "site" in firebase.json
+sh lace-pearl/tools/pages-build.sh               # refresh docs/ after edits
+firebase deploy --only hosting:sivan-maswa
+```
+Then Firebase console → Hosting (not App Hosting) → site `sivan-maswa` → Add custom domain → `sivan-maswa.elptronios.com` and add the DNS records it shows at your DNS provider.
