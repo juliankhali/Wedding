@@ -19,7 +19,7 @@ const CONFIG = {
   text: {
     openInvite: "کردنەوەی بانگهێشتنامە",
     heroKicker: "بە خۆشحاڵییەوە بانگهێشتتان دەکەین بۆ ئاهەنگی هاوسەرگیری",
-    tabHome: "سەرەتا", tabWhen: "کات", tabWhere: "شوێن", tabThanks: "سوپاس",
+    prev: "پێشوو", next: "دواتر",
     tapHint: "دەستی لێبدە بۆ لاپەڕەی دواتر",
     whenTitle: "ڕێکەوت و کات", time: "کاتژمێر", countLine: "هەتا ڕۆژی بەختەوەری ماوە",
     days: "ڕۆژ", hours: "کاتژمێر", minutes: "خولەک", seconds: "چرکە", countDone: "ئەمڕۆ ڕۆژی بەختەوەرییە",
@@ -255,25 +255,24 @@ function tick() {
   if (!s) document.querySelector('[data-t="countLine"]').textContent = TX.countDone;
 }
 
-/* ---------- Pages as tabs ---------- */
-const pages = [...document.querySelectorAll(".page")], tabBtns = [...document.querySelectorAll(".tabs button")];
+/* ---------- Pages: one Next / Previous control ---------- */
+const pages = [...document.querySelectorAll(".page")], prevBtn = $("#prevBtn"), nextBtn = $("#nextBtn");
 let cur = 0, tappedOnce = false;
 function showHint() {
-  const h = $("#hint"), nxt = tabBtns[cur + 1];
-  if (!nxt || tappedOnce || !document.body.classList.contains("open")) { h.classList.remove("show"); return; }
-  const r = nxt.getBoundingClientRect(); h.style.left = (r.left + r.width / 2) + "px"; h.classList.add("show");
+  const h = $("#hint");
+  if (cur !== 0 || tappedOnce || !document.body.classList.contains("open")) { h.classList.remove("show"); return; }
+  const r = nextBtn.getBoundingClientRect(); h.style.left = (r.left + r.width / 2) + "px"; h.classList.add("show");
 }
 function go(n) {
   if (n < 0 || n >= pages.length || n === cur) return;
-  const forward = n > cur; cur = n;
-  pages.forEach((p, i) => { p.dataset.pos = i < cur ? "before" : i > cur ? "after" : "active"; p.style.setProperty("--d", forward || n === 0 ? ".35s" : ".35s"); });
-  tabBtns.forEach((b, i) => { b.classList.toggle("on", i === cur); b.classList.toggle("next", i === cur + 1); });
-  if (n > 0) tappedOnce = true;
+  cur = n; tappedOnce = true;
+  pages.forEach((p, i) => { p.dataset.pos = i < cur ? "before" : i > cur ? "after" : "active"; p.style.setProperty("--d", ".35s"); });
+  prevBtn.hidden = cur === 0; nextBtn.hidden = cur === pages.length - 1;
   showHint();
 }
 pages.forEach((p, i) => p.dataset.pos = i ? "after" : "active");
-tabBtns.forEach((b, i) => { b.onclick = () => go(i); });
-tabBtns[0].classList.add("on"); tabBtns[1].classList.add("next");
+prevBtn.hidden = true;
+prevBtn.onclick = () => go(cur - 1); nextBtn.onclick = () => go(cur + 1);
 /* swipe + keys (RTL: swipe right → next page) */
 let sx = null;
 addEventListener("touchstart", e => { sx = e.touches[0].clientX; }, { passive: true });

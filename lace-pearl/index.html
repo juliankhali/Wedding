@@ -5,9 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#EFE7DC">
 <title>Sivan and Mathwa Wedding</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Noto+Naskh+Arabic:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="preload" href="fonts/amiri-700.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="style.css">
 </head>
 <body class="locked">
@@ -154,10 +152,8 @@
 <!-- ===== Tab bar + tap tip ===== -->
 <div class="hint" id="hint" aria-hidden="true"><span data-t="tapHint"></span><i></i></div>
 <nav class="tabs" id="tabs" aria-label="Pages">
-  <button data-go="0" data-t="tabHome"></button>
-  <button data-go="1" data-t="tabWhen"></button>
-  <button data-go="2" data-t="tabWhere"></button>
-  <button data-go="3" data-t="tabThanks"></button>
+  <button id="prevBtn" class="navbtn"><i aria-hidden="true"></i><span data-t="prev"></span></button>
+  <button id="nextBtn" class="navbtn next"><span data-t="next"></span><i aria-hidden="true"></i></button>
 </nav>
 
 <script src="app.js"></script>
