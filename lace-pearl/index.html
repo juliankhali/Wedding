@@ -6,6 +6,7 @@
 <meta name="theme-color" content="#EFE7DC">
 <title>Sivan and Mathwa Wedding</title>
 <link rel="preload" href="fonts/amiri-700.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="img/door-l.webp" as="image">
 <link rel="stylesheet" href="style.css">
 </head>
 <body class="locked">
@@ -32,20 +33,16 @@
     <radialGradient id="pearl" cx="34%" cy="30%" r="78%"><stop offset="0" stop-color="#fff"/><stop offset=".5" stop-color="#F3EAE1"/><stop offset="1" stop-color="#DCCDC0"/></radialGradient>
     <radialGradient id="petal" cx="38%" cy="30%" r="85%"><stop offset="0" stop-color="#FDFAF6"/><stop offset=".55" stop-color="#F1E9DE"/><stop offset="1" stop-color="#E3D6C8"/></radialGradient>
     <radialGradient id="face" cx="50%" cy="20%" r="90%"><stop offset="0" stop-color="#FBF7F1"/><stop offset="1" stop-color="#F2EADF"/></radialGradient>
-    <symbol id="lace-tl" viewBox="0 0 260 260" overflow="visible"></symbol>
-    <symbol id="lace-br" viewBox="0 0 260 260" overflow="visible"></symbol>
-    <symbol id="orn" viewBox="0 0 220 50" overflow="visible"></symbol>
-    <symbol id="sprig" viewBox="0 0 40 64" overflow="visible"></symbol>
   </defs>
 </svg>
 
 <!-- ===== Closed lace doors ===== -->
 <div id="intro" class="intro" dir="ltr">
-  <div class="door left"><svg class="door-art" id="artL" viewBox="0 0 195 844" preserveAspectRatio="xMidYMid slice"></svg></div>
-  <div class="door right"><svg class="door-art" id="artR" viewBox="0 0 195 844" preserveAspectRatio="xMidYMid slice"></svg></div>
+  <div class="door left"><img class="door-art" src="img/door-l.webp" alt=""></div>
+  <div class="door right"><img class="door-art" src="img/door-r.webp" alt=""></div>
   <div class="intro-ui">
     <button id="seal" class="clasp" aria-label="کردنەوە" data-pearls="oval" data-inset="3" data-r="1.7" data-gap="5.6">
-      <span class="clasp-face"><svg class="sprig" viewBox="0 0 40 64" aria-hidden="true"><use href="#sprig"/></svg></span>
+      <span class="clasp-face"><span class="sig" id="sig" dir="ltr"></span></span>
     </button>
     <div class="intro-bottom" dir="rtl">
       <div class="frost" id="introDate"></div>
@@ -64,7 +61,7 @@
   <!-- 1 · Home -->
   <section class="page" data-page="home">
     <div class="stage">
-      <svg class="frame-svg" aria-hidden="true"></svg>
+      <div class="frame-bg" aria-hidden="true"></div>
       <div class="copy hero-copy">
         <p class="kicker seq" style="--i:0" data-t="heroKicker"></p>
         <h1 class="names">
@@ -74,15 +71,15 @@
         </h1>
         <p class="hero-date seq" style="--i:3" id="heroDate"></p>
       </div>
-      <svg class="corner tl" viewBox="0 0 260 260" aria-hidden="true"><use href="#lace-tl"/></svg>
-      <svg class="corner br" viewBox="0 0 260 260" aria-hidden="true"><use href="#lace-br"/></svg>
+      <img class="corner tl" src="img/corner-tl.webp" alt="" decoding="async">
+      <img class="corner br" src="img/corner-br.webp" alt="" decoding="async">
     </div>
   </section>
 
   <!-- 2 · Date, time, countdown -->
   <section class="page" data-page="when">
     <div class="stage">
-      <svg class="frame-svg" aria-hidden="true"></svg>
+      <div class="frame-bg" aria-hidden="true"></div>
       <div class="copy">
         <h2 class="h seq" style="--i:0" data-t="whenTitle"></h2>
         <div class="badges seq" style="--i:1">
@@ -97,15 +94,15 @@
           <div class="cell" data-pearls="oval" data-inset="6" data-r="1.7" data-gap="7.6"><b id="cd-s">٠٠</b><small data-t="seconds"></small></div>
         </div>
       </div>
-      <svg class="corner tl" viewBox="0 0 260 260" aria-hidden="true"><use href="#lace-tl"/></svg>
-      <svg class="corner br" viewBox="0 0 260 260" aria-hidden="true"><use href="#lace-br"/></svg>
+      <img class="corner tl" src="img/corner-tl.webp" alt="" decoding="async">
+      <img class="corner br" src="img/corner-br.webp" alt="" decoding="async">
     </div>
   </section>
 
   <!-- 3 · Venue + map image -->
   <section class="page" data-page="where">
     <div class="stage">
-      <svg class="frame-svg" aria-hidden="true"></svg>
+      <div class="frame-bg" aria-hidden="true"></div>
       <div class="copy">
         <h2 class="h seq" style="--i:0" data-t="venueTitle"></h2>
         <div class="map seq" style="--i:1" id="map">
@@ -127,24 +124,23 @@
         <p class="accent seq" style="--i:2" id="vAddress"></p>
         <a id="directions" class="pill seq" style="--i:3" target="_blank" rel="noopener"><span data-t="directions"></span></a>
       </div>
-      <svg class="corner tl" viewBox="0 0 260 260" aria-hidden="true"><use href="#lace-tl"/></svg>
-      <svg class="corner br" viewBox="0 0 260 260" aria-hidden="true"><use href="#lace-br"/></svg>
+      <img class="corner tl" src="img/corner-tl.webp" alt="" decoding="async">
+      <img class="corner br" src="img/corner-br.webp" alt="" decoding="async">
     </div>
   </section>
 
   <!-- 4 · Program + ending -->
   <section class="page" data-page="thanks">
     <div class="stage">
-      <svg class="frame-svg" aria-hidden="true"></svg>
+      <div class="frame-bg" aria-hidden="true"></div>
       <div class="copy">
         <h2 class="h welcome seq" style="--i:0" data-t="welcomeTitle"></h2>
-        <svg class="orn seq" style="--i:1" viewBox="0 0 220 50" aria-hidden="true"><use href="#orn"/></svg>
-        <p class="accent welcome-text seq" style="--i:2" data-t="welcomeText"></p>
-        <p class="accent seq" style="--i:3" id="footThanks"></p>
-        <p class="names small seq" style="--i:4"><span id="fName1"></span><em class="amp">&amp;</em><span id="fName2"></span></p>
+        <img class="orn seq" style="--i:1" src="img/orn.webp" alt="" decoding="async">
+        <p class="accent seq" style="--i:2" id="footThanks"></p>
+        <h2 class="names ending"><span class="n n1" id="fName1"></span><em class="amp seq" style="--i:3">&amp;</em><span class="n n2" id="fName2"></span></h2>
       </div>
-      <svg class="corner tl" viewBox="0 0 260 260" aria-hidden="true"><use href="#lace-tl"/></svg>
-      <svg class="corner br" viewBox="0 0 260 260" aria-hidden="true"><use href="#lace-br"/></svg>
+      <img class="corner tl" src="img/corner-tl.webp" alt="" decoding="async">
+      <img class="corner br" src="img/corner-br.webp" alt="" decoding="async">
     </div>
   </section>
 </main>

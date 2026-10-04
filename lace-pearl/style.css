@@ -1,4 +1,5 @@
 /* Amiri (SIL OFL), subset to Arabic/Kurdish + basic Latin, shipped with the page so the font always loads */
+@font-face{font-family:"Great Vibes";font-style:normal;font-weight:400;font-display:swap;src:url(fonts/greatvibes.woff2) format("woff2")}
 @font-face{font-family:"Amiri";font-style:normal;font-weight:400;font-display:swap;src:url(fonts/amiri-400.woff2) format("woff2")}
 @font-face{font-family:"Amiri";font-style:normal;font-weight:700;font-display:swap;src:url(fonts/amiri-700.woff2) format("woff2")}
 /* =====================================================================
@@ -13,7 +14,7 @@
   --raise-s:-3px -3px 7px var(--hi), 3px 4px 9px var(--sh);
   --press:inset 3px 3px 7px rgba(120,90,70,.2), inset -3px -3px 7px rgba(255,255,255,.9);
   --display:"Amiri","Noto Naskh Arabic",serif; --serif:"Amiri","Noto Naskh Arabic","Segoe UI",serif; --ease:cubic-bezier(.22,.8,.22,1);
-  --col:430px;
+  --col:430px; --sw:calc(min(100vw,var(--col)) - 40px); --cw:min(calc(var(--sw) * .52),206px);
   --grain:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' seed='7'/><feColorMatrix values='0 0 0 0 .4  0 0 0 0 .3  0 0 0 0 .22  0 0 0 .55 0'/></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='.07'/></svg>");
 }
 *{box-sizing:border-box;margin:0;padding:0}
@@ -33,7 +34,7 @@ em{font-style:normal}
 .names{font-family:var(--display);font-weight:700;text-align:center;font-size:68px;line-height:1.25;text-shadow:0 1.5px 0 #fff,0 -1px 0 rgba(120,90,70,.14);display:flex;flex-direction:column;align-items:center}
 .names .n{display:block}
 .names .amp{display:block;font-family:var(--display);font-weight:400;font-size:44px;line-height:1;margin:2px 0;color:var(--gold)}
-.names.small{font-size:42px;flex-direction:row;gap:10px;justify-content:center}.names.small .amp{font-size:26px;margin:0}
+.names.ending{font-size:56px;line-height:1.2;margin-top:4px}.names.ending .amp{font-size:34px}
 .hero-date{font-family:var(--display);font-size:27px;font-weight:500;text-align:center;text-shadow:0 1px 0 #fff}
 small{font-size:17px;font-weight:400}
 
@@ -46,7 +47,7 @@ small{font-size:17px;font-weight:400}
   background:rgba(255,255,255,.94);box-shadow:0 6px 18px rgba(120,90,70,.22),inset 0 1px 0 #fff;font-size:21px;font-weight:700;white-space:nowrap}
 
 .ctl{position:fixed;z-index:60;width:44px;height:44px;border-radius:50%;cursor:pointer;display:grid;place-items:center;font-size:11px;letter-spacing:.1em;font-weight:500;color:var(--ink);
-  background:rgba(255,255,255,.42);border:1px solid rgba(255,255,255,.7);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);box-shadow:0 4px 14px rgba(120,90,70,.18)}
+  background:rgba(255,255,255,.42);border:1px solid rgba(255,255,255,.7);box-shadow:0 4px 14px rgba(120,90,70,.18)}
 .ctl:focus-visible,.pill:focus-visible,.white-pill:focus-visible,.clasp:focus-visible{outline:1.5px solid var(--gold);outline-offset:3px}
 .mute{bottom:20px;right:max(16px,calc(50% - var(--col)/2 + 16px));transition:opacity .6s}
 body.open .mute{bottom:auto;top:14px;right:auto;left:max(16px,calc(50% - var(--col)/2 + 16px))}
@@ -56,7 +57,7 @@ body.open .mute{bottom:auto;top:14px;right:auto;left:max(16px,calc(50% - var(--c
 .intro{position:fixed;inset:0 auto 0 50%;transform:translateX(-50%);width:min(100vw,var(--col));z-index:50;perspective:1600px;overflow:hidden}
 .door{position:absolute;top:0;bottom:0;width:50%;background:var(--grain),var(--door);transition:transform 1.4s cubic-bezier(.65,0,.35,1);will-change:transform;overflow:hidden}
 .door.left{left:0;transform-origin:0 50%}.door.right{right:0;transform-origin:100% 50%}
-.door-art{position:absolute;inset:0;width:100%;height:100%;display:block}
+.door-art{position:absolute;inset:0;width:100%;height:100%;display:block;object-fit:cover}
 /* champagne-gold seam, 5px per door = 10px total, lighter highlight line at the very centre */
 .door::after{content:"";position:absolute;top:0;bottom:0;width:5px;z-index:3}
 .left::after{right:0;background:linear-gradient(90deg,#B5975F,#C9AE85 45%,#D8C198 80%,#F1E4C6)}
@@ -70,14 +71,17 @@ body.open .mute{bottom:auto;top:14px;right:auto;left:max(16px,calc(50% - var(--c
 .clasp-face{position:absolute;inset:7px;border-radius:50%;overflow:hidden;
   background:radial-gradient(ellipse at 28% 20%,#fff,rgba(255,255,255,0) 42%),conic-gradient(from 200deg at 50% 55%,#FBF7F2,#F3DDE4,#D9E8EE,#DDEFE3,#F6E8D8,#FBF7F2);
   box-shadow:inset 2px 3px 5px rgba(255,255,255,.95),inset -3px -4px 8px rgba(120,90,70,.3)}
-.clasp-face::after{content:"";position:absolute;inset:0;mix-blend-mode:soft-light;background:linear-gradient(115deg,transparent 30%,rgba(255,255,255,.95) 50%,transparent 70%) 150% 0/250% 100%;animation:sheen 3.8s ease-in-out infinite}
-.sprig{position:absolute;left:50%;top:50%;width:36px;height:57px;margin:-29px 0 0 -18px;overflow:visible}
-@keyframes sheen{0%,20%{background-position:150% 0}70%,100%{background-position:-60% 0}}
+.clasp-face::after{content:"";position:absolute;top:0;bottom:0;left:-100%;width:60%;background:linear-gradient(115deg,transparent,rgba(255,255,255,.8),transparent);transform:skewX(-20deg);animation:sheen 3.8s ease-in-out infinite}
+/* signature monogram on the clasp */
+.sig{position:absolute;left:50%;top:50%;z-index:1;font-family:"Great Vibes","Snell Roundhand",cursive;font-size:23px;line-height:1;color:#6F5A4C;white-space:nowrap;
+  transform:translate(-50%,-56%) rotate(-8deg);text-shadow:0 1px 0 rgba(255,255,255,.95),0 -.5px 0 rgba(120,90,70,.25);letter-spacing:-.05em}
+.sig::after{content:"";position:absolute;left:4%;right:0;bottom:-3px;height:5px;border-bottom:1.3px solid #6F5A4C;border-radius:50%;opacity:.75;transform:rotate(2deg)}
+@keyframes sheen{0%,25%{transform:translateX(0) skewX(-20deg)}75%,100%{transform:translateX(430%) skewX(-20deg)}}
 @keyframes float{50%{transform:translateY(-3px)}}
 .clasp.go{animation:glow .75s ease-out forwards}
 @keyframes glow{0%{box-shadow:0 0 0 0 rgba(255,255,255,.9),0 10px 22px rgba(90,60,30,.35)}45%{box-shadow:0 0 44px 22px rgba(255,250,240,.95),0 0 0 rgba(0,0,0,0);transform:scale(1.1);opacity:1}100%{box-shadow:0 0 60px 30px rgba(255,250,240,0);transform:scale(1.2);opacity:0}}
 .intro-bottom{position:absolute;left:0;right:0;bottom:44px;display:flex;flex-direction:column;align-items:center;gap:14px;transition:opacity .5s}
-.frost{padding:10px 24px;border-radius:40px;font-size:20px;font-weight:700;color:#6a5648;background:rgba(255,255,255,.4);border:1px solid rgba(255,255,255,.7);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);white-space:nowrap;box-shadow:0 4px 14px rgba(120,90,70,.12)}
+.frost{padding:10px 24px;border-radius:40px;font-size:20px;font-weight:700;color:#6a5648;background:rgba(255,255,255,.4);border:1px solid rgba(255,255,255,.7);white-space:nowrap;box-shadow:0 4px 14px rgba(120,90,70,.12)}
 body.open .intro-bottom{opacity:0}
 body.open .door.left{transform:translate3d(-104%,0,-80px) rotateY(10deg)}
 body.open .door.right{transform:translate3d(104%,0,-80px) rotateY(-10deg)}
@@ -91,11 +95,11 @@ body.open .intro{pointer-events:none;visibility:hidden;transition:visibility 0s 
 .page[data-pos=after]{transform:translateX(-46px) scale(.985)}
 .page[data-pos=active]{opacity:1;visibility:visible;pointer-events:auto;transform:none;transition-delay:0s}
 .stage{position:relative;height:100%}
-.frame-svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.frame-bg{position:absolute;inset:0;background-size:100% 100%;background-repeat:no-repeat}
 .copy{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;padding:104px 30px 56px}
 .hero-copy{gap:20px;padding-bottom:70px}
-.corner{position:absolute;overflow:visible;pointer-events:none;z-index:4;width:min(52%,206px);height:auto}
-.corner.tl{left:-22px;top:-20px}.corner.br{right:-22px;bottom:-20px}
+.corner{position:absolute;pointer-events:none;z-index:4;width:calc(var(--cw) * 1.2308);height:auto}
+.corner.tl{left:calc(-22px - var(--cw) * .1154);top:calc(-20px - var(--cw) * .1154)}.corner.br{right:calc(-22px - var(--cw) * .1154);bottom:calc(-20px - var(--cw) * .1154)}
 
 /* Items fade/rise in one by one each time a page is shown; the names fly in from OPPOSITE sides */
 .seq{opacity:0}
@@ -104,11 +108,10 @@ body.open [data-pos=active] .seq{animation:rise 1.1s var(--ease) both;animation-
 .n{opacity:0}
 body.open [data-pos=active] .n1{animation:fromLeft 1.7s var(--ease) both;animation-delay:var(--d,.25s)}
 body.open [data-pos=active] .n2{animation:fromRight 1.7s var(--ease) both;animation-delay:var(--d,.25s)}
-@keyframes fromLeft{0%{opacity:0;transform:translateX(-130px);filter:blur(9px)}60%{opacity:1}100%{opacity:1;transform:none;filter:blur(0)}}
-@keyframes fromRight{0%{opacity:0;transform:translateX(130px);filter:blur(9px)}60%{opacity:1}100%{opacity:1;transform:none;filter:blur(0)}}
+@keyframes fromLeft{0%{opacity:0;transform:translateX(-130px)}60%{opacity:1}100%{opacity:1;transform:none}}
+@keyframes fromRight{0%{opacity:0;transform:translateX(130px)}60%{opacity:1}100%{opacity:1;transform:none}}
 body.open [data-pos=active] .amp.seq{animation-name:pop;animation-duration:1.2s}
 @keyframes pop{0%{opacity:0;transform:scale(.3) rotate(-20deg)}70%{opacity:1;transform:scale(1.15)}100%{opacity:1;transform:none}}
-.names.small .n{opacity:1}
 
 /* ---------- Content ---------- */
 .badges{display:flex;gap:14px;justify-content:center}
@@ -128,7 +131,7 @@ body.open [data-pos=active] .amp.seq{animation-name:pop;animation-duration:1.2s}
 .map-hit{position:absolute;inset:6px;border-radius:17px;display:flex;align-items:flex-end;justify-content:center;text-decoration:none;color:var(--ink);-webkit-tap-highlight-color:transparent}
 .map-hit span{margin-bottom:8px;padding:2px 14px;font-size:16px;border-radius:20px;background:rgba(255,255,255,.88);box-shadow:0 2px 8px rgba(120,90,70,.2)}
 
-.orn{width:170px;height:auto;overflow:visible}
+.orn{width:192px;height:auto;margin-block:-11px}
 
 /* ---------- Tab bar + tap tip ---------- */
 .tabs{position:fixed;z-index:55;left:50%;bottom:18px;transform:translate(-50%,30px);display:flex;gap:4px;padding:6px;border-radius:40px;background:var(--bg);box-shadow:var(--raise);opacity:0;pointer-events:none;
@@ -142,16 +145,19 @@ body.open .tabs{opacity:1;transform:translateX(-50%);pointer-events:auto}
 .tabs #prevBtn i{transform:rotate(45deg)}
 .tabs button:focus-visible{outline:1.5px solid var(--gold);outline-offset:2px}
 /* the next button pulses so the guest sees what to tap */
-.tabs button.next::after{content:"";position:absolute;inset:0;border-radius:30px;box-shadow:0 0 0 0 rgba(201,174,133,.8);animation:ping 1.9s ease-out infinite}
-@keyframes ping{0%{box-shadow:0 0 0 0 rgba(201,174,133,.85)}70%,100%{box-shadow:0 0 0 14px rgba(201,174,133,0)}}
+.tabs button.next::after{content:"";position:absolute;inset:0;border-radius:30px;border:2px solid rgba(201,174,133,.85);animation:ping 1.9s ease-out infinite;pointer-events:none}
+@keyframes ping{0%{transform:scale(1);opacity:.9}100%{transform:scale(1.35,1.7);opacity:0}}
 .hint{position:fixed;z-index:56;bottom:78px;left:50%;transform:translateX(-50%);padding:8px 18px;border-radius:24px;background:rgba(255,255,255,.96);font-size:19px;font-weight:700;white-space:nowrap;
   box-shadow:0 6px 18px rgba(120,90,70,.22);opacity:0;pointer-events:none;transition:opacity .6s,left .6s var(--ease);animation:hintbob 1.8s ease-in-out infinite}
 .hint i{position:absolute;left:50%;bottom:-6px;width:12px;height:12px;margin-left:-6px;background:rgba(255,255,255,.96);transform:rotate(45deg)}
 .hint.show{opacity:1}
-@keyframes hintbob{50%{margin-bottom:6px}}
+@keyframes hintbob{50%{translate:0 -6px}}
 
 .pearls{position:absolute;left:0;top:0;pointer-events:none;overflow:visible}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition-duration:.01s!important}.seq,.n{opacity:1}}
 
 .welcome{font-size:42px}
-.welcome-text{max-width:290px;line-height:1.7;font-size:27px}
+
+
+body.done .intro{display:none}
+.page.warm{visibility:visible;opacity:.01;transition:none}
