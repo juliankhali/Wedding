@@ -176,7 +176,7 @@ function fillText() {
     const f = $("#mapFrame"), ctl = new AbortController(); setTimeout(() => ctl.abort(), 4000);
     fetch(CONFIG.venue.mapEmbedUrl, { mode: "no-cors", signal: ctl.signal }).then(() => { f.src = CONFIG.venue.mapEmbedUrl; f.hidden = false; }).catch(() => {});
   }
-  document.title = `${a} & ${b}`;
+  document.title = `${a}&${b}`;                     // browser tab shows: Sivan&Maswa
 }
 
 /* ---------- Countdown ---------- */
